@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HomeWork
 {
@@ -10,14 +7,14 @@ namespace HomeWork
     {
         public string CreateRandomLogin()
         {
-            Random user = new Random();
+            Random randomUs = new Random();
             String b = "qwertyuiopasdfghjklzxcvbnm";
             int lenght = 6;
-            String random = "";
+            String random = string.Empty;
 
             for (int i = 0; i < lenght; i++)
             {
-                int a = user.Next(26);
+                int a = randomUs.Next(26);
                 random = random + b.ElementAt(a);
             }
             return random;
@@ -25,23 +22,17 @@ namespace HomeWork
 
         public string CreateRandomPassword()
         {
-            Random res = new Random();
-
+            Random random = new Random();
             String str = "abcdefghijklmnopqrstuvwxyz0123456789";
             int size = 8;
-
-            String randomstring = "";
+            String randomstring = string.Empty;
 
             for (int i = 0; i < size; i++)
             {
-
-                int x = res.Next(str.Length);
-
+                int x = random.Next(str.Length);
                 randomstring = randomstring + str[x];
             }
             return randomstring;
-
-            Console.WriteLine(randomstring);
         }
 
         public string CreateRandomEmail()
@@ -49,7 +40,7 @@ namespace HomeWork
             Random user = new Random();
             String b = "qwertyuiopasdfghjklzxcvbnm";
             int lenght = 6;
-            String random = "";
+            String random = string.Empty;
 
             for (int i = 0; i < lenght; i++)
             {
@@ -58,7 +49,6 @@ namespace HomeWork
             }
             random += "@gmail.com";
             return random;
-            Console.WriteLine(random);
         }
     }
 }

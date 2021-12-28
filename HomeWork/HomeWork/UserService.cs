@@ -20,24 +20,24 @@ namespace HomeWork
             this.driver = driver;
         }
 
-        IJavaScriptExecutor executor;
+        /*IJavaScriptExecutor executor;
 
         public UserService(IJavaScriptExecutor executor)
         {
             this.executor = executor;
-        }
+        }*/
 
-        private UserService service;
+        /*private UserService service;
 
         public UserService(UserService service)
         {
             this.service = service;
-        }
+        }*/
 
-        /*private Actions action;
-        public UserService(Actions action)
+        /*private Actions actions;
+        public UserService(Actions actions)
         {
-            this.action = action;
+            this.actions = actions;
         }*/
 
         private readonly By _signInButton = By.XPath("//span[@jtype='click']");
@@ -68,8 +68,8 @@ namespace HomeWork
         private readonly By _gadjetDropButton = By.XPath("//a[@href='/k122.htm' and @class='mainmenu-subitem mainmenu-icon122']");
         private readonly By _moBileBrandFilterButton = By.XPath("//label[@class='brand-best' and @for='br116']");
         private readonly By _appleMobileItem = By.XPath("//a//span[@class='u' and text()='Apple iPhone 13']");
-        private readonly By _mobilePageItem = By.XPath("//tr[@class='shop-97974']//a[@class='yel-but-2']");
-        private readonly By _appleTitleText = By.XPath("//tr[@class='shop-97974']//td//h3[text()=' Смартфон Apple iPhone 13 128Gb Midnight']");
+        private readonly By _mobilePageItem = By.XPath("//tr[@class='tr-odd shop-97974']//a[@class='it-shop']");
+        private readonly By _appleTitleText = By.XPath("//tr[@class='tr-odd shop-97974']//td//h3[text()=' Смартфон Apple iPhone 13 128Gb Midnight']");
         private readonly By _pageVodaItem = By.XPath("//span[@class='base' and text()='Смартфон Apple iPhone 13 128Gb Midnight']");
         private readonly By _nameMagazine = By.XPath("//a[text()='Vodafone.ua']");
         private readonly By _priceAllItem = By.XPath("//b[text()]//parent::a");
@@ -106,7 +106,6 @@ namespace HomeWork
         public By ToCompareTablet => By.XPath("//label[@id='label_2090044']");
 
         RandomUser rndUs = new RandomUser();
-
 
         public void Create()
         {
@@ -170,10 +169,10 @@ namespace HomeWork
 
         public void EnterComputer()
         {
-            Actions action = new Actions(driver);
+            Actions actions = new Actions(driver);
 
             var enterComputer = driver.FindElement(_computerPage);
-            action.MoveToElement(enterComputer).Perform();
+            actions.MoveToElement(enterComputer).Perform();
 
             Thread.Sleep(3000);
 
@@ -191,10 +190,10 @@ namespace HomeWork
 
         public void AddTablet()
         {
-            Actions action = new Actions(driver);
+            Actions actions = new Actions(driver);
 
             var computerDrop = driver.FindElement(_computerDropButton);
-            action.MoveToElement(computerDrop).Perform();
+            actions.MoveToElement(computerDrop).Perform();
 
             Thread.Sleep(2000);
 
@@ -257,7 +256,7 @@ namespace HomeWork
             var compButton = driver.FindElement(_compareButton);
             compButton.Click();
 
-            Thread.Sleep(5000);
+            // Thread.Sleep(5000);
 
             var a = driver.WindowHandles;
 
@@ -332,7 +331,7 @@ namespace HomeWork
             var showFilter = driver.FindElement(_showFilter);
             showFilter.Click();
 
-            Thread.Sleep(2000);
+            // Thread.Sleep(2000);
 
             var itemPro = driver.FindElement(_proItemApple);
             // actions.MoveToElement(itemPro).Perform();
@@ -341,7 +340,7 @@ namespace HomeWork
             var showAllPr = driver.FindElement(_showAllPriceButton);
             showAllPr.Click();
 
-            Thread.Sleep(2000);
+            // Thread.Sleep(2000);
 
             var sortPrice = driver.FindElement(_sortPriceOnPageButton);
             sortPrice.Click();
@@ -376,17 +375,17 @@ namespace HomeWork
 
             var nameTitleItem = driver.FindElement(By.XPath("//h1[@class='t2 no-mobile' and text()='Мобильный телефон Apple iPhone 13 ']")).Text;
 
-            Thread.Sleep(2000);
+            // Thread.Sleep(2000);
 
             var addToBookmarks = driver.FindElement(_addToBookmarksButton);
             addToBookmarks.Click();
 
-            Thread.Sleep(1000);
+            // Thread.Sleep(1000);
 
             var bookMarksBut = driver.FindElement(_addToBookmarksButton);
             bookMarksBut.Click();
 
-            Thread.Sleep(1000);
+            // Thread.Sleep(1000);
 
             var bookmarksBut = driver.FindElement(_bookmarksButton);
             bookmarksBut.Click();
@@ -401,7 +400,7 @@ namespace HomeWork
 
         public void RenameUser()
         {
-            Actions actions = new Actions(driver);
+            // Actions actions = new Actions(driver);
 
             var rndLog = rndUs.CreateRandomLogin();
 
@@ -414,11 +413,11 @@ namespace HomeWork
             var userField = driver.FindElement(_nikUserField);
             userField.Clear();
 
-            Thread.Sleep(1000);
+            // Thread.Sleep(1000);
 
             userField.SendKeys(rndLog);
 
-            Thread.Sleep(2000);
+            // Thread.Sleep(2000);
 
             var saveChange = driver.FindElement(_saveChangeUserMenu);
             saveChange.Click();
@@ -426,7 +425,7 @@ namespace HomeWork
             var mainPage = driver.FindElement(_mainPageButton);
             mainPage.Click();
 
-            Thread.Sleep(4000);
+            // Thread.Sleep(4000);
 
             var renameLoginActual = driver.FindElement(_acceptLogin).Text;
 
@@ -455,7 +454,7 @@ namespace HomeWork
             var showFilter = driver.FindElement(_showFilter);
             showFilter.Click();
 
-            Thread.Sleep(2000);
+            // Thread.Sleep(2000);
 
             var nameList = driver.FindElements(_nameBrandSaveList).SkipLast(4).Select(element => element.Text).ToList();
             nameList.Sort();
@@ -468,7 +467,7 @@ namespace HomeWork
             var acceprSaveList = driver.FindElement(_acceptSaveListButton);
             acceprSaveList.Click();
 
-            Thread.Sleep(3000);
+            // Thread.Sleep(3000);
 
             var userPage = driver.FindElement(_acceptLogin);
             userPage.Click();
@@ -497,22 +496,22 @@ namespace HomeWork
             var selectBrandMob = driver.FindElement(_moBileBrandFilterButton);
             selectBrandMob.Click();
 
-            Thread.Sleep(1000);
+            // Thread.Sleep(1000);
 
             var showFilte = driver.FindElement(_showFilter);
             showFilte.Click();
 
-            Thread.Sleep(1000);
+            // Thread.Sleep(1000);
 
             var nameTextMobileItem = driver.FindElement(_proItemApple).Text;
             var selectItemMob = driver.FindElement(_proItemApple);
             selectItemMob.Click();
 
-            Thread.Sleep(1000);
+            // Thread.Sleep(1000);
 
             var computerItems = driver.FindElement(_computerPage);
 
-            Thread.Sleep(1000);
+            // Thread.Sleep(1000);
 
             computerItems.Click();
 
@@ -523,11 +522,11 @@ namespace HomeWork
             var filterBrandConsole = driver.FindElement(_filterOnConsolePage);
             filterBrandConsole.Click();
 
-            Thread.Sleep(3000);
+            // Thread.Sleep(3000);
 
             var showFiletConsole = driver.FindElement(_showFilter);
 
-            Thread.Sleep(3000);
+            // Thread.Sleep(3000);
 
             showFiletConsole.Click();
 
@@ -545,17 +544,17 @@ namespace HomeWork
 
             var filterOnAudioPage = driver.FindElement(_audioBrandFilter);
 
-            Thread.Sleep(3000);
+            // Thread.Sleep(3000);
 
             filterOnAudioPage.Click();
 
             var showFilterAudio = driver.FindElement(_showFilter);
 
-            Thread.Sleep(3000);
+            // Thread.Sleep(3000);
 
             showFilterAudio.Click();
 
-            Thread.Sleep(1000);
+            // Thread.Sleep(1000);
 
             var nameTextAudioItem = driver.FindElement(_nameAudioItem).Text;
 

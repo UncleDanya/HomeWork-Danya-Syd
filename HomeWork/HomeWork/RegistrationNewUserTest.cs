@@ -7,10 +7,8 @@ namespace HomeWork
     {
         private IWebDriver driver;
         private UserService service;
-        private readonly By _acceptLogin = By.XPath("//a[@class='info-nick']");
-
+        
         [SetUp]
-
         public void Setup()
         {
             driver = new OpenQA.Selenium.Chrome.ChromeDriver();

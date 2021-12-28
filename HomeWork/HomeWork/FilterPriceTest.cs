@@ -1,12 +1,7 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Interactions;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HomeWork
 {
@@ -14,18 +9,14 @@ namespace HomeWork
     {
         private IWebDriver driver;
         private UserService service;
-        private ICollection? allAcer;
-        private Actions action;
-
+        
         [SetUp]
-
         public void Setup()
         {
             driver = new OpenQA.Selenium.Chrome.ChromeDriver();
             driver.Navigate().GoToUrl("https://ek.ua/");
             driver.Manage().Window.Maximize();
             service = new UserService(driver);
-            action = new Actions(driver);
         }
 
         [Test]
@@ -42,15 +33,12 @@ namespace HomeWork
 
                 foreach (var onePrice in allPrice)
                 {
-                    var pric = onePrice.Text.Replace(" грн.", "");
-                    var price = pric.Replace(" ", "");
-                    var priceInt = Convert.ToInt32(price);
+                    var priceWithoutText = Convert.ToInt32(onePrice.Text.Replace(" грн.", string.Empty).Replace(" ", string.Empty));
 
-                    for (int j = 0; j < priceInt; j++)
+                    for (int j = 0; j < priceWithoutText; j++)
                     {
-                        var a = priceInt >= priceInt - 1;
-
-                        Assert.IsTrue(a);
+                        var priceFilterItem = priceWithoutText >= priceWithoutText - 1;
+                        Assert.IsTrue(priceFilterItem);
                     }
                 }
 
