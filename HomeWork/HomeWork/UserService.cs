@@ -1,13 +1,8 @@
 ﻿using NUnit.Framework;
-using NUnit.Framework.Internal;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace HomeWork
 {
@@ -19,26 +14,6 @@ namespace HomeWork
         {
             this.driver = driver;
         }
-
-        /*IJavaScriptExecutor executor;
-
-        public UserService(IJavaScriptExecutor executor)
-        {
-            this.executor = executor;
-        }*/
-
-        /*private UserService service;
-
-        public UserService(UserService service)
-        {
-            this.service = service;
-        }*/
-
-        /*private Actions actions;
-        public UserService(Actions actions)
-        {
-            this.actions = actions;
-        }*/
 
         private readonly By _signInButton = By.XPath("//span[@jtype='click']");
         private readonly By _registrationButton = By.XPath("//span[@class='j-wrap orange']");
@@ -53,7 +28,6 @@ namespace HomeWork
         private readonly By _dropComputer = By.XPath("//a[@class='mainmenu-subitem mainmenu-icon298']");
         private readonly By _brandLaptop = By.XPath("//label[@for='br189']");
         private readonly By _showFilter = By.XPath("//a[text()='Показать']");
-        private readonly By _nextPageButton = By.XPath("//a[@id='pager_next']");
         private readonly By _computerDropButton = By.XPath("//a[text()='Компьютеры']");
         private readonly By _tabletPage = By.XPath("//a[@class='mainmenu-subitem mainmenu-icon30']");
         private readonly By _tabletBrand = By.XPath("//label[@for='br116']");
@@ -72,7 +46,6 @@ namespace HomeWork
         private readonly By _appleTitleText = By.XPath("//tr[@class='tr-odd shop-97974']//td//h3[text()=' Смартфон Apple iPhone 13 128Gb Midnight']");
         private readonly By _pageVodaItem = By.XPath("//span[@class='base' and text()='Смартфон Apple iPhone 13 128Gb Midnight']");
         private readonly By _nameMagazine = By.XPath("//a[text()='Vodafone.ua']");
-        private readonly By _priceAllItem = By.XPath("//b[text()]//parent::a");
         private readonly By _proItemApple = By.XPath("//span[text()='Apple iPhone 13 Pro']");
         private readonly By _showAllPriceButton = By.XPath("//u[text()='Cравнить цены']");
         private readonly By _sortPriceOnPageButton = By.XPath("//a[@jtype='click' and text()='по цене']");
@@ -95,21 +68,13 @@ namespace HomeWork
         private readonly By _nameConsoleItem = By.XPath("//span[@class='u' and text()='Sony PlayStation 5']");
         private readonly By _nameAudioItem = By.XPath("//span[@class='u' and text()='Logitech G Pro X']");
         private readonly By _searchingItems = By.XPath("//td[@class='where-buy-description']//h3[text()]");
-
-
-        private const string _registrationName = "User1";
-        private const string _registrationEmail = "danya.sydortsov@tech-stack.io";
-        private const string _registrationPassword = "Password123";
+        public By ToCompareTablet => By.XPath("//label[@id='label_2090044']");
         private const string _searchingItem = "iPhone 13 Pro 256";
 
-        //public By Computer => By.XPath("//a[@class='cancel-click mainmenu-link']");
-        public By ToCompareTablet => By.XPath("//label[@id='label_2090044']");
-
-        RandomUser rndUs = new RandomUser();
-
-        public void Create()
+        RandomUser randomUser = new RandomUser();
+        public void CreateNewUserAccount()
         {
-            var rndLg = rndUs.CreateRandomLogin();
+            var randomLogin = randomUser.CreateRandomLogin();
 
             var signIn = driver.FindElement(_signInButton);
             signIn.Click();
@@ -119,16 +84,14 @@ namespace HomeWork
             var registrationButton = driver.FindElement(_registrationButton);
             registrationButton.Click();
 
-            Thread.Sleep(1000);
-
             var inputName = driver.FindElement(_nameInputButton);
-            inputName.SendKeys(rndLg);
+            inputName.SendKeys(randomLogin);
 
             var emailInput = driver.FindElement(_emailInputButton);
-            emailInput.SendKeys(rndUs.CreateRandomEmail());
+            emailInput.SendKeys(randomUser.CreateRandomEmail());
 
             var passwordInput = driver.FindElement(_passwordInputButton);
-            passwordInput.SendKeys(rndUs.CreateRandomPassword());
+            passwordInput.SendKeys(randomUser.CreateRandomPassword());
 
             var acceptRegistration = driver.FindElement(_acceptRegistrationButton);
             acceptRegistration.Click();
@@ -140,7 +103,7 @@ namespace HomeWork
 
             var actualLogin = driver.FindElement(_acceptLogin).Text;
 
-            Assert.AreEqual(actualLogin, rndLg, "Wrong!");
+            Assert.AreEqual(actualLogin, randomLogin, "The actual login does not match the expected");
         }
 
         public void Search()
@@ -151,20 +114,13 @@ namespace HomeWork
             var searchButton = driver.FindElement(_searchItemButton);
             searchButton.Click();
 
-            Thread.Sleep(2000);
-
-            var searchingItems = driver.FindElements(_searchingItems)/*Select(element => element.Text).ToList()*/;
+            var searchingItems = driver.FindElements(_searchingItems);
 
             foreach (var searchingItem in searchingItems)
             {
                 var a = searchingItem.Text;
-
                 Assert.IsTrue(a.Contains(_searchingItem));
             }
-
-            // var textItems = searchingItems.ElementAt(0).Text;
-
-            // Assert.IsTrue(_searchingItem.Contains(searchingItems), "Wrong!");
         }
 
         public void EnterComputer()
@@ -174,15 +130,13 @@ namespace HomeWork
             var enterComputer = driver.FindElement(_computerPage);
             actions.MoveToElement(enterComputer).Perform();
 
-            Thread.Sleep(3000);
+            Thread.Sleep(2000);
 
-            var dropComputer = driver.FindElement(_dropComputer);
-            dropComputer.Click();
+            var computerFolderDropdown = driver.FindElement(_dropComputer);
+            computerFolderDropdown.Click();
 
             var filterBrands = driver.FindElement(_brandLaptop);
             filterBrands.Click();
-
-            Thread.Sleep(2000);
 
             var showFilter = driver.FindElement(_showFilter);
             showFilter.Click();
@@ -192,8 +146,8 @@ namespace HomeWork
         {
             Actions actions = new Actions(driver);
 
-            var computerDrop = driver.FindElement(_computerDropButton);
-            actions.MoveToElement(computerDrop).Perform();
+            var computerDropdown = driver.FindElement(_computerDropButton);
+            actions.MoveToElement(computerDropdown).Perform();
 
             Thread.Sleep(2000);
 
@@ -209,35 +163,10 @@ namespace HomeWork
             showFilterTabler.Click();
         }
 
-        /*public void AddCompareFirstTablet()
-        {
-            var firstCompareTablet = driver.FindElement(_addFirstCompareTablet);
-            firstCompareTablet.Click();
-            driver.FindElement(ToCompareTablet).Click();
-        }
-
-        public void AddCompareSecondTablet()
-        {
-            var backTabletPage = driver.FindElement(_goToTabletPage);
-            backTabletPage.Click();
-            var secondCompareTablet = driver.FindElement(_addSecondCompareTablet);
-            secondCompareTablet.Click();
-            var toSecondCompTablet = driver.FindElement(_toSecondCompareTablet);
-            toSecondCompTablet.Click();
-            Thread.Sleep(1000);
-        }
-
-        public void CompareItem()
-        {
-            var compButton = driver.FindElement(_compareButton);
-            compButton.Click();
-            var getFirstTablet = 
-        }*/
-
         public void CompareTest()
         {
             var firstCompareTablet = driver.FindElement(_addFirstCompareTablet);
-            var oneTabler = driver.FindElement(_addFirstCompareTablet).Text;
+            var oneTablet = driver.FindElement(_addFirstCompareTablet).Text;
             firstCompareTablet.Click();
             driver.FindElement(ToCompareTablet).Click();
 
@@ -256,17 +185,15 @@ namespace HomeWork
             var compButton = driver.FindElement(_compareButton);
             compButton.Click();
 
-            // Thread.Sleep(5000);
+            var connectWindowHandles = driver.WindowHandles;
 
-            var a = driver.WindowHandles;
-
-            driver.SwitchTo().Window(a[1]);
+            driver.SwitchTo().Window(connectWindowHandles[1]);
 
             var getFirstTablet = driver.FindElement(_firstExpectedItem).Text;
             var getSecondTablet = driver.FindElement(_secondExpectedItem).Text;
 
-            Assert.IsTrue(getFirstTablet.Contains(oneTabler), "Wronh!!");
-            Assert.IsTrue(getSecondTablet.Contains(twoTablet), "Wronh2!!");
+            Assert.IsTrue(getFirstTablet.Contains(oneTablet), "The added item does not match the item on the list");
+            Assert.IsTrue(getSecondTablet.Contains(twoTablet), "The added item does not match the item in the second list");
         }
 
         public void SwitchToPage()
@@ -294,21 +221,21 @@ namespace HomeWork
 
             Thread.Sleep(2000);
 
-            var linkToMagazine = driver.FindElement(_mobilePageItem);
-            actions.MoveToElement(linkToMagazine);
+            var linkToShop = driver.FindElement(_mobilePageItem);
+            actions.MoveToElement(linkToShop);
 
-            var nameMagaz = driver.FindElement(_nameMagazine).Text;
+            var nameShop = driver.FindElement(_nameMagazine).Text;
 
             var textItem = driver.FindElement(_appleTitleText).Text;
 
-            linkToMagazine.Click();
+            linkToShop.Click();
 
-            var a = driver.WindowHandles;
-            driver.SwitchTo().Window(a[1]);
+            var connectWindowHandles = driver.WindowHandles;
+            driver.SwitchTo().Window(connectWindowHandles[1]);
 
             var pageWithItem = driver.FindElement(_pageVodaItem).Text;
 
-            Assert.AreEqual(textItem, pageWithItem, "Wrong!!");
+            Assert.AreEqual(textItem, pageWithItem, "Product from the catalog does not match the product in the store");
         }
 
         public void PriceFilter()
@@ -331,23 +258,16 @@ namespace HomeWork
             var showFilter = driver.FindElement(_showFilter);
             showFilter.Click();
 
-            // Thread.Sleep(2000);
-
             var itemPro = driver.FindElement(_proItemApple);
-            // actions.MoveToElement(itemPro).Perform();
             itemPro.Click();
 
             var showAllPr = driver.FindElement(_showAllPriceButton);
             showAllPr.Click();
 
-            // Thread.Sleep(2000);
-
             var sortPrice = driver.FindElement(_sortPriceOnPageButton);
             sortPrice.Click();
 
             Thread.Sleep(2000);
-
-            // var listAllPrice = driver.FindElements(_priceAllItem);
         }
 
         public void AddToBookmarks()
@@ -375,17 +295,11 @@ namespace HomeWork
 
             var nameTitleItem = driver.FindElement(By.XPath("//h1[@class='t2 no-mobile' and text()='Мобильный телефон Apple iPhone 13 ']")).Text;
 
-            // Thread.Sleep(2000);
-
             var addToBookmarks = driver.FindElement(_addToBookmarksButton);
             addToBookmarks.Click();
 
-            // Thread.Sleep(1000);
-
             var bookMarksBut = driver.FindElement(_addToBookmarksButton);
             bookMarksBut.Click();
-
-            // Thread.Sleep(1000);
 
             var bookmarksBut = driver.FindElement(_bookmarksButton);
             bookmarksBut.Click();
@@ -393,16 +307,14 @@ namespace HomeWork
             Thread.Sleep(2000);
 
             var textItemInBookmarks = driver.FindElement(By.XPath("//div[@class='side-list-label ' and text()='Apple iPhone 13 128GB']")).Text;
-            var nameItemInBooksmarks = textItemInBookmarks.Replace("GB", "");
+            var nameItemInBooksmarks = textItemInBookmarks.Replace("GB", string.Empty);
 
-            Assert.IsTrue(nameTitleItem.Contains(nameItemInBooksmarks), "Wrong");
+            Assert.IsTrue(nameTitleItem.Contains(nameItemInBooksmarks), "The item added to the bookmark does not match the item in the bookmark");
         }
 
         public void RenameUser()
         {
-            // Actions actions = new Actions(driver);
-
-            var rndLog = rndUs.CreateRandomLogin();
+            var randomLogin = randomUser.CreateRandomLogin();
 
             var loginMenu = driver.FindElement(_acceptLogin);
             loginMenu.Click();
@@ -413,11 +325,7 @@ namespace HomeWork
             var userField = driver.FindElement(_nikUserField);
             userField.Clear();
 
-            // Thread.Sleep(1000);
-
-            userField.SendKeys(rndLog);
-
-            // Thread.Sleep(2000);
+            userField.SendKeys(randomLogin);
 
             var saveChange = driver.FindElement(_saveChangeUserMenu);
             saveChange.Click();
@@ -425,13 +333,9 @@ namespace HomeWork
             var mainPage = driver.FindElement(_mainPageButton);
             mainPage.Click();
 
-            // Thread.Sleep(4000);
-
             var renameLoginActual = driver.FindElement(_acceptLogin).Text;
 
-            // var verActLog = rndLog;
-
-            Assert.AreEqual(renameLoginActual, rndLog, "Wrong!");
+            Assert.AreEqual(renameLoginActual, randomLogin, "The changed login does not match the profile login");
         }
 
         public void ItemList()
@@ -454,8 +358,6 @@ namespace HomeWork
             var showFilter = driver.FindElement(_showFilter);
             showFilter.Click();
 
-            // Thread.Sleep(2000);
-
             var nameList = driver.FindElements(_nameBrandSaveList).SkipLast(4).Select(element => element.Text).ToList();
             nameList.Sort();
 
@@ -467,8 +369,6 @@ namespace HomeWork
             var acceprSaveList = driver.FindElement(_acceptSaveListButton);
             acceprSaveList.Click();
 
-            // Thread.Sleep(3000);
-
             var userPage = driver.FindElement(_acceptLogin);
             userPage.Click();
 
@@ -478,7 +378,7 @@ namespace HomeWork
             var brandSaveList = driver.FindElements(_nameBrandSaveList).Select(element => element.Text).ToList();
             brandSaveList.Sort();
 
-            Assert.AreEqual(nameList, brandSaveList, "Wrong");
+            Assert.AreEqual(nameList, brandSaveList, "The saved item sheet does not match the sheet in the profile");
         }
 
         public void SaveInViewedProducts()
@@ -496,22 +396,14 @@ namespace HomeWork
             var selectBrandMob = driver.FindElement(_moBileBrandFilterButton);
             selectBrandMob.Click();
 
-            // Thread.Sleep(1000);
-
             var showFilte = driver.FindElement(_showFilter);
             showFilte.Click();
-
-            // Thread.Sleep(1000);
 
             var nameTextMobileItem = driver.FindElement(_proItemApple).Text;
             var selectItemMob = driver.FindElement(_proItemApple);
             selectItemMob.Click();
 
-            // Thread.Sleep(1000);
-
             var computerItems = driver.FindElement(_computerPage);
-
-            // Thread.Sleep(1000);
 
             computerItems.Click();
 
@@ -522,11 +414,7 @@ namespace HomeWork
             var filterBrandConsole = driver.FindElement(_filterOnConsolePage);
             filterBrandConsole.Click();
 
-            // Thread.Sleep(3000);
-
             var showFiletConsole = driver.FindElement(_showFilter);
-
-            // Thread.Sleep(3000);
 
             showFiletConsole.Click();
 
@@ -544,17 +432,11 @@ namespace HomeWork
 
             var filterOnAudioPage = driver.FindElement(_audioBrandFilter);
 
-            // Thread.Sleep(3000);
-
             filterOnAudioPage.Click();
 
             var showFilterAudio = driver.FindElement(_showFilter);
 
-            // Thread.Sleep(3000);
-
             showFilterAudio.Click();
-
-            // Thread.Sleep(1000);
 
             var nameTextAudioItem = driver.FindElement(_nameAudioItem).Text;
 
@@ -564,13 +446,13 @@ namespace HomeWork
             var userProfilePage = driver.FindElement(_acceptLogin);
             userProfilePage.Click();
 
-            var nameMobItWgLi = driver.FindElement(By.XPath("//u[@class='nobr' and text()='Apple iPhone 13 Pr...']")).Text.ElementAt(15);
-            var nameConsItWgLi = driver.FindElement(By.XPath("//u[@class='nobr' and text()='Sony PlayStation 5']")).Text;
-            var nameAudioItWgLi = driver.FindElement(By.XPath("//u[@class='nobr' and text()='Logitech G Pro X']")).Text;
+            var nameMobileItemInList = driver.FindElement(By.XPath("//u[@class='nobr' and text()='Apple iPhone 13 Pr...']")).Text.ElementAt(15);
+            var nameConsoleItemInList = driver.FindElement(By.XPath("//u[@class='nobr' and text()='Sony PlayStation 5']")).Text;
+            var nameAudioItemInList = driver.FindElement(By.XPath("//u[@class='nobr' and text()='Logitech G Pro X']")).Text;
 
-            Assert.IsTrue(nameTextMobileItem.Contains(nameMobItWgLi));
-            Assert.IsTrue(nameTextConsoleItem.Contains(nameConsItWgLi));
-            Assert.IsTrue(nameTextAudioItem.Contains(nameAudioItWgLi));
+            Assert.IsTrue(nameTextMobileItem.Contains(nameMobileItemInList));
+            Assert.IsTrue(nameTextConsoleItem.Contains(nameConsoleItemInList));
+            Assert.IsTrue(nameTextAudioItem.Contains(nameAudioItemInList));
         }
 
     }

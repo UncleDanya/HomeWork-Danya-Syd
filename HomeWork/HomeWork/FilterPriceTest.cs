@@ -34,7 +34,6 @@ namespace HomeWork
                 foreach (var onePrice in allPrice)
                 {
                     var priceWithoutText = Convert.ToInt32(onePrice.Text.Replace(" грн.", string.Empty).Replace(" ", string.Empty));
-
                     for (int j = 0; j < priceWithoutText; j++)
                     {
                         var priceFilterItem = priceWithoutText >= priceWithoutText - 1;

@@ -20,7 +20,7 @@ namespace HomeWork
         [Test]
         public void Test1()
         {
-            service.Create();
+            service.CreateNewUserAccount();
         }
 
         [TearDown]
