@@ -1,9 +1,11 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
+using System;
+using System.Linq;
 
 namespace HomeWork
 {
-    internal class SearchFieldTest
+    internal class FilterPriceTest
     {
         private IWebDriver driver;
         private UserService service;
@@ -20,7 +22,8 @@ namespace HomeWork
         [Test]
         public void Test1()
         {
-            service.Search();
+            service.PriceFilter();
+            service.DescendingPriceFilter();
         }
 
         [TearDown]

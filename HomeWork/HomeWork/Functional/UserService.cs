@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
+using System;
 using System.Linq;
 using System.Threading;
 
@@ -24,7 +25,6 @@ namespace HomeWork
         private readonly By _searchInputButton = By.XPath("//input[@id='ek-search']");
         private readonly By _searchItemButton = By.XPath("//button[@name='search_but_']");
         private readonly By _acceptButton = By.XPath("//button[text()='Подтвердить']");
-        private readonly By _computerPage = By.XPath("//a[text()='Компьютеры']");
         private readonly By _dropComputer = By.XPath("//a[@class='mainmenu-subitem mainmenu-icon298']");
         private readonly By _brandLaptop = By.XPath("//label[@for='br189']");
         private readonly By _showFilter = By.XPath("//a[text()='Показать']");
@@ -42,10 +42,6 @@ namespace HomeWork
         private readonly By _gadjetDropButton = By.XPath("//a[@href='/k122.htm' and @class='mainmenu-subitem mainmenu-icon122']");
         private readonly By _moBileBrandFilterButton = By.XPath("//label[@class='brand-best' and @for='br116']");
         private readonly By _appleMobileItem = By.XPath("//a//span[@class='u' and text()='Apple iPhone 13']");
-        private readonly By _mobilePageItem = By.XPath("//tr[@class='tr-odd shop-97974']//a[@class='it-shop']");
-        private readonly By _appleTitleText = By.XPath("//tr[@class='tr-odd shop-97974']//td//h3[text()=' Смартфон Apple iPhone 13 128Gb Midnight']");
-        private readonly By _pageVodaItem = By.XPath("//span[@class='base' and text()='Смартфон Apple iPhone 13 128Gb Midnight']");
-        private readonly By _nameMagazine = By.XPath("//a[text()='Vodafone.ua']");
         private readonly By _proItemApple = By.XPath("//span[text()='Apple iPhone 13 Pro']");
         private readonly By _showAllPriceButton = By.XPath("//u[text()='Cравнить цены']");
         private readonly By _sortPriceOnPageButton = By.XPath("//a[@jtype='click' and text()='по цене']");
@@ -106,10 +102,10 @@ namespace HomeWork
             Assert.AreEqual(actualLogin, randomLogin, "The actual login does not match the expected");
         }
 
-        public void Search()
+        public void Search(string productSearch)
         {
             var searchInput = driver.FindElement(_searchInputButton);
-            searchInput.SendKeys(_searchingItem);
+            searchInput.SendKeys(productSearch);
 
             var searchButton = driver.FindElement(_searchItemButton);
             searchButton.Click();
@@ -119,15 +115,15 @@ namespace HomeWork
             foreach (var searchingItem in searchingItems)
             {
                 var a = searchingItem.Text;
-                Assert.IsTrue(a.Contains(_searchingItem));
+                Assert.IsTrue(a.Contains(productSearch));
             }
         }
 
-        public void EnterComputer()
+        public void GoToTheNotebookPage()
         {
             Actions actions = new Actions(driver);
 
-            var enterComputer = driver.FindElement(_computerPage);
+            var enterComputer = driver.FindElement(_computerDropButton);
             actions.MoveToElement(enterComputer).Perform();
 
             Thread.Sleep(2000);
@@ -137,6 +133,8 @@ namespace HomeWork
 
             var filterBrands = driver.FindElement(_brandLaptop);
             filterBrands.Click();
+
+            Thread.Sleep(1000);
 
             var showFilter = driver.FindElement(_showFilter);
             showFilter.Click();
@@ -221,21 +219,16 @@ namespace HomeWork
 
             Thread.Sleep(2000);
 
-            var linkToShop = driver.FindElement(_mobilePageItem);
-            actions.MoveToElement(linkToShop);
-
-            var nameShop = driver.FindElement(_nameMagazine).Text;
-
-            var textItem = driver.FindElement(_appleTitleText).Text;
-
+            var linkToShop = driver.FindElement(By.XPath("//div//u[text()='Avic.ua']"));
+            var textItem = driver.FindElement(By.XPath("//*[text()='Мобильный телефон Apple iPhone 13 ']")).Text;
+            var nameOnlyModelItem = textItem.Replace("Мобильный телефон ", string.Empty).Replace(" ГБ", string.Empty);
             linkToShop.Click();
 
             var connectWindowHandles = driver.WindowHandles;
             driver.SwitchTo().Window(connectWindowHandles[1]);
+            var pageShopWithItemText = driver.FindElement(By.XPath("//h1[@class='page-title' and text()='Смартфон Apple iPhone 13 128GB Midnight (MLPF3)']")).Text;
 
-            var pageWithItem = driver.FindElement(_pageVodaItem).Text;
-
-            Assert.AreEqual(textItem, pageWithItem, "Product from the catalog does not match the product in the store");
+            Assert.IsTrue(pageShopWithItemText.Contains(nameOnlyModelItem));
         }
 
         public void PriceFilter()
@@ -270,6 +263,59 @@ namespace HomeWork
             Thread.Sleep(2000);
         }
 
+        public void DescendingPriceFilter()
+        {
+            var lastPage = driver.FindElements(By.XPath(".//div[@class='ib page-num']//a")).Last();
+            var neededElementText = Int32.Parse(lastPage.Text);
+
+            for (int i = 0; i < neededElementText; i++)
+            {
+                var allPrice = driver.FindElements(By.XPath("//b[text()]//parent::a"));
+
+                for (int j = 0; j < allPrice.Count - 1; j++)
+                {
+                    var priceWithoutText = Convert.ToInt32(allPrice[j].Text.Replace(" грн.", string.Empty).Replace(" ", string.Empty));
+                    var nextPriceWithoutText = Convert.ToInt32(allPrice[j + 1].Text.Replace(" грн.", string.Empty).Replace(" ", string.Empty));
+                    Assert.IsTrue(priceWithoutText <= nextPriceWithoutText, "Prices are not consistent");
+                }
+
+                try
+                {
+                    var nextPageButton = driver.FindElement(By.XPath("//a[@id='pager_next']"));
+                    nextPageButton.Click();
+                }
+                catch
+                {
+                    continue;
+                }
+            }
+        }
+        public void FilterProductsByBrand()
+        {
+            var lastPage = driver.FindElements(By.XPath(".//div[@class='ib page-num']//a")).Last();
+            var neededElementText = Int32.Parse(lastPage.Text);
+
+            for (int i = 0; i < neededElementText; i++)
+            {
+                var allAcer = driver.FindElements(By.XPath("//a/span[contains(text(),'Acer')]"));
+
+                foreach (var oneItemAcer in allAcer)
+                {
+                    var oneItem = oneItemAcer.Text;
+                    Assert.IsTrue(oneItem.Contains("Acer"), "Not found");
+                }
+
+                try
+                {
+                    var nextPageButton = driver.FindElement(By.XPath("//a[@id='pager_next']"));
+                    nextPageButton.Click();
+                }
+                catch
+                {
+                    continue;
+                }
+            }
+        }
         public void AddToBookmarks()
         {
             Actions actions = new Actions(driver);
@@ -297,9 +343,6 @@ namespace HomeWork
 
             var addToBookmarks = driver.FindElement(_addToBookmarksButton);
             addToBookmarks.Click();
-
-            var bookMarksBut = driver.FindElement(_addToBookmarksButton);
-            bookMarksBut.Click();
 
             var bookmarksBut = driver.FindElement(_bookmarksButton);
             bookmarksBut.Click();
@@ -330,12 +373,14 @@ namespace HomeWork
             var saveChange = driver.FindElement(_saveChangeUserMenu);
             saveChange.Click();
 
+            Thread.Sleep(1000);
+
             var mainPage = driver.FindElement(_mainPageButton);
             mainPage.Click();
 
             var renameLoginActual = driver.FindElement(_acceptLogin).Text;
 
-            Assert.AreEqual(renameLoginActual, randomLogin, "The changed login does not match the profile login");
+            Assert.AreEqual(randomLogin, renameLoginActual, "The changed login does not match the profile login");
         }
 
         public void ItemList()
@@ -396,6 +441,8 @@ namespace HomeWork
             var selectBrandMob = driver.FindElement(_moBileBrandFilterButton);
             selectBrandMob.Click();
 
+            Thread.Sleep(1000);
+
             var showFilte = driver.FindElement(_showFilter);
             showFilte.Click();
 
@@ -403,7 +450,7 @@ namespace HomeWork
             var selectItemMob = driver.FindElement(_proItemApple);
             selectItemMob.Click();
 
-            var computerItems = driver.FindElement(_computerPage);
+            var computerItems = driver.FindElement(_computerDropButton);
 
             computerItems.Click();
 
@@ -413,6 +460,8 @@ namespace HomeWork
 
             var filterBrandConsole = driver.FindElement(_filterOnConsolePage);
             filterBrandConsole.Click();
+
+            Thread.Sleep(1000);
 
             var showFiletConsole = driver.FindElement(_showFilter);
 
@@ -434,6 +483,9 @@ namespace HomeWork
 
             filterOnAudioPage.Click();
 
+            Thread.Sleep(1000);
+
+
             var showFilterAudio = driver.FindElement(_showFilter);
 
             showFilterAudio.Click();
@@ -446,7 +498,7 @@ namespace HomeWork
             var userProfilePage = driver.FindElement(_acceptLogin);
             userProfilePage.Click();
 
-            var nameMobileItemInList = driver.FindElement(By.XPath("//u[@class='nobr' and text()='Apple iPhone 13 Pr...']")).Text.ElementAt(15);
+            var nameMobileItemInList = driver.FindElement(By.XPath("//u[@class='nobr' and text()='Apple iPhone 13 Pr...']")).Text.Remove(16);
             var nameConsoleItemInList = driver.FindElement(By.XPath("//u[@class='nobr' and text()='Sony PlayStation 5']")).Text;
             var nameAudioItemInList = driver.FindElement(By.XPath("//u[@class='nobr' and text()='Logitech G Pro X']")).Text;
 
