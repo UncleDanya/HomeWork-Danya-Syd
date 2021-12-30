@@ -1,9 +1,9 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 
-namespace HomeWork
+namespace HomeWork.Tests
 {
-    internal class SwitchToMagazineTest
+    internal class TestXpathField
     {
         private IWebDriver driver;
         private UserService service;
@@ -20,8 +20,7 @@ namespace HomeWork
         [Test]
         public void Test1()
         {
-            service.EntryIntoCategoryByName("Гаджеты", "Мобильные");
-            service.SwitchToPage();
+            service.EntryIntoCategoryByName("Компьютеры", "Планшеты");
         }
 
         [TearDown]

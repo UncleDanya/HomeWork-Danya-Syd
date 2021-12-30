@@ -22,6 +22,7 @@ namespace HomeWork
         public void Test1()
         {
             service.CreateNewUserAccount();
+            service.EntryIntoCategoryByName("Аудио", "Наушники");
             service.ItemList();
         }
 

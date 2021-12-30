@@ -20,7 +20,7 @@ namespace HomeWork
         [Test]
         public void Test1()
         {
-            service.Search("iPhone 13 Pro 256");
+            service.SearchFieldProductInput("iPhone 13 Pro 256");
         }
 
         [TearDown]

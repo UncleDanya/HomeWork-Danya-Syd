@@ -65,9 +65,9 @@ namespace HomeWork
         private readonly By _nameAudioItem = By.XPath("//span[@class='u' and text()='Logitech G Pro X']");
         private readonly By _searchingItems = By.XPath("//td[@class='where-buy-description']//h3[text()]");
         public By ToCompareTablet => By.XPath("//label[@id='label_2090044']");
-        private const string _searchingItem = "iPhone 13 Pro 256";
 
         RandomUser randomUser = new RandomUser();
+
         public void CreateNewUserAccount()
         {
             var randomLogin = randomUser.CreateRandomLogin();
@@ -102,7 +102,7 @@ namespace HomeWork
             Assert.AreEqual(actualLogin, randomLogin, "The actual login does not match the expected");
         }
 
-        public void Search(string productSearch)
+        public void SearchFieldProductInput(string productSearch)
         {
             var searchInput = driver.FindElement(_searchInputButton);
             searchInput.SendKeys(productSearch);
@@ -114,23 +114,13 @@ namespace HomeWork
 
             foreach (var searchingItem in searchingItems)
             {
-                var a = searchingItem.Text;
-                Assert.IsTrue(a.Contains(productSearch));
+                var searchResultsText = searchingItem.Text;
+                Assert.IsTrue(searchResultsText.Contains(productSearch));
             }
         }
 
         public void GoToTheNotebookPage()
         {
-            Actions actions = new Actions(driver);
-
-            var enterComputer = driver.FindElement(_computerDropButton);
-            actions.MoveToElement(enterComputer).Perform();
-
-            Thread.Sleep(2000);
-
-            var computerFolderDropdown = driver.FindElement(_dropComputer);
-            computerFolderDropdown.Click();
-
             var filterBrands = driver.FindElement(_brandLaptop);
             filterBrands.Click();
 
@@ -143,14 +133,6 @@ namespace HomeWork
         public void AddTablet()
         {
             Actions actions = new Actions(driver);
-
-            var computerDropdown = driver.FindElement(_computerDropButton);
-            actions.MoveToElement(computerDropdown).Perform();
-
-            Thread.Sleep(2000);
-
-            var tabletPage = driver.FindElement(_tabletPage);
-            tabletPage.Click();
 
             var tabletBrand = driver.FindElement(_tabletBrand);
             tabletBrand.Click();
@@ -196,16 +178,6 @@ namespace HomeWork
 
         public void SwitchToPage()
         {
-            Actions actions = new Actions(driver);
-
-            var gadjetItem = driver.FindElement(_gadjetItemButton);
-            actions.MoveToElement(gadjetItem).Perform();
-
-            Thread.Sleep(1000);
-
-            var gadjetDropBut = driver.FindElement(_gadjetDropButton);
-            gadjetDropBut.Click();
-
             var filterMobileBrand = driver.FindElement(_moBileBrandFilterButton);
             filterMobileBrand.Click();
 
@@ -226,23 +198,13 @@ namespace HomeWork
 
             var connectWindowHandles = driver.WindowHandles;
             driver.SwitchTo().Window(connectWindowHandles[1]);
-            var pageShopWithItemText = driver.FindElement(By.XPath("//h1[@class='page-title' and text()='Смартфон Apple iPhone 13 128GB Midnight (MLPF3)']")).Text;
+            var pageShopWithItemText = driver.FindElement(By.XPath("//h1[@class='page-title']")).Text;
 
             Assert.IsTrue(pageShopWithItemText.Contains(nameOnlyModelItem));
         }
 
         public void PriceFilter()
         {
-            Actions actions = new Actions(driver);
-
-            var gadjetItem = driver.FindElement(_gadjetItemButton);
-            actions.MoveToElement(gadjetItem).Perform();
-
-            Thread.Sleep(1000);
-
-            var gadjetDropButton = driver.FindElement(_gadjetDropButton);
-            gadjetDropButton.Click();
-
             var filterMobileBrand = driver.FindElement(_moBileBrandFilterButton);
             filterMobileBrand.Click();
 
@@ -387,14 +349,6 @@ namespace HomeWork
         {
             Actions actions = new Actions(driver);
 
-            var audioPage = driver.FindElement(_audioPageButton);
-            actions.MoveToElement(audioPage).Perform();
-
-            Thread.Sleep(1000);
-
-            var audioDropButton = driver.FindElement(_audioPageDropButton);
-            audioDropButton.Click();
-
             var audioBrandFilter = driver.FindElement(_audioBrandFilter);
             audioBrandFilter.Click();
 
@@ -429,14 +383,9 @@ namespace HomeWork
         public void SaveInViewedProducts()
         {
             Actions actions = new Actions(driver);
-
-            var gadjetPage = driver.FindElement(_gadjetItemButton);
-            actions.MoveToElement(gadjetPage).Perform();
-
-            Thread.Sleep(1000);
-
-            var gadjetButton = driver.FindElement(_gadjetDropButton);
-            gadjetButton.Click();
+            UserService userService = new UserService(driver);
+            
+            userService.EntryIntoCategoryByName("Гаджеты", "Мобильные");
 
             var selectBrandMob = driver.FindElement(_moBileBrandFilterButton);
             selectBrandMob.Click();
@@ -450,12 +399,7 @@ namespace HomeWork
             var selectItemMob = driver.FindElement(_proItemApple);
             selectItemMob.Click();
 
-            var computerItems = driver.FindElement(_computerDropButton);
-
-            computerItems.Click();
-
-            var consolePage = driver.FindElement(_consoleDropButton);
-            consolePage.Click();
+            userService.EntryIntoCategoryByName("Компьютеры", "Приставки");
             driver.Navigate().Refresh();
 
             var filterBrandConsole = driver.FindElement(_filterOnConsolePage);
@@ -471,11 +415,7 @@ namespace HomeWork
             var selectConsoleItem = driver.FindElement(_nameConsoleItem);
             selectConsoleItem.Click();
 
-            var audioPage = driver.FindElement(_audioPageButton);
-            audioPage.Click();
-
-            var audioPageTo = driver.FindElement(_audioPageDropButton);
-            audioPageTo.Click();
+            userService.EntryIntoCategoryByName("Аудио", "Наушники");
 
             driver.Navigate().Refresh();
 
@@ -505,6 +445,17 @@ namespace HomeWork
             Assert.IsTrue(nameTextMobileItem.Contains(nameMobileItemInList));
             Assert.IsTrue(nameTextConsoleItem.Contains(nameConsoleItemInList));
             Assert.IsTrue(nameTextAudioItem.Contains(nameAudioItemInList));
+        }
+
+        public void EntryIntoCategoryByName(string folderName, string pixelFolderName)
+        {
+            Actions actions = new Actions(driver);
+            var searchFolderByName = driver.FindElement(By.XPath($"//ul[@class='mainmenu-list ff-roboto']//li[@class='mainmenu-item']//a[text()='{folderName}']"));
+            actions.MoveToElement(searchFolderByName).Perform();
+            Thread.Sleep(1000);
+            var seachInsideFolderByName = driver.FindElement(By.PartialLinkText(pixelFolderName));
+            seachInsideFolderByName.Click();
+            Thread.Sleep(2000);
         }
 
     }

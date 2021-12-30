@@ -22,6 +22,7 @@ namespace HomeWork
         [Test]
         public void Test1()
         {
+            service.EntryIntoCategoryByName("Гаджеты", "Мобильные");
             service.PriceFilter();
             service.DescendingPriceFilter();
         }

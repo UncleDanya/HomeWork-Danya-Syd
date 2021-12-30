@@ -20,6 +20,7 @@ namespace HomeWork
         [Test]
         public void Test1()
         {
+            service.EntryIntoCategoryByName("Компьютеры", "Планшеты");
             service.AddTablet();
             service.CompareTest();
         }

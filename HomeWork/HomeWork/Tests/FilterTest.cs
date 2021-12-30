@@ -22,6 +22,7 @@ namespace HomeWork
         [Test]
         public void Test1()
         {
+            service.EntryIntoCategoryByName("Компьютеры", "Ноутбуки");
             service.GoToTheNotebookPage();
             service.FilterProductsByBrand();
         }
