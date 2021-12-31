@@ -25,12 +25,7 @@ namespace HomeWork
         private readonly By _searchInputButton = By.XPath("//input[@id='ek-search']");
         private readonly By _searchItemButton = By.XPath("//button[@name='search_but_']");
         private readonly By _acceptButton = By.XPath("//button[text()='Подтвердить']");
-        private readonly By _dropComputer = By.XPath("//a[@class='mainmenu-subitem mainmenu-icon298']");
-        private readonly By _brandLaptop = By.XPath("//label[@for='br189']");
         private readonly By _showFilter = By.XPath("//a[text()='Показать']");
-        private readonly By _computerDropButton = By.XPath("//a[text()='Компьютеры']");
-        private readonly By _tabletPage = By.XPath("//a[@class='mainmenu-subitem mainmenu-icon30']");
-        private readonly By _tabletBrand = By.XPath("//label[@for='br116']");
         private readonly By _addFirstCompareTablet = By.XPath("//span[text()='Apple iPad 2021']");
         private readonly By _goToTabletPage = By.XPath("//a[@link='/list/30/apple/']");
         private readonly By _addSecondCompareTablet = By.XPath("//span[text()='Apple iPad Air 2020']");
@@ -38,9 +33,6 @@ namespace HomeWork
         private readonly By _compareButton = By.XPath("//span[@id='num_bm_compared']");
         private readonly By _firstExpectedItem = By.XPath("//table[@id='compare_table']//child::a[contains(text(),'Apple iPad 2021')]");
         private readonly By _secondExpectedItem = By.XPath("//table[@id='compare_table']//child::a[contains(text(),'Apple iPad Air')]");
-        private readonly By _gadjetItemButton = By.XPath("//a[text()='Гаджеты']");
-        private readonly By _gadjetDropButton = By.XPath("//a[@href='/k122.htm' and @class='mainmenu-subitem mainmenu-icon122']");
-        private readonly By _moBileBrandFilterButton = By.XPath("//label[@class='brand-best' and @for='br116']");
         private readonly By _appleMobileItem = By.XPath("//a//span[@class='u' and text()='Apple iPhone 13']");
         private readonly By _proItemApple = By.XPath("//span[text()='Apple iPhone 13 Pro']");
         private readonly By _showAllPriceButton = By.XPath("//u[text()='Cравнить цены']");
@@ -52,15 +44,10 @@ namespace HomeWork
         private readonly By _nikUserField = By.XPath("//input[@class='ek-form-control' and @name='p_[NikName]']");
         private readonly By _saveChangeUserMenu = By.XPath("//button[@class='ek-form-btn blue' and text()='СОХРАНИТЬ']");
         private readonly By _mainPageButton = By.XPath("//a[@title='E-Katalog']");
-        private readonly By _audioPageButton = By.XPath("//a[@href='/k10.htm' and text()='Аудио']");
-        private readonly By _audioPageDropButton = By.XPath("//li[@class='mainmenu-item']//a[text()='Аудио']//following-sibling::div//a[@href='/k239.htm']");
-        private readonly By _audioBrandFilter = By.XPath("//label[@for='br124']");
         private readonly By _saveListButton = By.XPath("//span[text()='Сохранить список']");
         private readonly By _acceptSaveListButton = By.XPath("//button[@type='submit']");
         private readonly By _showSaveList = By.XPath("//a[@class='user-menu__section wu_bookmarks ']");
         private readonly By _nameBrandSaveList = By.XPath("//span[@class='u' and text()]");
-        private readonly By _consoleDropButton = By.XPath("//li[@class='mainmenu-item']//a[text()='Компьютеры']//following-sibling::div//a[@href='/k33.htm']");
-        private readonly By _filterOnConsolePage = By.XPath("//label[@class='brand-best' and @for='br156']");
         private readonly By _nameConsoleItem = By.XPath("//span[@class='u' and text()='Sony PlayStation 5']");
         private readonly By _nameAudioItem = By.XPath("//span[@class='u' and text()='Logitech G Pro X']");
         private readonly By _searchingItems = By.XPath("//td[@class='where-buy-description']//h3[text()]");
@@ -119,29 +106,6 @@ namespace HomeWork
             }
         }
 
-        public void GoToTheNotebookPage()
-        {
-            var filterBrands = driver.FindElement(_brandLaptop);
-            filterBrands.Click();
-
-            Thread.Sleep(1000);
-
-            var showFilter = driver.FindElement(_showFilter);
-            showFilter.Click();
-        }
-
-        public void AddTablet()
-        {
-            Actions actions = new Actions(driver);
-
-            var tabletBrand = driver.FindElement(_tabletBrand);
-            tabletBrand.Click();
-
-            Thread.Sleep(1000);
-
-            var showFilterTabler = driver.FindElement(_showFilter);
-            showFilterTabler.Click();
-        }
 
         public void CompareTest()
         {
@@ -178,14 +142,6 @@ namespace HomeWork
 
         public void SwitchToPage()
         {
-            /*var filterMobileBrand = driver.FindElement(_moBileBrandFilterButton);
-            filterMobileBrand.Click();
-
-            Thread.Sleep(1000);
-
-            var showFilter = driver.FindElement(_showFilter);
-            showFilter.Click();*/
-
             var appleMobItem = driver.FindElement(_appleMobileItem);
             appleMobItem.Click();
 
@@ -205,7 +161,6 @@ namespace HomeWork
 
         public void PriceFilter()
         {
-
             var itemPro = driver.FindElement(_proItemApple);
             itemPro.Click();
 
@@ -328,14 +283,6 @@ namespace HomeWork
         {
             Actions actions = new Actions(driver);
 
-            /*var audioBrandFilter = driver.FindElement(_audioBrandFilter);
-            audioBrandFilter.Click();
-
-            Thread.Sleep(1000);
-
-            var showFilter = driver.FindElement(_showFilter);
-            showFilter.Click();*/
-
             var nameList = driver.FindElements(_nameBrandSaveList).SkipLast(4).Select(element => element.Text).ToList();
             nameList.Sort();
 
@@ -361,19 +308,11 @@ namespace HomeWork
 
         public void SaveInViewedProducts()
         {
-            Actions actions = new Actions(driver);
             UserService userService = new UserService(driver);
             
             userService.EntryIntoCategoryByName("Гаджеты", "Мобильные");
 
             userService.SearchBrandsByFilter("Apple");
-            /*var selectBrandMob = driver.FindElement(_moBileBrandFilterButton);
-            selectBrandMob.Click();
-
-            Thread.Sleep(1000);
-
-            var showFilte = driver.FindElement(_showFilter);
-            showFilte.Click();*/
 
             var nameTextMobileItem = driver.FindElement(_proItemApple).Text;
             var selectItemMob = driver.FindElement(_proItemApple);
@@ -381,16 +320,6 @@ namespace HomeWork
 
             userService.EntryIntoCategoryByName("Компьютеры", "Приставки");
             userService.SearchBrandsByFilter("Sony");
-            /*driver.Navigate().Refresh();
-
-            var filterBrandConsole = driver.FindElement(_filterOnConsolePage);
-            filterBrandConsole.Click();
-
-            Thread.Sleep(1000);
-
-            var showFiletConsole = driver.FindElement(_showFilter);
-
-            showFiletConsole.Click();*/
 
             var nameTextConsoleItem = driver.FindElement(_nameConsoleItem).Text;
             var selectConsoleItem = driver.FindElement(_nameConsoleItem);
@@ -399,18 +328,6 @@ namespace HomeWork
             userService.EntryIntoCategoryByName("Аудио", "Наушники");
 
             userService.SearchBrandsByFilter("Logitech");
-            /*driver.Navigate().Refresh();
-
-            var filterOnAudioPage = driver.FindElement(_audioBrandFilter);
-
-            filterOnAudioPage.Click();
-
-            Thread.Sleep(1000);
-
-
-            var showFilterAudio = driver.FindElement(_showFilter);
-
-            showFilterAudio.Click();*/
 
             var nameTextAudioItem = driver.FindElement(_nameAudioItem).Text;
 
@@ -449,21 +366,15 @@ namespace HomeWork
             var tableWithBrands = driver.FindElement(By.XPath($"//div[@id='manufacturers_presets']//ul[@class='list']//li[@class='match-li-href open']//label[@class='brand-best']//a[text()='{brandToLook}']"));
             actions.Click(tableWithBrands).Perform();
             Thread.Sleep(1000);
-            // var showFilterResultsButton = driver.FindElement(_showFilter);
-            // executor.ExecuteScript("arguments[0].click();", showFilterResultsButton);
-            // var showFilterResultsButton = driver.FindElement(_showFilter);
-            // Thread.Sleep(1000);
-            // showFilterResultsButton.Click();
-            // Thread.Sleep(1000);
             try
             {
-                var ueban = driver.FindElement(_showFilter);
-                executor.ExecuteScript("arguments[0].click();", ueban);
+                var showBrandsFilterButton = driver.FindElement(_showFilter);
+                executor.ExecuteScript("arguments[0].click();", showBrandsFilterButton);
             }
             catch
             {
-                var ueban = driver.FindElement(_showFilter);
-                executor.ExecuteScript("arguments[0].click();", ueban);
+                var showBrandsFilterButton = driver.FindElement(_showFilter);
+                executor.ExecuteScript("arguments[0].click();", showBrandsFilterButton);
             }
         }
     }

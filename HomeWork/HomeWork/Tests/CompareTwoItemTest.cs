@@ -22,7 +22,6 @@ namespace HomeWork
         {
             service.EntryIntoCategoryByName("Компьютеры", "Планшеты");
             service.SearchBrandsByFilter("Apple");
-            //service.AddTablet();
             service.CompareTest();
         }
 

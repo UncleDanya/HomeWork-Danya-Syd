@@ -24,7 +24,6 @@ namespace HomeWork
         {
             service.EntryIntoCategoryByName("Компьютеры", "Ноутбуки");
             service.SearchBrandsByFilter("Acer");
-            //service.GoToTheNotebookPage();
             service.FilterProductsByBrand();
         }
 
