@@ -178,13 +178,13 @@ namespace HomeWork
 
         public void SwitchToPage()
         {
-            var filterMobileBrand = driver.FindElement(_moBileBrandFilterButton);
+            /*var filterMobileBrand = driver.FindElement(_moBileBrandFilterButton);
             filterMobileBrand.Click();
 
             Thread.Sleep(1000);
 
             var showFilter = driver.FindElement(_showFilter);
-            showFilter.Click();
+            showFilter.Click();*/
 
             var appleMobItem = driver.FindElement(_appleMobileItem);
             appleMobItem.Click();
@@ -205,13 +205,6 @@ namespace HomeWork
 
         public void PriceFilter()
         {
-            var filterMobileBrand = driver.FindElement(_moBileBrandFilterButton);
-            filterMobileBrand.Click();
-
-            Thread.Sleep(1000);
-
-            var showFilter = driver.FindElement(_showFilter);
-            showFilter.Click();
 
             var itemPro = driver.FindElement(_proItemApple);
             itemPro.Click();
@@ -282,22 +275,6 @@ namespace HomeWork
         {
             Actions actions = new Actions(driver);
 
-            var gadjetMenu = driver.FindElement(_gadjetItemButton);
-            actions.MoveToElement(gadjetMenu).Perform();
-
-            Thread.Sleep(1000);
-
-            var mobileMenu = driver.FindElement(_gadjetDropButton);
-            mobileMenu.Click();
-
-            var filterMobileBrand = driver.FindElement(_moBileBrandFilterButton);
-            filterMobileBrand.Click();
-
-            Thread.Sleep(1000);
-
-            var showFilter = driver.FindElement(_showFilter);
-            showFilter.Click();
-
             var appleMobItem = driver.FindElement(_appleMobileItem);
             appleMobItem.Click();
 
@@ -305,6 +282,8 @@ namespace HomeWork
 
             var addToBookmarks = driver.FindElement(_addToBookmarksButton);
             addToBookmarks.Click();
+
+            Thread.Sleep(3000);
 
             var bookmarksBut = driver.FindElement(_bookmarksButton);
             bookmarksBut.Click();
@@ -349,13 +328,13 @@ namespace HomeWork
         {
             Actions actions = new Actions(driver);
 
-            var audioBrandFilter = driver.FindElement(_audioBrandFilter);
+            /*var audioBrandFilter = driver.FindElement(_audioBrandFilter);
             audioBrandFilter.Click();
 
             Thread.Sleep(1000);
 
             var showFilter = driver.FindElement(_showFilter);
-            showFilter.Click();
+            showFilter.Click();*/
 
             var nameList = driver.FindElements(_nameBrandSaveList).SkipLast(4).Select(element => element.Text).ToList();
             nameList.Sort();
@@ -387,20 +366,22 @@ namespace HomeWork
             
             userService.EntryIntoCategoryByName("Гаджеты", "Мобильные");
 
-            var selectBrandMob = driver.FindElement(_moBileBrandFilterButton);
+            userService.SearchBrandsByFilter("Apple");
+            /*var selectBrandMob = driver.FindElement(_moBileBrandFilterButton);
             selectBrandMob.Click();
 
             Thread.Sleep(1000);
 
             var showFilte = driver.FindElement(_showFilter);
-            showFilte.Click();
+            showFilte.Click();*/
 
             var nameTextMobileItem = driver.FindElement(_proItemApple).Text;
             var selectItemMob = driver.FindElement(_proItemApple);
             selectItemMob.Click();
 
             userService.EntryIntoCategoryByName("Компьютеры", "Приставки");
-            driver.Navigate().Refresh();
+            userService.SearchBrandsByFilter("Sony");
+            /*driver.Navigate().Refresh();
 
             var filterBrandConsole = driver.FindElement(_filterOnConsolePage);
             filterBrandConsole.Click();
@@ -409,7 +390,7 @@ namespace HomeWork
 
             var showFiletConsole = driver.FindElement(_showFilter);
 
-            showFiletConsole.Click();
+            showFiletConsole.Click();*/
 
             var nameTextConsoleItem = driver.FindElement(_nameConsoleItem).Text;
             var selectConsoleItem = driver.FindElement(_nameConsoleItem);
@@ -417,7 +398,8 @@ namespace HomeWork
 
             userService.EntryIntoCategoryByName("Аудио", "Наушники");
 
-            driver.Navigate().Refresh();
+            userService.SearchBrandsByFilter("Logitech");
+            /*driver.Navigate().Refresh();
 
             var filterOnAudioPage = driver.FindElement(_audioBrandFilter);
 
@@ -428,7 +410,7 @@ namespace HomeWork
 
             var showFilterAudio = driver.FindElement(_showFilter);
 
-            showFilterAudio.Click();
+            showFilterAudio.Click();*/
 
             var nameTextAudioItem = driver.FindElement(_nameAudioItem).Text;
 
@@ -458,5 +440,31 @@ namespace HomeWork
             Thread.Sleep(2000);
         }
 
+        public void SearchBrandsByFilter(string brandToLook)
+        {
+            IJavaScriptExecutor executor = (IJavaScriptExecutor)driver;
+            Actions actions = new Actions(driver);
+            driver.Navigate().Refresh();
+            Thread.Sleep(3000);
+            var tableWithBrands = driver.FindElement(By.XPath($"//div[@id='manufacturers_presets']//ul[@class='list']//li[@class='match-li-href open']//label[@class='brand-best']//a[text()='{brandToLook}']"));
+            actions.Click(tableWithBrands).Perform();
+            Thread.Sleep(1000);
+            // var showFilterResultsButton = driver.FindElement(_showFilter);
+            // executor.ExecuteScript("arguments[0].click();", showFilterResultsButton);
+            // var showFilterResultsButton = driver.FindElement(_showFilter);
+            // Thread.Sleep(1000);
+            // showFilterResultsButton.Click();
+            // Thread.Sleep(1000);
+            try
+            {
+                var ueban = driver.FindElement(_showFilter);
+                executor.ExecuteScript("arguments[0].click();", ueban);
+            }
+            catch
+            {
+                var ueban = driver.FindElement(_showFilter);
+                executor.ExecuteScript("arguments[0].click();", ueban);
+            }
+        }
     }
 }

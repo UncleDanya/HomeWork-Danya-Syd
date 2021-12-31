@@ -21,6 +21,7 @@ namespace HomeWork
         public void Test1()
         {
             service.EntryIntoCategoryByName("Гаджеты", "Мобильные");
+            service.SearchBrandsByFilter("Apple");
             service.SwitchToPage();
         }
 

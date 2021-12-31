@@ -21,6 +21,7 @@ namespace HomeWork.Tests
         public void Test1()
         {
             service.EntryIntoCategoryByName("Компьютеры", "Планшеты");
+            service.SearchBrandsByFilter("Apple");
         }
 
         [TearDown]

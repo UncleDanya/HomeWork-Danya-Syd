@@ -21,7 +21,8 @@ namespace HomeWork
         public void Test1()
         {
             service.EntryIntoCategoryByName("Компьютеры", "Планшеты");
-            service.AddTablet();
+            service.SearchBrandsByFilter("Apple");
+            //service.AddTablet();
             service.CompareTest();
         }
 

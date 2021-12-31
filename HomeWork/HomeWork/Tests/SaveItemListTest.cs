@@ -23,6 +23,7 @@ namespace HomeWork
         {
             service.CreateNewUserAccount();
             service.EntryIntoCategoryByName("Аудио", "Наушники");
+            service.SearchBrandsByFilter("Logitech");
             service.ItemList();
         }
 
