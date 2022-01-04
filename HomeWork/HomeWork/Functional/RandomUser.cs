@@ -8,14 +8,14 @@ namespace HomeWork
         public string CreateRandomLogin()
         {
             Random randomUs = new Random();
-            String b = "qwertyuiopasdfghjklzxcvbnm";
+            String сharacters = "qwertyuiopasdfghjklzxcvbnm";
             int lenght = 6;
             String random = string.Empty;
 
             for (int i = 0; i < lenght; i++)
             {
-                int a = randomUs.Next(26);
-                random = random + b.ElementAt(a);
+                int randomChar = randomUs.Next(26);
+                random = random + сharacters.ElementAt(randomChar);
             }
             return random;
         }
@@ -29,8 +29,8 @@ namespace HomeWork
 
             for (int i = 0; i < size; i++)
             {
-                int x = random.Next(str.Length);
-                randomstring = randomstring + str[x];
+                int randomChar = random.Next(str.Length);
+                randomstring = randomstring + str[randomChar];
             }
             return randomstring;
         }
@@ -38,14 +38,14 @@ namespace HomeWork
         public string CreateRandomEmail()
         {
             Random user = new Random();
-            String b = "qwertyuiopasdfghjklzxcvbnm";
+            String сharacters = "qwertyuiopasdfghjklzxcvbnm";
             int lenght = 6;
             String random = string.Empty;
 
             for (int i = 0; i < lenght; i++)
             {
-                int a = user.Next(26);
-                random = random + b.ElementAt(a);
+                int randomChar = user.Next(26);
+                random = random + сharacters.ElementAt(randomChar);
             }
             random += "@gmail.com";
             return random;

@@ -106,7 +106,6 @@ namespace HomeWork
             }
         }
 
-
         public void CompareTest()
         {
             var firstCompareTablet = driver.FindElement(_addFirstCompareTablet);
@@ -200,6 +199,7 @@ namespace HomeWork
                 }
             }
         }
+
         public void FilterProductsByBrand()
         {
             var lastPage = driver.FindElements(By.XPath(".//div[@class='ib page-num']//a")).Last();
@@ -226,6 +226,7 @@ namespace HomeWork
                 }
             }
         }
+
         public void AddToBookmarks()
         {
             Actions actions = new Actions(driver);
