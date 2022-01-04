@@ -9,15 +9,15 @@ namespace HomeWork
         {
             Random randomUs = new Random();
             String сharacters = "qwertyuiopasdfghjklzxcvbnm";
-            int lenght = 6;
-            String random = string.Empty;
+            int lenght = 2;
+            String generatedUserName = "AutotestUser";
 
             for (int i = 0; i < lenght; i++)
             {
                 int randomChar = randomUs.Next(26);
-                random = random + сharacters.ElementAt(randomChar);
+                generatedUserName = generatedUserName + сharacters.ElementAt(randomChar);
             }
-            return random;
+            return generatedUserName += randomUs.Next(1, 999000);
         }
 
         public string CreateRandomPassword()
