@@ -267,15 +267,17 @@ namespace HomeWork
 
             userField.SendKeys(randomLogin);
 
+            Thread.Sleep(1000);
+
             var saveChange = driver.FindElement(_saveChangeUserMenu);
             saveChange.Click();
-
-            Thread.Sleep(1000);
 
             var mainPage = driver.FindElement(_mainPageButton);
             mainPage.Click();
 
             var renameLoginActual = driver.FindElement(_acceptLogin).Text;
+
+            Thread.Sleep(1000);
 
             Assert.AreEqual(randomLogin, renameLoginActual, "The changed login does not match the profile login");
         }
