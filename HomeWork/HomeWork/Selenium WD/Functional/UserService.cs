@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
+using SeleniumExtras.PageObjects;
 using System;
 using System.Linq;
 using System.Threading;
@@ -17,19 +18,23 @@ namespace HomeWork
         }
 
         private readonly By _signInButton = By.XPath("//span[@jtype='click']");
-        private readonly By _registrationButton = By.XPath("//span[@class='j-wrap orange']");
+        // private readonly By _registrationButton = By.XPath("//span[@class='j-wrap orange']");
+        private readonly By _registrationButton = By.CssSelector("span[class='j-wrap orange']");
         private readonly By _nameInputButton = By.XPath("//input[@name='p_[NikName]']");
         private readonly By _emailInputButton = By.XPath("//input[@name='p_[EMail]']");
         private readonly By _passwordInputButton = By.XPath("//input[@name='p_[PW0]']");
         private readonly By _acceptRegistrationButton = By.XPath("//button[text()='ЗАРЕГИСТРИРОВАТЬСЯ']");
         private readonly By _searchInputButton = By.XPath("//input[@id='ek-search']");
-        private readonly By _searchItemButton = By.XPath("//button[@name='search_but_']");
+        // private readonly By _searchItemButton = By.XPath("//button[@name='search_but_']");
+        private readonly By _searchItemButton = By.Name("search_but_");
         private readonly By _acceptButton = By.XPath("//button[text()='Подтвердить']");
-        private readonly By _showFilter = By.XPath("//a[text()='Показать']");
+        // private readonly By _showFilter = By.XPath("//a[text()='Показать']");
+        // private readonly By _showFilter = By.Name("Показать");
         private readonly By _addFirstCompareTablet = By.XPath("//span[text()='Apple iPad 2021']");
         private readonly By _goToTabletPage = By.XPath("//a[@link='/list/30/apple/']");
         private readonly By _addSecondCompareTablet = By.XPath("//span[text()='Apple iPad Air 2020']");
         private readonly By _toSecondCompareTablet = By.XPath("//label[@id='label_1870142']");
+        // private readonly By _toSecondCompareTablet = By.TagName("label");
         private readonly By _compareButton = By.XPath("//span[@id='num_bm_compared']");
         private readonly By _firstExpectedItem = By.XPath("//table[@id='compare_table']//child::a[contains(text(),'Apple iPad 2021')]");
         private readonly By _secondExpectedItem = By.XPath("//table[@id='compare_table']//child::a[contains(text(),'Apple iPad Air')]");
@@ -39,7 +44,8 @@ namespace HomeWork
         private readonly By _sortPriceOnPageButton = By.XPath("//a[@jtype='click' and text()='по цене']");
         private readonly By _addToBookmarksButton = By.XPath("//span[@title='Добавить в список']");
         private readonly By _bookmarksButton = By.XPath("//li[@id='bar_bm_marked' and @class='goods-bar-section']");
-        private readonly By _acceptLogin = By.XPath("//a[@class='info-nick']");
+        // private readonly By _acceptLogin = By.XPath("//a[@class='info-nick']");
+        private readonly By _acceptLogin = By.ClassName("info-nick");
         private readonly By _editProfileButton = By.XPath("//a[@class='user-menu__edit' and @title='Редактировать']");
         private readonly By _nikUserField = By.XPath("//input[@class='ek-form-control' and @name='p_[NikName]']");
         private readonly By _saveChangeUserMenu = By.XPath("//button[@class='ek-form-btn blue' and text()='СОХРАНИТЬ']");
@@ -51,7 +57,9 @@ namespace HomeWork
         private readonly By _nameConsoleItem = By.XPath("//span[@class='u' and text()='Sony PlayStation 5']");
         private readonly By _nameAudioItem = By.XPath("//span[@class='u' and text()='Logitech G Pro X']");
         private readonly By _searchingItems = By.XPath("//td[@class='where-buy-description']//h3[text()]");
-        public By ToCompareTablet => By.XPath("//label[@id='label_2090044']");
+        // public By ToCompareTablet => By.XPath("//label[@id='label_2090044']");
+        [FindsBy(How = How.CssSelector, Using = "input[title='Поиск']")]
+        public IWebElement TxtSearchForm { get; set; }
 
         RandomUser randomUser = new RandomUser();
 
@@ -77,16 +85,20 @@ namespace HomeWork
             passwordInput.SendKeys(randomUser.CreateRandomPassword());
 
             var acceptRegistration = driver.FindElement(_acceptRegistrationButton);
-            acceptRegistration.Click();
+            acceptRegistration.Submit();
+            // acceptRegistration.Click();
 
             Thread.Sleep(2000);
 
             var acceptButton = driver.FindElement(_acceptButton);
             acceptButton.Click();
 
-            var actualLogin = driver.FindElement(_acceptLogin).Text;
+            var actualLogin = driver.FindElement(_acceptLogin);
+            actualLogin.Click();
 
-            Assert.AreEqual(actualLogin, randomLogin, "The actual login does not match the expected");
+            var actualLoginForCompare = driver.FindElement(By.ClassName("user-menu__name")).Text;
+
+            Assert.AreEqual(actualLoginForCompare, randomLogin, "The actual login does not match the expected");
         }
 
         public void SearchFieldProductInput(string productSearch)
@@ -111,7 +123,7 @@ namespace HomeWork
             var firstCompareTablet = driver.FindElement(_addFirstCompareTablet);
             var oneTablet = driver.FindElement(_addFirstCompareTablet).Text;
             firstCompareTablet.Click();
-            driver.FindElement(ToCompareTablet).Click();
+            driver.FindElement(By.Id("label_2090044")).Click();
 
             var backTabletPage = driver.FindElement(_goToTabletPage);
             backTabletPage.Click();
@@ -146,7 +158,8 @@ namespace HomeWork
 
             Thread.Sleep(2000);
 
-            var linkToShop = driver.FindElement(By.XPath("//div//u[text()='Avic.ua']"));
+            //var linkToShop = driver.FindElement(By.XPath("//div//u[text()='Avic.ua']"));
+            var linkToShop = driver.FindElement(By.LinkText("Avic.ua"));
             var textItem = driver.FindElement(By.XPath("//*[text()='Мобильный телефон Apple iPhone 13 ']")).Text;
             var nameOnlyModelItem = textItem.Replace("Мобильный телефон ", string.Empty).Replace(" ГБ", string.Empty);
             linkToShop.Click();
@@ -371,12 +384,12 @@ namespace HomeWork
             Thread.Sleep(1000);
             try
             {
-                var showBrandsFilterButton = driver.FindElement(_showFilter);
+                var showBrandsFilterButton = driver.FindElement(By.LinkText("Показать"));
                 executor.ExecuteScript("arguments[0].click();", showBrandsFilterButton);
             }
             catch
             {
-                var showBrandsFilterButton = driver.FindElement(_showFilter);
+                var showBrandsFilterButton = driver.FindElement(By.LinkText("Показать"));
                 executor.ExecuteScript("arguments[0].click();", showBrandsFilterButton);
             }
         }

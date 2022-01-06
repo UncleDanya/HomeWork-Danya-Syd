@@ -98,3 +98,9 @@ C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\obj\Debug\net6.
 C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\obj\Debug\net6.0\ref\HomeWork.dll
 C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\obj\Debug\net6.0\HomeWork.pdb
 C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\obj\Debug\net6.0\HomeWork.genruntimeconfig.cache
+C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net6.0\SeleniumExtras.PageObjects.dll
+C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net6.0\WebDriver.Support.dll
+C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net6.0\AutomationUtils.dll
+C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net6.0\HtmlAgilityPack.dll
+C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net6.0\RestSharp.dll
+C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net6.0\System.Xml.XPath.XmlDocument.dll
