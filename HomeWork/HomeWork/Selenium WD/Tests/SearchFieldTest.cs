@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using HomeWork.Selenium_WD.Functional;
+using NUnit.Framework;
 using OpenQA.Selenium;
 
 namespace HomeWork
@@ -7,6 +8,7 @@ namespace HomeWork
     {
         private IWebDriver driver;
         private UserService service;
+        private SearchField searchField;
 
         [SetUp]
         public void Setup()
@@ -15,12 +17,14 @@ namespace HomeWork
             driver.Navigate().GoToUrl("https://ek.ua/");
             driver.Manage().Window.Maximize();
             service = new UserService(driver);
+            searchField = new SearchField(driver);
+            // SearchField searchField = new SearchField(driver);
         }
 
         [Test]
         public void Test1()
         {
-            service.SearchFieldProductInput("iPhone 13 Pro 256");
+            searchField.SearchFieldProductInput("iPhone 13 Pro 256");
         }
 
         [TearDown]

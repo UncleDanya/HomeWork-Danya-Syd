@@ -32,7 +32,7 @@ namespace HomeWork
         // private readonly By _showFilter = By.Name("Показать");
         private readonly By _addFirstCompareTablet = By.XPath("//span[text()='Apple iPad 2021']");
         private readonly By _goToTabletPage = By.XPath("//a[@link='/list/30/apple/']");
-        private readonly By _addSecondCompareTablet = By.XPath("//span[text()='Apple iPad Air 2020']");
+        private readonly By _addSecondCompareTablet = By.XPath("//a[@data-url='/APPLE-IPAD-AIR-2020-64GB.htm']");
         private readonly By _toSecondCompareTablet = By.XPath("//label[@id='label_1870142']");
         // private readonly By _toSecondCompareTablet = By.TagName("label");
         private readonly By _compareButton = By.XPath("//span[@id='num_bm_compared']");

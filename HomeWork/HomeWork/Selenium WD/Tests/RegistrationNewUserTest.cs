@@ -1,12 +1,13 @@
+using HomeWork.Selenium_WD.Functional;
 using HomeWork.Selenium_WD.Pages;
 using NUnit.Framework;
 using OpenQA.Selenium;
+using SeleniumExtras.PageObjects;
 
 namespace HomeWork
 {
     public class RegistrationNewUserTest
     {
-        private readonly object PageFactory;
         private IWebDriver driver;
         private UserService service;
         private MainPage mainPage;
@@ -15,24 +16,21 @@ namespace HomeWork
         [SetUp]
         public void Setup()
         {
+            // driver = BrowserFactory.CreateDriver();
             driver = new OpenQA.Selenium.Chrome.ChromeDriver();
             driver.Navigate().GoToUrl("https://ek.ua/");
             driver.Manage().Window.Maximize();
             service = new UserService(driver);
-            // MainPage mainPage = new MainPage();
-            mainPage = new MainPage(driver);
+            mainPage = new MainPage();
             userPage = new UserPage();
+            PageFactory.InitElements(driver, mainPage);
+            PageFactory.InitElements(driver, userPage);
         }
 
         [Test]
         public void Test1()
         {
-            mainPage.LoginButton.Click();
-            // mainPage.CreateNewUserAccount();
-            // mainPage.LoginButton.Click();
-            // userPage.actualNameUser.Click();
-            // _ = userPage.textActualNameUser.Text;
-            // service.CreateNewUserAccount();
+            mainPage.CreateNewUserAccount();
         }
 
         [TearDown]

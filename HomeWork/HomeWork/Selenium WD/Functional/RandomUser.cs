@@ -10,7 +10,7 @@ namespace HomeWork
             Random randomUs = new Random();
             String сharacters = "qwertyuiopasdfghjklzxcvbnm";
             int lenght = 2;
-            String generatedUserName = "AutotestUser";
+            String generatedUserName = "A";
 
             for (int i = 0; i < lenght; i++)
             {
