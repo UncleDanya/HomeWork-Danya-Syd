@@ -9,7 +9,6 @@ namespace HomeWork
     internal class SwitchToMagazineTest
     {
         private IWebDriver driver;
-        private UserService service;
         private EntryCategory category;
         private FilterBrands filter;
         private PageMobileProductApple pageMobile;
@@ -21,7 +20,6 @@ namespace HomeWork
             driver = new OpenQA.Selenium.Chrome.ChromeDriver();
             driver.Navigate().GoToUrl("https://ek.ua/");
             driver.Manage().Window.Maximize();
-            service = new UserService(driver);
             category = new EntryCategory(driver);
             filter = new FilterBrands(driver);
             pageMobile = new PageMobileProductApple();
@@ -33,15 +31,11 @@ namespace HomeWork
         [Test]
         public void Test1()
         {
-            // service.EntryIntoCategoryByName("Гаджеты", "Мобильные");
             category.EntryIntoCategoryByName("Гаджеты", "Мобильные");
-            // service.SearchBrandsByFilter("Apple");
             filter.SearchBrandsByFilter("Apple");
-            // service.SwitchToPage();
             pageMobile.NameProductLink.Click();
             var nameProductText = pageAppleiPhone13.FullNameProductOnPage.Text.Replace("Мобильный телефон ", string.Empty).Replace(" ГБ", string.Empty);
             pageAppleiPhone13.NameShopLinkText.Click();
-
             var connectWindowHandles = driver.WindowHandles;
             driver.SwitchTo().Window(connectWindowHandles[1]);
             var pageShopWithItemText = driver.FindElement(By.XPath("//h1[@class='page-title']")).Text;

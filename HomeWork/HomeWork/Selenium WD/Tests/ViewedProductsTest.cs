@@ -9,7 +9,6 @@ namespace HomeWork
     internal class ViewedProductsTest
     {
         private IWebDriver driver;
-        private UserService service;
         private EntryCategory category;
         private FilterBrands filter;
         private MainPage mainPage;
@@ -24,7 +23,6 @@ namespace HomeWork
             driver = new OpenQA.Selenium.Chrome.ChromeDriver();
             driver.Navigate().GoToUrl("https://ek.ua/");
             driver.Manage().Window.Maximize();
-            service = new UserService(driver);
             category = new EntryCategory(driver);
             filter = new FilterBrands(driver);
             mainPage = new MainPage();
@@ -42,26 +40,20 @@ namespace HomeWork
         [Test]
         public void Test1()
         {
-            //service.CreateNewUserAccount();
             mainPage.CreateNewUserAccount();
-            // service.SaveInViewedProducts();
             category.EntryIntoCategoryByName("Гаджеты", "Мобильные");
             filter.SearchBrandsByFilter("Apple");
             var nameMobileProductText = mobileProductApple.NameProProductLink.Text;
             mobileProductApple.NameProProductLink.Click();
-
             category.EntryIntoCategoryByName("Компьютеры", "Приставки");
             filter.SearchBrandsByFilter("Sony");
             var nameConsoleProductText = consoleProductSony.NameProductOnConsolePage.Text;
             consoleProductSony.NameProductOnConsolePage.Click();
-
             category.EntryIntoCategoryByName("Аудио", "Наушники");
             filter.SearchBrandsByFilter("Logitech");
             var nameAudioProductText = headsetProductLogitech.NameProductOnHeadsetPage.Text;
             headsetProductLogitech.NameProductOnHeadsetPage.Click();
-
             mainPage.ActualLogin.Click();
-
             var nameMobileItemInList = driver.FindElement(By.XPath("//u[@class='nobr' and text()='Apple iPhone 13 Pr...']")).Text.Remove(16);
             var nameConsoleItemInList = driver.FindElement(By.XPath("//u[@class='nobr' and text()='Sony PlayStation 5']")).Text;
             var nameAudioItemInList = driver.FindElement(By.XPath("//u[@class='nobr' and text()='Logitech G Pro X']")).Text;

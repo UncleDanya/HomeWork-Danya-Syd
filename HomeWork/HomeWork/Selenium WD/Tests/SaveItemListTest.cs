@@ -4,14 +4,12 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
 using System.Linq;
-using System.Threading;
 
 namespace HomeWork
 {
     internal class SaveItemListTest
     {
         private IWebDriver driver;
-        private UserService service;
         private MainPage mainPage;
         private EntryCategory category;
         private FilterBrands filter;
@@ -24,7 +22,6 @@ namespace HomeWork
             driver = new OpenQA.Selenium.Chrome.ChromeDriver();
             driver.Navigate().GoToUrl("https://ek.ua/");
             driver.Manage().Window.Maximize();
-            service = new UserService(driver);
             mainPage = new MainPage();
             PageFactory.InitElements(driver, mainPage);
             category = new EntryCategory(driver);
@@ -38,13 +35,9 @@ namespace HomeWork
         [Test]
         public void Test1()
         {
-            // service.CreateNewUserAccount();
             mainPage.CreateNewUserAccount();
-            //service.EntryIntoCategoryByName("Аудио", "Наушники");
             category.EntryIntoCategoryByName("Аудио", "Наушники");
-            // service.SearchBrandsByFilter("Logitech");
             filter.SearchBrandsByFilter("Logitech");
-            // service.ItemList();
             var listWithNameProductOnPage = pagaHeadset.NameAllProductInPage.SkipLast(4).Select(element => element.Text).ToList();
             listWithNameProductOnPage.Sort();
             pagaHeadset.SaveListProductButton.Click();
@@ -55,7 +48,6 @@ namespace HomeWork
             listWithSaveProductInUserPage.Sort();
 
             Assert.AreEqual(listWithNameProductOnPage, listWithSaveProductInUserPage, "The saved item sheet does not match the sheet in the profile");
-
         }
 
         [TearDown]

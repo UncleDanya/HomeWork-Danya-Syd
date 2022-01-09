@@ -3,14 +3,12 @@ using HomeWork.Selenium_WD.Pages;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
-using System.Linq;
 
 namespace HomeWork
 {
     internal class CompareTwoItemTest
     {
         private IWebDriver driver;
-        private UserService service;
         private EntryCategory category;
         private FilterBrands filter;
         private PageTabletProductApple tabletProductApple;
@@ -24,7 +22,6 @@ namespace HomeWork
             driver = new OpenQA.Selenium.Chrome.ChromeDriver();
             driver.Navigate().GoToUrl("https://ek.ua/");
             driver.Manage().Window.Maximize();
-            service = new UserService(driver);
             category = new EntryCategory(driver);
             filter = new FilterBrands(driver);
             tabletAppleiPad2021 = new PageTabletAppleiPad2021();
@@ -40,12 +37,10 @@ namespace HomeWork
         [Test]
         public void Test1()
         {
-            // service.EntryIntoCategoryByName("Компьютеры", "Планшеты");
             category.EntryIntoCategoryByName("Компьютеры", "Планшеты");
-            // service.SearchBrandsByFilter("Apple");
             filter.SearchBrandsByFilter("Apple");
-            // service.CompareTest();
             var nameFirstTablet = tabletProductApple.FirstTabletToCompare.Text;
+            var attribute = tabletProductApple.FirstTabletToCompare.GetAttribute("data-url");
             tabletProductApple.FirstTabletToCompare.Click();
 
             tabletAppleiPad2021.AddedToCompareButton.Click();
@@ -65,8 +60,7 @@ namespace HomeWork
 
             Assert.IsTrue(nameFirstTabletInComparePage.Contains(nameFirstTablet), "The added item does not match the item on the list");
             Assert.IsTrue(nameSecondTabletInComparePage.Contains(nameSecondTablet), "The added item does not match the item on the list");
-
-
+            Assert.AreEqual(attribute, "/APPLE-IPAD-2021-64GB.htm");
         }
 
         [TearDown]

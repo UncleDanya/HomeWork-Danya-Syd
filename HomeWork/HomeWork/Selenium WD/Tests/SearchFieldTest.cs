@@ -7,7 +7,6 @@ namespace HomeWork
     internal class SearchFieldTest
     {
         private IWebDriver driver;
-        private UserService service;
         private SearchField searchField;
 
         [SetUp]
@@ -16,9 +15,7 @@ namespace HomeWork
             driver = new OpenQA.Selenium.Chrome.ChromeDriver();
             driver.Navigate().GoToUrl("https://ek.ua/");
             driver.Manage().Window.Maximize();
-            service = new UserService(driver);
             searchField = new SearchField(driver);
-            // SearchField searchField = new SearchField(driver);
         }
 
         [Test]

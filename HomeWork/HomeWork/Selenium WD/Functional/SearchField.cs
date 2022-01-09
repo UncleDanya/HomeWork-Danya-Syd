@@ -1,11 +1,5 @@
-﻿using HomeWork.Selenium_WD.Pages;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HomeWork.Selenium_WD.Functional
 {
@@ -31,6 +25,7 @@ namespace HomeWork.Selenium_WD.Functional
             foreach (var searchingItem in searchingItems)
             {
                 var searchResultsText = searchingItem.Text;
+                
                 Assert.IsTrue(searchResultsText.Contains(productSearch));
             }
         }

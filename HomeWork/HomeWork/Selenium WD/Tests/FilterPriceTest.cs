@@ -3,8 +3,6 @@ using HomeWork.Selenium_WD.Pages;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
-using System;
-using System.Linq;
 using System.Threading;
 
 namespace HomeWork
@@ -12,7 +10,6 @@ namespace HomeWork
     internal class FilterPriceTest
     {
         private IWebDriver driver;
-        private UserService service;
         private EntryCategory category;
         private FilterBrands filterBrands;
         private PageMobileProductApple pageMobileProductApple;
@@ -25,7 +22,6 @@ namespace HomeWork
             driver = new OpenQA.Selenium.Chrome.ChromeDriver();
             driver.Navigate().GoToUrl("https://ek.ua/");
             driver.Manage().Window.Maximize();
-            service = new UserService(driver);
             category = new EntryCategory(driver);
             filterBrands = new FilterBrands(driver);
             pageMobileProductApple = new PageMobileProductApple();
@@ -38,19 +34,15 @@ namespace HomeWork
         [Test]
         public void Test1()
         {
-            // service.EntryIntoCategoryByName("Гаджеты", "Мобильные");
             category.EntryIntoCategoryByName("Гаджеты", "Мобильные");
-            // service.SearchBrandsByFilter("Apple");
             filterBrands.SearchBrandsByFilter("Apple");
-            // service.PriceFilter();
             pageMobileProductApple.NameProProductLink.Click();
-            
             pageMobileiPhone13Pro.ShowAllPriceProductButton.Click();
             pageMobileiPhone13Pro.SortByPrice.Click();
+            
             Thread.Sleep(1000);
-            // service.DescendingPriceFilter();
+            
             priceSortByDescendingPrice.DescendingPriceFilter();
-
         }
 
         [TearDown]

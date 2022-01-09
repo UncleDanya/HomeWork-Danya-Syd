@@ -46,59 +46,26 @@ namespace HomeWork.Selenium_WD.Pages
         {
             var randomLogin = randomUser.CreateRandomLogin();
 
-            // var signIn = driver.FindElement((By)LoginButton);
             LoginButton.Click();
-            // signIn.Click();
 
             Thread.Sleep(2000);
 
-            // var registrationButton = driver.FindElement((By)registrationNewUserButton).Click;
-            //registrationButton.Click();
             RegistrationNewUserButton.Click();
-
-            /*var inputName = driver.FindElement((By)nameFieldInputButton);
-            inputName.SendKeys(randomLogin);*/
             NameFieldInputButton.SendKeys(randomLogin);
-
-            /*var emailInput = driver.FindElement((By)emailFieldInputButton);
-            emailInput.SendKeys(randomUser.CreateRandomEmail());*/
             EmailFieldInputButton.SendKeys(randomUser.CreateRandomEmail());
-
-            /*var passwordInput = driver.FindElement((By)passwordFieldInputButton);
-            passwordInput.SendKeys(randomUser.CreateRandomPassword());*/
             PasswordFieldInputButton.SendKeys(randomUser.CreateRandomPassword());
-
-            /*var acceptRegistration = driver.FindElement((By)acceptRegistrationNewUserButton);
-            acceptRegistration.Submit();*/
             RegistationButton.Click();
+            
             Thread.Sleep(1000);
+            
             AcceptRegistrationNewUserButton.Click();
-            // acceptRegistration.Click();
 
             Thread.Sleep(2000);
 
-            // var acceptButton = driver.FindElement((By)acceptRegistrationNewUserButton).Click;
-            // acceptButton.Click();
-
-            /*var actualLogin = driver.FindElement(_acceptLogin);
-            actualLogin.Click();*/
-
-            // var actualLoginForCompare = driver.FindElement(By.ClassName("info-nick")).Text;
             var actualLoginForCompare = ActualLogin.Text;
 
             Assert.AreEqual(actualLoginForCompare, randomLogin, "The actual login does not match the expected");
         }
-
-        /*public void EntryIntoCategoryByName(string folderName, string pixelFolderName)
-        {
-            Actions actions = new Actions(driver);
-            var searchFolderByName = driver.FindElement(By.XPath($"//ul[@class='mainmenu-list ff-roboto']//li[@class='mainmenu-item']//a[text()='{folderName}']"));
-            actions.MoveToElement(searchFolderByName).Perform();
-            Thread.Sleep(1000);
-            var seachInsideFolderByName = driver.FindElement(By.PartialLinkText(pixelFolderName));
-            seachInsideFolderByName.Click();
-            Thread.Sleep(2000);
-        }*/
     }
 
 }

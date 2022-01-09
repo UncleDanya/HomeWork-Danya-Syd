@@ -9,7 +9,6 @@ namespace HomeWork
     internal class FilterTest
     {
         private IWebDriver driver;
-        private UserService service;
         private EntryCategory category;
         private FilterBrands filterBrands;
 
@@ -19,7 +18,6 @@ namespace HomeWork
             driver = new OpenQA.Selenium.Chrome.ChromeDriver();
             driver.Navigate().GoToUrl("https://ek.ua/");
             driver.Manage().Window.Maximize();
-            service = new UserService(driver);
             category = new EntryCategory(driver);
             filterBrands = new FilterBrands(driver);
         }
@@ -27,11 +25,8 @@ namespace HomeWork
         [Test]
         public void Test1()
         {
-            // service.EntryIntoCategoryByName("Компьютеры", "Ноутбуки");
             category.EntryIntoCategoryByName("Компьютеры", "Ноутбуки");
-            // service.SearchBrandsByFilter("Acer");
             filterBrands.SearchBrandsByFilter("Acer");
-            // service.FilterProductsByBrand();
             var lastPage = driver.FindElements(By.XPath(".//div[@class='ib page-num']//a")).Last();
             var neededElementText = Int32.Parse(lastPage.Text);
 

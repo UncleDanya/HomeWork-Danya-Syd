@@ -9,18 +9,16 @@ namespace HomeWork
     public class RegistrationNewUserTest
     {
         private IWebDriver driver;
-        private UserService service;
         private MainPage mainPage;
         private UserPage userPage;
         
         [SetUp]
         public void Setup()
         {
-            // driver = BrowserFactory.CreateDriver();
-            driver = new OpenQA.Selenium.Chrome.ChromeDriver();
+            driver = BrowserFactory.CreateDriver();
+            // driver = new OpenQA.Selenium.Chrome.ChromeDriver();
             driver.Navigate().GoToUrl("https://ek.ua/");
             driver.Manage().Window.Maximize();
-            service = new UserService(driver);
             mainPage = new MainPage();
             userPage = new UserPage();
             PageFactory.InitElements(driver, mainPage);
