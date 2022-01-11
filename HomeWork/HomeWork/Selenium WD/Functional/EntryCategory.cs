@@ -13,6 +13,7 @@ namespace HomeWork.Selenium_WD.Functional
         {
             this.driver = driver;
         }
+
         public void EntryIntoCategoryByName(string folderName, string pixelFolderName)
         {
             Actions actions = new Actions(driver);

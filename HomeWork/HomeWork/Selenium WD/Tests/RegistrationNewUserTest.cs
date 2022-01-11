@@ -16,11 +16,10 @@ namespace HomeWork
         public void Setup()
         {
             driver = BrowserFactory.CreateDriver();
-            // driver = new OpenQA.Selenium.Chrome.ChromeDriver();
             driver.Navigate().GoToUrl("https://ek.ua/");
             driver.Manage().Window.Maximize();
             mainPage = new MainPage();
-            userPage = new UserPage();
+            userPage = new UserPage(driver);
             PageFactory.InitElements(driver, mainPage);
             PageFactory.InitElements(driver, userPage);
         }
@@ -34,6 +33,7 @@ namespace HomeWork
         [TearDown]
         public void Test2()
         {
+            userPage.DeleteUserAccount();
             driver.Quit();
             driver.Dispose();
         }

@@ -1,5 +1,6 @@
 ﻿using HomeWork.Selenium_WD.Functional;
 using HomeWork.Selenium_WD.Pages;
+using HomeWork.Selenium_WD.RuntimeVariables;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
@@ -15,15 +16,16 @@ namespace HomeWork
         private PageTabletAppleiPad2021 tabletAppleiPad2021;
         private PageTabletAppleiPadAir2020 tabletAppleiPadAir2020;
         private CompareProductPage compareProduct;
-        
+        private CheckboxRuntimeVariable checkboxRuntimeVariable = new CheckboxRuntimeVariable();
+
         [SetUp]
         public void Setup()
         {
-            driver = new OpenQA.Selenium.Chrome.ChromeDriver();
+            driver = BrowserFactory.CreateDriver();
             driver.Navigate().GoToUrl("https://ek.ua/");
             driver.Manage().Window.Maximize();
             category = new EntryCategory(driver);
-            filter = new FilterBrands(driver);
+            filter = new FilterBrands(driver, checkboxRuntimeVariable);
             tabletAppleiPad2021 = new PageTabletAppleiPad2021();
             tabletAppleiPadAir2020 = new PageTabletAppleiPadAir2020();
             tabletProductApple = new PageTabletProductApple();
@@ -38,7 +40,11 @@ namespace HomeWork
         public void Test1()
         {
             category.EntryIntoCategoryByName("Компьютеры", "Планшеты");
+            
             filter.SearchBrandsByFilter("Apple");
+            filter.VerifyThatButtonIsCheckboxIsSelected("Apple");
+            filter.ClickOnShowFilter();
+            
             var nameFirstTablet = tabletProductApple.FirstTabletToCompare.Text;
             var attribute = tabletProductApple.FirstTabletToCompare.GetAttribute("data-url");
             tabletProductApple.FirstTabletToCompare.Click();

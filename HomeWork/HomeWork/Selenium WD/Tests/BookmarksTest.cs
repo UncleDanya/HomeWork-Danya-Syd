@@ -1,5 +1,6 @@
 ﻿using HomeWork.Selenium_WD.Functional;
 using HomeWork.Selenium_WD.Pages;
+using HomeWork.Selenium_WD.RuntimeVariables;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
@@ -13,15 +14,16 @@ namespace HomeWork
         private EntryCategory category;
         private FilterBrands filter;
         private PageMobileProductApple pageMobile;
+        private CheckboxRuntimeVariable checkboxRuntimeVariables = new CheckboxRuntimeVariable();
 
         [SetUp]
         public void Setup()
         {
-            driver = new OpenQA.Selenium.Chrome.ChromeDriver();
+            driver = BrowserFactory.CreateDriver();
             driver.Navigate().GoToUrl("https://ek.ua/");
             driver.Manage().Window.Maximize();
             category = new EntryCategory(driver);
-            filter = new FilterBrands(driver);
+            filter = new FilterBrands(driver, checkboxRuntimeVariables);
             pageMobile = new PageMobileProductApple();
             PageFactory.InitElements(driver, pageMobile);
         }
@@ -30,9 +32,14 @@ namespace HomeWork
         public void Test1()
         {
             category.EntryIntoCategoryByName("Гаджеты", "Мобильные");
+            
             filter.SearchBrandsByFilter("Apple");
+            filter.VerifyThatButtonIsCheckboxIsSelected("Apple");
+            filter.ClickOnShowFilter();
+            
             var tagName = pageMobile.NameProductLink.TagName;
             pageMobile.NameProductLink.Click();
+            
             var nameTitleProduct = pageMobile.NameTitleProduct.Text;
             pageMobile.AddedProductInList.Click();
 

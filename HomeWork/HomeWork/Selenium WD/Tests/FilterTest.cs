@@ -1,4 +1,5 @@
 ﻿using HomeWork.Selenium_WD.Functional;
+using HomeWork.Selenium_WD.RuntimeVariables;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
@@ -11,22 +12,27 @@ namespace HomeWork
         private IWebDriver driver;
         private EntryCategory category;
         private FilterBrands filterBrands;
+        private CheckboxRuntimeVariable checkboxRuntimeVariable = new CheckboxRuntimeVariable();
 
         [SetUp]
         public void Setup()
         {
-            driver = new OpenQA.Selenium.Chrome.ChromeDriver();
+            driver = BrowserFactory.CreateDriver();
             driver.Navigate().GoToUrl("https://ek.ua/");
             driver.Manage().Window.Maximize();
             category = new EntryCategory(driver);
-            filterBrands = new FilterBrands(driver);
+            filterBrands = new FilterBrands(driver, checkboxRuntimeVariable);
         }
 
         [Test]
         public void Test1()
         {
             category.EntryIntoCategoryByName("Компьютеры", "Ноутбуки");
+            
             filterBrands.SearchBrandsByFilter("Acer");
+            filterBrands.VerifyThatButtonIsCheckboxIsSelected("Acer");
+            filterBrands.ClickOnShowFilter();
+            
             var lastPage = driver.FindElements(By.XPath(".//div[@class='ib page-num']//a")).Last();
             var neededElementText = Int32.Parse(lastPage.Text);
 

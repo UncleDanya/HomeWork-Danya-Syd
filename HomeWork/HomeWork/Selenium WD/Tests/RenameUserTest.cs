@@ -1,4 +1,5 @@
-﻿using HomeWork.Selenium_WD.Pages;
+﻿using HomeWork.Selenium_WD.Functional;
+using HomeWork.Selenium_WD.Pages;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
@@ -14,12 +15,12 @@ namespace HomeWork
         [SetUp]
         public void Setup()
         {
-            driver = new OpenQA.Selenium.Chrome.ChromeDriver();
+            driver = BrowserFactory.CreateDriver();
             driver.Navigate().GoToUrl("https://ek.ua/");
             driver.Manage().Window.Maximize();
             mainPage = new MainPage();
             PageFactory.InitElements(driver, mainPage);
-            userPage = new UserPage();
+            userPage = new UserPage(driver);
             PageFactory.InitElements(driver, userPage);
         }
 
@@ -45,6 +46,7 @@ namespace HomeWork
         [TearDown]
         public void Test2()
         {
+            userPage.DeleteUserAccount();
             driver.Quit();
             driver.Dispose();
         }

@@ -17,6 +17,10 @@ namespace HomeWork.Selenium_WD.Functional
                     var driver = new OpenQA.Selenium.Chrome.ChromeDriver();
                     return driver;
 
+                case "firefox":
+                    var _driver = new OpenQA.Selenium.Firefox.FirefoxDriver();
+                    return _driver;
+
                 default:
                     throw new Exception("Browser from appsetting not equals to any from avaible");
             }
