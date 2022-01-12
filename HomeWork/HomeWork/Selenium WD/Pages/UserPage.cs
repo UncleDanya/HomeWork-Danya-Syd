@@ -22,7 +22,7 @@ namespace HomeWork.Selenium_WD.Pages
         public IWebElement EditProfileButton { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//input[@class='ek-form-control' and @name='p_[NikName]']")]
-        public IWebElement NikFieldInputButton { get; set; }
+        public IWebElement NickFieldInputButton { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//button[@class='ek-form-btn blue' and text()='СОХРАНИТЬ']")]
         public IWebElement SaveChangeButton { get; set; }

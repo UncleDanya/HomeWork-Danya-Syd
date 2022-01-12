@@ -33,14 +33,14 @@ namespace HomeWork
             mainPage.ActualLogin.Click();
             var randomLogin = randomUser.CreateRandomLogin();
             userPage.EditProfileButton.Click();
-            userPage.NikFieldInputButton.Clear();
-            var enabledNikField = userPage.NikFieldInputButton.Enabled;
-            userPage.NikFieldInputButton.SendKeys(randomLogin);
+            userPage.NickFieldInputButton.Clear();
+            var enabledNickField = userPage.NickFieldInputButton.Enabled;
+            userPage.NickFieldInputButton.SendKeys(randomLogin);
             userPage.SaveChangeButton.Click();
             var nameActualUserAccount = userPage.TextActualNameUser.Text;
 
             Assert.AreEqual(randomLogin, nameActualUserAccount, "The changed login does not match the profile login");
-            Assert.IsTrue(enabledNikField);
+            Assert.IsTrue(enabledNickField);
         }
 
         [TearDown]

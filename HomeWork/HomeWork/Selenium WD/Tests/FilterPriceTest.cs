@@ -13,10 +13,9 @@ namespace HomeWork
         private IWebDriver driver;
         private EntryCategory category;
         private FilterBrands filterBrands;
-        private PageMobileProductApple pageMobileProductApple;
-        private PageMobileiPhone13Pro pageMobileiPhone13Pro;
-        private SortByDescendingPrice priceSortByDescendingPrice;
+        private PriceSorting priceSortByDescendingPrice;
         private CheckboxRuntimeVariable checkboxRuntimeVariable = new CheckboxRuntimeVariable();
+        private ProductPages productPages;
 
         [SetUp]
         public void Setup()
@@ -26,11 +25,9 @@ namespace HomeWork
             driver.Manage().Window.Maximize();
             category = new EntryCategory(driver);
             filterBrands = new FilterBrands(driver, checkboxRuntimeVariable);
-            pageMobileProductApple = new PageMobileProductApple();
-            PageFactory.InitElements(driver, pageMobileProductApple);
-            pageMobileiPhone13Pro = new PageMobileiPhone13Pro();
-            PageFactory.InitElements(driver, pageMobileiPhone13Pro);
-            priceSortByDescendingPrice = new SortByDescendingPrice(driver);
+            priceSortByDescendingPrice = new PriceSorting(driver);
+            productPages = new ProductPages(driver);
+            PageFactory.InitElements(driver, productPages);
         }
 
         [Test]
@@ -41,11 +38,11 @@ namespace HomeWork
             filterBrands.SearchBrandsByFilter("Apple");
             filterBrands.VerifyThatButtonIsCheckboxIsSelected("Apple");
             filterBrands.ClickOnShowFilter();
-            
-            pageMobileProductApple.NameProProductLink.Click();
-            pageMobileiPhone13Pro.ShowAllPriceProductButton.Click();
-            pageMobileiPhone13Pro.SortByPrice.Click();
-            
+
+            productPages.SelectProductOnPage("Apple iPhone 13 Pro");
+            productPages.ShowAllPriceOnProductButton.Click();
+            productPages.SortByPrice.Click();
+
             Thread.Sleep(1000);
             
             priceSortByDescendingPrice.DescendingPriceFilter();

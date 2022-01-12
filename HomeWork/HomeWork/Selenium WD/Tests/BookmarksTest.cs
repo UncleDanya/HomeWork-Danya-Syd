@@ -13,8 +13,8 @@ namespace HomeWork
         private IWebDriver driver;
         private EntryCategory category;
         private FilterBrands filter;
-        private PageMobileProductApple pageMobile;
         private CheckboxRuntimeVariable checkboxRuntimeVariables = new CheckboxRuntimeVariable();
+        private ProductPages productPages;
 
         [SetUp]
         public void Setup()
@@ -24,8 +24,8 @@ namespace HomeWork
             driver.Manage().Window.Maximize();
             category = new EntryCategory(driver);
             filter = new FilterBrands(driver, checkboxRuntimeVariables);
-            pageMobile = new PageMobileProductApple();
-            PageFactory.InitElements(driver, pageMobile);
+            productPages = new ProductPages(driver);
+            PageFactory.InitElements(driver, productPages);
         }
 
         [Test]
@@ -36,20 +36,22 @@ namespace HomeWork
             filter.SearchBrandsByFilter("Apple");
             filter.VerifyThatButtonIsCheckboxIsSelected("Apple");
             filter.ClickOnShowFilter();
-            
-            var tagName = pageMobile.NameProductLink.TagName;
-            pageMobile.NameProductLink.Click();
-            
-            var nameTitleProduct = pageMobile.NameTitleProduct.Text;
-            pageMobile.AddedProductInList.Click();
+
+            Thread.Sleep(1000);
+
+            var tagName = productPages.AddedProductInList.TagName;
+            productPages.SelectProductOnPage("Apple iPhone 13");
+
+            var nameTitleProduct = productPages.FooterWithNameOnPage.Text;
+            productPages.AddedProductInList.Click();
 
             Thread.Sleep(2000);
 
-            pageMobile.OpenListWithProduct.Click();
+            productPages.OpenListWithProduct.Click();
 
             Thread.Sleep(2000);
 
-            var nameProductInList = pageMobile.NameProductInList.Text;
+            var nameProductInList = productPages.NameProductInSaveList.Text;
             var textProductInList = nameProductInList.Replace("GB", string.Empty);
 
             Assert.IsTrue(nameTitleProduct.Contains(textProductInList), "The item added to the bookmark does not match the item in the bookmark");

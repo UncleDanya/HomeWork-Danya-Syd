@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ZjHfcy6+cRCel/F2MMKDpZ83wjFRLw8oTh+L9yZpDXD7ph7ua1/KxJwcrDiHnyZOeYFMyMpbu1TRpt9dWwMgOw==",
+  "dgSpecHash": "0cQln7w5KEI/M5rM91a1UihhjvDRFhN9mbtN0DxiWDeiK1SBUnK/7Yfkt+hoOQ7BOEEaPA4XkAf4gXCL2rP9bw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Danya\\source\\repos\\HomeWork-Danya-Syd\\HomeWork\\HomeWork\\HomeWork.csproj",
   "expectedPackageFiles": [
@@ -48,6 +48,7 @@
     "C:\\Users\\Danya\\.nuget\\packages\\selenium.support\\4.1.0\\selenium.support.4.1.0.nupkg.sha512",
     "C:\\Users\\Danya\\.nuget\\packages\\selenium.webdriver\\4.1.0\\selenium.webdriver.4.1.0.nupkg.sha512",
     "C:\\Users\\Danya\\.nuget\\packages\\selenium.webdriver.chromedriver\\96.0.4664.4500\\selenium.webdriver.chromedriver.96.0.4664.4500.nupkg.sha512",
+    "C:\\Users\\Danya\\.nuget\\packages\\selenium.webdriver.geckodriver\\0.30.0.1\\selenium.webdriver.geckodriver.0.30.0.1.nupkg.sha512",
     "C:\\Users\\Danya\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
     "C:\\Users\\Danya\\.nuget\\packages\\system.collections.concurrent\\4.3.0\\system.collections.concurrent.4.3.0.nupkg.sha512",
     "C:\\Users\\Danya\\.nuget\\packages\\system.diagnostics.debug\\4.3.0\\system.diagnostics.debug.4.3.0.nupkg.sha512",

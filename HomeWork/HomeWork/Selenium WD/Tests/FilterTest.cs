@@ -1,7 +1,9 @@
 ﻿using HomeWork.Selenium_WD.Functional;
+using HomeWork.Selenium_WD.Pages;
 using HomeWork.Selenium_WD.RuntimeVariables;
 using NUnit.Framework;
 using OpenQA.Selenium;
+using SeleniumExtras.PageObjects;
 using System;
 using System.Linq;
 
@@ -13,6 +15,7 @@ namespace HomeWork
         private EntryCategory category;
         private FilterBrands filterBrands;
         private CheckboxRuntimeVariable checkboxRuntimeVariable = new CheckboxRuntimeVariable();
+        private ProductPages productPages;
 
         [SetUp]
         public void Setup()
@@ -22,6 +25,8 @@ namespace HomeWork
             driver.Manage().Window.Maximize();
             category = new EntryCategory(driver);
             filterBrands = new FilterBrands(driver, checkboxRuntimeVariable);
+            productPages = new ProductPages(driver);
+            PageFactory.InitElements(driver, productPages);
         }
 
         [Test]
@@ -32,30 +37,8 @@ namespace HomeWork
             filterBrands.SearchBrandsByFilter("Acer");
             filterBrands.VerifyThatButtonIsCheckboxIsSelected("Acer");
             filterBrands.ClickOnShowFilter();
-            
-            var lastPage = driver.FindElements(By.XPath(".//div[@class='ib page-num']//a")).Last();
-            var neededElementText = Int32.Parse(lastPage.Text);
 
-            for (int i = 0; i < neededElementText; i++)
-            {
-                var allAcer = driver.FindElements(By.XPath("//a/span[contains(text(),'Acer')]"));
-
-                foreach (var oneItemAcer in allAcer)
-                {
-                    var oneItem = oneItemAcer.Text;
-                    Assert.IsTrue(oneItem.Contains("Acer"), "Not found");
-                }
-
-                try
-                {
-                    var nextPageButton = driver.FindElement(By.XPath("//a[@id='pager_next']"));
-                    nextPageButton.Click();
-                }
-                catch
-                {
-                    continue;
-                }
-            }
+            productPages.VerifyFilterShowActualBrand("Acer");
         }
 
         [TearDown]

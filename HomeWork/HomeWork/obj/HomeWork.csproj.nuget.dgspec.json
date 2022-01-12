@@ -92,6 +92,10 @@
               "target": "Package",
               "version": "[96.0.4664.4500, )"
             },
+            "Selenium.WebDriver.GeckoDriver": {
+              "target": "Package",
+              "version": "[0.30.0.1, )"
+            },
             "coverlet.collector": {
               "target": "Package",
               "version": "[3.1.0, )"

@@ -3,7 +3,9 @@ using HomeWork.Selenium_WD.Pages;
 using HomeWork.Selenium_WD.RuntimeVariables;
 using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using SeleniumExtras.PageObjects;
+using System.Threading;
 
 namespace HomeWork
 {
@@ -12,11 +14,9 @@ namespace HomeWork
         private IWebDriver driver;
         private EntryCategory category;
         private FilterBrands filter;
-        private PageTabletProductApple tabletProductApple;
-        private PageTabletAppleiPad2021 tabletAppleiPad2021;
-        private PageTabletAppleiPadAir2020 tabletAppleiPadAir2020;
         private CompareProductPage compareProduct;
         private CheckboxRuntimeVariable checkboxRuntimeVariable = new CheckboxRuntimeVariable();
+        private ProductPages productPages;
 
         [SetUp]
         public void Setup()
@@ -26,13 +26,9 @@ namespace HomeWork
             driver.Manage().Window.Maximize();
             category = new EntryCategory(driver);
             filter = new FilterBrands(driver, checkboxRuntimeVariable);
-            tabletAppleiPad2021 = new PageTabletAppleiPad2021();
-            tabletAppleiPadAir2020 = new PageTabletAppleiPadAir2020();
-            tabletProductApple = new PageTabletProductApple();
             compareProduct = new CompareProductPage();
-            PageFactory.InitElements(driver, tabletAppleiPad2021);
-            PageFactory.InitElements(driver, tabletAppleiPadAir2020);
-            PageFactory.InitElements(driver, tabletProductApple);
+            productPages = new ProductPages(driver);
+            PageFactory.InitElements(driver, productPages);
             PageFactory.InitElements(driver, compareProduct);
         }
 
@@ -45,18 +41,21 @@ namespace HomeWork
             filter.VerifyThatButtonIsCheckboxIsSelected("Apple");
             filter.ClickOnShowFilter();
             
-            var nameFirstTablet = tabletProductApple.FirstTabletToCompare.Text;
-            var attribute = tabletProductApple.FirstTabletToCompare.GetAttribute("data-url");
-            tabletProductApple.FirstTabletToCompare.Click();
-
-            tabletAppleiPad2021.AddedToCompareButton.Click();
-            tabletAppleiPad2021.SwitchToPageWithTablet.Click();
-
-            var nameSecondTablet = tabletProductApple.SecondTabletToCompate.Text;
-            tabletProductApple.SecondTabletToCompate.Click();
-
-            tabletAppleiPadAir2020.AddedToCompareButton.Click();
-            tabletAppleiPadAir2020.SwitchToComparePage.Click();
+            productPages.SelectProductOnPage("Apple iPad");
+            var nameFirstTablet = productPages.FooterWithNameOnPage.Text;
+            productPages.AddedToCompareCheckboxProduct.Click();
+            
+            Thread.Sleep(1000);
+            
+            var attribute = productPages.SwitchToPageWithTablet.GetAttribute("link");
+            productPages.SwitchToPageWithTablet.Click();
+            productPages.SelectProductOnPage("Apple iPad Air");
+            var nameSecondTablet = productPages.FooterWithNameOnPage.Text;
+            productPages.AddedToCompareCheckboxProduct.Click();
+            
+            Thread.Sleep(2000);
+            
+            productPages.SwitchToComparePage.Click();
 
             var connectWindowHandles = driver.WindowHandles;
             driver.SwitchTo().Window(connectWindowHandles[1]);
@@ -66,7 +65,7 @@ namespace HomeWork
 
             Assert.IsTrue(nameFirstTabletInComparePage.Contains(nameFirstTablet), "The added item does not match the item on the list");
             Assert.IsTrue(nameSecondTabletInComparePage.Contains(nameSecondTablet), "The added item does not match the item on the list");
-            Assert.AreEqual(attribute, "/APPLE-IPAD-2021-64GB.htm");
+            Assert.AreEqual(attribute, "/list/30/apple/");
         }
 
         [TearDown]

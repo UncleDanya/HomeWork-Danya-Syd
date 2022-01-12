@@ -12,9 +12,8 @@ namespace HomeWork
         private IWebDriver driver;
         private EntryCategory category;
         private FilterBrands filter;
-        private PageMobileProductApple pageMobile;
-        private PageProductAppleiPhone13 pageAppleiPhone13;
         private CheckboxRuntimeVariable checkboxRuntimeVariable = new CheckboxRuntimeVariable();
+        private ProductPages productPages;
 
         [SetUp]
         public void Setup()
@@ -24,10 +23,8 @@ namespace HomeWork
             driver.Manage().Window.Maximize();
             category = new EntryCategory(driver);
             filter = new FilterBrands(driver, checkboxRuntimeVariable);
-            pageMobile = new PageMobileProductApple();
-            PageFactory.InitElements(driver, pageMobile);
-            pageAppleiPhone13 = new PageProductAppleiPhone13();
-            PageFactory.InitElements(driver, pageAppleiPhone13);
+            productPages = new ProductPages(driver);
+            PageFactory.InitElements(driver, productPages);
         }
 
         [Test]
@@ -38,10 +35,10 @@ namespace HomeWork
             filter.SearchBrandsByFilter("Apple");
             filter.VerifyThatButtonIsCheckboxIsSelected("Apple");
             filter.ClickOnShowFilter();
-            
-            pageMobile.NameProductLink.Click();
-            var nameProductText = pageAppleiPhone13.FullNameProductOnPage.Text.Replace("Мобильный телефон ", string.Empty).Replace(" ГБ", string.Empty);
-            pageAppleiPhone13.NameShopLinkText.Click();
+
+            productPages.SelectProductOnPage("Apple iPhone 13");
+            var nameProductText = productPages.FooterWithNameOnPage.Text.Replace("Мобильный телефон ", string.Empty).Replace(" ГБ", string.Empty);
+            productPages.NameShopLinkText("Avic.ua");
             var connectWindowHandles = driver.WindowHandles;
             driver.SwitchTo().Window(connectWindowHandles[1]);
             var pageShopWithItemText = driver.FindElement(By.XPath("//h1[@class='page-title']")).Text;

@@ -15,9 +15,9 @@ namespace HomeWork
         private MainPage mainPage;
         private EntryCategory category;
         private FilterBrands filter;
-        private PageHeadsetProductLogitech pagaHeadset;
         private UserPage userPage;
         private CheckboxRuntimeVariable checkboxRuntimeVariable = new CheckboxRuntimeVariable();
+        private ProductPages productPages;
 
         [SetUp]
         public void Setup()
@@ -29,10 +29,10 @@ namespace HomeWork
             PageFactory.InitElements(driver, mainPage);
             category = new EntryCategory(driver);
             filter = new FilterBrands(driver, checkboxRuntimeVariable);
-            pagaHeadset = new PageHeadsetProductLogitech();
-            PageFactory.InitElements(driver, pagaHeadset);
             userPage = new UserPage(driver);
             PageFactory.InitElements(driver, userPage);
+            productPages = new ProductPages(driver);
+            PageFactory.InitElements(driver, productPages);
         }
 
         [Test]
@@ -45,17 +45,16 @@ namespace HomeWork
             filter.SearchBrandsByFilter("Logitech");
             filter.VerifyThatButtonIsCheckboxIsSelected("Logitech");
             filter.ClickOnShowFilter();
-            
-            var listWithNameProductOnPage = pagaHeadset.NameAllProductInPage.SkipLast(4).Select(element => element.Text).ToList();
+
+            var listWithNameProductOnPage = productPages.NamesOfAllProductsOnPage.SkipLast(4).Select(element => element.Text).ToList();
             listWithNameProductOnPage.Sort();
-            pagaHeadset.SaveListProductButton.Click();
+            productPages.SaveProductOnPage();
             
             Thread.Sleep(1000);
             
-            pagaHeadset.SubmitSaveProductListButton.Click();
             mainPage.EnterUserPageButton.Click();
             userPage.ShowSaveProductList.Click();
-            var listWithSaveProductInUserPage = pagaHeadset.NameAllProductInPage.Select(element => element.Text).ToList();
+            var listWithSaveProductInUserPage = productPages.NamesOfAllProductsOnPage.Select(element => element.Text).ToList();
             listWithSaveProductInUserPage.Sort();
 
             Assert.AreEqual(listWithNameProductOnPage, listWithSaveProductInUserPage, "The saved item sheet does not match the sheet in the profile");

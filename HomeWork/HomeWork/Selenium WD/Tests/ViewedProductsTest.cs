@@ -14,11 +14,8 @@ namespace HomeWork
         private FilterBrands filter;
         private MainPage mainPage;
         private UserPage userPage;
-        private PageMobileProductApple mobileProductApple;
-        private PageMobileiPhone13Pro mobileiPhone13Pro;
-        private PageHeadsetProductLogitech headsetProductLogitech;
-        private PageConsoleProductSony consoleProductSony;
         private CheckboxRuntimeVariable checkboxRuntimeVariable = new CheckboxRuntimeVariable();
+        private ProductPages productPages;
 
         [SetUp]
         public void Setup()
@@ -31,15 +28,9 @@ namespace HomeWork
             mainPage = new MainPage();
             PageFactory.InitElements(driver, mainPage);
             userPage = new UserPage(driver);
-            PageFactory.InitElements(driver, filter);
-            mobileProductApple = new PageMobileProductApple();
-            PageFactory.InitElements(driver, mobileProductApple);
-            mobileiPhone13Pro = new PageMobileiPhone13Pro();
-            PageFactory.InitElements(driver, mobileiPhone13Pro);
-            headsetProductLogitech = new PageHeadsetProductLogitech();
-            PageFactory.InitElements(driver, headsetProductLogitech);
-            consoleProductSony = new PageConsoleProductSony();
-            PageFactory.InitElements(driver, consoleProductSony);
+            PageFactory.InitElements(driver, userPage);
+            productPages = new ProductPages(driver);
+            PageFactory.InitElements(driver, productPages);
         }
 
         [Test]
@@ -52,27 +43,27 @@ namespace HomeWork
             filter.SearchBrandsByFilter("Apple");
             filter.VerifyThatButtonIsCheckboxIsSelected("Apple");
             filter.ClickOnShowFilter();
-            
-            var nameMobileProductText = mobileProductApple.NameProProductLink.Text;
-            mobileProductApple.NameProProductLink.Click();
+
+            var nameMobileProductText = productPages.NameProductOnPage("Apple iPhone 13 Pro");
+            productPages.SelectProductOnPage("Apple iPhone 13 Pro");
             
             category.EntryIntoCategoryByName("Компьютеры", "Приставки");
             
             filter.SearchBrandsByFilter("Sony");
             filter.VerifyThatButtonIsCheckboxIsSelected("Sony");
             filter.ClickOnShowFilter();
-            
-            var nameConsoleProductText = consoleProductSony.NameProductOnConsolePage.Text;
-            consoleProductSony.NameProductOnConsolePage.Click();
+
+            var nameConsoleProductText = productPages.NameProductOnPage("Sony PlayStation 5");
+            productPages.SelectProductOnPage("Sony PlayStation 5");
             
             category.EntryIntoCategoryByName("Аудио", "Наушники");
             
             filter.SearchBrandsByFilter("Logitech");
             filter.VerifyThatButtonIsCheckboxIsSelected("Logitech");
             filter.ClickOnShowFilter();
-            
-            var nameAudioProductText = headsetProductLogitech.NameProductOnHeadsetPage.Text;
-            headsetProductLogitech.NameProductOnHeadsetPage.Click();
+
+            var nameAudioProductText = productPages.NameProductOnPage("Logitech G Pro X");
+            productPages.SelectProductOnPage("Logitech G Pro X");
             
             mainPage.ActualLogin.Click();
             var nameMobileItemInList = driver.FindElement(By.XPath("//u[@class='nobr' and text()='Apple iPhone 13 Pr...']")).Text.Remove(16);

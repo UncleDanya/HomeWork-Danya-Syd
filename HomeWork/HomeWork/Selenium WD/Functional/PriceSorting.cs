@@ -6,11 +6,11 @@ using System.Linq;
 
 namespace HomeWork.Selenium_WD.Functional
 {
-    internal class SortByDescendingPrice
+    internal class PriceSorting
     {
         private IWebDriver driver;
 
-        public SortByDescendingPrice(IWebDriver driver)
+        public PriceSorting(IWebDriver driver)
         {
             this.driver = driver;
         }
