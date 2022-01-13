@@ -28,13 +28,14 @@ namespace HomeWork.Selenium_WD.Functional
             Thread.Sleep(1000);
         }
 
-        public void VerifyThatButtonIsCheckboxIsSelected(string brandToLook)
+        public void VerifyThatCheckboxIsSelected(string brandToLook)
         {
             var checkBoxVariable = _checkboxRuntimeVariables.Value;
             
             var locationButton = checkBoxVariable.Location.X;
             var sizeButton = checkBoxVariable.Size.Width + locationButton;
-            var color = checkBoxVariable.GetCssValue("value");
+            var color = checkBoxVariable.GetCssValue("Color");
+            Assert.AreEqual(color, "rgb(255, 141, 2)");
             var checkBoxElement = driver.FindElement(By.XPath($"//label[@class='brand-best']//a[text()='{brandToLook}']//ancestor::li//input")).Selected;
             
             // Assert.AreEqual(1197, sizeButton, "Checkbox size is not equal to expected");

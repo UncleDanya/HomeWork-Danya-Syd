@@ -33,7 +33,7 @@ namespace HomeWork
             category.EntryIntoCategoryByName("Гаджеты", "Мобильные");
             
             filter.SearchBrandsByFilter("Apple");
-            filter.VerifyThatButtonIsCheckboxIsSelected("Apple");
+            filter.VerifyThatCheckboxIsSelected("Apple");
             filter.ClickOnShowFilter();
 
             productPages.SelectProductOnPage("Apple iPhone 13");

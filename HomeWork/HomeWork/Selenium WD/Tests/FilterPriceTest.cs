@@ -36,7 +36,7 @@ namespace HomeWork
             category.EntryIntoCategoryByName("Гаджеты", "Мобильные");
             
             filterBrands.SearchBrandsByFilter("Apple");
-            filterBrands.VerifyThatButtonIsCheckboxIsSelected("Apple");
+            filterBrands.VerifyThatCheckboxIsSelected("Apple");
             filterBrands.ClickOnShowFilter();
 
             productPages.SelectProductOnPage("Apple iPhone 13 Pro");

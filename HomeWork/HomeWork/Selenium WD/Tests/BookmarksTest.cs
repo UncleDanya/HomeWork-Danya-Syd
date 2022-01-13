@@ -34,7 +34,7 @@ namespace HomeWork
             category.EntryIntoCategoryByName("Гаджеты", "Мобильные");
             
             filter.SearchBrandsByFilter("Apple");
-            filter.VerifyThatButtonIsCheckboxIsSelected("Apple");
+            filter.VerifyThatCheckboxIsSelected("Apple");
             filter.ClickOnShowFilter();
 
             Thread.Sleep(1000);

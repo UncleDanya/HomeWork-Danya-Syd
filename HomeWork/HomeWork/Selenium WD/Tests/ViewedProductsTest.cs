@@ -41,7 +41,7 @@ namespace HomeWork
             category.EntryIntoCategoryByName("Гаджеты", "Мобильные");
             
             filter.SearchBrandsByFilter("Apple");
-            filter.VerifyThatButtonIsCheckboxIsSelected("Apple");
+            filter.VerifyThatCheckboxIsSelected("Apple");
             filter.ClickOnShowFilter();
 
             var nameMobileProductText = productPages.NameProductOnPage("Apple iPhone 13 Pro");
@@ -50,7 +50,7 @@ namespace HomeWork
             category.EntryIntoCategoryByName("Компьютеры", "Приставки");
             
             filter.SearchBrandsByFilter("Sony");
-            filter.VerifyThatButtonIsCheckboxIsSelected("Sony");
+            filter.VerifyThatCheckboxIsSelected("Sony");
             filter.ClickOnShowFilter();
 
             var nameConsoleProductText = productPages.NameProductOnPage("Sony PlayStation 5");
@@ -59,7 +59,7 @@ namespace HomeWork
             category.EntryIntoCategoryByName("Аудио", "Наушники");
             
             filter.SearchBrandsByFilter("Logitech");
-            filter.VerifyThatButtonIsCheckboxIsSelected("Logitech");
+            filter.VerifyThatCheckboxIsSelected("Logitech");
             filter.ClickOnShowFilter();
 
             var nameAudioProductText = productPages.NameProductOnPage("Logitech G Pro X");

@@ -43,7 +43,7 @@ namespace HomeWork
             category.EntryIntoCategoryByName("Аудио", "Наушники");
             
             filter.SearchBrandsByFilter("Logitech");
-            filter.VerifyThatButtonIsCheckboxIsSelected("Logitech");
+            filter.VerifyThatCheckboxIsSelected("Logitech");
             filter.ClickOnShowFilter();
 
             var listWithNameProductOnPage = productPages.NamesOfAllProductsOnPage.SkipLast(4).Select(element => element.Text).ToList();

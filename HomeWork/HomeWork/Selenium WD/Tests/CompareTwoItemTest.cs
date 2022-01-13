@@ -38,7 +38,7 @@ namespace HomeWork
             category.EntryIntoCategoryByName("Компьютеры", "Планшеты");
             
             filter.SearchBrandsByFilter("Apple");
-            filter.VerifyThatButtonIsCheckboxIsSelected("Apple");
+            filter.VerifyThatCheckboxIsSelected("Apple");
             filter.ClickOnShowFilter();
             
             productPages.SelectProductOnPage("Apple iPad");

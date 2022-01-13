@@ -35,7 +35,7 @@ namespace HomeWork
             category.EntryIntoCategoryByName("Компьютеры", "Ноутбуки");
             
             filterBrands.SearchBrandsByFilter("Acer");
-            filterBrands.VerifyThatButtonIsCheckboxIsSelected("Acer");
+            filterBrands.VerifyThatCheckboxIsSelected("Acer");
             filterBrands.ClickOnShowFilter();
 
             productPages.VerifyFilterShowActualBrand("Acer");
