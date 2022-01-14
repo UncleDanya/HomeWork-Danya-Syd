@@ -39,39 +39,18 @@ namespace HomeWork.Selenium_WD.Pages
         [FindsBy(How = How.XPath, Using = ".//u[text()='Cравнить цены']")]
         public IWebElement ShowAllPriceOnProductButton { get; set; }
 
-        [FindsBy(How = How.XPath, Using = ".//a[@jtype='click' and text()='по цене']")]
-        public IWebElement SortByPrice { get; set; }
-
         [FindsBy(How = How.XPath, Using = ".//span[@class='u' and text()]")]
         public IList<IWebElement> NamesOfAllProductsOnPage { get; set; }
 
+        [FindsBy(How = How.XPath, Using = ".//span[text()='Сохранить список']")]
+        public IWebElement SaveListProductOnPage { get; set; }
 
-        public void SelectProductOnPage(string nameProduct) => driver.FindElement(By.XPath($".//span[@class='u' and text()='{nameProduct}']")).Click();
+        [FindsBy(How = How.XPath, Using = ".//button[@type='submit']")]
+        public IWebElement SubmitButtonSaveList { get; set; }
 
-        public string NameProductOnPage(string nameProduct) => driver.FindElement(By.XPath($".//span[@class='u' and text()='{nameProduct}']")).Text;
-
-        // public void SaveAllProductOnPageInList() => driver.FindElement(By.XPath(".//span[text()='Сохранить список']"));
-        public void SaveProductOnPage()
-        {
-            driver.FindElement(By.XPath(".//span[text()='Сохранить список']")).Click();
-            driver.FindElement(By.XPath(".//button[@type='submit']")).Click();
-        }
-
-        // public void FooterWithNameOnPage() => driver.FindElement(By.XPath(".//h1[@itemprop='name']"));
-
-        // public void AddedProductInList() => driver.FindElement(By.XPath(".//span[@title='Добавить в список']")).Click();
-
-        // public void AddedToCompareCheckboxProduct() => driver.FindElement(By.XPath(".//div[@class='ib toggle-off']//child::input[@type='checkbox' and @class='custom-checkbox']")).Click();
-
-        // public void ShowAllPriceOnProductButton() => driver.FindElement(By.XPath(".//u[text()='Cравнить цены']")).Click();
+        public IWebElement SelectProductOnPage(string nameProduct) => driver.FindElement(By.XPath($".//span[@class='u' and text()='{nameProduct}']"));
 
         public void NameShopLinkText(string nameShop) => driver.FindElement(By.LinkText($"{nameShop}")).Click();
-
-        // public void SortByPrice() => driver.FindElement(By.XPath(".//a[@jtype='click' and text()='по цене']")).Click();
-
-        // public void OpenListWithProducts() => driver.FindElement(By.XPath(".//li[@id='bar_bm_marked' and @class='goods-bar-section']")).Click();
-
-        // public void NameProductInSaveList(string nameProduct) => driver.FindElement(By.XPath($".//div[@class='side-list-label ' and text()='{nameProduct}']"));
 
         public void VerifyFilterShowActualBrand(string nameBrand)
         {

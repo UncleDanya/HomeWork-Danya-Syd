@@ -113,3 +113,5 @@ C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\obj\Debug\net6.
 C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\obj\Debug\net6.0\HomeWork.pdb
 C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\obj\Debug\net6.0\HomeWork.genruntimeconfig.cache
 C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\obj\Debug\net6.0\HomeWork.csproj.AssemblyReference.cache
+C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net6.0\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net6.0\Microsoft.VisualStudio.TestPlatform.TestFramework.dll

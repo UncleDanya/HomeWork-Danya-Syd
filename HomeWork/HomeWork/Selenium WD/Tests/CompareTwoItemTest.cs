@@ -12,8 +12,8 @@ namespace HomeWork
     internal class CompareTwoItemTest
     {
         private IWebDriver driver;
-        private EntryCategory category;
-        private FilterBrands filter;
+        private ProductCategoryNavigation category;
+        private CategoryPage categoryPage;
         private CompareProductPage compareProduct;
         private CheckboxRuntimeVariable checkboxRuntimeVariable = new CheckboxRuntimeVariable();
         private ProductPages productPages;
@@ -24,8 +24,8 @@ namespace HomeWork
             driver = BrowserFactory.CreateDriver();
             driver.Navigate().GoToUrl("https://ek.ua/");
             driver.Manage().Window.Maximize();
-            category = new EntryCategory(driver);
-            filter = new FilterBrands(driver, checkboxRuntimeVariable);
+            category = new ProductCategoryNavigation(driver);
+            categoryPage = new CategoryPage(driver, checkboxRuntimeVariable);
             compareProduct = new CompareProductPage();
             productPages = new ProductPages(driver);
             PageFactory.InitElements(driver, productPages);
@@ -33,15 +33,15 @@ namespace HomeWork
         }
 
         [Test]
-        public void Test1()
+        public void TestCompareTwoItem()
         {
             category.EntryIntoCategoryByName("Компьютеры", "Планшеты");
             
-            filter.SearchBrandsByFilter("Apple");
-            filter.VerifyThatCheckboxIsSelected("Apple");
-            filter.ClickOnShowFilter();
+            categoryPage.SearchBrandByFilter("Apple");
+            categoryPage.VerifyThatCheckboxIsSelected("Apple");
+            categoryPage.ClickOnShowFilterButton();
             
-            productPages.SelectProductOnPage("Apple iPad");
+            productPages.SelectProductOnPage("Apple iPad").Click();
             var nameFirstTablet = productPages.FooterWithNameOnPage.Text;
             productPages.AddedToCompareCheckboxProduct.Click();
             
@@ -49,7 +49,7 @@ namespace HomeWork
             
             var attribute = productPages.SwitchToPageWithTablet.GetAttribute("link");
             productPages.SwitchToPageWithTablet.Click();
-            productPages.SelectProductOnPage("Apple iPad Air");
+            productPages.SelectProductOnPage("Apple iPad Air").Click();
             var nameSecondTablet = productPages.FooterWithNameOnPage.Text;
             productPages.AddedToCompareCheckboxProduct.Click();
             
@@ -69,7 +69,7 @@ namespace HomeWork
         }
 
         [TearDown]
-        public void Test2()
+        public void Completion()
         {
             driver.Quit();
             driver.Dispose();

@@ -2,7 +2,7 @@
 using OpenQA.Selenium;
 using System;
 using System.Linq;
-
+using System.Threading;
 
 namespace HomeWork.Selenium_WD.Functional
 {
@@ -15,8 +15,12 @@ namespace HomeWork.Selenium_WD.Functional
             this.driver = driver;
         }
 
-        public void DescendingPriceFilter()
+        public void VerifyPriceDescendingPriceSorting()
         {
+            driver.FindElement(By.XPath(".//a[@jtype='click' and text()='по цене']")).Click();
+            
+            Thread.Sleep(1000);
+            
             var lastPage = driver.FindElements(By.XPath(".//div[@class='ib page-num']//a")).Last();
             var neededElementText = Int32.Parse(lastPage.Text);
 

@@ -1,8 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
 using System;
-using System.Text.Json;
-using System.IO;
-using System.Threading.Tasks;
 
 namespace HomeWork.Selenium_WD.Helpers
 {

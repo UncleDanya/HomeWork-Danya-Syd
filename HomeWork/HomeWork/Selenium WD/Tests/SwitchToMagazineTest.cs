@@ -10,8 +10,8 @@ namespace HomeWork
     internal class SwitchToMagazineTest
     {
         private IWebDriver driver;
-        private EntryCategory category;
-        private FilterBrands filter;
+        private ProductCategoryNavigation category;
+        CategoryPage categoryPage;
         private CheckboxRuntimeVariable checkboxRuntimeVariable = new CheckboxRuntimeVariable();
         private ProductPages productPages;
 
@@ -21,22 +21,22 @@ namespace HomeWork
             driver = BrowserFactory.CreateDriver();
             driver.Navigate().GoToUrl("https://ek.ua/");
             driver.Manage().Window.Maximize();
-            category = new EntryCategory(driver);
-            filter = new FilterBrands(driver, checkboxRuntimeVariable);
+            category = new ProductCategoryNavigation(driver);
+            categoryPage = new CategoryPage(driver, checkboxRuntimeVariable);
             productPages = new ProductPages(driver);
             PageFactory.InitElements(driver, productPages);
         }
 
         [Test]
-        public void Test1()
+        public void TestSwitchToShop()
         {
             category.EntryIntoCategoryByName("Гаджеты", "Мобильные");
-            
-            filter.SearchBrandsByFilter("Apple");
-            filter.VerifyThatCheckboxIsSelected("Apple");
-            filter.ClickOnShowFilter();
 
-            productPages.SelectProductOnPage("Apple iPhone 13");
+            categoryPage.SearchBrandByFilter("Apple");
+            categoryPage.VerifyThatCheckboxIsSelected("Apple");
+            categoryPage.ClickOnShowFilterButton();
+
+            productPages.SelectProductOnPage("Apple iPhone 13").Click();
             var nameProductText = productPages.FooterWithNameOnPage.Text.Replace("Мобильный телефон ", string.Empty).Replace(" ГБ", string.Empty);
             productPages.NameShopLinkText("Avic.ua");
             var connectWindowHandles = driver.WindowHandles;
@@ -47,7 +47,7 @@ namespace HomeWork
         }
 
         [TearDown]
-        public void Test2()
+        public void Completion()
         {
             driver.Quit();
             driver.Dispose();

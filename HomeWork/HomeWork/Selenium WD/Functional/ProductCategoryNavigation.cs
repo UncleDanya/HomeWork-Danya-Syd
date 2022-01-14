@@ -5,11 +5,11 @@ using System.Threading;
 
 namespace HomeWork.Selenium_WD.Functional
 {
-    internal class EntryCategory
+    internal class ProductCategoryNavigation
     {
         private IWebDriver driver;
 
-        public EntryCategory(IWebDriver driver)
+        public ProductCategoryNavigation(IWebDriver driver)
         {
             this.driver = driver;
         }

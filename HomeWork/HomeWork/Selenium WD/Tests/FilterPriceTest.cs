@@ -11,8 +11,8 @@ namespace HomeWork
     internal class FilterPriceTest
     {
         private IWebDriver driver;
-        private EntryCategory category;
-        private FilterBrands filterBrands;
+        private ProductCategoryNavigation category;
+        CategoryPage categoryPage;
         private PriceSorting priceSortByDescendingPrice;
         private CheckboxRuntimeVariable checkboxRuntimeVariable = new CheckboxRuntimeVariable();
         private ProductPages productPages;
@@ -23,33 +23,32 @@ namespace HomeWork
             driver = BrowserFactory.CreateDriver();
             driver.Navigate().GoToUrl("https://ek.ua/");
             driver.Manage().Window.Maximize();
-            category = new EntryCategory(driver);
-            filterBrands = new FilterBrands(driver, checkboxRuntimeVariable);
+            category = new ProductCategoryNavigation(driver);
+            categoryPage = new CategoryPage(driver, checkboxRuntimeVariable);
             priceSortByDescendingPrice = new PriceSorting(driver);
             productPages = new ProductPages(driver);
             PageFactory.InitElements(driver, productPages);
         }
 
         [Test]
-        public void Test1()
+        public void TestFilterPrice()
         {
             category.EntryIntoCategoryByName("Гаджеты", "Мобильные");
-            
-            filterBrands.SearchBrandsByFilter("Apple");
-            filterBrands.VerifyThatCheckboxIsSelected("Apple");
-            filterBrands.ClickOnShowFilter();
 
-            productPages.SelectProductOnPage("Apple iPhone 13 Pro");
+            categoryPage.SearchBrandByFilter("Apple");
+            categoryPage.VerifyThatCheckboxIsSelected("Apple");
+            categoryPage.ClickOnShowFilterButton();
+
+            productPages.SelectProductOnPage("Apple iPhone 13 Pro").Click();
             productPages.ShowAllPriceOnProductButton.Click();
-            productPages.SortByPrice.Click();
 
             Thread.Sleep(1000);
             
-            priceSortByDescendingPrice.DescendingPriceFilter();
+            priceSortByDescendingPrice.VerifyPriceDescendingPriceSorting();
         }
 
         [TearDown]
-        public void Test2()
+        public void Completion()
         {
             driver.Quit();
             driver.Dispose();

@@ -19,13 +19,13 @@ namespace HomeWork
         }
 
         [Test]
-        public void Test1()
+        public void TestSearchField()
         {
             searchField.SearchFieldProductInput("iPhone 13 Pro 256");
         }
 
         [TearDown]
-        public void Test2()
+        public void Completion()
         {
             driver.Quit();
             driver.Dispose();

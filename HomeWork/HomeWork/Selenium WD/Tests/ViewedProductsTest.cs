@@ -10,8 +10,8 @@ namespace HomeWork
     internal class ViewedProductsTest
     {
         private IWebDriver driver;
-        private EntryCategory category;
-        private FilterBrands filter;
+        private ProductCategoryNavigation category;
+        private CategoryPage categoryPage;
         private MainPage mainPage;
         private UserPage userPage;
         private CheckboxRuntimeVariable checkboxRuntimeVariable = new CheckboxRuntimeVariable();
@@ -23,8 +23,8 @@ namespace HomeWork
             driver = BrowserFactory.CreateDriver();
             driver.Navigate().GoToUrl("https://ek.ua/");
             driver.Manage().Window.Maximize();
-            category = new EntryCategory(driver);
-            filter = new FilterBrands(driver, checkboxRuntimeVariable);
+            category = new ProductCategoryNavigation(driver);
+            categoryPage = new CategoryPage(driver, checkboxRuntimeVariable);
             mainPage = new MainPage();
             PageFactory.InitElements(driver, mainPage);
             userPage = new UserPage(driver);
@@ -34,36 +34,36 @@ namespace HomeWork
         }
 
         [Test]
-        public void Test1()
+        public void TestViewedProducts()
         {
             mainPage.CreateNewUserAccount();
             
             category.EntryIntoCategoryByName("Гаджеты", "Мобильные");
-            
-            filter.SearchBrandsByFilter("Apple");
-            filter.VerifyThatCheckboxIsSelected("Apple");
-            filter.ClickOnShowFilter();
 
-            var nameMobileProductText = productPages.NameProductOnPage("Apple iPhone 13 Pro");
-            productPages.SelectProductOnPage("Apple iPhone 13 Pro");
+            categoryPage.SearchBrandByFilter("Apple");
+            categoryPage.VerifyThatCheckboxIsSelected("Apple");
+            categoryPage.ClickOnShowFilterButton();
+
+            var nameMobileProductText = productPages.SelectProductOnPage("Apple iPhone 13 Pro").Text;
+            productPages.SelectProductOnPage("Apple iPhone 13 Pro").Click();
             
             category.EntryIntoCategoryByName("Компьютеры", "Приставки");
-            
-            filter.SearchBrandsByFilter("Sony");
-            filter.VerifyThatCheckboxIsSelected("Sony");
-            filter.ClickOnShowFilter();
 
-            var nameConsoleProductText = productPages.NameProductOnPage("Sony PlayStation 5");
-            productPages.SelectProductOnPage("Sony PlayStation 5");
+            categoryPage.SearchBrandByFilter("Sony");
+            categoryPage.VerifyThatCheckboxIsSelected("Sony");
+            categoryPage.ClickOnShowFilterButton();
+
+            var nameConsoleProductText = productPages.SelectProductOnPage("Sony PlayStation 5").Text;
+            productPages.SelectProductOnPage("Sony PlayStation 5").Click();
             
             category.EntryIntoCategoryByName("Аудио", "Наушники");
-            
-            filter.SearchBrandsByFilter("Logitech");
-            filter.VerifyThatCheckboxIsSelected("Logitech");
-            filter.ClickOnShowFilter();
 
-            var nameAudioProductText = productPages.NameProductOnPage("Logitech G Pro X");
-            productPages.SelectProductOnPage("Logitech G Pro X");
+            categoryPage.SearchBrandByFilter("Logitech");
+            categoryPage.VerifyThatCheckboxIsSelected("Logitech");
+            categoryPage.ClickOnShowFilterButton();
+
+            var nameAudioProductText = productPages.SelectProductOnPage("Logitech G Pro X").Text;
+            productPages.SelectProductOnPage("Logitech G Pro X").Click();
             
             mainPage.ActualLogin.Click();
             var nameMobileItemInList = driver.FindElement(By.XPath("//u[@class='nobr' and text()='Apple iPhone 13 Pr...']")).Text.Remove(16);
@@ -76,7 +76,7 @@ namespace HomeWork
         }
 
         [TearDown]
-        public void Test2()
+        public void Completion()
         {
             userPage.DeleteUserAccount();
             driver.Quit();

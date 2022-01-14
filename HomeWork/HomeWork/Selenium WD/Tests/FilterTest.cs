@@ -4,16 +4,14 @@ using HomeWork.Selenium_WD.RuntimeVariables;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
-using System;
-using System.Linq;
 
 namespace HomeWork
 {
     internal class FilterTest
     {
         private IWebDriver driver;
-        private EntryCategory category;
-        private FilterBrands filterBrands;
+        private ProductCategoryNavigation category;
+        CategoryPage categoryPage;
         private CheckboxRuntimeVariable checkboxRuntimeVariable = new CheckboxRuntimeVariable();
         private ProductPages productPages;
 
@@ -23,26 +21,26 @@ namespace HomeWork
             driver = BrowserFactory.CreateDriver();
             driver.Navigate().GoToUrl("https://ek.ua/");
             driver.Manage().Window.Maximize();
-            category = new EntryCategory(driver);
-            filterBrands = new FilterBrands(driver, checkboxRuntimeVariable);
+            category = new ProductCategoryNavigation(driver);
+            categoryPage = new CategoryPage(driver, checkboxRuntimeVariable);
             productPages = new ProductPages(driver);
             PageFactory.InitElements(driver, productPages);
         }
 
         [Test]
-        public void Test1()
+        public void TestFilter()
         {
             category.EntryIntoCategoryByName("Компьютеры", "Ноутбуки");
-            
-            filterBrands.SearchBrandsByFilter("Acer");
-            filterBrands.VerifyThatCheckboxIsSelected("Acer");
-            filterBrands.ClickOnShowFilter();
+
+            categoryPage.SearchBrandByFilter("Acer");
+            categoryPage.VerifyThatCheckboxIsSelected("Acer");
+            categoryPage.ClickOnShowFilterButton();
 
             productPages.VerifyFilterShowActualBrand("Acer");
         }
 
         [TearDown]
-        public void Test2()
+        public void Completion()
         {
             driver.Quit();
             driver.Dispose();

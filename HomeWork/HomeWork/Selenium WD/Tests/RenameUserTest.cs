@@ -25,7 +25,7 @@ namespace HomeWork
         }
 
         [Test]
-        public void Test1()
+        public void TestRenameUser()
         {
             RandomUser randomUser = new RandomUser();
             
@@ -44,7 +44,7 @@ namespace HomeWork
         }
 
         [TearDown]
-        public void Test2()
+        public void Completion()
         {
             userPage.DeleteUserAccount();
             driver.Quit();

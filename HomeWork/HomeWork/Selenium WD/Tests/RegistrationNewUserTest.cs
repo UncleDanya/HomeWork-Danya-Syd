@@ -25,13 +25,13 @@ namespace HomeWork
         }
 
         [Test]
-        public void Test1()
+        public void TestRegistrationNewUserTest()
         {
             mainPage.CreateNewUserAccount();
         }
 
         [TearDown]
-        public void Test2()
+        public void Completion()
         {
             userPage.DeleteUserAccount();
             driver.Quit();

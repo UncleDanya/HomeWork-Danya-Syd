@@ -4,46 +4,42 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using System.Threading;
 
-namespace HomeWork.Selenium_WD.Functional
+namespace HomeWork.Selenium_WD.Pages
 {
-    internal class FilterBrands
+    internal class CategoryPage : BasePage
     {
         private IWebDriver driver;
         private readonly CheckboxRuntimeVariable _checkboxRuntimeVariables;
 
-        public FilterBrands(IWebDriver driver, CheckboxRuntimeVariable checkboxRuntimeVariables)
+        public CategoryPage(IWebDriver driver, CheckboxRuntimeVariable checkboxRuntimeVariables)
         {
             this.driver = driver;
             _checkboxRuntimeVariables = checkboxRuntimeVariables;
         }
 
-        public void SearchBrandsByFilter(string brandToLook)
+        public void SearchBrandByFilter(string brandToLook)
         {
             Actions actions = new Actions(driver);
-            
+
             var tableWithBrands = driver.FindElement(By.XPath($"//label[@class='brand-best']//a[text()='{brandToLook}']"));
             _checkboxRuntimeVariables.Value = tableWithBrands;
             actions.Click(tableWithBrands).Perform();
-            
+
             Thread.Sleep(1000);
         }
 
         public void VerifyThatCheckboxIsSelected(string brandToLook)
         {
             var checkBoxVariable = _checkboxRuntimeVariables.Value;
-            
-            var locationButton = checkBoxVariable.Location.X;
-            var sizeButton = checkBoxVariable.Size.Width + locationButton;
+
             var color = checkBoxVariable.GetCssValue("Color");
             Assert.AreEqual(color, "rgb(255, 141, 2)");
             var checkBoxElement = driver.FindElement(By.XPath($"//label[@class='brand-best']//a[text()='{brandToLook}']//ancestor::li//input")).Selected;
-            
-            // Assert.AreEqual(1197, sizeButton, "Checkbox size is not equal to expected");
+
             Assert.IsTrue(checkBoxElement, $"Button {brandToLook} is not selected");
         }
 
-
-        public void ClickOnShowFilter()
+        public void ClickOnShowFilterButton()
         {
             IJavaScriptExecutor executor = (IJavaScriptExecutor)driver;
 
