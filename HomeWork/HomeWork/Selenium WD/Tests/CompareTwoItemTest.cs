@@ -32,7 +32,7 @@ namespace HomeWork
         }
 
         [Test]
-        public void CompareTwoItemTest()
+        public void TestCompareTwoItem()
         {
             category.EntryIntoCategoryByName("Компьютеры", "Планшеты");
             
