@@ -9,10 +9,12 @@ namespace HomeWork.Selenium_WD.Pages
     internal class MainPage : BasePage
     {
         private RandomLoginVariable randomLoginVariable;
+        
         public MainPage(RandomLoginVariable randomLoginVariable)
         {
             this.randomLoginVariable = randomLoginVariable;
         }
+        
         RandomUser randomUser = new RandomUser();
         
         [FindsBy(How = How.XPath, Using = ".//span[@jtype='click']")]
