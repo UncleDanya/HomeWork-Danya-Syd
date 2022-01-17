@@ -50,7 +50,7 @@ namespace HomeWork.Selenium_WD.Pages
 
         public IWebElement SelectProductOnPage(string nameProduct) => driver.FindElement(By.XPath($".//span[@class='u' and text()='{nameProduct}']"));
 
-        public void NameShopLinkText(string nameShop) => driver.FindElement(By.LinkText($"{nameShop}")).Click();
+        public IWebElement NameShopLinkText(string nameShop) => driver.FindElement(By.LinkText($"{nameShop}"));
 
         public void VerifyFilterShowActualBrand(string nameBrand)
         {
@@ -59,9 +59,9 @@ namespace HomeWork.Selenium_WD.Pages
 
             for (int i = 0; i < neededElementText; i++)
             {
-                var allAcer = driver.FindElements(By.XPath($"//a/span[contains(text(),'{nameBrand}')]"));
+                var allNameProduct = driver.FindElements(By.XPath($"//a/span[contains(text(),'{nameBrand}')]"));
 
-                foreach (var oneItemAcer in allAcer)
+                foreach (var oneItemAcer in allNameProduct)
                 {
                     var oneItem = oneItemAcer.Text;
                     Assert.IsTrue(oneItem.Contains($"{nameBrand}"), "Not found");

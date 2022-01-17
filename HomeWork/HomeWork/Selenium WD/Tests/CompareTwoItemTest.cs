@@ -3,7 +3,6 @@ using HomeWork.Selenium_WD.Pages;
 using HomeWork.Selenium_WD.RuntimeVariables;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Interactions;
 using SeleniumExtras.PageObjects;
 using System.Threading;
 
@@ -26,14 +25,14 @@ namespace HomeWork
             driver.Manage().Window.Maximize();
             category = new ProductCategoryNavigation(driver);
             categoryPage = new CategoryPage(driver, checkboxRuntimeVariable);
-            compareProduct = new CompareProductPage();
+            compareProduct = new CompareProductPage(driver);
             productPages = new ProductPages(driver);
             PageFactory.InitElements(driver, productPages);
             PageFactory.InitElements(driver, compareProduct);
         }
 
         [Test]
-        public void TestCompareTwoItem()
+        public void CompareTwoItemTest()
         {
             category.EntryIntoCategoryByName("Компьютеры", "Планшеты");
             
@@ -60,8 +59,8 @@ namespace HomeWork
             var connectWindowHandles = driver.WindowHandles;
             driver.SwitchTo().Window(connectWindowHandles[1]);
 
-            var nameFirstTabletInComparePage = compareProduct.NameFirstCompareProduct.Text;
-            var nameSecondTabletInComparePage = compareProduct.NameSecondCompareProduct.Text;
+            var nameFirstTabletInComparePage = compareProduct.NameProductForCompare("Apple iPad 2021").Text;
+            var nameSecondTabletInComparePage = compareProduct.NameProductForCompare("Apple iPad Air").Text;
 
             Assert.IsTrue(nameFirstTabletInComparePage.Contains(nameFirstTablet), "The added item does not match the item on the list");
             Assert.IsTrue(nameSecondTabletInComparePage.Contains(nameSecondTablet), "The added item does not match the item on the list");
@@ -69,7 +68,7 @@ namespace HomeWork
         }
 
         [TearDown]
-        public void Completion()
+        public void AfterTest()
         {
             driver.Quit();
             driver.Dispose();

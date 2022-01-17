@@ -15,7 +15,7 @@ namespace HomeWork.Selenium_WD.Functional
             this.driver = driver;
         }
 
-        public void VerifyPriceDescendingPriceSorting()
+        public void VerifyDescendingPriceSorting()
         {
             driver.FindElement(By.XPath(".//a[@jtype='click' and text()='по цене']")).Click();
             

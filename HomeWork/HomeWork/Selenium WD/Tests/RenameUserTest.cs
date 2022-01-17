@@ -1,5 +1,6 @@
 ﻿using HomeWork.Selenium_WD.Functional;
 using HomeWork.Selenium_WD.Pages;
+using HomeWork.Selenium_WD.RuntimeVariables;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
@@ -11,6 +12,7 @@ namespace HomeWork
         private IWebDriver driver;
         private MainPage mainPage;
         private UserPage userPage;
+        private RandomLoginVariable randomLoginVariable = new RandomLoginVariable();
         
         [SetUp]
         public void Setup()
@@ -18,7 +20,7 @@ namespace HomeWork
             driver = BrowserFactory.CreateDriver();
             driver.Navigate().GoToUrl("https://ek.ua/");
             driver.Manage().Window.Maximize();
-            mainPage = new MainPage();
+            mainPage = new MainPage(randomLoginVariable);
             PageFactory.InitElements(driver, mainPage);
             userPage = new UserPage(driver);
             PageFactory.InitElements(driver, userPage);
@@ -44,7 +46,7 @@ namespace HomeWork
         }
 
         [TearDown]
-        public void Completion()
+        public void AfterTest()
         {
             userPage.DeleteUserAccount();
             driver.Quit();

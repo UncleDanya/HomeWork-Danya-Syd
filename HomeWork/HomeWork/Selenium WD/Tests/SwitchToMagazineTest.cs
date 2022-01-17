@@ -38,7 +38,7 @@ namespace HomeWork
 
             productPages.SelectProductOnPage("Apple iPhone 13").Click();
             var nameProductText = productPages.FooterWithNameOnPage.Text.Replace("Мобильный телефон ", string.Empty).Replace(" ГБ", string.Empty);
-            productPages.NameShopLinkText("Avic.ua");
+            productPages.NameShopLinkText("Avic.ua").Click();
             var connectWindowHandles = driver.WindowHandles;
             driver.SwitchTo().Window(connectWindowHandles[1]);
             var pageShopWithItemText = driver.FindElement(By.XPath("//h1[@class='page-title']")).Text;
@@ -47,7 +47,7 @@ namespace HomeWork
         }
 
         [TearDown]
-        public void Completion()
+        public void AfterTest()
         {
             driver.Quit();
             driver.Dispose();

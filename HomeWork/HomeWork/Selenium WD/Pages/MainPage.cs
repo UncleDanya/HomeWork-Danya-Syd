@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using HomeWork.Selenium_WD.RuntimeVariables;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
 using System.Threading;
@@ -7,8 +8,13 @@ namespace HomeWork.Selenium_WD.Pages
 {
     internal class MainPage : BasePage
     {
+        private RandomLoginVariable randomLoginVariable;
+        public MainPage(RandomLoginVariable randomLoginVariable)
+        {
+            this.randomLoginVariable = randomLoginVariable;
+        }
         RandomUser randomUser = new RandomUser();
-
+        
         [FindsBy(How = How.XPath, Using = ".//span[@jtype='click']")]
         public IWebElement LoginButton { get; set; }
 
@@ -44,14 +50,14 @@ namespace HomeWork.Selenium_WD.Pages
 
         public void CreateNewUserAccount()
         {
-            var randomLogin = randomUser.CreateRandomLogin();
+            randomLoginVariable.Value = randomUser.CreateRandomLogin();
 
             LoginButton.Click();
-
+            
             Thread.Sleep(2000);
 
             RegistrationNewUserButton.Click();
-            NameFieldInputButton.SendKeys(randomLogin);
+            NameFieldInputButton.SendKeys(randomLoginVariable.Value);
             EmailFieldInputButton.SendKeys(randomUser.CreateRandomEmail());
             PasswordFieldInputButton.SendKeys(randomUser.CreateRandomPassword());
             RegistationButton.Click();
@@ -61,11 +67,13 @@ namespace HomeWork.Selenium_WD.Pages
             AcceptRegistrationNewUserButton.Click();
 
             Thread.Sleep(2000);
+        }
 
+        public void VerifyLoginAccount()
+        {
             var actualLoginForCompare = ActualLogin.Text;
 
-            Assert.AreEqual(actualLoginForCompare, randomLogin, "The actual login does not match the expected");
+            Assert.AreEqual(actualLoginForCompare, randomLoginVariable.Value, "The actual login does not match the expected");
         }
     }
-
 }

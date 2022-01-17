@@ -40,7 +40,7 @@ namespace HomeWork
         }
 
         [TearDown]
-        public void Completion()
+        public void AfterTest()
         {
             driver.Quit();
             driver.Dispose();
