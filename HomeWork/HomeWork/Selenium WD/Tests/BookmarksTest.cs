@@ -11,7 +11,7 @@ namespace HomeWork
 {
     internal class BookmarksTest
     {
-        private IWebDriver driver;
+        private RemoteWebDriver driver;
         private ProductCategoryNavigation category;
         private CategoryPage categoryPage;
         private CheckboxRuntimeVariable checkboxRuntimeVariables = new CheckboxRuntimeVariable();

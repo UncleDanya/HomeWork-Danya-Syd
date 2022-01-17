@@ -9,9 +9,9 @@ namespace HomeWork.Selenium_WD.Pages
 {
     internal class ProductPages : BasePage
     {
-        IWebDriver driver;
+        RemoteWebDriver driver;
         
-        public ProductPages(IWebDriver driver)
+        public ProductPages(RemoteWebDriver driver)
         {
             this.driver = driver;
         }

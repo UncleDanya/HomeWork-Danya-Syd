@@ -11,7 +11,7 @@ namespace HomeWork
 {
     internal class SaveItemListTest
     {
-        private IWebDriver driver;
+        private RemoteWebDriver driver;
         private MainPage mainPage;
         private ProductCategoryNavigation category;
         CategoryPage categoryPage;

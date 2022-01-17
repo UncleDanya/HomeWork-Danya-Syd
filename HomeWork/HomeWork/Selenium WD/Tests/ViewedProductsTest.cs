@@ -9,7 +9,7 @@ namespace HomeWork
 {
     internal class ViewedProductsTest
     {
-        private IWebDriver driver;
+        private RemoteWebDriver driver;
         private ProductCategoryNavigation category;
         private CategoryPage categoryPage;
         private MainPage mainPage;

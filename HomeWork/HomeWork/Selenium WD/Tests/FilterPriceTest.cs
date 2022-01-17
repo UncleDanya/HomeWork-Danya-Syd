@@ -10,7 +10,7 @@ namespace HomeWork
 {
     internal class FilterPriceTest
     {
-        private IWebDriver driver;
+        private RemoteWebDriver driver;
         private ProductCategoryNavigation category;
         CategoryPage categoryPage;
         private PriceSorting priceSortByDescendingPrice;

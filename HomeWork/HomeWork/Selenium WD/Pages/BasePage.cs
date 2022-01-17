@@ -1,15 +1,16 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Remote;
 using SeleniumExtras.PageObjects;
 
 namespace HomeWork.Selenium_WD.Pages
 {
     internal class BasePage
     {
-        public IWebDriver driver { get; set; }
+        public RemoteWebDriver Driver { get; set; }
 
         public void InitElement()
         {
-            PageFactory.InitElements(driver, this);
+            PageFactory.InitElements(Driver, this);
         }
     }
 }

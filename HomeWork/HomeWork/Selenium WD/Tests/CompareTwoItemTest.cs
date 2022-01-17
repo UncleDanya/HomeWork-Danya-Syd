@@ -12,7 +12,7 @@ namespace HomeWork
 {
     internal class CompareTwoItemTest
     {
-        private IWebDriver driver;
+        private RemoteWebDriver driver;
         private ProductCategoryNavigation category;
         private CategoryPage categoryPage;
         private CompareProductPage compareProduct;
@@ -27,7 +27,7 @@ namespace HomeWork
             driver.Manage().Window.Maximize();
             category = new ProductCategoryNavigation(driver);
             categoryPage = new CategoryPage(driver, checkboxRuntimeVariable);
-            compareProduct = new CompareProductPage(driver);
+            compareProduct = new CompareProductPage();
             productPages = new ProductPages(driver);
             PageFactory.InitElements(driver, productPages);
             PageFactory.InitElements(driver, compareProduct);

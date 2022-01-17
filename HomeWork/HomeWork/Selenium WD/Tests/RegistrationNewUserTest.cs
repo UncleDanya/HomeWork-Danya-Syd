@@ -9,7 +9,7 @@ namespace HomeWork
 {
     public class RegistrationNewUserTest
     {
-        private IWebDriver driver;
+        private RemoteWebDriver driver;
         private MainPage mainPage;
         private UserPage userPage;
         private RandomLoginVariable randomLoginVariable = new RandomLoginVariable();

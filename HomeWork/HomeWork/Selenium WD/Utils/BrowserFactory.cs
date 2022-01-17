@@ -1,12 +1,13 @@
 ﻿using HomeWork.Selenium_WD.Providers;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Remote;
 using System;
 
 namespace HomeWork.Selenium_WD.Functional
 {
     internal class BrowserFactory
     {
-        public static IWebDriver CreateDriver()
+        public static RemoteWebDriver CreateDriver()
         {
             switch(BrowserProvider.Browser) {
                 case "chrome":

@@ -7,9 +7,9 @@ using SeleniumExtras.PageObjects;
 
 namespace HomeWork
 {
-    internal class SwitchToMagazineTest
+    internal class SwitchToShopTest
     {
-        private IWebDriver driver;
+        private RemoteWebDriver driver;
         private ProductCategoryNavigation category;
         CategoryPage categoryPage;
         private CheckboxRuntimeVariable checkboxRuntimeVariable = new CheckboxRuntimeVariable();

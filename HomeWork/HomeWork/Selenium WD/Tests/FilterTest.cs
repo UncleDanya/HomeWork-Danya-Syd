@@ -9,7 +9,7 @@ namespace HomeWork
 {
     internal class FilterTest
     {
-        private IWebDriver driver;
+        private RemoteWebDriver driver;
         private ProductCategoryNavigation category;
         CategoryPage categoryPage;
         private CheckboxRuntimeVariable checkboxRuntimeVariable = new CheckboxRuntimeVariable();

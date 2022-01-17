@@ -72,6 +72,10 @@
               "target": "Package",
               "version": "[17.0.0, )"
             },
+            "NPOI": {
+              "target": "Package",
+              "version": "[2.5.5, )"
+            },
             "NUnit": {
               "target": "Package",
               "version": "[3.13.2, )"

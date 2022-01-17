@@ -5,9 +5,9 @@ namespace HomeWork.Selenium_WD.Functional
 {
     internal class SearchField
     {
-        private IWebDriver driver;
+        private RemoteWebDriver driver;
 
-        public SearchField(IWebDriver driver)
+        public SearchField(RemoteWebDriver driver)
         {
             this.driver = driver;
         }

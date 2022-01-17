@@ -7,9 +7,9 @@ namespace HomeWork.Selenium_WD.Functional
 {
     internal class ProductCategoryNavigation
     {
-        private IWebDriver driver;
+        private RemoteWebDriver driver;
 
-        public ProductCategoryNavigation(IWebDriver driver)
+        public ProductCategoryNavigation(RemoteWebDriver driver)
         {
             this.driver = driver;
         }

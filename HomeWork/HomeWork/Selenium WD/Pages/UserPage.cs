@@ -6,8 +6,8 @@ namespace HomeWork.Selenium_WD.Pages
 {
     internal class UserPage : BasePage
     {
-        private IWebDriver _driver;
-        public UserPage(IWebDriver driver)
+        private RemoteWebDriver _driver;
+        public UserPage(RemoteWebDriver driver)
         {
             _driver = driver;
         }
