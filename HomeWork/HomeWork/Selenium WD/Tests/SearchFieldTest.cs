@@ -22,10 +22,11 @@ namespace HomeWork
         public void TestSearchField()
         {
             searchField.SearchFieldProductInput("iPhone 13 Pro 256");
+            searchField.VerifyItemForSeraching("iPhone 13 Pro 256");
         }
 
         [TearDown]
-        public void Completion()
+        public void AfterTest()
         {
             driver.Quit();
             driver.Dispose();

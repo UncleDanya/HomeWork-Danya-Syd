@@ -19,14 +19,17 @@ namespace HomeWork.Selenium_WD.Functional
 
             var searchButton = driver.FindElement(By.Name("search_but_"));
             searchButton.Click();
+        }
 
+        public void VerifyItemForSeraching(string nameItem)
+        {
             var searchingItems = driver.FindElements(By.XPath("//td[@class='where-buy-description']//h3[text()]"));
 
             foreach (var searchingItem in searchingItems)
             {
                 var searchResultsText = searchingItem.Text;
-                
-                Assert.IsTrue(searchResultsText.Contains(productSearch));
+
+                Assert.IsTrue(searchResultsText.Contains(nameItem));
             }
         }
     }

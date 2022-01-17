@@ -16,6 +16,7 @@ namespace HomeWork
         private UserPage userPage;
         private CheckboxRuntimeVariable checkboxRuntimeVariable = new CheckboxRuntimeVariable();
         private ProductPages productPages;
+        private RandomLoginVariable randomLoginVariable = new RandomLoginVariable();
 
         [SetUp]
         public void Setup()
@@ -25,7 +26,7 @@ namespace HomeWork
             driver.Manage().Window.Maximize();
             category = new ProductCategoryNavigation(driver);
             categoryPage = new CategoryPage(driver, checkboxRuntimeVariable);
-            mainPage = new MainPage();
+            mainPage = new MainPage(randomLoginVariable);
             PageFactory.InitElements(driver, mainPage);
             userPage = new UserPage(driver);
             PageFactory.InitElements(driver, userPage);
@@ -76,7 +77,7 @@ namespace HomeWork
         }
 
         [TearDown]
-        public void Completion()
+        public void AfterTest()
         {
             userPage.DeleteUserAccount();
             driver.Quit();

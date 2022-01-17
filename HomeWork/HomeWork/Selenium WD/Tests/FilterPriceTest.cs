@@ -31,7 +31,7 @@ namespace HomeWork
         }
 
         [Test]
-        public void TestFilterPrice()
+        public void PriceTestFilter()
         {
             category.EntryIntoCategoryByName("Гаджеты", "Мобильные");
 
@@ -44,11 +44,11 @@ namespace HomeWork
 
             Thread.Sleep(1000);
             
-            priceSortByDescendingPrice.VerifyPriceDescendingPriceSorting();
+            priceSortByDescendingPrice.VerifyDescendingPriceSorting();
         }
 
         [TearDown]
-        public void Completion()
+        public void AfterTest()
         {
             driver.Quit();
             driver.Dispose();
