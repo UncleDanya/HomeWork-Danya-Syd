@@ -1,32 +1,74 @@
-﻿using NUnit.Framework;
+﻿using HomeWork.Selenium_WD.Functional;
+using HomeWork.Selenium_WD.Pages;
+using HomeWork.Selenium_WD.RuntimeVariables;
+using NUnit.Framework;
 using OpenQA.Selenium;
+using SeleniumExtras.PageObjects;
+using System.Threading;
 
 namespace HomeWork
 {
     internal class CompareTwoItemTest
     {
         private IWebDriver driver;
-        private UserService service;
-        
+        private ProductCategoryNavigation category;
+        private CategoryPage categoryPage;
+        private CompareProductPage compareProduct;
+        private CheckboxRuntimeVariable checkboxRuntimeVariable = new CheckboxRuntimeVariable();
+        private ProductPages productPages;
+
         [SetUp]
         public void Setup()
         {
-            driver = new OpenQA.Selenium.Chrome.ChromeDriver();
+            driver = BrowserFactory.CreateDriver();
             driver.Navigate().GoToUrl("https://ek.ua/");
             driver.Manage().Window.Maximize();
-            service = new UserService(driver);
+            category = new ProductCategoryNavigation(driver);
+            categoryPage = new CategoryPage(driver, checkboxRuntimeVariable);
+            compareProduct = new CompareProductPage(driver);
+            productPages = new ProductPages(driver);
+            PageFactory.InitElements(driver, productPages);
+            PageFactory.InitElements(driver, compareProduct);
         }
 
         [Test]
-        public void Test1()
+        public void CompareTwoItemTest()
         {
-            service.EntryIntoCategoryByName("Компьютеры", "Планшеты");
-            service.SearchBrandsByFilter("Apple");
-            service.CompareTest();
+            category.EntryIntoCategoryByName("Компьютеры", "Планшеты");
+            
+            categoryPage.SearchBrandByFilter("Apple");
+            categoryPage.VerifyThatCheckboxIsSelected("Apple");
+            categoryPage.ClickOnShowFilterButton();
+            
+            productPages.SelectProductOnPage("Apple iPad").Click();
+            var nameFirstTablet = productPages.FooterWithNameOnPage.Text;
+            productPages.AddedToCompareCheckboxProduct.Click();
+            
+            Thread.Sleep(1000);
+            
+            var attribute = productPages.SwitchToPageWithTablet.GetAttribute("link");
+            productPages.SwitchToPageWithTablet.Click();
+            productPages.SelectProductOnPage("Apple iPad Air").Click();
+            var nameSecondTablet = productPages.FooterWithNameOnPage.Text;
+            productPages.AddedToCompareCheckboxProduct.Click();
+            
+            Thread.Sleep(2000);
+            
+            productPages.SwitchToComparePage.Click();
+
+            var connectWindowHandles = driver.WindowHandles;
+            driver.SwitchTo().Window(connectWindowHandles[1]);
+
+            var nameFirstTabletInComparePage = compareProduct.NameProductForCompare("Apple iPad 2021").Text;
+            var nameSecondTabletInComparePage = compareProduct.NameProductForCompare("Apple iPad Air").Text;
+
+            Assert.IsTrue(nameFirstTabletInComparePage.Contains(nameFirstTablet), "The added item does not match the item on the list");
+            Assert.IsTrue(nameSecondTabletInComparePage.Contains(nameSecondTablet), "The added item does not match the item on the list");
+            Assert.AreEqual(attribute, "/list/30/apple/");
         }
 
         [TearDown]
-        public void Test2()
+        public void AfterTest()
         {
             driver.Quit();
             driver.Dispose();

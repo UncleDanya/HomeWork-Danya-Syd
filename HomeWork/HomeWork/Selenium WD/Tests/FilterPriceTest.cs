@@ -1,35 +1,54 @@
-﻿using NUnit.Framework;
+﻿using HomeWork.Selenium_WD.Functional;
+using HomeWork.Selenium_WD.Pages;
+using HomeWork.Selenium_WD.RuntimeVariables;
+using NUnit.Framework;
 using OpenQA.Selenium;
-using System;
-using System.Linq;
+using SeleniumExtras.PageObjects;
+using System.Threading;
 
 namespace HomeWork
 {
     internal class FilterPriceTest
     {
         private IWebDriver driver;
-        private UserService service;
+        private ProductCategoryNavigation category;
+        CategoryPage categoryPage;
+        private PriceSorting priceSortByDescendingPrice;
+        private CheckboxRuntimeVariable checkboxRuntimeVariable = new CheckboxRuntimeVariable();
+        private ProductPages productPages;
 
         [SetUp]
         public void Setup()
         {
-            driver = new OpenQA.Selenium.Chrome.ChromeDriver();
+            driver = BrowserFactory.CreateDriver();
             driver.Navigate().GoToUrl("https://ek.ua/");
             driver.Manage().Window.Maximize();
-            service = new UserService(driver);
+            category = new ProductCategoryNavigation(driver);
+            categoryPage = new CategoryPage(driver, checkboxRuntimeVariable);
+            priceSortByDescendingPrice = new PriceSorting(driver);
+            productPages = new ProductPages(driver);
+            PageFactory.InitElements(driver, productPages);
         }
 
         [Test]
-        public void Test1()
+        public void PriceTestFilter()
         {
-            service.EntryIntoCategoryByName("Гаджеты", "Мобильные");
-            service.SearchBrandsByFilter("Apple");
-            service.PriceFilter();
-            service.DescendingPriceFilter();
+            category.EntryIntoCategoryByName("Гаджеты", "Мобильные");
+
+            categoryPage.SearchBrandByFilter("Apple");
+            categoryPage.VerifyThatCheckboxIsSelected("Apple");
+            categoryPage.ClickOnShowFilterButton();
+
+            productPages.SelectProductOnPage("Apple iPhone 13 Pro").Click();
+            productPages.ShowAllPriceOnProductButton.Click();
+
+            Thread.Sleep(1000);
+            
+            priceSortByDescendingPrice.VerifyDescendingPriceSorting();
         }
 
         [TearDown]
-        public void Test2()
+        public void AfterTest()
         {
             driver.Quit();
             driver.Dispose();

@@ -10,14 +10,14 @@ namespace HomeWork
             Random randomUs = new Random();
             String сharacters = "qwertyuiopasdfghjklzxcvbnm";
             int lenght = 2;
-            String generatedUserName = "AutotestUser";
+            String generatedUserName = "User";
 
             for (int i = 0; i < lenght; i++)
             {
                 int randomChar = randomUs.Next(26);
                 generatedUserName = generatedUserName + сharacters.ElementAt(randomChar);
             }
-            return generatedUserName += randomUs.Next(1, 999000);
+            return generatedUserName += randomUs.Next(1, 99);
         }
 
         public string CreateRandomPassword()

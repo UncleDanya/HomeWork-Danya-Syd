@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using HomeWork.Selenium_WD.Functional;
+using NUnit.Framework;
 using OpenQA.Selenium;
 
 namespace HomeWork
@@ -6,25 +7,26 @@ namespace HomeWork
     internal class SearchFieldTest
     {
         private IWebDriver driver;
-        private UserService service;
+        private SearchField searchField;
 
         [SetUp]
         public void Setup()
         {
-            driver = new OpenQA.Selenium.Chrome.ChromeDriver();
+            driver = BrowserFactory.CreateDriver();
             driver.Navigate().GoToUrl("https://ek.ua/");
             driver.Manage().Window.Maximize();
-            service = new UserService(driver);
+            searchField = new SearchField(driver);
         }
 
         [Test]
-        public void Test1()
+        public void TestSearchField()
         {
-            service.SearchFieldProductInput("iPhone 13 Pro 256");
+            searchField.SearchFieldProductInput("iPhone 13 Pro 256");
+            searchField.VerifyItemForSeraching("iPhone 13 Pro 256");
         }
 
         [TearDown]
-        public void Test2()
+        public void AfterTest()
         {
             driver.Quit();
             driver.Dispose();

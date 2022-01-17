@@ -1,32 +1,53 @@
-﻿using NUnit.Framework;
+﻿using HomeWork.Selenium_WD.Functional;
+using HomeWork.Selenium_WD.Pages;
+using HomeWork.Selenium_WD.RuntimeVariables;
+using NUnit.Framework;
 using OpenQA.Selenium;
+using SeleniumExtras.PageObjects;
 
 namespace HomeWork
 {
     internal class SwitchToMagazineTest
     {
         private IWebDriver driver;
-        private UserService service;
+        private ProductCategoryNavigation category;
+        CategoryPage categoryPage;
+        private CheckboxRuntimeVariable checkboxRuntimeVariable = new CheckboxRuntimeVariable();
+        private ProductPages productPages;
 
         [SetUp]
         public void Setup()
         {
-            driver = new OpenQA.Selenium.Chrome.ChromeDriver();
+            driver = BrowserFactory.CreateDriver();
             driver.Navigate().GoToUrl("https://ek.ua/");
             driver.Manage().Window.Maximize();
-            service = new UserService(driver);
+            category = new ProductCategoryNavigation(driver);
+            categoryPage = new CategoryPage(driver, checkboxRuntimeVariable);
+            productPages = new ProductPages(driver);
+            PageFactory.InitElements(driver, productPages);
         }
 
         [Test]
-        public void Test1()
+        public void TestSwitchToShop()
         {
-            service.EntryIntoCategoryByName("Гаджеты", "Мобильные");
-            service.SearchBrandsByFilter("Apple");
-            service.SwitchToPage();
+            category.EntryIntoCategoryByName("Гаджеты", "Мобильные");
+
+            categoryPage.SearchBrandByFilter("Apple");
+            categoryPage.VerifyThatCheckboxIsSelected("Apple");
+            categoryPage.ClickOnShowFilterButton();
+
+            productPages.SelectProductOnPage("Apple iPhone 13").Click();
+            var nameProductText = productPages.FooterWithNameOnPage.Text.Replace("Мобильный телефон ", string.Empty).Replace(" ГБ", string.Empty);
+            productPages.NameShopLinkText("Avic.ua").Click();
+            var connectWindowHandles = driver.WindowHandles;
+            driver.SwitchTo().Window(connectWindowHandles[1]);
+            var pageShopWithItemText = driver.FindElement(By.XPath("//h1[@class='page-title']")).Text;
+
+            Assert.IsTrue(pageShopWithItemText.Contains(nameProductText));
         }
 
         [TearDown]
-        public void Test2()
+        public void AfterTest()
         {
             driver.Quit();
             driver.Dispose();
