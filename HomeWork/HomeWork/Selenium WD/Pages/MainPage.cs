@@ -55,7 +55,7 @@ namespace HomeWork.Selenium_WD.Pages
             randomLoginVariable.Value = randomUser.CreateRandomLogin();
 
             LoginButton.Click();
-            
+           
             Thread.Sleep(2000);
 
             RegistrationNewUserButton.Click();

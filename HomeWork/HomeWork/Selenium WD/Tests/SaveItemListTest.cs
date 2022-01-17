@@ -50,6 +50,9 @@ namespace HomeWork
             var listWithNameProductOnPage = productPages.NamesOfAllProductsOnPage.SkipLast(4).Select(element => element.Text).ToList();
             listWithNameProductOnPage.Sort();
             productPages.SaveListProductOnPage.Click();
+            
+            Thread.Sleep(1000);
+            
             productPages.SubmitButtonSaveList.Click();
             
             Thread.Sleep(1000);

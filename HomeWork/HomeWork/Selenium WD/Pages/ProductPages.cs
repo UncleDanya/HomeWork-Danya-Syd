@@ -31,7 +31,7 @@ namespace HomeWork.Selenium_WD.Pages
         [FindsBy(How = How.XPath, Using = ".//div[@class='ib toggle-off']//following-sibling::label")]
         public IWebElement AddedToCompareCheckboxProduct { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//span[@id='num_bm_compared']")]
+        [FindsBy(How = How.XPath, Using = ".//span[@id='num_bm_compared']")]
         public IWebElement SwitchToComparePage { get; set; }
 
         [FindsBy(How = How.XPath, Using = ".//a[@link='/list/30/apple/']")]
