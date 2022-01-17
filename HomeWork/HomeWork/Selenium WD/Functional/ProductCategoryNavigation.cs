@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
+using OpenQA.Selenium.Remote;
 using System.Threading;
 
 namespace HomeWork.Selenium_WD.Functional

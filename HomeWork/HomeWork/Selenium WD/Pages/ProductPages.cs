@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Remote;
 using SeleniumExtras.PageObjects;
 using System;
 using System.Collections.Generic;
@@ -9,13 +10,13 @@ namespace HomeWork.Selenium_WD.Pages
 {
     internal class ProductPages : BasePage
     {
-        RemoteWebDriver driver;
+        /*RemoteWebDriver driver;
         
         public ProductPages(RemoteWebDriver driver)
         {
             this.driver = driver;
         }
-        
+        */
         [FindsBy(How = How.XPath, Using = ".//h1[@itemprop='name']")]
         public IWebElement FooterWithNameOnPage { get; set; }
 
@@ -49,18 +50,18 @@ namespace HomeWork.Selenium_WD.Pages
         [FindsBy(How = How.XPath, Using = ".//button[@type='submit']")]
         public IWebElement SubmitButtonSaveList { get; set; }
 
-        public IWebElement SelectProductOnPage(string nameProduct) => driver.FindElement(By.XPath($".//span[@class='u' and text()='{nameProduct}']"));
+        public IWebElement SelectProductOnPage(string nameProduct) => Driver.FindElement(By.XPath($".//span[@class='u' and text()='{nameProduct}']"));
 
-        public IWebElement NameShopLinkText(string nameShop) => driver.FindElement(By.LinkText($"{nameShop}"));
+        public IWebElement NameShopLinkText(string nameShop) => Driver.FindElement(By.LinkText($"{nameShop}"));
 
         public void VerifyFilterShowActualBrand(string nameBrand)
         {
-            var lastPage = driver.FindElements(By.XPath(".//div[@class='ib page-num']//a")).Last();
+            var lastPage = Driver.FindElements(By.XPath(".//div[@class='ib page-num']//a")).Last();
             var neededElementText = Int32.Parse(lastPage.Text);
 
             for (int i = 0; i < neededElementText; i++)
             {
-                var allNameProduct = driver.FindElements(By.XPath($"//a/span[contains(text(),'{nameBrand}')]"));
+                var allNameProduct = Driver.FindElements(By.XPath($"//a/span[contains(text(),'{nameBrand}')]"));
 
                 foreach (var oneItemAcer in allNameProduct)
                 {
@@ -70,7 +71,7 @@ namespace HomeWork.Selenium_WD.Pages
 
                 try
                 {
-                    var nextPageButton = driver.FindElement(By.XPath("//a[@id='pager_next']"));
+                    var nextPageButton = Driver.FindElement(By.XPath("//a[@id='pager_next']"));
                     nextPageButton.Click();
                 }
                 catch

@@ -1,29 +1,30 @@
-﻿using NUnit.Framework;
+﻿using HomeWork.Selenium_WD.Pages;
+using NUnit.Framework;
 using OpenQA.Selenium;
 
 namespace HomeWork.Selenium_WD.Functional
 {
-    internal class SearchField
+    internal class SearchField : BasePage
     {
-        private RemoteWebDriver driver;
+        /*private RemoteWebDriver driver;
 
         public SearchField(RemoteWebDriver driver)
         {
             this.driver = driver;
-        }
+        }*/
 
         public void SearchFieldProductInput(string productSearch)
         {
-            var searchInput = driver.FindElement(By.XPath("//input[@id='ek-search']"));
+            var searchInput = Driver.FindElement(By.XPath("//input[@id='ek-search']"));
             searchInput.SendKeys(productSearch);
 
-            var searchButton = driver.FindElement(By.Name("search_but_"));
+            var searchButton = Driver.FindElement(By.Name("search_but_"));
             searchButton.Click();
         }
 
         public void VerifyItemForSeraching(string nameItem)
         {
-            var searchingItems = driver.FindElements(By.XPath("//td[@class='where-buy-description']//h3[text()]"));
+            var searchingItems = Driver.FindElements(By.XPath("//td[@class='where-buy-description']//h3[text()]"));
 
             foreach (var searchingItem in searchingItems)
             {

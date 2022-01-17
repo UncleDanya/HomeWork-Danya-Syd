@@ -1,4 +1,5 @@
-﻿using HomeWork.Selenium_WD.Functional;
+﻿using HomeWork.Selenium_WD.Base;
+using HomeWork.Selenium_WD.Functional;
 using HomeWork.Selenium_WD.Pages;
 using HomeWork.Selenium_WD.RuntimeVariables;
 using NUnit.Framework;
@@ -8,9 +9,9 @@ using System.Threading;
 
 namespace HomeWork
 {
-    internal class FilterPriceTest
+    internal class FilterPriceTest : BaseTest
     {
-        private RemoteWebDriver driver;
+        // private RemoteWebDriver driver;
         private ProductCategoryNavigation category;
         CategoryPage categoryPage;
         private PriceSorting priceSortByDescendingPrice;
@@ -24,9 +25,9 @@ namespace HomeWork
             driver.Navigate().GoToUrl("https://ek.ua/");
             driver.Manage().Window.Maximize();
             category = new ProductCategoryNavigation(driver);
-            categoryPage = new CategoryPage(driver, checkboxRuntimeVariable);
+            categoryPage = new CategoryPage(checkboxRuntimeVariable);
             priceSortByDescendingPrice = new PriceSorting(driver);
-            productPages = new ProductPages(driver);
+            productPages = new ProductPages();
             PageFactory.InitElements(driver, productPages);
         }
 

@@ -1,4 +1,5 @@
-﻿using HomeWork.Selenium_WD.Functional;
+﻿using HomeWork.Selenium_WD.Base;
+using HomeWork.Selenium_WD.Functional;
 using HomeWork.Selenium_WD.Pages;
 using HomeWork.Selenium_WD.RuntimeVariables;
 using NUnit.Framework;
@@ -10,9 +11,9 @@ using System.Threading;
 
 namespace HomeWork
 {
-    internal class CompareTwoItemTest
+    internal class CompareTwoItemTest : BaseTest
     {
-        private RemoteWebDriver driver;
+        // private RemoteWebDriver driver;
         private ProductCategoryNavigation category;
         private CategoryPage categoryPage;
         private CompareProductPage compareProduct;
@@ -26,9 +27,9 @@ namespace HomeWork
             driver.Navigate().GoToUrl("https://ek.ua/");
             driver.Manage().Window.Maximize();
             category = new ProductCategoryNavigation(driver);
-            categoryPage = new CategoryPage(driver, checkboxRuntimeVariable);
+            categoryPage = new CategoryPage(checkboxRuntimeVariable);
             compareProduct = new CompareProductPage();
-            productPages = new ProductPages(driver);
+            productPages = new ProductPages();
             PageFactory.InitElements(driver, productPages);
             PageFactory.InitElements(driver, compareProduct);
         }

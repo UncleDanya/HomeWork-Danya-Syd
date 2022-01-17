@@ -1,4 +1,5 @@
-﻿using HomeWork.Selenium_WD.Functional;
+﻿using HomeWork.Selenium_WD.Base;
+using HomeWork.Selenium_WD.Functional;
 using HomeWork.Selenium_WD.Pages;
 using HomeWork.Selenium_WD.RuntimeVariables;
 using NUnit.Framework;
@@ -7,9 +8,9 @@ using SeleniumExtras.PageObjects;
 
 namespace HomeWork
 {
-    internal class ViewedProductsTest
+    internal class ViewedProductsTest : BaseTest
     {
-        private RemoteWebDriver driver;
+        // private RemoteWebDriver driver;
         private ProductCategoryNavigation category;
         private CategoryPage categoryPage;
         private MainPage mainPage;
@@ -25,12 +26,12 @@ namespace HomeWork
             driver.Navigate().GoToUrl("https://ek.ua/");
             driver.Manage().Window.Maximize();
             category = new ProductCategoryNavigation(driver);
-            categoryPage = new CategoryPage(driver, checkboxRuntimeVariable);
+            categoryPage = new CategoryPage(checkboxRuntimeVariable);
             mainPage = new MainPage(randomLoginVariable);
             PageFactory.InitElements(driver, mainPage);
-            userPage = new UserPage(driver);
+            userPage = new UserPage();
             PageFactory.InitElements(driver, userPage);
-            productPages = new ProductPages(driver);
+            productPages = new ProductPages();
             PageFactory.InitElements(driver, productPages);
         }
 

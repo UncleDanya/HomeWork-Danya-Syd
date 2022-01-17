@@ -1,4 +1,5 @@
-﻿using HomeWork.Selenium_WD.Functional;
+﻿using HomeWork.Selenium_WD.Base;
+using HomeWork.Selenium_WD.Functional;
 using HomeWork.Selenium_WD.Pages;
 using HomeWork.Selenium_WD.RuntimeVariables;
 using NUnit.Framework;
@@ -9,9 +10,9 @@ using System.Threading;
 
 namespace HomeWork
 {
-    internal class BookmarksTest
+    internal class BookmarksTest : BaseTest
     {
-        private RemoteWebDriver driver;
+        // private RemoteWebDriver driver;
         private ProductCategoryNavigation category;
         private CategoryPage categoryPage;
         private CheckboxRuntimeVariable checkboxRuntimeVariables = new CheckboxRuntimeVariable();
@@ -24,8 +25,8 @@ namespace HomeWork
             driver.Navigate().GoToUrl("https://ek.ua/");
             driver.Manage().Window.Maximize();
             category = new ProductCategoryNavigation(driver);
-            categoryPage = new CategoryPage(driver, checkboxRuntimeVariables);
-            productPages = new ProductPages(driver);
+            categoryPage = new CategoryPage(checkboxRuntimeVariables);
+            productPages = new ProductPages();
             PageFactory.InitElements(driver, productPages);
         }
 

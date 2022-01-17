@@ -1,3 +1,4 @@
+using HomeWork.Selenium_WD.Base;
 using HomeWork.Selenium_WD.Functional;
 using HomeWork.Selenium_WD.Pages;
 using HomeWork.Selenium_WD.RuntimeVariables;
@@ -7,9 +8,9 @@ using SeleniumExtras.PageObjects;
 
 namespace HomeWork
 {
-    public class RegistrationNewUserTest
+    public class RegistrationNewUserTest : BaseTest
     {
-        private RemoteWebDriver driver;
+        // private RemoteWebDriver driver;
         private MainPage mainPage;
         private UserPage userPage;
         private RandomLoginVariable randomLoginVariable = new RandomLoginVariable();
@@ -21,7 +22,7 @@ namespace HomeWork
             driver.Navigate().GoToUrl("https://ek.ua/");
             driver.Manage().Window.Maximize();
             mainPage = new MainPage(randomLoginVariable);
-            userPage = new UserPage(driver);
+            userPage = new UserPage();
             PageFactory.InitElements(driver, mainPage);
             PageFactory.InitElements(driver, userPage);
         }

@@ -4,7 +4,7 @@ using SeleniumExtras.PageObjects;
 
 namespace HomeWork.Selenium_WD.Pages
 {
-    internal class BasePage
+    public class BasePage
     {
         public RemoteWebDriver Driver { get; set; }
 

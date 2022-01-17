@@ -1,10 +1,11 @@
 ﻿using HomeWork.Selenium_WD.Functional;
 using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Remote;
 
 namespace HomeWork.Selenium_WD.Base
 {
-    internal class BaseTest
+    public class BaseTest
     {
         public RemoteWebDriver driver { get; set; }
         

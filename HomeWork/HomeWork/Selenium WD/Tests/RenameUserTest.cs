@@ -1,4 +1,5 @@
-﻿using HomeWork.Selenium_WD.Functional;
+﻿using HomeWork.Selenium_WD.Base;
+using HomeWork.Selenium_WD.Functional;
 using HomeWork.Selenium_WD.Pages;
 using HomeWork.Selenium_WD.RuntimeVariables;
 using NUnit.Framework;
@@ -7,9 +8,9 @@ using SeleniumExtras.PageObjects;
 
 namespace HomeWork
 {
-    internal class RenameUserTest
+    internal class RenameUserTest : BaseTest
     {
-        private RemoteWebDriver driver;
+        // private RemoteWebDriver driver;
         private MainPage mainPage;
         private UserPage userPage;
         private RandomLoginVariable randomLoginVariable = new RandomLoginVariable();
@@ -22,7 +23,7 @@ namespace HomeWork
             driver.Manage().Window.Maximize();
             mainPage = new MainPage(randomLoginVariable);
             PageFactory.InitElements(driver, mainPage);
-            userPage = new UserPage(driver);
+            userPage = new UserPage();
             PageFactory.InitElements(driver, userPage);
         }
 

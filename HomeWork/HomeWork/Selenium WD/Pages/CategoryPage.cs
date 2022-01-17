@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
+using OpenQA.Selenium.Remote;
 using System.Threading;
 
 namespace HomeWork.Selenium_WD.Pages
@@ -11,9 +12,9 @@ namespace HomeWork.Selenium_WD.Pages
         // private RemoteWebDriver driver;
         private readonly CheckboxRuntimeVariable _checkboxRuntimeVariables;
 
-        public CategoryPage(RemoteWebDriver driver, CheckboxRuntimeVariable checkboxRuntimeVariables)
+        public CategoryPage(CheckboxRuntimeVariable checkboxRuntimeVariables)
         {
-            this.Driver = driver;
+            // this.Driver = driver;
             _checkboxRuntimeVariables = checkboxRuntimeVariables;
         }
 

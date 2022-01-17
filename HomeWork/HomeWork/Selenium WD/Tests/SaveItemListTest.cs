@@ -1,4 +1,5 @@
-﻿using HomeWork.Selenium_WD.Functional;
+﻿using HomeWork.Selenium_WD.Base;
+using HomeWork.Selenium_WD.Functional;
 using HomeWork.Selenium_WD.Pages;
 using HomeWork.Selenium_WD.RuntimeVariables;
 using NUnit.Framework;
@@ -9,9 +10,9 @@ using System.Threading;
 
 namespace HomeWork
 {
-    internal class SaveItemListTest
+    internal class SaveItemListTest : BaseTest
     {
-        private RemoteWebDriver driver;
+        // private RemoteWebDriver driver;
         private MainPage mainPage;
         private ProductCategoryNavigation category;
         CategoryPage categoryPage;
@@ -29,10 +30,10 @@ namespace HomeWork
             mainPage = new MainPage(randomLoginVariable);
             PageFactory.InitElements(driver, mainPage);
             category = new ProductCategoryNavigation(driver);
-            categoryPage = new CategoryPage(driver, checkboxRuntimeVariable);
-            userPage = new UserPage(driver);
+            categoryPage = new CategoryPage(checkboxRuntimeVariable);
+            userPage = new UserPage();
             PageFactory.InitElements(driver, userPage);
-            productPages = new ProductPages(driver);
+            productPages = new ProductPages();
             PageFactory.InitElements(driver, productPages);
         }
 
