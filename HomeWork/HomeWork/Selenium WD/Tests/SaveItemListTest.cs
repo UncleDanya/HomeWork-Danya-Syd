@@ -1,44 +1,25 @@
-﻿using HomeWork.Selenium_WD.Functional;
+﻿using HomeWork.Selenium_WD.Base;
+using HomeWork.Selenium_WD.Functional;
 using HomeWork.Selenium_WD.Pages;
-using HomeWork.Selenium_WD.RuntimeVariables;
 using NUnit.Framework;
-using OpenQA.Selenium;
-using SeleniumExtras.PageObjects;
 using System.Linq;
 using System.Threading;
+using HomeWork.Selenium_WD.Extensions;
 
 namespace HomeWork
 {
-    internal class SaveItemListTest
+    internal class SaveItemListTest : BaseTest
     {
-        private IWebDriver driver;
-        private MainPage mainPage;
-        private ProductCategoryNavigation category;
-        CategoryPage categoryPage;
-        private UserPage userPage;
-        private CheckboxRuntimeVariable checkboxRuntimeVariable = new CheckboxRuntimeVariable();
-        private ProductPages productPages;
-        private RandomLoginVariable randomLoginVariable = new RandomLoginVariable();
-
-        [SetUp]
-        public void Setup()
-        {
-            driver = BrowserFactory.CreateDriver();
-            driver.Navigate().GoToUrl("https://ek.ua/");
-            driver.Manage().Window.Maximize();
-            mainPage = new MainPage(randomLoginVariable);
-            PageFactory.InitElements(driver, mainPage);
-            category = new ProductCategoryNavigation(driver);
-            categoryPage = new CategoryPage(driver, checkboxRuntimeVariable);
-            userPage = new UserPage(driver);
-            PageFactory.InitElements(driver, userPage);
-            productPages = new ProductPages(driver);
-            PageFactory.InitElements(driver, productPages);
-        }
 
         [Test]
         public void TestSaveItemList()
         {
+            var mainPage = driver.GetPage<MainPage>();
+            var category = driver.GetPage<ProductCategoryNavigation>();
+            var categoryPage = driver.GetPage<CategoryPage>();
+            var userPage = driver.GetPage<UserPage>();
+            var productPages = driver.GetPage<ProductPages>();
+
             mainPage.CreateNewUserAccount();
             
             category.EntryIntoCategoryByName("Аудио", "Наушники");
@@ -50,6 +31,9 @@ namespace HomeWork
             var listWithNameProductOnPage = productPages.NamesOfAllProductsOnPage.SkipLast(4).Select(element => element.Text).ToList();
             listWithNameProductOnPage.Sort();
             productPages.SaveListProductOnPage.Click();
+            
+            Thread.Sleep(1000);
+            
             productPages.SubmitButtonSaveList.Click();
             
             Thread.Sleep(1000);
@@ -65,9 +49,8 @@ namespace HomeWork
         [TearDown]
         public void AfterTest()
         {
+            var userPage = driver.GetPage<UserPage>();
             userPage.DeleteUserAccount();
-            driver.Quit();
-            driver.Dispose();
         }
     }
 }

@@ -8,20 +8,13 @@ namespace HomeWork.Selenium_WD.Pages
 {
     internal class CategoryPage : BasePage
     {
-        private IWebDriver driver;
-        private readonly CheckboxRuntimeVariable _checkboxRuntimeVariables;
-
-        public CategoryPage(IWebDriver driver, CheckboxRuntimeVariable checkboxRuntimeVariables)
-        {
-            this.driver = driver;
-            _checkboxRuntimeVariables = checkboxRuntimeVariables;
-        }
-
+        private CheckboxRuntimeVariable _checkboxRuntimeVariables = new CheckboxRuntimeVariable();
+        
         public void SearchBrandByFilter(string brandToLook)
         {
-            Actions actions = new Actions(driver);
+            Actions actions = new Actions(Driver);
 
-            var tableWithBrands = driver.FindElement(By.XPath($"//label[@class='brand-best']//a[text()='{brandToLook}']"));
+            var tableWithBrands = Driver.FindElement(By.XPath($"//label[@class='brand-best']//a[text()='{brandToLook}']"));
             _checkboxRuntimeVariables.Value = tableWithBrands;
             actions.Click(tableWithBrands).Perform();
 
@@ -34,23 +27,23 @@ namespace HomeWork.Selenium_WD.Pages
 
             var color = checkBoxVariable.GetCssValue("Color");
             Assert.AreEqual(color, "rgb(255, 141, 2)");
-            var checkBoxElement = driver.FindElement(By.XPath($"//label[@class='brand-best']//a[text()='{brandToLook}']//ancestor::li//input")).Selected;
+            var checkBoxElement = Driver.FindElement(By.XPath($"//label[@class='brand-best']//a[text()='{brandToLook}']//ancestor::li//input")).Selected;
 
             Assert.IsTrue(checkBoxElement, $"Button {brandToLook} is not selected");
         }
 
         public void ClickOnShowFilterButton()
         {
-            IJavaScriptExecutor executor = (IJavaScriptExecutor)driver;
+            IJavaScriptExecutor executor = (IJavaScriptExecutor)Driver;
 
             try
             {
-                var showBrandsFilterButton = driver.FindElement(By.LinkText("Показать"));
+                var showBrandsFilterButton = Driver.FindElement(By.LinkText("Показать"));
                 executor.ExecuteScript("arguments[0].click();", showBrandsFilterButton);
             }
             catch
             {
-                var showBrandsFilterButton = driver.FindElement(By.LinkText("Показать"));
+                var showBrandsFilterButton = Driver.FindElement(By.LinkText("Показать"));
                 executor.ExecuteScript("arguments[0].click();", showBrandsFilterButton);
             }
         }

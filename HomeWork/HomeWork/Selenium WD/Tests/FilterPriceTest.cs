@@ -1,38 +1,23 @@
-﻿using HomeWork.Selenium_WD.Functional;
+﻿using HomeWork.Selenium_WD.Base;
+using HomeWork.Selenium_WD.Functional;
 using HomeWork.Selenium_WD.Pages;
-using HomeWork.Selenium_WD.RuntimeVariables;
 using NUnit.Framework;
-using OpenQA.Selenium;
-using SeleniumExtras.PageObjects;
 using System.Threading;
+using HomeWork.Selenium_WD.Extensions;
 
 namespace HomeWork
 {
-    internal class FilterPriceTest
+    internal class FilterPriceTest : BaseTest
     {
-        private IWebDriver driver;
-        private ProductCategoryNavigation category;
-        CategoryPage categoryPage;
-        private PriceSorting priceSortByDescendingPrice;
-        private CheckboxRuntimeVariable checkboxRuntimeVariable = new CheckboxRuntimeVariable();
-        private ProductPages productPages;
-
-        [SetUp]
-        public void Setup()
-        {
-            driver = BrowserFactory.CreateDriver();
-            driver.Navigate().GoToUrl("https://ek.ua/");
-            driver.Manage().Window.Maximize();
-            category = new ProductCategoryNavigation(driver);
-            categoryPage = new CategoryPage(driver, checkboxRuntimeVariable);
-            priceSortByDescendingPrice = new PriceSorting(driver);
-            productPages = new ProductPages(driver);
-            PageFactory.InitElements(driver, productPages);
-        }
-
+        
         [Test]
         public void PriceTestFilter()
         {
+            var category = driver.GetPage<ProductCategoryNavigation>();
+            var categoryPage = driver.GetPage<CategoryPage>();
+            var priceSortByDescendingPrice = driver.GetPage<PriceSorting>();
+            var productPages = driver.GetPage<ProductPages>();
+
             category.EntryIntoCategoryByName("Гаджеты", "Мобильные");
 
             categoryPage.SearchBrandByFilter("Apple");
@@ -45,13 +30,6 @@ namespace HomeWork
             Thread.Sleep(1000);
             
             priceSortByDescendingPrice.VerifyDescendingPriceSorting();
-        }
-
-        [TearDown]
-        public void AfterTest()
-        {
-            driver.Quit();
-            driver.Dispose();
         }
     }
 }

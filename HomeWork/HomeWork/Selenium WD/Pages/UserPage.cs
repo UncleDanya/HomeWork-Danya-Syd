@@ -6,12 +6,6 @@ namespace HomeWork.Selenium_WD.Pages
 {
     internal class UserPage : BasePage
     {
-        private IWebDriver _driver;
-        public UserPage(IWebDriver driver)
-        {
-            _driver = driver;
-        }
-        
         [FindsBy(How = How.ClassName, Using = "info-nick")]
         public IWebElement ActualNameUser { get; set; }
 
@@ -48,7 +42,7 @@ namespace HomeWork.Selenium_WD.Pages
             
             Thread.Sleep(1000);
             
-            _driver.SwitchTo().Alert().Accept();
+            Driver.SwitchTo().Alert().Accept();
             
             Thread.Sleep(1000);
         }
