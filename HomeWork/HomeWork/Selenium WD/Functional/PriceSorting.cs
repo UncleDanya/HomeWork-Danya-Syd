@@ -1,33 +1,26 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 using System;
 using System.Linq;
 using System.Threading;
+using HomeWork.Selenium_WD.Pages;
 
 namespace HomeWork.Selenium_WD.Functional
 {
-    internal class PriceSorting
+    internal class PriceSorting : BasePage
     {
-        private RemoteWebDriver driver;
-
-        public PriceSorting(RemoteWebDriver driver)
-        {
-            this.driver = driver;
-        }
-
         public void VerifyDescendingPriceSorting()
         {
-            driver.FindElement(By.XPath(".//a[@jtype='click' and text()='по цене']")).Click();
+            Driver.FindElement(By.XPath(".//a[@jtype='click' and text()='по цене']")).Click();
             
             Thread.Sleep(1000);
             
-            var lastPage = driver.FindElements(By.XPath(".//div[@class='ib page-num']//a")).Last();
+            var lastPage = Driver.FindElements(By.XPath(".//div[@class='ib page-num']//a")).Last();
             var neededElementText = Int32.Parse(lastPage.Text);
 
             for (int i = 0; i < neededElementText; i++)
             {
-                var allPrice = driver.FindElements(By.XPath("//b[text()]//parent::a"));
+                var allPrice = Driver.FindElements(By.XPath("//b[text()]//parent::a"));
 
                 for (int j = 0; j < allPrice.Count - 1; j++)
                 {
@@ -39,7 +32,7 @@ namespace HomeWork.Selenium_WD.Functional
 
                 try
                 {
-                    var nextPageButton = driver.FindElement(By.XPath("//a[@id='pager_next']"));
+                    var nextPageButton = Driver.FindElement(By.XPath("//a[@id='pager_next']"));
                     nextPageButton.Click();
                 }
                 catch

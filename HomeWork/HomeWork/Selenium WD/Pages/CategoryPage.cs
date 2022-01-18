@@ -2,22 +2,14 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
-using OpenQA.Selenium.Remote;
 using System.Threading;
 
 namespace HomeWork.Selenium_WD.Pages
 {
     internal class CategoryPage : BasePage
     {
-        // private RemoteWebDriver driver;
-        private readonly CheckboxRuntimeVariable _checkboxRuntimeVariables;
-
-        public CategoryPage(CheckboxRuntimeVariable checkboxRuntimeVariables)
-        {
-            // this.Driver = driver;
-            _checkboxRuntimeVariables = checkboxRuntimeVariables;
-        }
-
+        private CheckboxRuntimeVariable _checkboxRuntimeVariables = new CheckboxRuntimeVariable();
+        
         public void SearchBrandByFilter(string brandToLook)
         {
             Actions actions = new Actions(Driver);

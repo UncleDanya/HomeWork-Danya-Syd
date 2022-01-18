@@ -1,36 +1,21 @@
 ﻿using HomeWork.Selenium_WD.Base;
+using HomeWork.Selenium_WD.Extensions;
 using HomeWork.Selenium_WD.Functional;
 using HomeWork.Selenium_WD.Pages;
-using HomeWork.Selenium_WD.RuntimeVariables;
 using NUnit.Framework;
-using OpenQA.Selenium;
-using SeleniumExtras.PageObjects;
 
 namespace HomeWork
 {
     internal class FilterTest : BaseTest
     {
-        // private RemoteWebDriver driver;
-        private ProductCategoryNavigation category;
-        CategoryPage categoryPage;
-        private CheckboxRuntimeVariable checkboxRuntimeVariable = new CheckboxRuntimeVariable();
-        private ProductPages productPages;
-
-        [SetUp]
-        public void Setup()
-        {
-            driver = BrowserFactory.CreateDriver();
-            driver.Navigate().GoToUrl("https://ek.ua/");
-            driver.Manage().Window.Maximize();
-            category = new ProductCategoryNavigation(driver);
-            categoryPage = new CategoryPage(checkboxRuntimeVariable);
-            productPages = new ProductPages();
-            PageFactory.InitElements(driver, productPages);
-        }
 
         [Test]
         public void TestFilter()
         {
+            var category = driver.GetPage<ProductCategoryNavigation>();
+            var categoryPage = driver.GetPage<CategoryPage>();
+            var productPages = driver.GetPage<ProductPages>();
+
             category.EntryIntoCategoryByName("Компьютеры", "Ноутбуки");
 
             categoryPage.SearchBrandByFilter("Acer");
@@ -38,13 +23,6 @@ namespace HomeWork
             categoryPage.ClickOnShowFilterButton();
 
             productPages.VerifyFilterShowActualBrand("Acer");
-        }
-
-        [TearDown]
-        public void AfterTest()
-        {
-            driver.Quit();
-            driver.Dispose();
         }
     }
 }

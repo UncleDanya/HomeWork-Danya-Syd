@@ -1,42 +1,23 @@
 ﻿using HomeWork.Selenium_WD.Base;
 using HomeWork.Selenium_WD.Functional;
 using HomeWork.Selenium_WD.Pages;
-using HomeWork.Selenium_WD.RuntimeVariables;
 using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
-using SeleniumExtras.PageObjects;
-using System;
 using System.Threading;
+using HomeWork.Selenium_WD.Extensions;
 
 namespace HomeWork
 {
     internal class CompareTwoItemTest : BaseTest
     {
-        // private RemoteWebDriver driver;
-        private ProductCategoryNavigation category;
-        private CategoryPage categoryPage;
-        private CompareProductPage compareProduct;
-        private CheckboxRuntimeVariable checkboxRuntimeVariable = new CheckboxRuntimeVariable();
-        private ProductPages productPages;
-
-        [SetUp]
-        public void Setup()
-        {
-            driver = BrowserFactory.CreateDriver();
-            driver.Navigate().GoToUrl("https://ek.ua/");
-            driver.Manage().Window.Maximize();
-            category = new ProductCategoryNavigation(driver);
-            categoryPage = new CategoryPage(checkboxRuntimeVariable);
-            compareProduct = new CompareProductPage();
-            productPages = new ProductPages();
-            PageFactory.InitElements(driver, productPages);
-            PageFactory.InitElements(driver, compareProduct);
-        }
 
         [Test]
         public void TestCompareTwoItem()
         {
+            var category = driver.GetPage<ProductCategoryNavigation>();
+            var categoryPage = driver.GetPage<CategoryPage>();
+            var compareProduct = driver.GetPage<CompareProductPage>();
+            var productPages = driver.GetPage<ProductPages>();
+            
             category.EntryIntoCategoryByName("Компьютеры", "Планшеты");
             
             categoryPage.SearchBrandByFilter("Apple");
@@ -68,13 +49,6 @@ namespace HomeWork
             Assert.IsTrue(nameFirstTabletInComparePage.Contains(nameFirstTablet), "The added item does not match the item on the list");
             Assert.IsTrue(nameSecondTabletInComparePage.Contains(nameSecondTablet), "The added item does not match the item on the list");
             Assert.AreEqual(attribute, "/list/30/apple/");
-        }
-
-        [TearDown]
-        public void AfterTest()
-        {
-            driver.Quit();
-            driver.Dispose();
         }
     }
 }

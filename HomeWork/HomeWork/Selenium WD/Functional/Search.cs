@@ -6,13 +6,6 @@ namespace HomeWork.Selenium_WD.Functional
 {
     internal class SearchField : BasePage
     {
-        /*private RemoteWebDriver driver;
-
-        public SearchField(RemoteWebDriver driver)
-        {
-            this.driver = driver;
-        }*/
-
         public void SearchFieldProductInput(string productSearch)
         {
             var searchInput = Driver.FindElement(By.XPath("//input[@id='ek-search']"));

@@ -8,12 +8,7 @@ namespace HomeWork.Selenium_WD.Pages
 {
     internal class MainPage : BasePage
     {
-        private RandomLoginVariable randomLoginVariable;
-        
-        public MainPage(RandomLoginVariable randomLoginVariable)
-        {
-            this.randomLoginVariable = randomLoginVariable;
-        }
+        private RandomLoginVariable randomLoginVariable = new RandomLoginVariable();
         
         RandomUser randomUser = new RandomUser();
         

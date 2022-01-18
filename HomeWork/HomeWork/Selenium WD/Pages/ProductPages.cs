@@ -1,6 +1,5 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 using SeleniumExtras.PageObjects;
 using System;
 using System.Collections.Generic;
@@ -10,13 +9,6 @@ namespace HomeWork.Selenium_WD.Pages
 {
     internal class ProductPages : BasePage
     {
-        /*RemoteWebDriver driver;
-        
-        public ProductPages(RemoteWebDriver driver)
-        {
-            this.driver = driver;
-        }
-        */
         [FindsBy(How = How.XPath, Using = ".//h1[@itemprop='name']")]
         public IWebElement FooterWithNameOnPage { get; set; }
 

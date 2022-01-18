@@ -1,42 +1,27 @@
 ﻿using HomeWork.Selenium_WD.Base;
+using HomeWork.Selenium_WD.Extensions;
 using HomeWork.Selenium_WD.Functional;
 using HomeWork.Selenium_WD.Pages;
-using HomeWork.Selenium_WD.RuntimeVariables;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
-using SeleniumExtras.PageObjects;
 using System.Threading;
 
 namespace HomeWork
 {
     internal class BookmarksTest : BaseTest
     {
-        // private RemoteWebDriver driver;
-        private ProductCategoryNavigation category;
-        private CategoryPage categoryPage;
-        private CheckboxRuntimeVariable checkboxRuntimeVariables = new CheckboxRuntimeVariable();
-        private ProductPages productPages;
-
-        [SetUp]
-        public void Setup()
-        {
-            driver = BrowserFactory.CreateDriver();
-            driver.Navigate().GoToUrl("https://ek.ua/");
-            driver.Manage().Window.Maximize();
-            category = new ProductCategoryNavigation(driver);
-            categoryPage = new CategoryPage(checkboxRuntimeVariables);
-            productPages = new ProductPages();
-            PageFactory.InitElements(driver, productPages);
-        }
 
         [Test]
         public void TestBookmarks()
         {
             Actions actions = new Actions(driver);
+
+            var productPages = driver.GetPage<ProductPages>();
+            var category = driver.GetPage<ProductCategoryNavigation>();
+            var categoryPage = driver.GetPage<CategoryPage>();
             
             category.EntryIntoCategoryByName("Гаджеты", "Мобильные");
-
             categoryPage.SearchBrandByFilter("Apple");
             categoryPage.VerifyThatCheckboxIsSelected("Apple");
             categoryPage.ClickOnShowFilterButton();
@@ -67,13 +52,6 @@ namespace HomeWork
 
             Assert.IsTrue(nameTitleProduct.Contains(textProductInList), "The item added to the bookmark does not match the item in the bookmark");
             Assert.AreEqual(tagName, "span");
-        }
-
-        [TearDown]
-        public void AfterTest()
-        {
-            driver.Quit();
-            driver.Dispose();
         }
     }
 }

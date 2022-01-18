@@ -1,35 +1,18 @@
 using HomeWork.Selenium_WD.Base;
-using HomeWork.Selenium_WD.Functional;
+using HomeWork.Selenium_WD.Extensions;
 using HomeWork.Selenium_WD.Pages;
-using HomeWork.Selenium_WD.RuntimeVariables;
 using NUnit.Framework;
-using OpenQA.Selenium;
-using SeleniumExtras.PageObjects;
 
 namespace HomeWork
 {
     public class RegistrationNewUserTest : BaseTest
     {
-        // private RemoteWebDriver driver;
-        private MainPage mainPage;
-        private UserPage userPage;
-        private RandomLoginVariable randomLoginVariable = new RandomLoginVariable();
-        
-        [SetUp]
-        public void Setup()
-        {
-            driver = BrowserFactory.CreateDriver();
-            driver.Navigate().GoToUrl("https://ek.ua/");
-            driver.Manage().Window.Maximize();
-            mainPage = new MainPage(randomLoginVariable);
-            userPage = new UserPage();
-            PageFactory.InitElements(driver, mainPage);
-            PageFactory.InitElements(driver, userPage);
-        }
 
         [Test]
         public void TestRegistrationNewUserTest()
         {
+            var mainPage = driver.GetPage<MainPage>();
+
             mainPage.CreateNewUserAccount();
             mainPage.VerifyLoginAccount();
         }
@@ -37,9 +20,8 @@ namespace HomeWork
         [TearDown]
         public void AfterTest()
         {
+            var userPage = driver.GetPage<UserPage>();
             userPage.DeleteUserAccount();
-            driver.Quit();
-            driver.Dispose();
         }
     }
 }

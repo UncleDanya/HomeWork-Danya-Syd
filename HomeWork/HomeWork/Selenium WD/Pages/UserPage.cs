@@ -6,12 +6,6 @@ namespace HomeWork.Selenium_WD.Pages
 {
     internal class UserPage : BasePage
     {
-        /*private RemoteWebDriver _driver;
-        public UserPage(RemoteWebDriver driver)
-        {
-            _driver = driver;
-        }*/
-        
         [FindsBy(How = How.ClassName, Using = "info-nick")]
         public IWebElement ActualNameUser { get; set; }
 
