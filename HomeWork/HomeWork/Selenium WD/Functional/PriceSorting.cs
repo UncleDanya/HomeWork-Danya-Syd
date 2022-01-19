@@ -4,8 +4,6 @@ using System;
 using System.Linq;
 using HomeWork.Selenium_WD.Pages;
 using HomeWork.Selenium_WD.Utils;
-using OpenQA.Selenium.Support.UI;
-using SeleniumExtras.WaitHelpers;
 
 namespace HomeWork.Selenium_WD.Functional
 {
@@ -18,9 +16,8 @@ namespace HomeWork.Selenium_WD.Functional
             WaitUtils.WaitForElementToBeClickable(Driver, sortDescendingPriceButton);
             
             sortDescendingPriceButton.Click();
-
-            WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
-            wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(By.XPath("//b[text()]//parent::a")));
+            
+            WaitUtils.WaitForAllElementsInListIsVisible(Driver, By.XPath("//b[text()]//parent::a"));
 
             var lastPage = Driver.FindElements(By.XPath(".//div[@class='ib page-num']//a")).Last();
             var neededElementText = Int32.Parse(lastPage.Text);

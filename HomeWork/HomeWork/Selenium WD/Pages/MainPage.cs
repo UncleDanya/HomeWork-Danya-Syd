@@ -48,9 +48,7 @@ namespace HomeWork.Selenium_WD.Pages
         public void CreateNewUserAccount()
         {
             randomLoginVariable.Value = randomUser.CreateRandomLogin();
-
             LoginButton.Click();
-           
             WaitUtils.WaitForElementToBeClickable(Driver, RegistrationNewUserButton);
 
             RegistrationNewUserButton.Click();
@@ -58,18 +56,14 @@ namespace HomeWork.Selenium_WD.Pages
             EmailFieldInputButton.SendKeys(randomUser.CreateRandomEmail());
             PasswordFieldInputButton.SendKeys(randomUser.CreateRandomPassword());
             RegistationButton.Click();
-            
             WaitUtils.WaitForElementToBeClickable(Driver, AcceptRegistrationNewUserButton);
-            
             AcceptRegistrationNewUserButton.Click();
         }
 
         public void VerifyLoginAccount()
         {
-            var needeDisplayed = WaitUtils.WaitForElementToBeDisplayed(Driver, ActualLogin);
-            
-            var actualLoginForCompare = ActualLogin.Text;
-
+            var userNameElement = WaitUtils.WaitForElementToBeDisplayed(Driver, ActualLogin);
+            var actualLoginForCompare = userNameElement.Text;
             Assert.AreEqual(actualLoginForCompare, randomLoginVariable.Value, "The actual login does not match the expected");
         }
     }

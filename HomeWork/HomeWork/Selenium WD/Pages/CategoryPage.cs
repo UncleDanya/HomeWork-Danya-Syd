@@ -37,17 +37,13 @@ namespace HomeWork.Selenium_WD.Pages
             try
             {
                 var showBrandsFilterButton = Driver.FindElement(By.LinkText("Показать"));
-                
                 WaitUtils.WaitForElementToBeClickable(Driver, showBrandsFilterButton);
-                
                 executor.ExecuteScript("arguments[0].click();", showBrandsFilterButton);
             }
             catch
             {
                 var showBrandsFilterButton = Driver.FindElement(By.LinkText("Показать"));
-                
                 WaitUtils.WaitForElementToBeClickable(Driver, showBrandsFilterButton);
-
                 executor.ExecuteScript("arguments[0].click();", showBrandsFilterButton);
             }
         }

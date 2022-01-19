@@ -45,9 +45,9 @@ namespace HomeWork
 
             productPages.OpenListWithProduct.Click();
 
-            var neededElement = WaitUtils.WaitForElementToBeDisplayed(driver, productPages.NameProductInSaveList);
+            var productNameInSaveList = WaitUtils.WaitForElementToBeDisplayed(driver, productPages.NameProductInSaveList);
 
-            var nameProductInList = productPages.NameProductInSaveList.Text;
+            var nameProductInList = productNameInSaveList.Text;
             var textProductInList = nameProductInList.Replace("GB", string.Empty);
 
             Assert.IsTrue(nameTitleProduct.Contains(textProductInList), "The item added to the bookmark does not match the item in the bookmark");
