@@ -45,7 +45,7 @@ namespace HomeWork.Selenium_WD.Utils
             wait.Until(ExpectedConditions.AlertIsPresent());
         }
 
-        public static void WaitForElementToBeEnabled(IWebDriver driver, IWebElement element,
+        public static void WaitForElementToBeSelected(IWebDriver driver, IWebElement element,
             WebDriverExtensions.WaitTime waitTime = WebDriverExtensions.WaitTime.Short)
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
