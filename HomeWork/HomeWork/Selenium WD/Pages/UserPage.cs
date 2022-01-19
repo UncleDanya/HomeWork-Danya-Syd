@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
-using System.Threading;
+using HomeWork.Selenium_WD.Utils;
 
 namespace HomeWork.Selenium_WD.Pages
 {
@@ -25,7 +25,7 @@ namespace HomeWork.Selenium_WD.Pages
         public IWebElement ShowSaveProductList { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//a[text()='УДАЛИТЬ АККАУНТ']")]
-        public IWebElement UserDeleteAdccountButton { get; set; }
+        public IWebElement UserDeleteAccountButton { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//a[text()='УДАЛИТЬ']")]
         public IWebElement SubmitDeleteUserAccountButton { get; set; }
@@ -34,17 +34,12 @@ namespace HomeWork.Selenium_WD.Pages
         {
             ActualNameUser.Click();
             EditProfileButton.Click();
-            UserDeleteAdccountButton.Click();
-            
-            Thread.Sleep(1000);
-            
+            UserDeleteAccountButton.Click();
+            WaitUtils.WaitForElementToBeClickable(Driver, SubmitDeleteUserAccountButton);
             SubmitDeleteUserAccountButton.Click();
-            
-            Thread.Sleep(1000);
-            
+            WaitUtils.WaitForAlertIsPresent(Driver);
+
             Driver.SwitchTo().Alert().Accept();
-            
-            Thread.Sleep(1000);
         }
     }
 }

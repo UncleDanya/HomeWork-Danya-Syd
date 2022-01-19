@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
-using System.Threading;
+using HomeWork.Selenium_WD.Utils;
 
 namespace HomeWork.Selenium_WD.Pages
 {
@@ -48,28 +48,22 @@ namespace HomeWork.Selenium_WD.Pages
         public void CreateNewUserAccount()
         {
             randomLoginVariable.Value = randomUser.CreateRandomLogin();
-
             LoginButton.Click();
-           
-            Thread.Sleep(2000);
+            WaitUtils.WaitForElementToBeClickable(Driver, RegistrationNewUserButton);
 
             RegistrationNewUserButton.Click();
             NameFieldInputButton.SendKeys(randomLoginVariable.Value);
             EmailFieldInputButton.SendKeys(randomUser.CreateRandomEmail());
             PasswordFieldInputButton.SendKeys(randomUser.CreateRandomPassword());
             RegistationButton.Click();
-            
-            Thread.Sleep(1000);
-            
+            WaitUtils.WaitForElementToBeClickable(Driver, AcceptRegistrationNewUserButton);
             AcceptRegistrationNewUserButton.Click();
-
-            Thread.Sleep(2000);
         }
 
         public void VerifyLoginAccount()
         {
-            var actualLoginForCompare = ActualLogin.Text;
-
+            var userNameElement = WaitUtils.WaitForElementToBeDisplayed(Driver, ActualLogin);
+            var actualLoginForCompare = userNameElement.Text;
             Assert.AreEqual(actualLoginForCompare, randomLoginVariable.Value, "The actual login does not match the expected");
         }
     }

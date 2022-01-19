@@ -5,7 +5,7 @@ using HomeWork.Selenium_WD.Pages;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
-using System.Threading;
+using HomeWork.Selenium_WD.Utils;
 
 namespace HomeWork
 {
@@ -26,7 +26,7 @@ namespace HomeWork
             categoryPage.VerifyThatCheckboxIsSelected("Apple");
             categoryPage.ClickOnShowFilterButton();
 
-            Thread.Sleep(1000);
+            WaitUtils.WaitForElementToBeClickable(driver, productPages.SelectProductOnPage("Apple iPhone 13"));
 
             var tagName = productPages.AddedProductInList.TagName;
             productPages.SelectProductOnPage("Apple iPhone 13").Click();
@@ -41,13 +41,13 @@ namespace HomeWork
             var nameTitleProduct = productPages.FooterWithNameOnPage.Text;
             productPages.AddedProductInList.Click();
 
-            Thread.Sleep(2000);
+            WaitUtils.WaitForElementToBeClickable(driver, productPages.OpenListWithProduct);
 
             productPages.OpenListWithProduct.Click();
 
-            Thread.Sleep(2000);
+            var productNameInSaveList = WaitUtils.WaitForElementToBeDisplayed(driver, productPages.NameProductInSaveList);
 
-            var nameProductInList = productPages.NameProductInSaveList.Text;
+            var nameProductInList = productNameInSaveList.Text;
             var textProductInList = nameProductInList.Replace("GB", string.Empty);
 
             Assert.IsTrue(nameTitleProduct.Contains(textProductInList), "The item added to the bookmark does not match the item in the bookmark");

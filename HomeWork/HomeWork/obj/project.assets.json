@@ -48,6 +48,18 @@
           "lib/net5.0/SeleniumExtras.PageObjects.dll": {}
         }
       },
+      "DotNetSeleniumExtras.WaitHelpers/3.11.0": {
+        "type": "package",
+        "dependencies": {
+          "Selenium.WebDriver": "3.10.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/SeleniumExtras.WaitHelpers.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SeleniumExtras.WaitHelpers.dll": {}
+        }
+      },
       "HtmlAgilityPack/1.11.22": {
         "type": "package",
         "dependencies": {
@@ -1823,6 +1835,21 @@
         "lib/net46/SeleniumExtras.PageObjects.dll",
         "lib/net5.0/SeleniumExtras.PageObjects.dll",
         "lib/netstandard2.0/SeleniumExtras.PageObjects.dll"
+      ]
+    },
+    "DotNetSeleniumExtras.WaitHelpers/3.11.0": {
+      "sha512": "xc6jVVl5ymgk3ZNWnC/KHxkEup1QpnwYbrwF+NQoCOGERsD8YMlLwmsX4lGhLXCLo/YQTRTIwlKCN9E/doGUNg==",
+      "type": "package",
+      "path": "dotnetseleniumextras.waithelpers/3.11.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "dotnetseleniumextras.waithelpers.3.11.0.nupkg.sha512",
+        "dotnetseleniumextras.waithelpers.nuspec",
+        "lib/net35/SeleniumExtras.WaitHelpers.dll",
+        "lib/net40/SeleniumExtras.WaitHelpers.dll",
+        "lib/net45/SeleniumExtras.WaitHelpers.dll",
+        "lib/netstandard2.0/SeleniumExtras.WaitHelpers.dll"
       ]
     },
     "HtmlAgilityPack/1.11.22": {
@@ -6014,6 +6041,7 @@
       "AutomationUtils >= 1.1.76",
       "DotNetSeleniumExtras.PageObjects >= 3.11.0",
       "DotNetSeleniumExtras.PageObjects.Core >= 4.0.1",
+      "DotNetSeleniumExtras.WaitHelpers >= 3.11.0",
       "MSTest.TestFramework >= 2.2.8",
       "Microsoft.Extensions.Configuration >= 6.0.0",
       "Microsoft.Extensions.Configuration.FileExtensions >= 6.0.0",
@@ -6086,6 +6114,10 @@
           "DotNetSeleniumExtras.PageObjects.Core": {
             "target": "Package",
             "version": "[4.0.1, )"
+          },
+          "DotNetSeleniumExtras.WaitHelpers": {
+            "target": "Package",
+            "version": "[3.11.0, )"
           },
           "MSTest.TestFramework": {
             "target": "Package",

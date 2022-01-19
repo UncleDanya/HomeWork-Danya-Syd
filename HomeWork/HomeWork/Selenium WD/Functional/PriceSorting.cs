@@ -2,8 +2,8 @@
 using OpenQA.Selenium;
 using System;
 using System.Linq;
-using System.Threading;
 using HomeWork.Selenium_WD.Pages;
+using HomeWork.Selenium_WD.Utils;
 
 namespace HomeWork.Selenium_WD.Functional
 {
@@ -11,17 +11,21 @@ namespace HomeWork.Selenium_WD.Functional
     {
         public void VerifyDescendingPriceSorting()
         {
-            Driver.FindElement(By.XPath(".//a[@jtype='click' and text()='по цене']")).Click();
+            var sortDescendingPriceButton = Driver.FindElement(By.XPath(".//a[@jtype='click' and text()='по цене']"));
             
-            Thread.Sleep(1000);
+            WaitUtils.WaitForElementToBeClickable(Driver, sortDescendingPriceButton);
             
+            sortDescendingPriceButton.Click();
+            
+            WaitUtils.WaitForAllElementsInListIsVisible(Driver, By.XPath("//b[text()]//parent::a"));
+
             var lastPage = Driver.FindElements(By.XPath(".//div[@class='ib page-num']//a")).Last();
             var neededElementText = Int32.Parse(lastPage.Text);
-
+            
             for (int i = 0; i < neededElementText; i++)
             {
                 var allPrice = Driver.FindElements(By.XPath("//b[text()]//parent::a"));
-
+                
                 for (int j = 0; j < allPrice.Count - 1; j++)
                 {
                     var priceWithoutText = Convert.ToInt32(allPrice[j].Text.Replace(" грн.", string.Empty).Replace(" ", string.Empty));

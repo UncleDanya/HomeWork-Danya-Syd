@@ -3,8 +3,8 @@ using HomeWork.Selenium_WD.Functional;
 using HomeWork.Selenium_WD.Pages;
 using NUnit.Framework;
 using System.Linq;
-using System.Threading;
 using HomeWork.Selenium_WD.Extensions;
+using HomeWork.Selenium_WD.Utils;
 
 namespace HomeWork
 {
@@ -32,11 +32,11 @@ namespace HomeWork
             listWithNameProductOnPage.Sort();
             productPages.SaveListProductOnPage.Click();
             
-            Thread.Sleep(1000);
+            WaitUtils.WaitForElementToBeClickable(driver, productPages.SubmitButtonSaveList);
             
             productPages.SubmitButtonSaveList.Click();
             
-            Thread.Sleep(1000);
+            WaitUtils.WaitForElementToBeClickable(driver, mainPage.EnterUserPageButton);
             
             mainPage.EnterUserPageButton.Click();
             userPage.ShowSaveProductList.Click();

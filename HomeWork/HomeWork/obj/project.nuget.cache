@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "aD1Md4S3kb+UVaVS9AJtS8MdQxwfOrRMC+qpCDMF5uivvpRZkkMvH2uEiwKXXkIja7s3nwlefdGWzkQGaIC3JQ==",
+  "dgSpecHash": "kwpRCpFv/ty7thc/Zg05AV2yl5Wp4M6b79eR6bkMuvCb6MAaSliuiKMnm7IMNACS1HYzp6HuMw64P0WLxgTHSA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Danya\\source\\repos\\HomeWork-Danya-Syd\\HomeWork\\HomeWork\\HomeWork.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "C:\\Users\\Danya\\.nuget\\packages\\coverlet.collector\\3.1.0\\coverlet.collector.3.1.0.nupkg.sha512",
     "C:\\Users\\Danya\\.nuget\\packages\\dotnetseleniumextras.pageobjects\\3.11.0\\dotnetseleniumextras.pageobjects.3.11.0.nupkg.sha512",
     "C:\\Users\\Danya\\.nuget\\packages\\dotnetseleniumextras.pageobjects.core\\4.0.1\\dotnetseleniumextras.pageobjects.core.4.0.1.nupkg.sha512",
+    "C:\\Users\\Danya\\.nuget\\packages\\dotnetseleniumextras.waithelpers\\3.11.0\\dotnetseleniumextras.waithelpers.3.11.0.nupkg.sha512",
     "C:\\Users\\Danya\\.nuget\\packages\\htmlagilitypack\\1.11.22\\htmlagilitypack.1.11.22.nupkg.sha512",
     "C:\\Users\\Danya\\.nuget\\packages\\microsoft.codecoverage\\17.0.0\\microsoft.codecoverage.17.0.0.nupkg.sha512",
     "C:\\Users\\Danya\\.nuget\\packages\\microsoft.extensions.configuration\\6.0.0\\microsoft.extensions.configuration.6.0.0.nupkg.sha512",

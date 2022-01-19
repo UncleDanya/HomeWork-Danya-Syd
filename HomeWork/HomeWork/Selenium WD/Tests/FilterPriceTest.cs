@@ -2,7 +2,6 @@
 using HomeWork.Selenium_WD.Functional;
 using HomeWork.Selenium_WD.Pages;
 using NUnit.Framework;
-using System.Threading;
 using HomeWork.Selenium_WD.Extensions;
 
 namespace HomeWork
@@ -26,8 +25,6 @@ namespace HomeWork
 
             productPages.SelectProductOnPage("Apple iPhone 13 Pro").Click();
             productPages.ShowAllPriceOnProductButton.Click();
-
-            Thread.Sleep(1000);
             
             priceSortByDescendingPrice.VerifyDescendingPriceSorting();
         }
