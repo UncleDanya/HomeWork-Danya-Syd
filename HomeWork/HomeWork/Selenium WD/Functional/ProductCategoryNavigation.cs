@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
-using System.Threading;
+using HomeWork.Selenium_WD.Utils;
 
 namespace HomeWork.Selenium_WD.Functional
 {
@@ -13,18 +13,18 @@ namespace HomeWork.Selenium_WD.Functional
             Actions actions = new Actions(Driver);
             
             var searchFolderByName = Driver.FindElement(By.XPath($"//ul[@class='mainmenu-list ff-roboto']//li[@class='mainmenu-item']//a[text()='{folderName}']"));
-            actions.MoveToElement(searchFolderByName).Perform();
+            // actions.MoveToElement(searchFolderByName).Perform();
+            searchFolderByName.Click();
             
-            Thread.Sleep(1000);
             
             var seachInsideFolderByName = Driver.FindElement(By.PartialLinkText(pixelFolderName));
             var displayedElemnt = seachInsideFolderByName.Displayed;
             
             Assert.IsTrue(displayedElemnt);
             
-            seachInsideFolderByName.Click();
+            WaitUtils.WaitForElementToBeClickable(Driver, seachInsideFolderByName);
             
-            Thread.Sleep(2000);
+            seachInsideFolderByName.Click();
         }
     }
 }

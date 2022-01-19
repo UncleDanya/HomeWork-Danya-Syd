@@ -1,6 +1,9 @@
-﻿using OpenQA.Selenium;
+﻿using System;
+using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
-using System.Threading;
+using HomeWork.Selenium_WD.Utils;
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
 
 namespace HomeWork.Selenium_WD.Pages
 {
@@ -36,15 +39,14 @@ namespace HomeWork.Selenium_WD.Pages
             EditProfileButton.Click();
             UserDeleteAdccountButton.Click();
             
-            Thread.Sleep(1000);
+            WaitUtils.WaitForElementToBeClickable(Driver, SubmitDeleteUserAccountButton);
             
             SubmitDeleteUserAccountButton.Click();
-            
-            Thread.Sleep(1000);
+
+            WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
+            wait.Until(ExpectedConditions.AlertIsPresent());
             
             Driver.SwitchTo().Alert().Accept();
-            
-            Thread.Sleep(1000);
         }
     }
 }

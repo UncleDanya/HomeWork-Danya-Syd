@@ -2,8 +2,8 @@
 using HomeWork.Selenium_WD.Functional;
 using HomeWork.Selenium_WD.Pages;
 using NUnit.Framework;
-using System.Threading;
 using HomeWork.Selenium_WD.Extensions;
+using HomeWork.Selenium_WD.Utils;
 
 namespace HomeWork
 {
@@ -28,7 +28,7 @@ namespace HomeWork
             var nameFirstTablet = productPages.FooterWithNameOnPage.Text;
             productPages.AddedToCompareCheckboxProduct.Click();
             
-            Thread.Sleep(1000);
+            WaitUtils.WaitForElementToBeClickable(driver, productPages.SwitchToPageWithTablet);
             
             var attribute = productPages.SwitchToPageWithTablet.GetAttribute("link");
             productPages.SwitchToPageWithTablet.Click();
@@ -36,7 +36,7 @@ namespace HomeWork
             var nameSecondTablet = productPages.FooterWithNameOnPage.Text;
             productPages.AddedToCompareCheckboxProduct.Click();
             
-            Thread.Sleep(2000);
+            WaitUtils.WaitForElementToBeClickable(driver, productPages.SwitchToComparePage);
             
             productPages.SwitchToComparePage.Click();
 

@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
-using System.Threading;
+using HomeWork.Selenium_WD.Utils;
 
 namespace HomeWork.Selenium_WD.Pages
 {
@@ -17,8 +17,6 @@ namespace HomeWork.Selenium_WD.Pages
             var tableWithBrands = Driver.FindElement(By.XPath($"//label[@class='brand-best']//a[text()='{brandToLook}']"));
             _checkboxRuntimeVariables.Value = tableWithBrands;
             actions.Click(tableWithBrands).Perform();
-
-            Thread.Sleep(1000);
         }
 
         public void VerifyThatCheckboxIsSelected(string brandToLook)
@@ -39,11 +37,17 @@ namespace HomeWork.Selenium_WD.Pages
             try
             {
                 var showBrandsFilterButton = Driver.FindElement(By.LinkText("Показать"));
+                
+                WaitUtils.WaitForElementToBeClickable(Driver, showBrandsFilterButton);
+                
                 executor.ExecuteScript("arguments[0].click();", showBrandsFilterButton);
             }
             catch
             {
                 var showBrandsFilterButton = Driver.FindElement(By.LinkText("Показать"));
+                
+                WaitUtils.WaitForElementToBeClickable(Driver, showBrandsFilterButton);
+
                 executor.ExecuteScript("arguments[0].click();", showBrandsFilterButton);
             }
         }
