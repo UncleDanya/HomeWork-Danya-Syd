@@ -25,7 +25,7 @@ namespace HomeWork.Selenium_WD.Utils
         }
 
         public static void WaitForElementToBeClickable(IWebDriver driver, IWebElement element,
-            WebDriverExtensions.WaitTime waitTime = WebDriverExtensions.WaitTime.Short)
+            WebDriverExtensions.WaitTime waitTime = WebDriverExtensions.WaitTime.Long)
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds((int) waitTime));
             wait.Until(ExpectedConditions.ElementToBeClickable(element));

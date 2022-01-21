@@ -4,6 +4,7 @@ using HomeWork.Selenium_WD.Pages;
 using NUnit.Framework;
 using System.Linq;
 using HomeWork.Selenium_WD.Extensions;
+using HomeWork.Selenium_WD.Steps;
 using HomeWork.Selenium_WD.Utils;
 
 namespace HomeWork
@@ -19,6 +20,7 @@ namespace HomeWork
             var categoryPage = driver.GetPage<CategoryPage>();
             var userPage = driver.GetPage<UserPage>();
             var productPages = driver.GetPage<ProductPages>();
+            var product = driver.GetPage<ProductSteps>();
 
             mainPage.CreateNewUserAccount();
             
@@ -27,9 +29,9 @@ namespace HomeWork
             categoryPage.SearchBrandByFilter("Logitech");
             categoryPage.VerifyThatCheckboxIsSelected("Logitech");
             categoryPage.ClickOnShowFilterButton();
-
-            var listWithNameProductOnPage = productPages.NamesOfAllProductsOnPage.SkipLast(4).Select(element => element.Text).ToList();
-            listWithNameProductOnPage.Sort();
+            product.WhenUserSaveAllProductOnPageInList();
+            /*var listWithNameProductOnPage = productPages.NamesOfAllProductsOnPage.SkipLast(4).Select(element => element.Text).ToList();
+            listWithNameProductOnPage.Sort();*/
             productPages.SaveListProductOnPage.Click();
             
             WaitUtils.WaitForElementToBeClickable(driver, productPages.SubmitButtonSaveList);
@@ -40,10 +42,11 @@ namespace HomeWork
             
             mainPage.EnterUserPageButton.Click();
             userPage.ShowSaveProductList.Click();
-            var listWithSaveProductInUserPage = productPages.NamesOfAllProductsOnPage.Select(element => element.Text).ToList();
-            listWithSaveProductInUserPage.Sort();
-
-            Assert.AreEqual(listWithNameProductOnPage, listWithSaveProductInUserPage, "The saved item list does not match the sheet in the profile");
+            // product.WhenUserShowSaveListInUserPage();
+            /*var listWithSaveProductInUserPage = productPages.NamesOfAllProductsOnPage.Select(element => element.Text).ToList();
+            listWithSaveProductInUserPage.Sort();*/
+            product.ThenVerifyListSaveInProductPageForListInUserPage();
+            // Assert.AreEqual(listWithNameProductOnPage, listWithSaveProductInUserPage, "The saved item list does not match the sheet in the profile");
         }
 
         [TearDown]
