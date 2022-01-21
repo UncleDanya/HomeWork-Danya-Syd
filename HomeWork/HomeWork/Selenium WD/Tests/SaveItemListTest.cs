@@ -2,7 +2,6 @@
 using HomeWork.Selenium_WD.Functional;
 using HomeWork.Selenium_WD.Pages;
 using NUnit.Framework;
-using System.Linq;
 using HomeWork.Selenium_WD.Extensions;
 using HomeWork.Selenium_WD.Steps;
 using HomeWork.Selenium_WD.Utils;
@@ -23,30 +22,18 @@ namespace HomeWork
             var product = driver.GetPage<ProductSteps>();
 
             mainPage.CreateNewUserAccount();
-            
             category.EntryIntoCategoryByName("Аудио", "Наушники");
-
             categoryPage.SearchBrandByFilter("Logitech");
             categoryPage.VerifyThatCheckboxIsSelected("Logitech");
             categoryPage.ClickOnShowFilterButton();
             product.WhenUserSaveAllProductOnPageInList();
-            /*var listWithNameProductOnPage = productPages.NamesOfAllProductsOnPage.SkipLast(4).Select(element => element.Text).ToList();
-            listWithNameProductOnPage.Sort();*/
             productPages.SaveListProductOnPage.Click();
-            
             WaitUtils.WaitForElementToBeClickable(driver, productPages.SubmitButtonSaveList);
-            
             productPages.SubmitButtonSaveList.Click();
-            
             WaitUtils.WaitForElementToBeClickable(driver, mainPage.EnterUserPageButton);
-            
             mainPage.EnterUserPageButton.Click();
             userPage.ShowSaveProductList.Click();
-            // product.WhenUserShowSaveListInUserPage();
-            /*var listWithSaveProductInUserPage = productPages.NamesOfAllProductsOnPage.Select(element => element.Text).ToList();
-            listWithSaveProductInUserPage.Sort();*/
             product.ThenVerifyListSaveInProductPageForListInUserPage();
-            // Assert.AreEqual(listWithNameProductOnPage, listWithSaveProductInUserPage, "The saved item list does not match the sheet in the profile");
         }
 
         [TearDown]

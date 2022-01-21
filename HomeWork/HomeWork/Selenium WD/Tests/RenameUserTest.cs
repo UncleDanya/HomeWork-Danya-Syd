@@ -13,24 +13,12 @@ namespace HomeWork
         public void TestRenameUser()
         {
             var mainPage = driver.GetPage<MainPage>();
-            var userPage = driver.GetPage<UserPage>();
             var user = driver.GetPage<UserSteps>();
-
-            RandomUser randomUser = new RandomUser();
             
             mainPage.CreateNewUserAccount();
             mainPage.ActualLogin.Click();
-            /*var randomLogin = randomUser.CreateRandomLogin();
-            userPage.EditProfileButton.Click();
-            userPage.NickFieldInputButton.Clear();
-            var enabledNickField = userPage.NickFieldInputButton.Enabled;
-            userPage.NickFieldInputButton.SendKeys(randomLogin);
-            userPage.SaveChangeButton.Click();
-            var nameActualUserAccount = userPage.TextActualNameUser.Text;*/
             user.WhenUserRename();
             user.ThenVerifyActualLoginAfterRename();
-            /*Assert.AreEqual(randomLogin, nameActualUserAccount, "The changed login does not match the profile login");
-            Assert.IsTrue(enabledNickField);*/
         }
 
         [TearDown]

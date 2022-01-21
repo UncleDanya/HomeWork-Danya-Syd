@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
 using HomeWork.Selenium_WD.Utils;
+using OpenQA.Selenium.Interactions;
 
 namespace HomeWork.Selenium_WD.Functional
 {
