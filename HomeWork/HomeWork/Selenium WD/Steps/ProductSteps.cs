@@ -41,7 +41,7 @@ namespace HomeWork.Selenium_WD.Steps
             productPage.OpenListWithProduct.Click();
         }
 
-        // This method is using only for the item's that has memory value in name text
+        // This method is using only for the item's that has memory value in nameShop text
         public void ThenVerifyThatProductNameInBookmarksMenuEqualsToActualProductNameForMobileDevices()
         {
             var productPage = Driver.GetPage<ProductPages>();
@@ -143,6 +143,12 @@ namespace HomeWork.Selenium_WD.Steps
             var mainPage = Driver.GetPage<MainPage>();
             WaitUtils.WaitForElementToBeClickable(Driver, mainPage.EnterUserPageButton);
             mainPage.EnterUserPageButton.Click();
+        }
+
+        public void WhenUserClickOnNameShop(string nameShop)
+        {
+            var productPage = Driver.GetPage<ProductPages>();
+            productPage.NameShopLinkText(nameShop).Click();
         }
     }
 }

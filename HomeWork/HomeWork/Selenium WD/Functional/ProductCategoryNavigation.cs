@@ -20,7 +20,6 @@ namespace HomeWork.Selenium_WD.Functional
             
             seachInsideFolderByName.Click();
             Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
-
         }
     }
 }

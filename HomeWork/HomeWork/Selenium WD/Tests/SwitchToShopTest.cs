@@ -15,7 +15,6 @@ namespace HomeWork
         {
             var categoryPage = driver.GetPage<CategoryPage>();
             var category = driver.GetPage<ProductCategoryNavigation>();
-            var productPages = driver.GetPage<ProductPages>();
             var product = driver.GetPage<ProductSteps>();
 
             category.EntryIntoCategoryByName("Гаджеты", "Мобильные");
@@ -24,7 +23,7 @@ namespace HomeWork
             categoryPage.ClickOnShowFilterButton();
             product.WhenUserRememberNameProduct("Apple iPhone 13");
             product.WhenUserSelectNeededProductOnPage("Apple iPhone 13");
-            productPages.NameShopLinkText("Avic.ua");
+            product.WhenUserClickOnNameShop("Avic.ua");
             product.WhenUserSwitchToSecondPage();
             product.ThenVerifyThatProductNameInOtherShopEqualsToActualProductNameForMobileDevices();
         }

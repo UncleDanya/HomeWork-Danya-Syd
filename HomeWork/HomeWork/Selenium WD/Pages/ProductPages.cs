@@ -44,7 +44,7 @@ namespace HomeWork.Selenium_WD.Pages
 
         public IWebElement SelectProductOnPage(string nameProduct) => Driver.FindElement(By.XPath($".//span[@class='u' and text()='{nameProduct}']"));
 
-        public void NameShopLinkText(string nameShop) => Driver.FindElement(By.LinkText($"{nameShop}")).Click();
+        public IWebElement NameShopLinkText(string nameShop) => Driver.FindElement(By.LinkText($"{nameShop}"));
 
         [FindsBy(How = How.XPath, Using = "//h1[@class='page-title']")]
         public IWebElement PageShopWithItemText { get; set; }
