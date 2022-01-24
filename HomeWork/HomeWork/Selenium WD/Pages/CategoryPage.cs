@@ -32,9 +32,6 @@ namespace HomeWork.Selenium_WD.Pages
 
         public void ClickOnShowFilterButton()
         {
-            /*var showButtonElement = Driver.FindElement(By.LinkText("Показать"));
-            WaitUtils.WaitForElementToBeClickable(Driver, showButtonElement);
-            showButtonElement.Click();*/
             IJavaScriptExecutor executor = (IJavaScriptExecutor)Driver;
 
             try

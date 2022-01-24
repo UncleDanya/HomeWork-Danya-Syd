@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
 using HomeWork.Selenium_WD.Utils;
@@ -41,9 +42,9 @@ namespace HomeWork.Selenium_WD.Pages
             UserDeleteAccountButton.Click();
             WaitUtils.WaitForElementToBeClickable(Driver, SubmitDeleteUserAccountButton);
             SubmitDeleteUserAccountButton.Click();
-            WaitUtils.WaitForAlertIsPresent(Driver);
-
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             Driver.SwitchTo().Alert().Accept();
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
         }
     }
 }
