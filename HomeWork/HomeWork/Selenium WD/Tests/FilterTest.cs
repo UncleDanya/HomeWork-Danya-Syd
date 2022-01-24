@@ -17,7 +17,6 @@ namespace HomeWork
             var productPages = driver.GetPage<ProductPages>();
 
             category.EntryIntoCategoryByName("Компьютеры", "Ноутбуки");
-
             categoryPage.SearchBrandByFilter("Acer");
             categoryPage.VerifyThatCheckboxIsSelected("Acer");
             categoryPage.ClickOnShowFilterButton();

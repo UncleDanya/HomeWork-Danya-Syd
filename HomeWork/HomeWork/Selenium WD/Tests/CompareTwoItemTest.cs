@@ -4,7 +4,6 @@ using HomeWork.Selenium_WD.Pages;
 using NUnit.Framework;
 using HomeWork.Selenium_WD.Extensions;
 using HomeWork.Selenium_WD.Steps;
-using HomeWork.Selenium_WD.Utils;
 
 namespace HomeWork
 {
@@ -16,22 +15,21 @@ namespace HomeWork
         {
             var category = driver.GetPage<ProductCategoryNavigation>();
             var categoryPage = driver.GetPage<CategoryPage>();
-            var productPages = driver.GetPage<ProductPages>();
             var product = driver.GetPage<ProductSteps>();
             
             category.EntryIntoCategoryByName("Компьютеры", "Планшеты");
             categoryPage.SearchBrandByFilter("Apple");
             categoryPage.VerifyThatCheckboxIsSelected("Apple");
             categoryPage.ClickOnShowFilterButton();
+            product.WhenUserRememberNameProduct("Apple iPad");
             product.WhenUserSelectNeededProductOnPage("Apple iPad");
-            productPages.AddedToCompareCheckboxProduct.Click();
-            WaitUtils.WaitForElementToBeClickable(driver, productPages.SwitchToPageWithTablet);
-            productPages.SwitchToPageWithTablet.Click();
+            product.WhenUserAddedToCompareCheckboxProduct();
+            product.WhenUserSwitchToPageWithTablet();
+            product.WhenUserRememberNameProduct("Apple iPad Air");
             product.WhenUserSelectNeededProductOnPage("Apple iPad Air");
-            productPages.AddedToCompareCheckboxProduct.Click();
-            WaitUtils.WaitForElementToBeClickable(driver, productPages.SwitchToComparePage);
-            productPages.SwitchToComparePage.Click();
-            product.WhenUserSwitchToNextPage();
+            product.WhenUserAddedToCompareCheckboxProduct();
+            product.WhenUserSwitchToComparePage();
+            product.WhenUserSwitchToSecondPage();
             product.ThenVerifyProductNameForCompareTwoItems("Apple iPad", "Apple iPad Air");
         }
     }

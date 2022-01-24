@@ -23,18 +23,21 @@ namespace HomeWork
             categoryPage.SearchBrandByFilter("Apple");
             categoryPage.VerifyThatCheckboxIsSelected("Apple");
             categoryPage.ClickOnShowFilterButton();
+            product.WhenUserRememberNameProduct("Apple AirPods Pro");
             product.WhenUserSelectNeededProductOnPage("Apple AirPods Pro");
             category.EntryIntoCategoryByName("Компьютеры", "Приставки");
             categoryPage.SearchBrandByFilter("Sony");
             categoryPage.VerifyThatCheckboxIsSelected("Sony");
             categoryPage.ClickOnShowFilterButton();
+            product.WhenUserRememberNameProduct("Sony PlayStation 5");
             product.WhenUserSelectNeededProductOnPage("Sony PlayStation 5");
             category.EntryIntoCategoryByName("Аудио", "Наушники");
             categoryPage.SearchBrandByFilter("Logitech");
             categoryPage.VerifyThatCheckboxIsSelected("Logitech");
             categoryPage.ClickOnShowFilterButton();
+            product.WhenUserRememberNameProduct("Logitech G Pro X");
             product.WhenUserSelectNeededProductOnPage("Logitech G Pro X");
-            mainPage.ActualLogin.Click();
+            product.WhenUserSwitchToUserPage();
             product.ThenVerifySaveListProductForListInUserPage();
         }
 

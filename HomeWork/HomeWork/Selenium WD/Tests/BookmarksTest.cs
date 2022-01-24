@@ -21,6 +21,7 @@ namespace HomeWork
             categoryPage.SearchBrandByFilter("Apple");
             categoryPage.VerifyThatCheckboxIsSelected("Apple");
             categoryPage.ClickOnShowFilterButton();
+            product.WhenUserRememberNameProduct("Apple iPhone 13");
             product.WhenUserSelectNeededProductOnPage("Apple iPhone 13");
             product.WhenUserAddedProductInList();
             product.WhenUserOpenBookmarksMenu();

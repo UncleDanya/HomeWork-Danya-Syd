@@ -22,9 +22,10 @@ namespace HomeWork
             categoryPage.SearchBrandByFilter("Apple");
             categoryPage.VerifyThatCheckboxIsSelected("Apple");
             categoryPage.ClickOnShowFilterButton();
+            product.WhenUserRememberNameProduct("Apple iPhone 13");
             product.WhenUserSelectNeededProductOnPage("Apple iPhone 13");
-            productPages.NameShopLinkText("Avic.ua").Click();
-            product.WhenUserSwitchToNextPage();
+            productPages.NameShopLinkText("Avic.ua");
+            product.WhenUserSwitchToSecondPage();
             product.ThenVerifyThatProductNameInOtherShopEqualsToActualProductNameForMobileDevices();
         }
     }

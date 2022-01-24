@@ -5,19 +5,25 @@ using HomeWork.Selenium_WD.Pages;
 using HomeWork.Selenium_WD.RuntimeVariables;
 using HomeWork.Selenium_WD.Utils;
 using NUnit.Framework;
-using OpenQA.Selenium;
 
 namespace HomeWork.Selenium_WD.Steps
 {
     class ProductSteps : BasePage
     {
         private NameProductVariable name = new NameProductVariable();
-        public void WhenUserSelectNeededProductOnPage(string nameProduct)
+
+        public void WhenUserRememberNameProduct(string nameProduct)
         {
             var productPage = Driver.GetPage<ProductPages>();
             WaitUtils.WaitForElementToBeDisplayed(Driver, productPage.SelectProductOnPage($"{nameProduct}"));
             string nameProductText = productPage.SelectProductOnPage($"{nameProduct}").Text;
             name.Value.Add(nameProductText);
+        }
+        
+        public void WhenUserSelectNeededProductOnPage(string nameProduct)
+        {
+            var productPage = Driver.GetPage<ProductPages>();
+            WaitUtils.WaitForElementToBeDisplayed(Driver, productPage.SelectProductOnPage($"{nameProduct}"));
             productPage.SelectProductOnPage($"{nameProduct}").Click();
         }
 
@@ -43,6 +49,7 @@ namespace HomeWork.Selenium_WD.Steps
             var productNameInSaveList = productPage.NameProductInSaveList;
             var nameProductInSaveList = productNameInSaveList.Text;
             var newProductName = String.Join(" ", nameProductInSaveList.Split(' ').SkipLast(1));
+            Assert.IsTrue(name.Value.Contains(newProductName), "The item added to the bookmark does not match the item in the bookmark");
         }
 
         public void ThenVerifyProductNameForCompareTwoItems(string nameFirstProduct, string nameSecondProduct)
@@ -70,7 +77,7 @@ namespace HomeWork.Selenium_WD.Steps
             Assert.AreEqual(name.Value, listWithSaveProductInUserPage, "The saved item list does not match the sheet in the profile");
         }
 
-        public void WhenUserSwitchToNextPage()
+        public void WhenUserSwitchToSecondPage()
         {
             var connectWindowHandles = Driver.WindowHandles;
             Driver.SwitchTo().Window(connectWindowHandles[1]);
@@ -90,12 +97,52 @@ namespace HomeWork.Selenium_WD.Steps
             listProducts.Sort();
             name.Value.Sort();
             Assert.AreEqual(name.Value, listProducts);
-            /*var nameMobileItemInList = Driver.FindElement(By.XPath("//u[@class='nobr' and text()='Apple iPhone 13 Pr...']")).Text.Remove(16);
-            var nameConsoleItemInList = Driver.FindElement(By.XPath("//u[@class='nobr' and text()='Sony PlayStation 5']")).Text;
-            var nameAudioItemInList = Driver.FindElement(By.XPath("//u[@class='nobr' and text()='Logitech G Pro X']")).Text;
-            Assert.IsTrue(name.Value[0].Contains(nameMobileItemInList));
-            Assert.IsTrue(name.Value[1].Contains(nameConsoleItemInList));
-            Assert.IsTrue(name.Value[2].Contains(nameAudioItemInList));*/
+        }
+
+        public void WhenUserAddedToCompareCheckboxProduct()
+        {
+            var productPages = Driver.GetPage<ProductPages>();
+            productPages.AddedToCompareCheckboxProduct.Click();
+        }
+
+        public void WhenUserSwitchToPageWithTablet()
+        {
+            var productPages = Driver.GetPage<ProductPages>();
+            WaitUtils.WaitForElementToBeClickable(Driver, productPages.SwitchToPageWithTablet);
+            productPages.SwitchToPageWithTablet.Click();
+        }
+
+        public void WhenUserSwitchToComparePage()
+        {
+            var productPages = Driver.GetPage<ProductPages>();
+            WaitUtils.WaitForElementToBeClickable(Driver, productPages.SwitchToComparePage);
+            productPages.SwitchToComparePage.Click();
+        }
+
+        public void WhenUserShowAllPriceOnProductButton()
+        {
+            var productPages = Driver.GetPage<ProductPages>();
+            productPages.ShowAllPriceOnProductButton.Click();
+        }
+
+        public void WhenUserClickOnSaveItemInList()
+        {
+            var productPages = Driver.GetPage<ProductPages>();
+            productPages.SaveListProductOnPage.Click();
+        }
+
+        public void WhenUserClickOnSubmitSaveListButton()
+        {
+            var productPages = Driver.GetPage<ProductPages>();
+            WaitUtils.WaitForElementToBeClickable(Driver, productPages.SubmitButtonSaveList);
+            productPages.SubmitButtonSaveList.Click();
+        }
+
+        public void WhenUserSwitchToUserPage()
+        {
+            var mainPage = Driver.GetPage<MainPage>();
+            WaitUtils.WaitForElementToBeClickable(Driver, mainPage.EnterUserPageButton);
+            mainPage.EnterUserPageButton.Click();
         }
     }
 }

@@ -32,10 +32,10 @@ namespace HomeWork.Selenium_WD.Pages
 
         public void ClickOnShowFilterButton()
         {
-            var showButtonElement = Driver.FindElement(By.LinkText("Показать"));
+            /*var showButtonElement = Driver.FindElement(By.LinkText("Показать"));
             WaitUtils.WaitForElementToBeClickable(Driver, showButtonElement);
-            showButtonElement.Click();
-            /*IJavaScriptExecutor executor = (IJavaScriptExecutor)Driver;
+            showButtonElement.Click();*/
+            IJavaScriptExecutor executor = (IJavaScriptExecutor)Driver;
 
             try
             {
@@ -48,7 +48,7 @@ namespace HomeWork.Selenium_WD.Pages
                 var showBrandsFilterButton = Driver.FindElement(By.LinkText("Показать"));
                 WaitUtils.WaitForElementToBeClickable(Driver, showBrandsFilterButton);
                 executor.ExecuteScript("arguments[0].click();", showBrandsFilterButton);
-            }*/
+            }
         }
     }
 }

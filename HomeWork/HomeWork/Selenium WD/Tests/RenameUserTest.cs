@@ -18,14 +18,13 @@ namespace HomeWork
             login.Value = randomUser.CreateRandomLogin();
             var mainPage = driver.GetPage<MainPage>();
             var user = driver.GetPage<UserSteps>();
-            var userPage = driver.GetPage<UserPage>();
             
             mainPage.CreateNewUserAccount();
-            mainPage.ActualLogin.Click();
-            userPage.EditProfileButton.Click();
-            userPage.NickFieldInputButton.Clear();
-            user.WhenUserRename(login.Value);
-            userPage.SaveChangeButton.Click();
+            user.WhenUserClickActualLogin();
+            user.WhenUserClickEditProfileButton();
+            user.WhenUserClearFieldNickInputButton();
+            user.WhenUserSetTextToUserNameField(login.Value);
+            user.WhenUserClickOnSaveChangeUserFieldButton();
             user.ThenVerifyActualLoginAfterRename(login.Value);
         }
 

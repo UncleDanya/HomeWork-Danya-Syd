@@ -41,7 +41,7 @@ namespace HomeWork.Selenium_WD.Utils
         public static void WaitForAlertIsPresent(IWebDriver driver,
             WebDriverExtensions.WaitTime waitTime = WebDriverExtensions.WaitTime.Short)
         {
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds((int) waitTime));
             wait.Until(ExpectedConditions.AlertIsPresent());
         }
 
