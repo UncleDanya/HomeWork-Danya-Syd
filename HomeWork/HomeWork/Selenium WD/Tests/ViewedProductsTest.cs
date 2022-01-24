@@ -19,11 +19,11 @@ namespace HomeWork
             var product = driver.GetPage<ProductSteps>();
 
             mainPage.CreateNewUserAccount();
-            category.EntryIntoCategoryByName("Гаджеты", "Мобильные");
+            category.EntryIntoCategoryByName("Аудио", "Наушники");
             categoryPage.SearchBrandByFilter("Apple");
             categoryPage.VerifyThatCheckboxIsSelected("Apple");
             categoryPage.ClickOnShowFilterButton();
-            product.WhenUserSelectNeededProductOnPage("Apple iPhone 13 Pro");
+            product.WhenUserSelectNeededProductOnPage("Apple AirPods Pro");
             category.EntryIntoCategoryByName("Компьютеры", "Приставки");
             categoryPage.SearchBrandByFilter("Sony");
             categoryPage.VerifyThatCheckboxIsSelected("Sony");

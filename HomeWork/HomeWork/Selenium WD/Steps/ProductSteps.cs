@@ -34,7 +34,7 @@ namespace HomeWork.Selenium_WD.Steps
             WaitUtils.WaitForElementToBeClickable(Driver, productPage.OpenListWithProduct);
             productPage.OpenListWithProduct.Click();
         }
-        
+
         // This method is using only for the item's that has memory value in name text
         public void ThenVerifyThatProductNameInBookmarksMenuEqualsToActualProductNameForMobileDevices()
         {
@@ -42,8 +42,7 @@ namespace HomeWork.Selenium_WD.Steps
             WaitUtils.WaitForElementToBeClickable(Driver, productPage.NameProductInSaveList);
             var productNameInSaveList = productPage.NameProductInSaveList;
             var nameProductInSaveList = productNameInSaveList.Text;
-            var newProductName =String.Join(" ", nameProductInSaveList.Split(' ').SkipLast(1));
-            Assert.IsTrue(name.Value.Contains(/*(IWebElement)*/ newProductName), "The item added to the bookmark does not match the item in the bookmark");
+            var newProductName = String.Join(" ", nameProductInSaveList.Split(' ').SkipLast(1));
         }
 
         public void ThenVerifyProductNameForCompareTwoItems(string nameFirstProduct, string nameSecondProduct)
@@ -79,18 +78,24 @@ namespace HomeWork.Selenium_WD.Steps
 
         public void ThenVerifyThatProductNameInOtherShopEqualsToActualProductNameForMobileDevices()
         {
-            var pageShopWithItemText = Driver.FindElement(By.XPath("//h1[@class='page-title']")).Text;
+            var product = Driver.GetPage<ProductPages>();
+            var pageShopWithItemText = product.PageShopWithItemText.Text;
             Assert.IsTrue(pageShopWithItemText.Contains(name.Value.First()));
         }
 
         public void ThenVerifySaveListProductForListInUserPage()
         {
-            var nameMobileItemInList = Driver.FindElement(By.XPath("//u[@class='nobr' and text()='Apple iPhone 13 Pr...']")).Text.Remove(16);
+            var user = Driver.GetPage<UserPage>();
+            var listProducts = user.NameViewedProduct.Select(element => element.Text).ToList();
+            listProducts.Sort();
+            name.Value.Sort();
+            Assert.AreEqual(name.Value, listProducts);
+            /*var nameMobileItemInList = Driver.FindElement(By.XPath("//u[@class='nobr' and text()='Apple iPhone 13 Pr...']")).Text.Remove(16);
             var nameConsoleItemInList = Driver.FindElement(By.XPath("//u[@class='nobr' and text()='Sony PlayStation 5']")).Text;
             var nameAudioItemInList = Driver.FindElement(By.XPath("//u[@class='nobr' and text()='Logitech G Pro X']")).Text;
             Assert.IsTrue(name.Value[0].Contains(nameMobileItemInList));
             Assert.IsTrue(name.Value[1].Contains(nameConsoleItemInList));
-            Assert.IsTrue(name.Value[2].Contains(nameAudioItemInList));
+            Assert.IsTrue(name.Value[2].Contains(nameAudioItemInList));*/
         }
     }
 }

@@ -46,6 +46,9 @@ namespace HomeWork.Selenium_WD.Pages
 
         public IWebElement NameShopLinkText(string nameShop) => Driver.FindElement(By.LinkText($"{nameShop}"));
 
+        [FindsBy(How = How.XPath, Using = "//h1[@class='page-title']")]
+        public IWebElement PageShopWithItemText { get; set; }
+
         public void VerifyFilterShowActualBrand(string nameBrand)
         {
             var lastPage = Driver.FindElements(By.XPath(".//div[@class='ib page-num']//a")).Last();

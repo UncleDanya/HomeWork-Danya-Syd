@@ -9,22 +9,17 @@ namespace HomeWork.Selenium_WD.Steps
     {
         RandomLoginVariable login = new RandomLoginVariable();
 
-        public void WhenUserRename()
+        public void WhenUserRename(string nameUser)
         {
-            RandomUser randomUser = new RandomUser();
             var userPage = Driver.GetPage<UserPage>();
-            login.Value = randomUser.CreateRandomLogin();
-            userPage.EditProfileButton.Click();
-            userPage.NickFieldInputButton.Clear();
-            userPage.NickFieldInputButton.SendKeys(login.Value);
-            userPage.SaveChangeButton.Click();
+            userPage.NickFieldInputButton.SendKeys(nameUser);
         }
 
-        public void ThenVerifyActualLoginAfterRename()
+        public void ThenVerifyActualLoginAfterRename(string nameUser)
         {
             var userPage = Driver.GetPage<UserPage>();
             var nameActualUserAccount = userPage.TextActualNameUser.Text;
-            Assert.AreEqual(login.Value, nameActualUserAccount, "The changed login does not match the profile login");
+            Assert.AreEqual(nameUser, nameActualUserAccount, "The changed login does not match the profile login");
         }
     }
 }
