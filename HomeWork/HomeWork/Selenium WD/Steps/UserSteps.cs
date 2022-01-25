@@ -11,6 +11,7 @@ namespace HomeWork.Selenium_WD.Steps
     {
         RandomLoginVariable login = new RandomLoginVariable();
         private RandomLoginVariable randomLoginVariable = new RandomLoginVariable();
+        
         public void WhenUserSetTextToUserNameField(string nameUser)
         {
             var userPage = Driver.GetPage<UserPage>();
@@ -72,7 +73,7 @@ namespace HomeWork.Selenium_WD.Steps
             mainPage.AcceptRegistrationNewUserButton.Click();
         }
 
-        public void ThenVerifyLoginAccountEqualExpected()
+        public void ThenVerifyAccountLoginEqualExpected()
         {
             var mainPage = Driver.GetPage<MainPage>();
             var userNameElement = WaitUtils.WaitForElementToBeDisplayed(Driver, mainPage.ActualLogin);

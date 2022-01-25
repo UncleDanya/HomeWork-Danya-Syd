@@ -14,7 +14,7 @@ namespace HomeWork
             var user = driver.GetPage<UserSteps>();
 
             user.WhenUserCreateNewUserAccount();
-            user.ThenVerifyLoginAccountEqualExpected();
+            user.ThenVerifyAccountLoginEqualExpected();
         }
 
         [TearDown]

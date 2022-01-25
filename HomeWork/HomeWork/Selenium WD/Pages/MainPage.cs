@@ -45,6 +45,7 @@ namespace HomeWork.Selenium_WD.Pages
         [FindsBy(How = How.ClassName, Using = "info-nick")]
         public IWebElement ActualLogin { get; set; }
 
+
         public void CreateNewUserAccount()
         {
             randomLoginVariable.Value = randomUser.CreateRandomLogin();

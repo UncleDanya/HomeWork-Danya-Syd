@@ -183,47 +183,44 @@ namespace HomeWork.Selenium_WD.Steps
             var checkBoxVariable = _checkboxRuntimeVariables.Value;
 
             var color = checkBoxVariable.GetCssValue("Color");
-            Assert.AreEqual(color, "rgb(255, 141, 2)");
             var checkBoxElement = Driver.FindElement(By.XPath($"//label[@class='brand-best']//a[text()='{brandToLook}']//ancestor::li//input")).Selected;
-
+            
+            Assert.AreEqual(color, "rgb(255, 141, 2)");
             Assert.IsTrue(checkBoxElement, $"Button {brandToLook} is not selected");
         }
 
         public void WhenUserClickOnShowFilterButton()
         {
             IJavaScriptExecutor executor = (IJavaScriptExecutor)Driver;
-
+            var productPage = Driver.GetPage<ProductPages>();
             try
             {
-                var showBrandsFilterButton = Driver.FindElement(By.LinkText("Показать"));
-                WaitUtils.WaitForElementToBeClickable(Driver, showBrandsFilterButton);
-                executor.ExecuteScript("arguments[0].click();", showBrandsFilterButton);
+                WaitUtils.WaitForElementToBeClickable(Driver, productPage.ShowFilterButton);
+                executor.ExecuteScript("arguments[0].click();", productPage.ShowFilterButton);
             }
             catch
             {
-                var showBrandsFilterButton = Driver.FindElement(By.LinkText("Показать"));
-                WaitUtils.WaitForElementToBeClickable(Driver, showBrandsFilterButton);
-                executor.ExecuteScript("arguments[0].click();", showBrandsFilterButton);
+                WaitUtils.WaitForElementToBeClickable(Driver, productPage.ShowFilterButton);
+                executor.ExecuteScript("arguments[0].click();", productPage.ShowFilterButton);
             }
         }
 
         public void ThenVerifyDescendingPriceSorting()
         {
+            var productPage = Driver.GetPage<ProductPages>();
             var sortDescendingPriceButton = Driver.FindElement(By.XPath(".//a[@jtype='click' and text()='по цене']"));
 
             WaitUtils.WaitForElementToBeClickable(Driver, sortDescendingPriceButton);
 
             sortDescendingPriceButton.Click();
-
             WaitUtils.WaitForAllElementsInListIsVisible(Driver, By.XPath("//b[text()]//parent::a"));
-
+            
             var lastPage = Driver.FindElements(By.XPath(".//div[@class='ib page-num']//a")).Last();
             var neededElementText = Int32.Parse(lastPage.Text);
 
             for (int i = 0; i < neededElementText; i++)
             {
-                var allPrice = Driver.FindElements(By.XPath("//b[text()]//parent::a"));
-
+                var allPrice = productPage.ListAllPriceOnPage;
                 for (int j = 0; j < allPrice.Count - 1; j++)
                 {
                     var priceWithoutText = Convert.ToInt32(allPrice[j].Text.Replace(" грн.", string.Empty).Replace(" ", string.Empty));
@@ -273,8 +270,7 @@ namespace HomeWork.Selenium_WD.Steps
 
         public void WhenUserInputNameProductInSearchField(string productSearch)
         {
-            var searchInput = Driver.FindElement(By.XPath("//input[@id='ek-search']"));
-            searchInput.SendKeys(productSearch);
+            Driver.FindElement(By.XPath("//input[@id='ek-search']")).SendKeys(productSearch);
 
             var searchButton = Driver.FindElement(By.Name("search_but_"));
             searchButton.Click();
@@ -282,12 +278,12 @@ namespace HomeWork.Selenium_WD.Steps
 
         public void ThenVerifyItemForSeraching(string nameItem)
         {
-            var searchingItems = Driver.FindElements(By.XPath("//td[@class='where-buy-description']//h3[text()]"));
+            var productPage = Driver.GetPage<ProductPages>();
+            var searchingItems = productPage.ListAllItemOnSearchPage;
 
             foreach (var searchingItem in searchingItems)
             {
                 var searchResultsText = searchingItem.Text;
-
                 Assert.IsTrue(searchResultsText.Contains(nameItem));
             }
         }

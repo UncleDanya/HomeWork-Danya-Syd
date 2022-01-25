@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using AutomationUtils.Extensions;
+using iText.StyledXmlParser.Jsoup.Select;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
@@ -37,6 +39,7 @@ namespace HomeWork.Selenium_WD.Utils
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds((int) waitTime));
             wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(elements));
         }
+
 
         public static void WaitForAlertIsPresent(IWebDriver driver,
             WebDriverExtensions.WaitTime waitTime = WebDriverExtensions.WaitTime.Short)
