@@ -1,4 +1,6 @@
-﻿using OpenQA.Selenium;
+﻿using System;
+using System.Collections.Generic;
+using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
 using HomeWork.Selenium_WD.Utils;
 
@@ -30,6 +32,9 @@ namespace HomeWork.Selenium_WD.Pages
         [FindsBy(How = How.XPath, Using = "//a[text()='УДАЛИТЬ']")]
         public IWebElement SubmitDeleteUserAccountButton { get; set; }
 
+        [FindsBy(How = How.XPath, Using = ".//u[@class='nobr']")]
+        public IList<IWebElement> NameViewedProduct { get; set; }
+
         public void DeleteUserAccount()
         {
             ActualNameUser.Click();
@@ -37,9 +42,9 @@ namespace HomeWork.Selenium_WD.Pages
             UserDeleteAccountButton.Click();
             WaitUtils.WaitForElementToBeClickable(Driver, SubmitDeleteUserAccountButton);
             SubmitDeleteUserAccountButton.Click();
-            WaitUtils.WaitForAlertIsPresent(Driver);
-
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             Driver.SwitchTo().Alert().Accept();
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
         }
     }
 }

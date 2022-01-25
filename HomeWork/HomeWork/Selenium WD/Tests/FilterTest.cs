@@ -1,7 +1,6 @@
 ﻿using HomeWork.Selenium_WD.Base;
 using HomeWork.Selenium_WD.Extensions;
-using HomeWork.Selenium_WD.Functional;
-using HomeWork.Selenium_WD.Pages;
+using HomeWork.Selenium_WD.Steps;
 using NUnit.Framework;
 
 namespace HomeWork
@@ -12,17 +11,13 @@ namespace HomeWork
         [Test]
         public void TestFilter()
         {
-            var category = driver.GetPage<ProductCategoryNavigation>();
-            var categoryPage = driver.GetPage<CategoryPage>();
-            var productPages = driver.GetPage<ProductPages>();
+            var product = driver.GetPage<ProductSteps>();
 
-            category.EntryIntoCategoryByName("Компьютеры", "Ноутбуки");
-
-            categoryPage.SearchBrandByFilter("Acer");
-            categoryPage.VerifyThatCheckboxIsSelected("Acer");
-            categoryPage.ClickOnShowFilterButton();
-
-            productPages.VerifyFilterShowActualBrand("Acer");
+            product.WhenUserEntryIntoCategoryByName("Компьютеры", "Ноутбуки");
+            product.WhenUserSelectBrandByFilter("Acer");
+            product.ThenVerifyCheckboxIsSelected("Acer");
+            product.WhenUserClickOnShowFilterButton();
+            product.ThenVerifyFilterShowActualBrand("Acer");
         }
     }
 }

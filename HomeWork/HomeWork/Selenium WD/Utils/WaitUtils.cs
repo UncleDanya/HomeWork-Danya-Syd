@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using AutomationUtils.Extensions;
+using iText.StyledXmlParser.Jsoup.Select;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
@@ -25,7 +27,7 @@ namespace HomeWork.Selenium_WD.Utils
         }
 
         public static void WaitForElementToBeClickable(IWebDriver driver, IWebElement element,
-            WebDriverExtensions.WaitTime waitTime = WebDriverExtensions.WaitTime.Short)
+            WebDriverExtensions.WaitTime waitTime = WebDriverExtensions.WaitTime.Long)
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds((int) waitTime));
             wait.Until(ExpectedConditions.ElementToBeClickable(element));
@@ -38,10 +40,11 @@ namespace HomeWork.Selenium_WD.Utils
             wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(elements));
         }
 
+
         public static void WaitForAlertIsPresent(IWebDriver driver,
             WebDriverExtensions.WaitTime waitTime = WebDriverExtensions.WaitTime.Short)
         {
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds((int) waitTime));
             wait.Until(ExpectedConditions.AlertIsPresent());
         }
 

@@ -1,6 +1,6 @@
 ﻿using HomeWork.Selenium_WD.Base;
 using HomeWork.Selenium_WD.Extensions;
-using HomeWork.Selenium_WD.Functional;
+using HomeWork.Selenium_WD.Steps;
 using NUnit.Framework;
 
 namespace HomeWork
@@ -11,10 +11,10 @@ namespace HomeWork
         [Test]
         public void TestSearchField()
         {
-            var searchField = driver.GetPage<SearchField>();
+            var product = driver.GetPage<ProductSteps>();
             
-            searchField.SearchFieldProductInput("iPhone 13 Pro 256");
-            searchField.VerifyItemForSeraching("iPhone 13 Pro 256");
+            product.WhenUserInputNameProductInSearchField("iPhone 13 Pro 256");
+            product.ThenVerifyItemForSeraching("iPhone 13 Pro 256");
         }
     }
 }
