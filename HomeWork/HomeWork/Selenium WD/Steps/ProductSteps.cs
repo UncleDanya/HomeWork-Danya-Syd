@@ -161,10 +161,6 @@ namespace HomeWork.Selenium_WD.Steps
             Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
 
             var seachInsideFolderByName = Driver.FindElement(By.PartialLinkText(pixelFolderName));
-            var displayedElemnt = seachInsideFolderByName.Displayed;
-
-            Assert.IsTrue(displayedElemnt);
-
             seachInsideFolderByName.Click();
             Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
         }
