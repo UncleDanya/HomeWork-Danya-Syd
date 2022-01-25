@@ -1,7 +1,5 @@
 ﻿using HomeWork.Selenium_WD.Base;
 using HomeWork.Selenium_WD.Extensions;
-using HomeWork.Selenium_WD.Functional;
-using HomeWork.Selenium_WD.Pages;
 using HomeWork.Selenium_WD.Steps;
 using NUnit.Framework;
 
@@ -13,14 +11,12 @@ namespace HomeWork
         [Test]
         public void TestSwitchToShop()
         {
-            var categoryPage = driver.GetPage<CategoryPage>();
-            var category = driver.GetPage<ProductCategoryNavigation>();
             var product = driver.GetPage<ProductSteps>();
 
-            category.EntryIntoCategoryByName("Гаджеты", "Мобильные");
-            categoryPage.SearchBrandByFilter("Apple");
-            categoryPage.VerifyThatCheckboxIsSelected("Apple");
-            categoryPage.ClickOnShowFilterButton();
+            product.WhenUserEntryIntoCategoryByName("Гаджеты", "Мобильные");
+            product.WhenUserSelectBrandByFilter("Apple");
+            product.ThenVerifyCheckboxIsSelected("Apple");
+            product.WhenUserClickOnShowFilterButton();
             product.WhenUserRememberNameProduct("Apple iPhone 13");
             product.WhenUserSelectNeededProductOnPage("Apple iPhone 13");
             product.WhenUserClickOnNameShop("Avic.ua");

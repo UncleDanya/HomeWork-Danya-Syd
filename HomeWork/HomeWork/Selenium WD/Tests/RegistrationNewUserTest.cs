@@ -1,6 +1,6 @@
 using HomeWork.Selenium_WD.Base;
 using HomeWork.Selenium_WD.Extensions;
-using HomeWork.Selenium_WD.Pages;
+using HomeWork.Selenium_WD.Steps;
 using NUnit.Framework;
 
 namespace HomeWork
@@ -11,17 +11,17 @@ namespace HomeWork
         [Test]
         public void TestRegistrationNewUserTest()
         {
-            var mainPage = driver.GetPage<MainPage>();
+            var user = driver.GetPage<UserSteps>();
 
-            mainPage.CreateNewUserAccount();
-            mainPage.VerifyLoginAccount();
+            user.WhenUserCreateNewUserAccount();
+            user.ThenVerifyLoginAccountEqualExpected();
         }
 
         [TearDown]
         public void AfterTest()
         {
-            var userPage = driver.GetPage<UserPage>();
-            userPage.DeleteUserAccount();
+            var user = driver.GetPage<UserSteps>();
+            user.WhenUserDeleteUserAccount();
         }
     }
 }

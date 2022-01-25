@@ -1,6 +1,4 @@
 ﻿using HomeWork.Selenium_WD.Base;
-using HomeWork.Selenium_WD.Functional;
-using HomeWork.Selenium_WD.Pages;
 using NUnit.Framework;
 using HomeWork.Selenium_WD.Extensions;
 using HomeWork.Selenium_WD.Steps;
@@ -13,14 +11,12 @@ namespace HomeWork
         [Test]
         public void TestCompareTwoItem()
         {
-            var category = driver.GetPage<ProductCategoryNavigation>();
-            var categoryPage = driver.GetPage<CategoryPage>();
             var product = driver.GetPage<ProductSteps>();
             
-            category.EntryIntoCategoryByName("Компьютеры", "Планшеты");
-            categoryPage.SearchBrandByFilter("Apple");
-            categoryPage.VerifyThatCheckboxIsSelected("Apple");
-            categoryPage.ClickOnShowFilterButton();
+            product.WhenUserEntryIntoCategoryByName("Компьютеры", "Планшеты");
+            product.WhenUserSelectBrandByFilter("Apple");
+            product.ThenVerifyCheckboxIsSelected("Apple");
+            product.WhenUserClickOnShowFilterButton();
             product.WhenUserRememberNameProduct("Apple iPad");
             product.WhenUserSelectNeededProductOnPage("Apple iPad");
             product.WhenUserAddedToCompareCheckboxProduct();
