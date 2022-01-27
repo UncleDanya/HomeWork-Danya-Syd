@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using AutomationUtils.Extensions;
-using iText.StyledXmlParser.Jsoup.Select;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;

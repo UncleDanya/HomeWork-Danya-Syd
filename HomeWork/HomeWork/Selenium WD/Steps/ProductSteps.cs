@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using HomeWork.Selenium_WD.Components.FolderIcon;
 using HomeWork.Selenium_WD.Extensions;
 using HomeWork.Selenium_WD.Pages;
 using HomeWork.Selenium_WD.RuntimeVariables;
@@ -156,13 +157,17 @@ namespace HomeWork.Selenium_WD.Steps
 
         public void WhenUserEntryIntoCategoryByName(string folderName, string pixelFolderName)
         {
-            var searchFolderByName = Driver.FindElement(By.XPath($"//ul[@class='mainmenu-list ff-roboto']//li[@class='mainmenu-item']//a[text()='{folderName}']"));
+            /*var searchFolderByName = Driver.FindElement(By.XPath($"//ul[@class='mainmenu-list ff-roboto']//li[@class='mainmenu-item']//a[text()='{folderName}']"));
             searchFolderByName.Click();
             Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
 
             var seachInsideFolderByName = Driver.FindElement(By.PartialLinkText(pixelFolderName));
             seachInsideFolderByName.Click();
-            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);*/
+            var folderMainItem = Driver.GetComponent<FolderMainItem>($"{folderName}");
+            folderMainItem.Click();
+            var folderSublictItem = Driver.GetComponent<FolderSublistItem>($"{pixelFolderName}");
+            folderSublictItem.Click();
         }
 
         public void WhenUserSelectBrandByFilter(string brandToLook)
