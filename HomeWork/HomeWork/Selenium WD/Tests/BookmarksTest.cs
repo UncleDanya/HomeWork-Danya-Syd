@@ -1,5 +1,4 @@
 ﻿using HomeWork.Selenium_WD.Base;
-using HomeWork.Selenium_WD.Components.FolderIcon;
 using HomeWork.Selenium_WD.Extensions;
 using HomeWork.Selenium_WD.Steps;
 using NUnit.Framework;

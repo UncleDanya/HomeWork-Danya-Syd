@@ -13,8 +13,8 @@ namespace HomeWork
         {
             var product = driver.GetPage<ProductSteps>();
             
-            product.WhenUserInputNameProductInSearchField("iPhone 13 Pro 256");
-            product.ThenVerifyItemForSeraching("iPhone 13 Pro 256");
+            product.WhenUserInputNameProductInSearchField("iPhone 13 Pro");
+            product.ThenVerifyItemForSeraching("iPhone 13 Pro");
         }
     }
 }

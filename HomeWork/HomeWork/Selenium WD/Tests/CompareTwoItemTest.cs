@@ -26,7 +26,7 @@ namespace HomeWork
             product.WhenUserAddedToCompareCheckboxProduct();
             product.WhenUserSwitchToComparePage();
             product.WhenUserSwitchToSecondPage();
-            product.ThenVerifyProductNameForCompareTwoItems("Apple iPad", "Apple iPad Air");
+            product.ThenVerifyProductNameForCompareTwoItems("Apple iPad 2021", "Apple iPad Air 2020");
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿
+﻿using System.Collections.Generic;
 using OpenQA.Selenium;
 
 namespace HomeWork.Selenium_WD.Components.Utils
@@ -12,7 +12,9 @@ namespace HomeWork.Selenium_WD.Components.Utils
         public IWebElement Parent { get; set; }
 
         public IWebElement Instance { get; set; }
-        
+
+        public IList<IWebElement> Instances { get; set; }
+
 
         public virtual By Construct()
         {
@@ -21,7 +23,18 @@ namespace HomeWork.Selenium_WD.Components.Utils
 
         public void Build()
         {
-            Instance = Driver.FindElement(Construct());
+            if (Parent != null)
+            {
+                Instance = Parent.FindElement(Construct());
+            }
+            else
+            {
+                Instance = Driver.FindElement(Construct());
+            }
+
+            Instances = Driver.FindElements(Construct());
+            // Instance = Driver.FindElement(Construct());
+            // Instance = Parent.FindElement(Construct());
         }
     }
 }
