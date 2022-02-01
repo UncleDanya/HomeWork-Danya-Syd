@@ -1,5 +1,4 @@
 ﻿using HomeWork.Selenium_WD.Components.Utils;
-using HomeWork.Selenium_WD.Utils;
 using OpenQA.Selenium;
 
 namespace HomeWork.Selenium_WD.Components.Button
@@ -8,13 +7,8 @@ namespace HomeWork.Selenium_WD.Components.Button
     {
         public override By Construct()
         {
-            var selector = ".//button[@type='submit']";
+            var selector = $".//button[@type='{Identifier}']";
             return By.XPath(selector);
-        }
-
-        public void Wait()
-        {
-            WaitUtils.WaitForElementToBeClickable(Driver, Instance);
         }
     }
 }

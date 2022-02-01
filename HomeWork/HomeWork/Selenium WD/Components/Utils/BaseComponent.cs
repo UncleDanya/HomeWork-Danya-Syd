@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using HomeWork.Selenium_WD.Utils;
 using OpenQA.Selenium;
 
 namespace HomeWork.Selenium_WD.Components.Utils
@@ -21,20 +22,33 @@ namespace HomeWork.Selenium_WD.Components.Utils
             return By.XPath(Identifier);
         }
 
-        public void Build()
+        public void Build(bool a = false)
         {
-            if (Parent != null)
+            // WaitUtils.WaitForElementToBeClickable(Driver, Instance);
+            
+            if (a)
             {
-                Instance = Parent.FindElement(Construct());
+                if (Parent != null)
+                {
+                    Instances = Parent.FindElements(Construct());
+                }
+                else
+                {
+                    Instances = Driver.FindElements(Construct());
+                }
             }
             else
             {
-                Instance = Driver.FindElement(Construct());
+                if (Parent != null)
+                {
+                    Instance = Parent.FindElement(Construct());
+                }
+                else
+                {
+                    WaitUtils.WaitForElementToBeDisplayed(Driver, Construct());
+                    Instance = Driver.FindElement(Construct());
+                }
             }
-
-            Instances = Driver.FindElements(Construct());
-            // Instance = Driver.FindElement(Construct());
-            // Instance = Parent.FindElement(Construct());
         }
     }
 }

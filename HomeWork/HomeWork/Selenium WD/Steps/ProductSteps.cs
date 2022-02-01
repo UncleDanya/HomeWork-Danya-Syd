@@ -18,15 +18,10 @@ namespace HomeWork.Selenium_WD.Steps
     class ProductSteps : BasePage
     {
         private NameProductVariable name = new NameProductVariable();
-        private CheckboxRuntimeVariable _checkboxRuntimeVariables = new CheckboxRuntimeVariable();
 
         public void WhenUserRememberNameProduct(string nameProduct)
         {
-            /*var productPage = Driver.GetPage<ProductPages>();
-            WaitUtils.WaitForElementToBeDisplayed(Driver, productPage.SelectProductOnPage($"{nameProduct}"));
-            string nameProductText = productPage.SelectProductOnPage($"{nameProduct}").Text;
-            name.Value.Add(nameProductText);*/
-            var product = /*Driver.GetComponent<LinkedText>(nameProduct);*/Driver.GetComponent<ProductsNameLink>(nameProduct);
+            var product = Driver.GetComponent<ProductsNameLink>(nameProduct);
             WaitUtils.WaitForElementToBeDisplayed(Driver, product);
             var productName = product.Text;
             name.Value.Add(productName);
@@ -34,26 +29,18 @@ namespace HomeWork.Selenium_WD.Steps
         
         public void WhenUserSelectNeededProductOnPage(string nameProduct)
         {
-            /*var productPage = Driver.GetPage<ProductPages>();
-            WaitUtils.WaitForElementToBeDisplayed(Driver, productPage.SelectProductOnPage($"{nameProduct}"));
-            productPage.SelectProductOnPage($"{nameProduct}").Click();*/
-            //var gridProductOnPage = Driver.GetComponent<GridProducts>();
             Driver.GetComponent<LinkedText>(nameProduct).Click();
         }
 
         public void WhenUserAddedProductInList()
         {
-            /*var productPage = Driver.GetPage<ProductPages>();
-            WaitUtils.WaitForElementToBeClickable(Driver, productPage.AddedProductInList);
-            productPage.AddedProductInList.Click();*/
-            Driver.GetComponent<Icon>().Click();
+            var productPage = Driver.GetPage<ProductPages>();
+            WaitUtils.WaitForElementToBeClickable(Driver, productPage.HeartShapedIcon);
+            productPage.HeartShapedIcon.Click();
         }
 
         public void WhenUserOpenBookmarksMenu()
         {
-            /*var productPage = Driver.GetPage<ProductPages>();
-            WaitUtils.WaitForElementToBeClickable(Driver, productPage.OpenListWithProduct);
-            productPage.OpenListWithProduct.Click();*/
             var bar = Driver.GetComponent<BottomBar>("Закладки");
             WaitUtils.WaitForElementToBeClickable(Driver, bar);
             bar.Click();
@@ -62,50 +49,35 @@ namespace HomeWork.Selenium_WD.Steps
         // This method is using only for the item's that has memory value in nameShop text
         public void ThenVerifyThatProductNameInBookmarksMenuEqualsToActualProductNameForMobileDevices()
         {
-            /*var productPage = Driver.GetPage<ProductPages>();
+            var productPage = Driver.GetPage<ProductPages>();
             WaitUtils.WaitForElementToBeClickable(Driver, productPage.NameProductInSaveList);
             var productNameInSaveList = productPage.NameProductInSaveList;
             var nameProductInSaveList = productNameInSaveList.Text;
             var newProductName = String.Join(" ", nameProductInSaveList.Split(' ').SkipLast(1));
-            Assert.IsTrue(name.Value.Contains(newProductName), "The item added to the bookmark does not match the item in the bookmark");*/
-            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            /*var slide = */Driver.GetComponent<BottomSideSlide>();
-            // WaitUtils.WaitForElementToBeClickable(Driver, slide);
-            var newProductName = Driver.Component<BottomSideSlide>().TextProductInSlide();
-            // WaitUtils.WaitForElementToBeClickable(Driver, newProductName);
-            // var nameProduct = newProductName.Text.Replace(" 128GB", String.Empty);
-            var nameProductInSaveList = newProductName.Text;
-            var nameProduct = String.Join(" ", nameProductInSaveList.Split(' ').SkipLast(1));
-            // WaitUtils.WaitForElementToBeClickable(Driver, newProductName);
-            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
-            Assert.IsTrue(name.Value.Contains(nameProduct), "The item added to the bookmark does not match the item in the bookmark");
+            Assert.IsTrue(name.Value.Contains(newProductName), "The item added to the bookmark does not match the item in the bookmark");
         }
 
         public void ThenVerifyProductNameForCompareTwoItems(string nameFirstProduct, string nameSecondProduct)
         {
-            /*var compareProduct = Driver.GetPage<CompareProductPage>();
+            var compareProduct = Driver.GetPage<CompareProductPage>();
             var nameFirstTabletInComparePage = compareProduct.NameProductForCompare($"{nameFirstProduct}").Text;
-            var nameSecondTabletInComparePage = compareProduct.NameProductForCompare($"{nameSecondProduct}").Text;*/
-            var nameFirstTabletInComparePage =
-                Driver.Component<LinkedText>("Планшеты").ForCompareNameProducts(nameFirstProduct).Text;
-            var nameSecondTabletInComparePage =
-                Driver.Component<LinkedText>("Планшеты").ForCompareNameProducts(nameSecondProduct).Text;
+            var nameSecondTabletInComparePage = compareProduct.NameProductForCompare($"{nameSecondProduct}").Text;
             Assert.IsTrue(nameFirstTabletInComparePage.Contains(name.Value.First()), "The added item does not match the item on the list");
             Assert.IsTrue(nameSecondTabletInComparePage.Contains(name.Value.Last()), "The added item does not match the item on the list");
         }
 
         public void WhenUserSaveAllProductOnPageInList()
         {
-            // var productPages = Driver.GetPage<ProductPages>();
-            var listWithNameProductOnPage = /*productPages.NamesOfAllProductsOnPage*/Driver.Component<GridProducts>().ListNameProdcuts().SkipLast(4).Select(element => element.Text).ToList();
+            var productPages = Driver.GetPage<ProductPages>();
+            var listWithNameProductOnPage = productPages.NamesOfAllProductsOnPage.SkipLast(4).Select(element => element.Text).ToList();
             listWithNameProductOnPage.Sort();
             name.Value = listWithNameProductOnPage;
         }
 
         public void ThenVerifyListSaveInProductPageForListInUserPage()
         {
-            var productPages = /*Driver.GetPage<ProductPages>();*/Driver.Component<NameProduct>().ListNameProducts();
-            var listWithSaveProductInUserPage = productPages/*.NamesOfAllProductsOnPage*/.Select(element => element.Text).ToList();
+            var productPages = Driver.GetPage<ProductPages>();
+            var listWithSaveProductInUserPage = productPages.NamesOfAllProductsOnPage.Select(element => element.Text).ToList();
             listWithSaveProductInUserPage.Sort();
             Assert.AreEqual(name.Value, listWithSaveProductInUserPage, "The saved item list does not match the sheet in the profile");
         }
@@ -118,15 +90,15 @@ namespace HomeWork.Selenium_WD.Steps
 
         public void ThenVerifyThatProductNameInOtherShopEqualsToActualProductNameForMobileDevices()
         {
-            var product = /*Driver.GetPage<ProductPages>();*/Driver.GetComponent<TitleProductOnOtherShop>();
-            var pageShopWithItemText = product/*.PageShopWithItemText*/.Text;
+            var product = Driver.GetPage<ProductPages>();
+            var pageShopWithItemText = product.PageShopWithItemText.Text;
             Assert.IsTrue(pageShopWithItemText.Contains(name.Value.First()));
         }
 
         public void ThenVerifySaveListProductForListInUserPage()
         {
-            var user = /*Driver.GetPage<UserPage>();*/Driver.Component<NameProductsViewed>().ListNameProductsViewe();
-            var listProducts = user/*.NameViewedProduct*/.Select(element => element.Text).ToList();
+            var user = Driver.GetPage<UserPage>();
+            var listProducts = user.NameViewedProduct.Select(element => element.Text).ToList();
             listProducts.Sort();
             name.Value.Sort();
             Assert.AreEqual(name.Value, listProducts);
@@ -134,142 +106,99 @@ namespace HomeWork.Selenium_WD.Steps
 
         public void WhenUserAddedToCompareCheckboxProduct()
         {
-            /*var productPages = Driver.GetPage<ProductPages>();
-            productPages.AddedToCompareCheckboxProduct.Click();*/
             Driver.GetComponent<Checkbox>("добавить в сравнение").Click();
         }
 
         public void WhenUserSwitchToPageWithTablet()
         {
-            /*var productPages = Driver.GetPage<ProductPages>();
-            WaitUtils.WaitForElementToBeClickable(Driver, productPages.SwitchToPageWithTablet);
-            productPages.SwitchToPageWithTablet.Click();*/
             Driver.GetComponent<LinkedText>("Apple").Click();
         }
 
         public void WhenUserSwitchToComparePage()
         {
-            /*var productPages = Driver.GetPage<ProductPages>();
-            WaitUtils.WaitForElementToBeClickable(Driver, productPages.SwitchToComparePage);
-            productPages.SwitchToComparePage.Click();*/
             Driver.GetComponent<BottomBar>("Сравнить").Click();
         }
 
         public void WhenUserShowAllPriceOnProductButton()
         {
-            /*var productPages = Driver.GetPage<ProductPages>();
-            productPages.ShowAllPriceOnProductButton.Click();*/
             Driver.GetComponent<LinkedText>("Cравнить цены").Click();
         }
 
         public void WhenUserClickOnSaveItemInList()
         {
-            /*var productPages = Driver.GetPage<ProductPages>();
-            productPages.SaveListProductOnPage.Click();*/
-            Driver.GetComponent<Icon>().Click();
+            var productPages = Driver.GetPage<ProductPages>();
+            productPages.HeartShapedIcon.Click();
         }
 
         public void WhenUserClickOnSubmitSaveListButton()
         {
-            var productPages = Driver.GetComponent<ButtonSubmit>();
-            Driver.Component<ButtonSubmit>().Wait();
+            var productPages = Driver.GetComponent<ButtonSubmit>("submit");
             WaitUtils.WaitForElementToBeClickable(Driver, productPages);
             productPages.Click();
         }
 
         public void WhenUserSwitchToUserPage()
         {
-            var mainPage = /*Driver.GetPage<MainPage>();*/Driver.GetComponent<LogIn>();
-            WaitUtils.WaitForElementToBeClickable(Driver, mainPage);
-            mainPage.Click();
+            var mainPage = Driver.GetPage<MainPage>();
+            WaitUtils.WaitForElementToBeClickable(Driver, mainPage.ActualLogin);
+            mainPage.ActualLogin.Click();
         }
 
         public void WhenUserClickOnNameShop(string nameShop)
         {
-            /*var productPage = Driver.GetPage<ProductPages>();
-            productPage.NameShopLinkText(nameShop).Click();*/
-            Driver.GetComponent<LinkedText>("Avic.ua").Click();
+            Driver.GetComponent<LinkedText>(nameShop).Click();
         }
 
         public void WhenUserEntryIntoCategoryByName(string folderName, string pixelFolderName)
-        {
-            /*var searchFolderByName = Driver.FindElement(By.XPath($"//ul[@class='mainmenu-list ff-roboto']//li[@class='mainmenu-item']//a[text()='{folderName}']"));
-            searchFolderByName.Click();
-            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            
-            var seachInsideFolderByName = Driver.FindElement(By.PartialLinkText(pixelFolderName));
-            seachInsideFolderByName.Click();
-            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);*/
-            /*var mainDropdown = */Driver.GetComponent<MainCategoryDropDown>(folderName);
-            // mainDropdown.Click();
+        {Driver.GetComponent<MainCategoryDropDown>(folderName);
             Driver.Component<MainCategoryDropDown>(folderName).SelectCategoryFromDropdown(pixelFolderName);
-            /*var folderMainItem = Driver.GetComponent<MainCategoryDropDown>($"{folderName}");
-            folderMainItem.Click();
-            var folderSublictItem = Driver.GetComponent<FolderSublistItem>($"{pixelFolderName}");
-            folderSublictItem.Click();*/
         }
 
         public void WhenUserSelectBrandByFilter(string brandToLook)
         {
-            /*Actions actions = new Actions(Driver);
-
-            var tableWithBrands = Driver.FindElement(By.XPath($"//label[@class='brand-best']//a[text()='{brandToLook}']"));
-            _checkboxRuntimeVariables.Value = tableWithBrands;
-            actions.Click(tableWithBrands).Perform();*/
-            Driver.GetComponent<Checkbox>(brandToLook);
+            /*IJavaScriptExecutor executor = (IJavaScriptExecutor) Driver;
+            var linkShow = Driver.GetComponent<Checkbox>(brandToLook);
+            executor.ExecuteScript("arguments[0].click();", *//*productPage.ShowFilterButton*//*linkShow);*/
+            Driver.GetComponent<Checkbox>(brandToLook).Click();
         }
 
         public void ThenVerifyCheckboxIsSelected(string brandToLook)
         {
-            /*var checkBoxVariable = _checkboxRuntimeVariables.Value;
-
-            var color = checkBoxVariable.GetCssValue("Color");
-            var checkBoxElement = Driver.FindElement(By.XPath($"//label[@class='brand-best']//a[text()='{brandToLook}']//ancestor::li//input")).Selected;
-            
-            Assert.AreEqual(color, "rgb(255, 141, 2)");
-            Assert.IsTrue(checkBoxElement, $"Button {brandToLook} is not selected");*/
-            Driver.GetComponent<Checkbox>(brandToLook);
-            Driver.Component<Checkbox>(brandToLook).VerifySelectedCheckbox();
+            var selectCheckbox =  Driver.Component<Checkbox>(brandToLook).VerifySelectedCheckbox();
+            Assert.IsTrue(selectCheckbox, $"checkbox with name '{brandToLook}' is not selected");
         }
 
         public void WhenUserClickOnShowFilterButton()
         {
             IJavaScriptExecutor executor = (IJavaScriptExecutor)Driver;
-            // var productPage = Driver.GetPage<ProductPages>();
             var linkShow = Driver.GetComponent<LinkedText>("Показать");
             try
             {
-                // WaitUtils.WaitForElementToBeClickable(Driver, /*productPage.ShowFilterButton*/linkShow);
-                executor.ExecuteScript("arguments[0].click();", /*productPage.ShowFilterButton*/linkShow);
+                executor.ExecuteScript("arguments[0].click();", linkShow);
             }
             catch
             {
-                // WaitUtils.WaitForElementToBeClickable(Driver, /*productPage.ShowFilterButton*/linkShow);
-                executor.ExecuteScript("arguments[0].click();", /*productPage.ShowFilterButton*/linkShow);
+                executor.ExecuteScript("arguments[0].click();", linkShow);
             }
         }
 
         public void ThenVerifyDescendingPriceSorting()
         {
-            // var productPage = Driver.GetPage<ProductPages>();
+            var productPage = Driver.GetPage<ProductPages>();
             var
-                sortDescendingPriceButton = /*Driver.FindElement(By.XPath(".//a[@jtype='click' and text()='по цене']"));*/
+                sortDescendingPriceButton = 
                     Driver.GetComponent<LinkedText>("по цене");
-            /*var listPriceOnPage = */Driver.Component<GridWhereBuyPorducts>().PriceList();
             WaitUtils.WaitForElementToBeClickable(Driver, sortDescendingPriceButton);
 
             sortDescendingPriceButton.Click();
-            //WaitUtils.WaitForAllElementsInListIsVisible(Driver, By.XPath("//b[text()]//parent::a"));
-            Driver.Component<GridWhereBuyPorducts>().Waiter();
+            WaitUtils.WaitForAllElementsInListIsVisible(Driver, By.XPath("//b[text()]//parent::a"));
 
-            var lastPage = /*Driver.FindElements(By.XPath(".//div[@class='ib page-num']//a")).Last();*/
-            Driver.Component<Pagenation>().ListPages().Last();
+            var lastPage = productPage.Pagenation.Last();
             var neededElementText = Int32.Parse(lastPage.Text);
 
             for (int i = 0; i < neededElementText; i++)
             {
-                var allPrice = /*productPage.ListAllPriceOnPage;*/ /*Driver.Component<Price>().ListPrice();*/
-                    Driver.Component<GridWhereBuyPorducts>().PriceList();
+                var allPrice = productPage.ListAllPriceOnPage;
                 for (int j = 0; j < allPrice.Count - 1; j++)
                 {
                     var priceWithoutText = Convert.ToInt32(allPrice[j].Text.Replace(" грн.", string.Empty).Replace(" ", string.Empty));
@@ -280,8 +209,6 @@ namespace HomeWork.Selenium_WD.Steps
 
                 try
                 {
-                    /*var nextPageButton = Driver.FindElement(By.XPath("//a[@id='pager_next']"));
-                    nextPageButton.Click();*/
                     Driver.GetComponent<ButtonSwitchPage>("Следующая страница").Click();
                 }
                 catch
@@ -293,27 +220,23 @@ namespace HomeWork.Selenium_WD.Steps
 
         public void ThenVerifyFilterShowActualBrand(string nameBrand)
         {
-            var lastPage = /*Driver.FindElements(By.XPath(".//div[@class='ib page-num']//a")).Last();*/
-                Driver.Component<Pagenation>().ListPages().Last();
+            var productPage = Driver.GetPage<ProductPages>();
+            var lastPage = productPage.Pagenation.Last();
             var neededElementText = Int32.Parse(lastPage.Text);
 
             for (int i = 0; i < neededElementText; i++)
             {
-                // var a = Driver.GetComponent<GridProducts>();
-                var allNameProduct = /*Driver.FindElements(By.XPath($"//a/span[contains(text(),'{nameBrand}')]"));*/
-                    /*Driver.Component<LinkedText>(nameBrand ,a).ListContainsName(nameBrand);*/
-                    Driver.Component<GridProducts>().ListProducts(nameBrand);
+                var allNameProduct =
+                    Driver.GetComponents<ListProductsWithContainsName>(nameBrand);
 
-                foreach (var oneItemAcer in allNameProduct)
+                foreach (var oneItemProduct in allNameProduct)
                 {
-                    var oneItem = oneItemAcer.Text;
+                    var oneItem = oneItemProduct.Text;
                     Assert.IsTrue(oneItem.Contains($"{nameBrand}"), "Not found");
                 }
 
                 try
                 {
-                    /*var nextPageButton = Driver.FindElement(By.XPath("//a[@id='pager_next']"));
-                    nextPageButton.Click();*/
                     Driver.GetComponent<ButtonSwitchPage>("Следующая страница").Click();
                 }
                 catch
@@ -325,18 +248,14 @@ namespace HomeWork.Selenium_WD.Steps
 
         public void WhenUserInputNameProductInSearchField(string productSearch)
         {
-            // Driver.FindElement(By.XPath("//input[@id='ek-search']")).SendKeys(productSearch);
             Driver.GetComponent<Input>("Поиск товаров").SendKeys(productSearch);
-            Driver.GetComponent<Button>("Найти").Click();
-
-            /*var searchButton = Driver.FindElement(By.Name("search_but_"));
-            searchButton.Click();*/
+            Driver.GetComponent<ButtonWithText>("Найти").Click();
         }
 
         public void  ThenVerifyItemForSeraching(string nameItem)
         {
-            var productPage = /*Driver.GetPage<ProductPages>();*/Driver.Component<ProductsNameLink>(nameItem).ListName();
-            var searchingItems = productPage/*.ListAllItemOnSearchPage*/;
+            var productPage = Driver.GetPage<ProductPages>();
+            var searchingItems = productPage.ListAllItemOnSearchPage;
 
             foreach (var searchingItem in searchingItems)
             {

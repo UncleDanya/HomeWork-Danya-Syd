@@ -12,10 +12,10 @@ namespace HomeWork.Selenium_WD.Components.FolderIcon
             return By.XPath(selector);
         }
 
-        public void SelectCategoryFromDropdown(string pixelDropdown)
+        public void SelectCategoryFromDropdown(string subItemMenu)
         {
             Instance.Click();
-            var selector = Driver.FindElement(By.PartialLinkText($"{pixelDropdown}"));
+            var selector = Driver.FindElement(By.PartialLinkText($"{subItemMenu}"));
             WaitUtils.WaitForElementToBeClickable(Driver, selector);
             selector.Click();
         }

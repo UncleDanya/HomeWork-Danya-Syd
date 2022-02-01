@@ -7,7 +7,7 @@ namespace HomeWork.Selenium_WD.Components
     {
         public override By Construct()
         {
-            var selector = $".//a[starts-with(@class,'ib pager') and @title='{Identifier}']";
+            var selector = $".//a[@title='{Identifier}']";
             return By.XPath(selector);
         }
     }

@@ -1,13 +1,13 @@
 ﻿using HomeWork.Selenium_WD.Components.Utils;
 using OpenQA.Selenium;
 
-namespace HomeWork.Selenium_WD.Components
+namespace HomeWork.Selenium_WD.Components.Button
 {
-    class TitleProductOnOtherShop : BaseComponent
+    class ButtonWithText : BaseComponent
     {
         public override By Construct()
         {
-            var selector = "//h1[@class='page-title']";
+            var selector = $".//button[text()='{Identifier}']";
             return By.XPath(selector);
         }
     }

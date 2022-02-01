@@ -3,11 +3,11 @@ using OpenQA.Selenium;
 
 namespace HomeWork.Selenium_WD.Components.Button
 {
-    class Button : BaseComponent
+    class ElementWithText : BaseComponent
     {
         public override By Construct()
         {
-            var selector = $".//button[text()='{Identifier}']";
+            var selector = $".//a[text()='{Identifier}']";
             return By.XPath(selector);
         }
     }

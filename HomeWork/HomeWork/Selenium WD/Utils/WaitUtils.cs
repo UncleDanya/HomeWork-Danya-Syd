@@ -24,6 +24,13 @@ namespace HomeWork.Selenium_WD.Utils
             return element;
         }
 
+        public static void WaitForElementToBeDisplayed(IWebDriver driver, By expression,
+            WebDriverExtensions.WaitTime waitTime = WebDriverExtensions.WaitTime.Short)
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds((int)waitTime));
+            wait.Until(ExpectedConditions.ElementIsVisible(expression));
+        }
+
         public static void WaitForElementToBeClickable(IWebDriver driver, IWebElement element,
             WebDriverExtensions.WaitTime waitTime = WebDriverExtensions.WaitTime.Long)
         {
@@ -37,7 +44,6 @@ namespace HomeWork.Selenium_WD.Utils
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds((int) waitTime));
             wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(elements));
         }
-
 
         public static void WaitForAlertIsPresent(IWebDriver driver,
             WebDriverExtensions.WaitTime waitTime = WebDriverExtensions.WaitTime.Short)

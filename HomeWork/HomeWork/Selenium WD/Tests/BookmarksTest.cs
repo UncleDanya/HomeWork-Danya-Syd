@@ -12,12 +12,6 @@ namespace HomeWork
         public void TestBookmarks()
         {
             var product = driver.GetPage<ProductSteps>();
-
-            /*var a = driver.GetComponent<FolderMainItem>("Гаджеты");
-            a.Click();
-            var b = driver.GetComponent<FolderSublistItem>("Мобильные");
-            b.Click();*/
-
             product.WhenUserEntryIntoCategoryByName("Гаджеты", "Мобильные");
             product.WhenUserSelectBrandByFilter("Apple");
             product.ThenVerifyCheckboxIsSelected("Apple");

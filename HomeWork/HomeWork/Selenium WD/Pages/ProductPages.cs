@@ -12,8 +12,8 @@ namespace HomeWork.Selenium_WD.Pages
         [FindsBy(How = How.XPath, Using = ".//h1[@itemprop='name']")]
         public IWebElement FooterWithNameOnPage { get; set; }
 
-        [FindsBy(How = How.XPath, Using = ".//span[@title='Добавить в список']")]
-        public IWebElement AddedProductInList { get; set; }
+        [FindsBy(How = How.XPath, Using = ".//span[contains(@class, 'heart')]//parent::div")]
+        public IWebElement HeartShapedIcon { get; set; }
 
         [FindsBy(How = How.XPath, Using = ".//li[@id='bar_bm_marked' and @class='goods-bar-section']")]
         public IWebElement OpenListWithProduct { get; set; }
@@ -57,6 +57,9 @@ namespace HomeWork.Selenium_WD.Pages
 
         [FindsBy(How = How.XPath, Using = ".//b[text()]//parent::a")]
         public IList<IWebElement> ListAllPriceOnPage { get; set; }
+
+        [FindsBy(How = How.XPath, Using = ".//div[@class='ib page-num']//a")]
+        public IList<IWebElement> Pagenation { get; set; }
 
         public void VerifyFilterShowActualBrand(string nameBrand)
         {

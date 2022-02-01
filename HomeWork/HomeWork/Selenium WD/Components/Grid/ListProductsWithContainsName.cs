@@ -3,11 +3,11 @@ using OpenQA.Selenium;
 
 namespace HomeWork.Selenium_WD.Components.Grid
 {
-    class ProductCard : BaseComponent
+    class ListProductsWithContainsName : BaseComponent
     {
         public override By Construct()
         {
-            var selector = $".//*[text()='{Identifier}']//ancestor::table[@class='model-short-block']";
+            var selector = $".//form[@id='list_form1']//*[contains(text(),'{Identifier}')]//ancestor::a[@href]";
             return By.XPath(selector);
         }
     }

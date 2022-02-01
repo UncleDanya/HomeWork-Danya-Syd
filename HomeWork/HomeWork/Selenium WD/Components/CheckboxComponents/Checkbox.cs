@@ -1,5 +1,4 @@
 ﻿using HomeWork.Selenium_WD.Components.Utils;
-using NUnit.Framework;
 using OpenQA.Selenium;
 
 namespace HomeWork.Selenium_WD.Components.CheckboxComponents
@@ -9,15 +8,16 @@ namespace HomeWork.Selenium_WD.Components.CheckboxComponents
         public override By Construct()
         {
             var selector = $".//*[text()='{Identifier}']//parent::label";
+            // var selector = $".//label[@class='brand-best']//a[text()='{Identifier}']//ancestor::li//input";
             return By.XPath(selector);
         }
 
-        public void VerifySelectedCheckbox()
+
+        public bool VerifySelectedCheckbox()
         {
-            Instance.Click();
-            var element = Instance.FindElement(
-                By.XPath($"//label[@class='brand-best']//a[text()='{Identifier}']//ancestor::li//input"));
-            Assert.IsTrue(element.Selected);
+            var element = Driver.FindElement(
+                By.XPath($".//label[@class='brand-best']//a[text()='{Identifier}']//ancestor::li//input"));
+            return element.Selected;
         }
     }
 }

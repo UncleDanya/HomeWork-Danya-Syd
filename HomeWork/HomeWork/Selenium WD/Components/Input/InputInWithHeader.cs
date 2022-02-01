@@ -1,13 +1,13 @@
 ﻿using HomeWork.Selenium_WD.Components.Utils;
 using OpenQA.Selenium;
 
-namespace HomeWork.Selenium_WD.Components.TabsInUser
+namespace HomeWork.Selenium_WD.Components
 {
-    class EditTabs : BaseComponent
+    class InputInWithHeader : BaseComponent
     {
         public override By Construct()
         {
-            var selector = ".//a[@title='Редактировать']";
+            var selector = $".//label[text()='{Identifier}']/following-sibling::input";
             return By.XPath(selector);
         }
     }
