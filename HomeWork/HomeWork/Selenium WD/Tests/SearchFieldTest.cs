@@ -14,7 +14,7 @@ namespace HomeWork
             var product = driver.GetPage<ProductSteps>();
             
             product.WhenUserInputNameProductInSearchField("iPhone 13 Pro", "Найти");
-            product.ThenVerifyItemForSeraching("iPhone 13 Pro");
+            product.ThenVerifyItemForSearching("iPhone 13 Pro");
         }
     }
 }

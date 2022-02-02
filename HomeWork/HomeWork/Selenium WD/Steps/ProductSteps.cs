@@ -258,7 +258,7 @@ namespace HomeWork.Selenium_WD.Steps
             Driver.GetComponent<ButtonWithText>($"{nameButton}").Click();
         }
 
-        public void  ThenVerifyItemForSeraching(string nameItem)
+        public void ThenVerifyItemForSearching(string nameItem)
         {
             var productPage = Driver.GetPage<ProductPages>();
             var searchingItems = productPage.ListAllItemOnSearchPage;
