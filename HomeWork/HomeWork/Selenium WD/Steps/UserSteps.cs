@@ -15,9 +15,9 @@ namespace HomeWork.Selenium_WD.Steps
     {
         private RandomLoginVariable randomLoginVariable = new RandomLoginVariable();
         
-        public void WhenUserSetTextToUserNameField(string nameUser)
+        public void WhenUserSetTextToUserNameField(string inputName ,string nameUser)
         {
-            Driver.GetComponent<InputInWithHeader>("Ваш ник").SendKeys(nameUser);
+            Driver.GetComponent<InputInWithHeader>($"{inputName}").SendKeys(nameUser);
         }
 
         public void ThenVerifyActualLoginAfterRename(string nameUser)
@@ -34,27 +34,27 @@ namespace HomeWork.Selenium_WD.Steps
             mainPage.ActualLogin.Click();
         }
 
-        public void WhenUserClickEditProfileButton()
+        public void WhenUserClickEditProfileButton(string buttonName)
         {
-            Driver.GetComponent<ButtonSwitchPage>("Редактировать").Click();
+            Driver.GetComponent<ButtonIcon>($"{buttonName}").Click();
         }
 
-        public void WhenUserClearFieldNickInputButton()
+        public void WhenUserClearFieldNickInputButton(string inputName)
         {
-            Driver.GetComponent<InputInWithHeader>("Ваш ник").Clear();
+            Driver.GetComponent<InputInWithHeader>($"{inputName}").Clear();
         }
 
-        public void WhenUserClickOnSaveChangeUserFieldButton()
+        public void WhenUserClickOnSaveChangeUserFieldButton(string buttonName)
         {
-            Driver.GetComponent<ButtonWithText>("СОХРАНИТЬ").Click();
+            Driver.GetComponent<ButtonWithText>($"{buttonName}").Click();
         }
 
-        public void WhenUserClickOnButtonShowSaveProductList()
+        public void WhenUserClickOnTabsInUserPage(string nameTabs)
         {
-            Driver.GetComponent<UserProfileTabs>("Наушники Logitech").Click();
+            Driver.GetComponent<UserProfileTabs>($"{nameTabs}").Click();
         }
 
-        public void WhenUserCreateNewUserAccount()
+        public void GivenUserCreateNewUserAccount()
         {
             var mainPage = Driver.GetPage<MainPage>();
             RandomUser randomUser = new RandomUser();
@@ -88,7 +88,7 @@ namespace HomeWork.Selenium_WD.Steps
         {
             var userPage = Driver.GetPage<UserPage>();
             userPage.ActualNameUser.Click();
-            Driver.GetComponent<ButtonSwitchPage>("Редактировать").Click();
+            Driver.GetComponent<ButtonIcon>("Редактировать").Click();
             Driver.GetComponent<ElementWithText>("УДАЛИТЬ АККАУНТ").Click();
             
             Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);

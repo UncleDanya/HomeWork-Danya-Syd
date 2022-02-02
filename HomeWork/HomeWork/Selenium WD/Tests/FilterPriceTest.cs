@@ -17,8 +17,8 @@ namespace HomeWork
             product.WhenUserSelectBrandByFilter("Apple");
             product.ThenVerifyCheckboxIsSelected("Apple");
             product.WhenUserClickOnShowFilterButton();
-            product.WhenUserSelectNeededProductOnPage("Apple iPhone 13 Pro");
-            product.WhenUserShowAllPriceOnProductButton();
+            product.WhenUserClickOnLinkedText("Apple iPhone 13 Pro");
+            product.WhenUserClickOnLinkedText("Cравнить цены");
             product.ThenVerifyDescendingPriceSorting();
         }
     }

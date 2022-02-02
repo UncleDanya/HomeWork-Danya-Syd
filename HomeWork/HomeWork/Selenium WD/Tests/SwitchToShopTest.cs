@@ -18,8 +18,8 @@ namespace HomeWork
             product.ThenVerifyCheckboxIsSelected("Apple");
             product.WhenUserClickOnShowFilterButton();
             product.WhenUserRememberNameProduct("Apple iPhone 13");
-            product.WhenUserSelectNeededProductOnPage("Apple iPhone 13");
-            product.WhenUserClickOnNameShop("Avic.ua");
+            product.WhenUserClickOnLinkedText("Apple iPhone 13");
+            product.WhenUserClickOnLinkedText("Avic.ua");
             product.WhenUserSwitchToSecondPage();
             product.ThenVerifyThatProductNameInOtherShopEqualsToActualProductNameForMobileDevices();
         }

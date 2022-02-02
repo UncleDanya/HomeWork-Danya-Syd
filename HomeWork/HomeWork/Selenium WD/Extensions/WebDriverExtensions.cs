@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using HomeWork.Selenium_WD.Components.Utils;
 using HomeWork.Selenium_WD.Pages;
-using HomeWork.Selenium_WD.Utils;
 using OpenQA.Selenium;
 
 namespace HomeWork.Selenium_WD.Extensions
@@ -21,7 +20,6 @@ namespace HomeWork.Selenium_WD.Extensions
             obj.Driver = driver;
             obj.Identifier = identifier;
             obj.Build();
-            // WaitUtils.WaitForElementToBeDisplayed(driver, obj.Instance);
             return obj;
         }
 
@@ -55,9 +53,6 @@ namespace HomeWork.Selenium_WD.Extensions
         public static IWebElement GetComponent<T>(this IWebDriver driver, string identifier)
             where T : BaseComponent, new()
         {
-            /*T obj = new T();
-            obj.Identifier = identifier;
-            obj.Driver = driver;*/
             T obj = driver.Component<T>(identifier);
             obj.Build();
             return obj.Instance;
@@ -68,7 +63,6 @@ namespace HomeWork.Selenium_WD.Extensions
         {
             T obj = driver.Component<T>(identifier, parent);
             obj.Build();
-            // WaitUtils.WaitForElementToBeDisplayed(driver, obj.Instance);
             return obj.Instance;
         }
 
@@ -77,7 +71,6 @@ namespace HomeWork.Selenium_WD.Extensions
         {
             T obj = driver.Component<T>();
             obj.Build();
-            // WaitUtils.WaitForElementToBeDisplayed(driver, obj.Instance);
             return obj.Instance;
         }
 
@@ -86,7 +79,6 @@ namespace HomeWork.Selenium_WD.Extensions
         {
             T obj = driver.Component<T>(parent);
             obj.Build();
-            // WaitUtils.WaitForElementToBeDisplayed(driver, obj.Instance);
             return obj.Instance;
         }
 
@@ -95,7 +87,6 @@ namespace HomeWork.Selenium_WD.Extensions
         {
             T obj = driver.Component<T>();
             obj.Build(true);
-            // WaitUtils.WaitForElementToBeDisplayed(driver, obj.Instance);
             return obj.Instances;
         }
 
@@ -104,7 +95,6 @@ namespace HomeWork.Selenium_WD.Extensions
         {
             T obj = driver.Component<T>(identifier);
             obj.Build(true);
-            // WaitUtils.WaitForElementToBeDisplayed(driver, obj.Instance);
             return obj.Instances;
         }
     }

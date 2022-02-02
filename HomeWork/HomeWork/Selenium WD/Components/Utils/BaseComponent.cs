@@ -16,24 +16,23 @@ namespace HomeWork.Selenium_WD.Components.Utils
 
         public IList<IWebElement> Instances { get; set; }
 
-
         public virtual By Construct()
         {
             return By.XPath(Identifier);
         }
 
-        public void Build(bool a = false)
+        public void Build(bool SearchValueStatus = false)
         {
-            // WaitUtils.WaitForElementToBeClickable(Driver, Instance);
-            
-            if (a)
+            if (SearchValueStatus)
             {
                 if (Parent != null)
                 {
+                    WaitUtils.WaitForElementToBeDisplayed(Driver, Construct());
                     Instances = Parent.FindElements(Construct());
                 }
                 else
                 {
+                    WaitUtils.WaitForElementToBeDisplayed(Driver, Construct());
                     Instances = Driver.FindElements(Construct());
                 }
             }
@@ -41,6 +40,7 @@ namespace HomeWork.Selenium_WD.Components.Utils
             {
                 if (Parent != null)
                 {
+                    WaitUtils.WaitForElementToBeDisplayed(Driver, Construct());
                     Instance = Parent.FindElement(Construct());
                 }
                 else

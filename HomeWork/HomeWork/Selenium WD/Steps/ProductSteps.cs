@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using HomeWork.Selenium_WD.Components;
 using HomeWork.Selenium_WD.Components.Button;
@@ -26,6 +27,11 @@ namespace HomeWork.Selenium_WD.Steps
             var productName = product.Text;
             name.Value.Add(productName);
         }
+
+        public void WhenUserClickOnLinkedText(string linkedText)
+        {
+            Driver.GetComponent<LinkedText>($"{linkedText}").Click();
+        }
         
         public void WhenUserSelectNeededProductOnPage(string nameProduct)
         {
@@ -39,9 +45,9 @@ namespace HomeWork.Selenium_WD.Steps
             productPage.HeartShapedIcon.Click();
         }
 
-        public void WhenUserOpenBookmarksMenu()
+        public void WhenUserOpenBookmarksMenu(string barSelect)
         {
-            var bar = Driver.GetComponent<BottomBar>("Закладки");
+            var bar = Driver.GetComponent<BottomBar>($"{barSelect}");
             WaitUtils.WaitForElementToBeClickable(Driver, bar);
             bar.Click();
         }
@@ -104,9 +110,9 @@ namespace HomeWork.Selenium_WD.Steps
             Assert.AreEqual(name.Value, listProducts);
         }
 
-        public void WhenUserAddedToCompareCheckboxProduct()
+        public void WhenUserClickOnCheckbox(string checkboxName)
         {
-            Driver.GetComponent<Checkbox>("добавить в сравнение").Click();
+            Driver.GetComponent<Checkbox>($"{checkboxName}").Click();
         }
 
         public void WhenUserSwitchToPageWithTablet()
@@ -114,9 +120,9 @@ namespace HomeWork.Selenium_WD.Steps
             Driver.GetComponent<LinkedText>("Apple").Click();
         }
 
-        public void WhenUserSwitchToComparePage()
+        public void WhenUserSwitchToBottomBarMenuPage(string barName)
         {
-            Driver.GetComponent<BottomBar>("Сравнить").Click();
+            Driver.GetComponent<BottomBar>($"{barName}").Click();
         }
 
         public void WhenUserShowAllPriceOnProductButton()
@@ -130,9 +136,9 @@ namespace HomeWork.Selenium_WD.Steps
             productPages.HeartShapedIcon.Click();
         }
 
-        public void WhenUserClickOnSubmitSaveListButton()
+        public void WhenUserClickOnTypeButton(string typeButton)
         {
-            var productPages = Driver.GetComponent<ButtonSubmit>("submit");
+            var productPages = Driver.GetComponent<ButtonType>($"{typeButton}");
             WaitUtils.WaitForElementToBeClickable(Driver, productPages);
             productPages.Click();
         }
@@ -156,16 +162,14 @@ namespace HomeWork.Selenium_WD.Steps
 
         public void WhenUserSelectBrandByFilter(string brandToLook)
         {
-            /*IJavaScriptExecutor executor = (IJavaScriptExecutor) Driver;
-            var linkShow = Driver.GetComponent<Checkbox>(brandToLook);
-            executor.ExecuteScript("arguments[0].click();", *//*productPage.ShowFilterButton*//*linkShow);*/
-            Driver.GetComponent<Checkbox>(brandToLook).Click();
+            var categoryPage = Driver.GetPage<CategoryPage>();
+            categoryPage.ClickCheckboxByBrand(brandToLook);
         }
 
         public void ThenVerifyCheckboxIsSelected(string brandToLook)
         {
-            var selectCheckbox =  Driver.Component<Checkbox>(brandToLook).VerifySelectedCheckbox();
-            Assert.IsTrue(selectCheckbox, $"checkbox with name '{brandToLook}' is not selected");
+            var categoryPage = Driver.GetPage<CategoryPage>();
+            Assert.IsTrue(categoryPage.SelectedCheckboxByBrand(brandToLook), $"checkbox with name '{brandToLook}' is not selected");
         }
 
         public void WhenUserClickOnShowFilterButton()
@@ -191,14 +195,16 @@ namespace HomeWork.Selenium_WD.Steps
             WaitUtils.WaitForElementToBeClickable(Driver, sortDescendingPriceButton);
 
             sortDescendingPriceButton.Click();
-            WaitUtils.WaitForAllElementsInListIsVisible(Driver, By.XPath("//b[text()]//parent::a"));
+            var allPrice = productPage.ListAllPriceOnPage;
+            var listReadOnly = new ReadOnlyCollection<IWebElement>(allPrice);
+            WaitUtils.WaitForAllElementsInListIsVisible(Driver, listReadOnly);
+
 
             var lastPage = productPage.Pagenation.Last();
             var neededElementText = Int32.Parse(lastPage.Text);
 
             for (int i = 0; i < neededElementText; i++)
             {
-                var allPrice = productPage.ListAllPriceOnPage;
                 for (int j = 0; j < allPrice.Count - 1; j++)
                 {
                     var priceWithoutText = Convert.ToInt32(allPrice[j].Text.Replace(" грн.", string.Empty).Replace(" ", string.Empty));
@@ -209,7 +215,7 @@ namespace HomeWork.Selenium_WD.Steps
 
                 try
                 {
-                    Driver.GetComponent<ButtonSwitchPage>("Следующая страница").Click();
+                    Driver.GetComponent<ButtonIcon>("Следующая страница").Click();
                 }
                 catch
                 {
@@ -237,7 +243,7 @@ namespace HomeWork.Selenium_WD.Steps
 
                 try
                 {
-                    Driver.GetComponent<ButtonSwitchPage>("Следующая страница").Click();
+                    Driver.GetComponent<ButtonIcon>("Следующая страница").Click();
                 }
                 catch
                 {
@@ -246,10 +252,10 @@ namespace HomeWork.Selenium_WD.Steps
             }
         }
 
-        public void WhenUserInputNameProductInSearchField(string productSearch)
+        public void WhenUserInputNameProductInSearchField(string productSearch, string nameButton)
         {
             Driver.GetComponent<Input>("Поиск товаров").SendKeys(productSearch);
-            Driver.GetComponent<ButtonWithText>("Найти").Click();
+            Driver.GetComponent<ButtonWithText>($"{nameButton}").Click();
         }
 
         public void  ThenVerifyItemForSeraching(string nameItem)

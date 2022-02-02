@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using AutomationUtils.Extensions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
@@ -24,6 +27,22 @@ namespace HomeWork.Selenium_WD.Utils
             return element;
         }
 
+        public static IList<IWebElement> WaitForElementToBeDisplayed(IWebDriver driver, IList<IWebElement> element,
+            WebDriverExtensions.WaitTime waitTime = WebDriverExtensions.WaitTime.Short)
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds((int)waitTime));
+            wait.Until(waitForElement =>
+            {
+                if (element.Count >= 20)
+                {
+                    return element;
+                }
+
+                return null;
+            });
+            return element;
+        }
+
         public static void WaitForElementToBeDisplayed(IWebDriver driver, By expression,
             WebDriverExtensions.WaitTime waitTime = WebDriverExtensions.WaitTime.Short)
         {
@@ -32,18 +51,33 @@ namespace HomeWork.Selenium_WD.Utils
         }
 
         public static void WaitForElementToBeClickable(IWebDriver driver, IWebElement element,
-            WebDriverExtensions.WaitTime waitTime = WebDriverExtensions.WaitTime.Long)
+            WebDriverExtensions.WaitTime waitTime = WebDriverExtensions.WaitTime.Short)
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds((int) waitTime));
             wait.Until(ExpectedConditions.ElementToBeClickable(element));
         }
 
-        public static void WaitForAllElementsInListIsVisible(IWebDriver driver, By elements,
+        public static void WaitForAllElementsInListIsVisible(IWebDriver driver, ReadOnlyCollection<IWebElement> elements,
             WebDriverExtensions.WaitTime waitTime = WebDriverExtensions.WaitTime.Short)
         {
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds((int) waitTime));
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds((int)waitTime));
             wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(elements));
         }
+
+        /*public static void WaitForAllElementsInListIsVisible(IWebDriver driver, ReadOnlyCollection<IWebElement> elements,
+            WebDriverExtensions.WaitTime waitTime = WebDriverExtensions.WaitTime.Short)
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds((int)waitTime));
+            wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(elements));
+        }*/
+
+        /*public static void WaitForAllElementsInListIsVisible(IWebDriver driver, By elements,
+            WebDriverExtensions.WaitTime waitTime = WebDriverExtensions.WaitTime.Short)
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds((int)waitTime));
+            wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(By.XPath($"{elements}")));
+        }*/
+
 
         public static void WaitForAlertIsPresent(IWebDriver driver,
             WebDriverExtensions.WaitTime waitTime = WebDriverExtensions.WaitTime.Short)

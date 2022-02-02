@@ -8,16 +8,7 @@ namespace HomeWork.Selenium_WD.Components.CheckboxComponents
         public override By Construct()
         {
             var selector = $".//*[text()='{Identifier}']//parent::label";
-            // var selector = $".//label[@class='brand-best']//a[text()='{Identifier}']//ancestor::li//input";
             return By.XPath(selector);
-        }
-
-
-        public bool VerifySelectedCheckbox()
-        {
-            var element = Driver.FindElement(
-                By.XPath($".//label[@class='brand-best']//a[text()='{Identifier}']//ancestor::li//input"));
-            return element.Selected;
         }
     }
 }

@@ -3,7 +3,7 @@ using OpenQA.Selenium;
 
 namespace HomeWork.Selenium_WD.Components.Button
 {
-    class ButtonSubmit : BaseComponent
+    class ButtonType : BaseComponent
     {
         public override By Construct()
         {

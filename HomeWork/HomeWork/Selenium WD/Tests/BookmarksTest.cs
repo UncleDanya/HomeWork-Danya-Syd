@@ -17,9 +17,9 @@ namespace HomeWork
             product.ThenVerifyCheckboxIsSelected("Apple");
             product.WhenUserClickOnShowFilterButton();
             product.WhenUserRememberNameProduct("Apple iPhone 13");
-            product.WhenUserSelectNeededProductOnPage("Apple iPhone 13");
+            product.WhenUserClickOnLinkedText("Apple iPhone 13");
             product.WhenUserAddedProductInList();
-            product.WhenUserOpenBookmarksMenu();
+            product.WhenUserOpenBookmarksMenu("Закладки");
             product.ThenVerifyThatProductNameInBookmarksMenuEqualsToActualProductNameForMobileDevices();
         }
     }

@@ -47,5 +47,19 @@ namespace HomeWork.Selenium_WD.Pages
                 executor.ExecuteScript("arguments[0].click();", showBrandsFilterButton);
             }
         }
+
+        public void ClickCheckboxByBrand(string brandName)
+        {
+            IJavaScriptExecutor executor = (IJavaScriptExecutor) Driver;
+            executor.ExecuteScript($"document.evaluate(\".//label[@class='brand-best']//a[text()='{brandName}']//ancestor::li//input\", document).iterateNext().click(); ");
+        }
+
+        public bool SelectedCheckboxByBrand(string brandName)
+        {
+            IJavaScriptExecutor executor = (IJavaScriptExecutor)Driver;
+            var checkStatus = (bool)executor.ExecuteScript(
+                $"return document.evaluate(\".//label[@class='brand-best']//a[text()='{brandName}']//ancestor::li//input\", document).iterateNext().checked;");
+            return checkStatus;
+        }
     }
 }

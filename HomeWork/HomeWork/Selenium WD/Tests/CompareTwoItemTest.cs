@@ -18,13 +18,13 @@ namespace HomeWork
             product.ThenVerifyCheckboxIsSelected("Apple");
             product.WhenUserClickOnShowFilterButton();
             product.WhenUserRememberNameProduct("Apple iPad");
-            product.WhenUserSelectNeededProductOnPage("Apple iPad");
-            product.WhenUserAddedToCompareCheckboxProduct();
-            product.WhenUserSwitchToPageWithTablet();
+            product.WhenUserClickOnLinkedText("Apple iPad");
+            product.WhenUserClickOnCheckbox("добавить в сравнение");
+            product.WhenUserClickOnLinkedText("Apple");
             product.WhenUserRememberNameProduct("Apple iPad Air");
-            product.WhenUserSelectNeededProductOnPage("Apple iPad Air");
-            product.WhenUserAddedToCompareCheckboxProduct();
-            product.WhenUserSwitchToComparePage();
+            product.WhenUserClickOnLinkedText("Apple iPad Air");
+            product.WhenUserClickOnCheckbox("добавить в сравнение");
+            product.WhenUserSwitchToBottomBarMenuPage("Сравнить");
             product.WhenUserSwitchToSecondPage();
             product.ThenVerifyProductNameForCompareTwoItems("Apple iPad 2021", "Apple iPad Air 2020");
         }

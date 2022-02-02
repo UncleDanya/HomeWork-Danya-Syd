@@ -14,16 +14,16 @@ namespace HomeWork
             var product = driver.GetPage<ProductSteps>();
             var user = driver.GetPage<UserSteps>();
 
-            user.WhenUserCreateNewUserAccount();
+            user.GivenUserCreateNewUserAccount();
             product.WhenUserEntryIntoCategoryByName("Аудио", "Наушники");
             product.WhenUserSelectBrandByFilter("Logitech");
             product.ThenVerifyCheckboxIsSelected("Logitech");
             product.WhenUserClickOnShowFilterButton();
             product.WhenUserSaveAllProductOnPageInList();
             product.WhenUserClickOnSaveItemInList();
-            product.WhenUserClickOnSubmitSaveListButton();
+            product.WhenUserClickOnTypeButton("submit");
             product.WhenUserSwitchToUserPage();
-            user.WhenUserClickOnButtonShowSaveProductList();
+            user.WhenUserClickOnTabsInUserPage("Наушники Logitech");
             product.ThenVerifyListSaveInProductPageForListInUserPage();
         }
 
