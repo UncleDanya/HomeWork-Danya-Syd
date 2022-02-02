@@ -19,10 +19,10 @@ namespace HomeWork
             
             user.GivenUserCreateNewUserAccount();
             user.WhenUserClickActualLogin();
-            user.WhenUserClickEditProfileButton("Редактировать");
-            user.WhenUserClearFieldNickInputButton("Ваш ник");
-            user.WhenUserSetTextToUserNameField("Ваш ник" , login.Value);
-            user.WhenUserClickOnSaveChangeUserFieldButton("СОХРАНИТЬ");
+            user.WhenUserClickButtonIcon("Редактировать");
+            user.WhenUserClearInputWithHeader("Ваш ник");
+            user.WhenUserSetTextInputWithHeader("Ваш ник" , login.Value);
+            user.WhenUserClickOnButtonWithText("СОХРАНИТЬ");
             user.ThenVerifyActualLoginAfterRename(login.Value);
         }
 

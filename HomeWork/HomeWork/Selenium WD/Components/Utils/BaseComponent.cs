@@ -27,7 +27,6 @@ namespace HomeWork.Selenium_WD.Components.Utils
             {
                 if (Parent != null)
                 {
-                    WaitUtils.WaitForElementToBeDisplayed(Driver, Construct());
                     Instances = Parent.FindElements(Construct());
                 }
                 else
@@ -40,7 +39,6 @@ namespace HomeWork.Selenium_WD.Components.Utils
             {
                 if (Parent != null)
                 {
-                    WaitUtils.WaitForElementToBeDisplayed(Driver, Construct());
                     Instance = Parent.FindElement(Construct());
                 }
                 else

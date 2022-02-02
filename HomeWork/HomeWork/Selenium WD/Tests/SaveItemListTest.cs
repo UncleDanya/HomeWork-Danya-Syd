@@ -17,10 +17,10 @@ namespace HomeWork
             user.GivenUserCreateNewUserAccount();
             product.WhenUserEntryIntoCategoryByName("Аудио", "Наушники");
             product.WhenUserSelectBrandByFilter("Logitech");
-            product.ThenVerifyCheckboxIsSelected("Logitech");
+            product.ThenVerifyFilterCheckboxIsSelected("Logitech");
             product.WhenUserClickOnShowFilterButton();
             product.WhenUserSaveAllProductOnPageInList();
-            product.WhenUserClickOnSaveItemInList();
+            product.WhenUserAddedProductInList();
             product.WhenUserClickOnTypeButton("submit");
             product.WhenUserSwitchToUserPage();
             user.WhenUserClickOnTabsInUserPage("Наушники Logitech");

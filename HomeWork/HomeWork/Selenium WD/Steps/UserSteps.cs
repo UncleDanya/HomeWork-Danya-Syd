@@ -15,7 +15,7 @@ namespace HomeWork.Selenium_WD.Steps
     {
         private RandomLoginVariable randomLoginVariable = new RandomLoginVariable();
         
-        public void WhenUserSetTextToUserNameField(string inputName ,string nameUser)
+        public void WhenUserSetTextInputWithHeader(string inputName ,string nameUser)
         {
             Driver.GetComponent<InputInWithHeader>($"{inputName}").SendKeys(nameUser);
         }
@@ -34,17 +34,17 @@ namespace HomeWork.Selenium_WD.Steps
             mainPage.ActualLogin.Click();
         }
 
-        public void WhenUserClickEditProfileButton(string buttonName)
+        public void WhenUserClickButtonIcon(string buttonName)
         {
             Driver.GetComponent<ButtonIcon>($"{buttonName}").Click();
         }
 
-        public void WhenUserClearFieldNickInputButton(string inputName)
+        public void WhenUserClearInputWithHeader(string inputName)
         {
             Driver.GetComponent<InputInWithHeader>($"{inputName}").Clear();
         }
 
-        public void WhenUserClickOnSaveChangeUserFieldButton(string buttonName)
+        public void WhenUserClickOnButtonWithText(string buttonName)
         {
             Driver.GetComponent<ButtonWithText>($"{buttonName}").Click();
         }
@@ -65,8 +65,7 @@ namespace HomeWork.Selenium_WD.Steps
             WaitUtils.WaitForElementToBeClickable(Driver, buttonRegistration);
             
             buttonRegistration.Click();
-            var tableRegistration = 
-                Driver.GetPage<MainPage>().WindowRegistration;
+            var tableRegistration = Driver.GetPage<MainPage>().WindowRegistration;
             Driver.GetComponent<Input>("Имя", tableRegistration).SendKeys(randomLoginVariable.Value);
             Driver.GetComponent<Input>("E-Mail", tableRegistration).SendKeys(randomUser.CreateRandomEmail());
             Driver.GetComponent<Input>("Пароль", tableRegistration).SendKeys(randomUser.CreateRandomPassword());

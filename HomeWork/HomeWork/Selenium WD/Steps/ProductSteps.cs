@@ -32,24 +32,12 @@ namespace HomeWork.Selenium_WD.Steps
         {
             Driver.GetComponent<LinkedText>($"{linkedText}").Click();
         }
-        
-        public void WhenUserSelectNeededProductOnPage(string nameProduct)
-        {
-            Driver.GetComponent<LinkedText>(nameProduct).Click();
-        }
 
         public void WhenUserAddedProductInList()
         {
             var productPage = Driver.GetPage<ProductPages>();
             WaitUtils.WaitForElementToBeClickable(Driver, productPage.HeartShapedIcon);
             productPage.HeartShapedIcon.Click();
-        }
-
-        public void WhenUserOpenBookmarksMenu(string barSelect)
-        {
-            var bar = Driver.GetComponent<BottomBar>($"{barSelect}");
-            WaitUtils.WaitForElementToBeClickable(Driver, bar);
-            bar.Click();
         }
 
         // This method is using only for the item's that has memory value in nameShop text
@@ -113,27 +101,13 @@ namespace HomeWork.Selenium_WD.Steps
         public void WhenUserClickOnCheckbox(string checkboxName)
         {
             Driver.GetComponent<Checkbox>($"{checkboxName}").Click();
-        }
-
-        public void WhenUserSwitchToPageWithTablet()
-        {
-            Driver.GetComponent<LinkedText>("Apple").Click();
+            var a = Driver.GetComponent<Checkbox>($"{checkboxName}").Selected;
+            Assert.IsTrue(a, "Error");
         }
 
         public void WhenUserSwitchToBottomBarMenuPage(string barName)
         {
             Driver.GetComponent<BottomBar>($"{barName}").Click();
-        }
-
-        public void WhenUserShowAllPriceOnProductButton()
-        {
-            Driver.GetComponent<LinkedText>("Cравнить цены").Click();
-        }
-
-        public void WhenUserClickOnSaveItemInList()
-        {
-            var productPages = Driver.GetPage<ProductPages>();
-            productPages.HeartShapedIcon.Click();
         }
 
         public void WhenUserClickOnTypeButton(string typeButton)
@@ -150,13 +124,9 @@ namespace HomeWork.Selenium_WD.Steps
             mainPage.ActualLogin.Click();
         }
 
-        public void WhenUserClickOnNameShop(string nameShop)
-        {
-            Driver.GetComponent<LinkedText>(nameShop).Click();
-        }
-
         public void WhenUserEntryIntoCategoryByName(string folderName, string pixelFolderName)
-        {Driver.GetComponent<MainCategoryDropDown>(folderName);
+        {
+            Driver.GetComponent<MainCategoryDropDown>(folderName);
             Driver.Component<MainCategoryDropDown>(folderName).SelectCategoryFromDropdown(pixelFolderName);
         }
 
@@ -166,7 +136,7 @@ namespace HomeWork.Selenium_WD.Steps
             categoryPage.ClickCheckboxByBrand(brandToLook);
         }
 
-        public void ThenVerifyCheckboxIsSelected(string brandToLook)
+        public void ThenVerifyFilterCheckboxIsSelected(string brandToLook)
         {
             var categoryPage = Driver.GetPage<CategoryPage>();
             Assert.IsTrue(categoryPage.SelectedCheckboxByBrand(brandToLook), $"checkbox with name '{brandToLook}' is not selected");
@@ -176,6 +146,7 @@ namespace HomeWork.Selenium_WD.Steps
         {
             IJavaScriptExecutor executor = (IJavaScriptExecutor)Driver;
             var linkShow = Driver.GetComponent<LinkedText>("Показать");
+            
             try
             {
                 executor.ExecuteScript("arguments[0].click();", linkShow);
@@ -189,12 +160,6 @@ namespace HomeWork.Selenium_WD.Steps
         public void ThenVerifyDescendingPriceSorting()
         {
             var productPage = Driver.GetPage<ProductPages>();
-            var
-                sortDescendingPriceButton = 
-                    Driver.GetComponent<LinkedText>("по цене");
-            WaitUtils.WaitForElementToBeClickable(Driver, sortDescendingPriceButton);
-
-            sortDescendingPriceButton.Click();
             var allPrice = productPage.ListAllPriceOnPage;
             var listReadOnly = new ReadOnlyCollection<IWebElement>(allPrice);
             WaitUtils.WaitForAllElementsInListIsVisible(Driver, listReadOnly);
@@ -232,8 +197,7 @@ namespace HomeWork.Selenium_WD.Steps
 
             for (int i = 0; i < neededElementText; i++)
             {
-                var allNameProduct =
-                    Driver.GetComponents<ListProductsWithContainsName>(nameBrand);
+                var allNameProduct = Driver.GetComponents<ListProductsWithContainsName>(nameBrand);
 
                 foreach (var oneItemProduct in allNameProduct)
                 {

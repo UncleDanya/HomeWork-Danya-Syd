@@ -15,7 +15,7 @@ namespace HomeWork
 
             product.WhenUserEntryIntoCategoryByName("Компьютеры", "Ноутбуки");
             product.WhenUserSelectBrandByFilter("Acer");
-            product.ThenVerifyCheckboxIsSelected("Acer");
+            product.ThenVerifyFilterCheckboxIsSelected("Acer");
             product.WhenUserClickOnShowFilterButton();
             product.ThenVerifyFilterShowActualBrand("Acer");
         }
