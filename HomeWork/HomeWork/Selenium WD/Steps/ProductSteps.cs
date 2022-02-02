@@ -30,7 +30,8 @@ namespace HomeWork.Selenium_WD.Steps
 
         public void WhenUserClickOnLinkedText(string linkedText)
         {
-            Driver.GetComponent<LinkedText>($"{linkedText}").Click();
+            WaitUtils.WaitForElementToBeDisplayed(Driver, Driver.GetComponent<LinkedText>(linkedText));
+            Driver.GetComponent<LinkedText>(linkedText).Click();
         }
 
         public void WhenUserAddedProductInList()
@@ -54,8 +55,8 @@ namespace HomeWork.Selenium_WD.Steps
         public void ThenVerifyProductNameForCompareTwoItems(string nameFirstProduct, string nameSecondProduct)
         {
             var compareProduct = Driver.GetPage<CompareProductPage>();
-            var nameFirstTabletInComparePage = compareProduct.NameProductForCompare($"{nameFirstProduct}").Text;
-            var nameSecondTabletInComparePage = compareProduct.NameProductForCompare($"{nameSecondProduct}").Text;
+            var nameFirstTabletInComparePage = compareProduct.NameProductForCompare(nameFirstProduct).Text;
+            var nameSecondTabletInComparePage = compareProduct.NameProductForCompare(nameSecondProduct).Text;
             Assert.IsTrue(nameFirstTabletInComparePage.Contains(name.Value.First()), "The added item does not match the item on the list");
             Assert.IsTrue(nameSecondTabletInComparePage.Contains(name.Value.Last()), "The added item does not match the item on the list");
         }
@@ -100,19 +101,17 @@ namespace HomeWork.Selenium_WD.Steps
 
         public void WhenUserClickOnCheckbox(string checkboxName)
         {
-            Driver.GetComponent<Checkbox>($"{checkboxName}").Click();
-            var a = Driver.GetComponent<Checkbox>($"{checkboxName}").Selected;
-            Assert.IsTrue(a, "Error");
+            Driver.GetComponent<Checkbox>(checkboxName).Click();
         }
 
         public void WhenUserSwitchToBottomBarMenuPage(string barName)
         {
-            Driver.GetComponent<BottomBar>($"{barName}").Click();
+            Driver.GetComponent<BottomBar>(barName).Click();
         }
 
         public void WhenUserClickOnTypeButton(string typeButton)
         {
-            var productPages = Driver.GetComponent<ButtonType>($"{typeButton}");
+            var productPages = Driver.GetComponent<ButtonType>(typeButton);
             WaitUtils.WaitForElementToBeClickable(Driver, productPages);
             productPages.Click();
         }
@@ -126,7 +125,6 @@ namespace HomeWork.Selenium_WD.Steps
 
         public void WhenUserEntryIntoCategoryByName(string folderName, string pixelFolderName)
         {
-            Driver.GetComponent<MainCategoryDropDown>(folderName);
             Driver.Component<MainCategoryDropDown>(folderName).SelectCategoryFromDropdown(pixelFolderName);
         }
 
@@ -140,21 +138,6 @@ namespace HomeWork.Selenium_WD.Steps
         {
             var categoryPage = Driver.GetPage<CategoryPage>();
             Assert.IsTrue(categoryPage.SelectedCheckboxByBrand(brandToLook), $"checkbox with name '{brandToLook}' is not selected");
-        }
-
-        public void WhenUserClickOnShowFilterButton()
-        {
-            IJavaScriptExecutor executor = (IJavaScriptExecutor)Driver;
-            var linkShow = Driver.GetComponent<LinkedText>("Показать");
-            
-            try
-            {
-                executor.ExecuteScript("arguments[0].click();", linkShow);
-            }
-            catch
-            {
-                executor.ExecuteScript("arguments[0].click();", linkShow);
-            }
         }
 
         public void ThenVerifyDescendingPriceSorting()
@@ -202,7 +185,7 @@ namespace HomeWork.Selenium_WD.Steps
                 foreach (var oneItemProduct in allNameProduct)
                 {
                     var oneItem = oneItemProduct.Text;
-                    Assert.IsTrue(oneItem.Contains($"{nameBrand}"), "Not found");
+                    Assert.IsTrue(oneItem.Contains(nameBrand), "Not found");
                 }
 
                 try
@@ -219,7 +202,7 @@ namespace HomeWork.Selenium_WD.Steps
         public void WhenUserInputNameProductInSearchField(string productSearch, string nameButton)
         {
             Driver.GetComponent<Input>("Поиск товаров").SendKeys(productSearch);
-            Driver.GetComponent<ButtonWithText>($"{nameButton}").Click();
+            Driver.GetComponent<ButtonWithText>(nameButton).Click();
         }
 
         public void ThenVerifyItemForSearching(string nameItem)

@@ -18,7 +18,7 @@ namespace HomeWork
             product.WhenUserEntryIntoCategoryByName("Аудио", "Наушники");
             product.WhenUserSelectBrandByFilter("Logitech");
             product.ThenVerifyFilterCheckboxIsSelected("Logitech");
-            product.WhenUserClickOnShowFilterButton();
+            product.WhenUserClickOnLinkedText("Показать");
             product.WhenUserSaveAllProductOnPageInList();
             product.WhenUserAddedProductInList();
             product.WhenUserClickOnTypeButton("submit");

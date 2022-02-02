@@ -15,9 +15,8 @@ namespace HomeWork.Selenium_WD.Components.FolderIcon
         public void SelectCategoryFromDropdown(string subItemMenu)
         {
             Instance.Click();
-            var selector = Driver.FindElement(By.PartialLinkText($"{subItemMenu}"));
-            WaitUtils.WaitForElementToBeClickable(Driver, selector);
-            selector.Click();
+            WaitUtils.WaitForElementToBeClickable(Driver, Driver.FindElement(By.PartialLinkText(subItemMenu)));
+            Driver.FindElement(By.PartialLinkText(subItemMenu)).Click();
         }
     }
 }

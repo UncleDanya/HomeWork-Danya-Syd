@@ -17,7 +17,7 @@ namespace HomeWork.Selenium_WD.Steps
         
         public void WhenUserSetTextInputWithHeader(string inputName ,string nameUser)
         {
-            Driver.GetComponent<InputInWithHeader>($"{inputName}").SendKeys(nameUser);
+            Driver.GetComponent<InputInWithHeader>(inputName).SendKeys(nameUser);
         }
 
         public void ThenVerifyActualLoginAfterRename(string nameUser)
@@ -36,22 +36,22 @@ namespace HomeWork.Selenium_WD.Steps
 
         public void WhenUserClickButtonIcon(string buttonName)
         {
-            Driver.GetComponent<ButtonIcon>($"{buttonName}").Click();
+            Driver.GetComponent<ButtonIcon>(buttonName).Click();
         }
 
         public void WhenUserClearInputWithHeader(string inputName)
         {
-            Driver.GetComponent<InputInWithHeader>($"{inputName}").Clear();
+            Driver.GetComponent<InputInWithHeader>(inputName).Clear();
         }
 
         public void WhenUserClickOnButtonWithText(string buttonName)
         {
-            Driver.GetComponent<ButtonWithText>($"{buttonName}").Click();
+            Driver.GetComponent<ButtonWithText>(buttonName).Click();
         }
 
         public void WhenUserClickOnTabsInUserPage(string nameTabs)
         {
-            Driver.GetComponent<UserProfileTabs>($"{nameTabs}").Click();
+            Driver.GetComponent<UserProfileTabs>(nameTabs).Click();
         }
 
         public void GivenUserCreateNewUserAccount()

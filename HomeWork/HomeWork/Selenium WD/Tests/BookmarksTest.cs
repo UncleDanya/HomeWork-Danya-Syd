@@ -15,7 +15,7 @@ namespace HomeWork
             product.WhenUserEntryIntoCategoryByName("Гаджеты", "Мобильные");
             product.WhenUserSelectBrandByFilter("Apple");
             product.ThenVerifyFilterCheckboxIsSelected("Apple");
-            product.WhenUserClickOnShowFilterButton();
+            product.WhenUserClickOnLinkedText("Показать");
             product.WhenUserRememberNameProduct("Apple iPhone 13");
             product.WhenUserClickOnLinkedText("Apple iPhone 13");
             product.WhenUserAddedProductInList();
