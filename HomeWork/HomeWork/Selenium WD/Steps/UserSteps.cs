@@ -1,4 +1,8 @@
 ﻿using System;
+using HomeWork.Selenium_WD.Components;
+using HomeWork.Selenium_WD.Components.Button;
+using HomeWork.Selenium_WD.Components.Links;
+using HomeWork.Selenium_WD.Components.TabsInUser;
 using HomeWork.Selenium_WD.Extensions;
 using HomeWork.Selenium_WD.Pages;
 using HomeWork.Selenium_WD.RuntimeVariables;
@@ -9,18 +13,17 @@ namespace HomeWork.Selenium_WD.Steps
 {
     class UserSteps : BasePage
     {
-        RandomLoginVariable login = new RandomLoginVariable();
         private RandomLoginVariable randomLoginVariable = new RandomLoginVariable();
         
-        public void WhenUserSetTextToUserNameField(string nameUser)
+        public void WhenUserSetTextInputWithHeader(string inputName ,string nameUser)
         {
-            var userPage = Driver.GetPage<UserPage>();
-            userPage.NickFieldInputButton.SendKeys(nameUser);
+            Driver.GetComponent<InputInWithHeader>(inputName).SendKeys(nameUser);
         }
 
         public void ThenVerifyActualLoginAfterRename(string nameUser)
         {
             var userPage = Driver.GetPage<UserPage>();
+            Driver.Navigate().Refresh();
             var actualNameUser = userPage.TextActualNameUser.Text;
             Assert.AreEqual(nameUser, actualNameUser, "The changed login does not match the profile login");
         }
@@ -31,46 +34,45 @@ namespace HomeWork.Selenium_WD.Steps
             mainPage.ActualLogin.Click();
         }
 
-        public void WhenUserClickEditProfileButton()
+        public void WhenUserClickButtonIcon(string buttonName)
         {
-            var userPage = Driver.GetPage<UserPage>();
-            userPage.EditProfileButton.Click();
+            Driver.GetComponent<ButtonIcon>(buttonName).Click();
         }
 
-        public void WhenUserClearFieldNickInputButton()
+        public void WhenUserClearInputWithHeader(string inputName)
         {
-            var userPage = Driver.GetPage<UserPage>();
-            userPage.NickFieldInputButton.Clear();
+            Driver.GetComponent<InputInWithHeader>(inputName).Clear();
         }
 
-        public void WhenUserClickOnSaveChangeUserFieldButton()
+        public void WhenUserClickOnButtonWithText(string buttonName)
         {
-            var userPage = Driver.GetPage<UserPage>();
-            userPage.SaveChangeButton.Click();
+            Driver.GetComponent<ButtonWithText>(buttonName).Click();
         }
 
-        public void WhenUserClickOnButtonShowSaveProductList()
+        public void WhenUserClickOnTabsInUserPage(string nameTabs)
         {
-            var userPage = Driver.GetPage<UserPage>();
-            userPage.ShowSaveProductList.Click();
+            Driver.GetComponent<UserProfileTabs>(nameTabs).Click();
         }
 
-        public void WhenUserCreateNewUserAccount()
+        public void GivenUserCreateNewUserAccount()
         {
             var mainPage = Driver.GetPage<MainPage>();
             RandomUser randomUser = new RandomUser();
 
             randomLoginVariable.Value = randomUser.CreateRandomLogin();
             mainPage.LoginButton.Click();
-            WaitUtils.WaitForElementToBeClickable(Driver, mainPage.RegistrationNewUserButton);
-
-            mainPage.RegistrationNewUserButton.Click();
-            mainPage.NameFieldInputButton.SendKeys(randomLoginVariable.Value);
-            mainPage.EmailFieldInputButton.SendKeys(randomUser.CreateRandomEmail());
-            mainPage.PasswordFieldInputButton.SendKeys(randomUser.CreateRandomPassword());
-            mainPage.RegistationButton.Click();
-            WaitUtils.WaitForElementToBeClickable(Driver, mainPage.AcceptRegistrationNewUserButton);
-            mainPage.AcceptRegistrationNewUserButton.Click();
+            var buttonRegistration = Driver.GetComponent<TableRegistrationWith>("Или зарегистрируйтесь");
+            WaitUtils.WaitForElementToBeClickable(Driver, buttonRegistration);
+            
+            buttonRegistration.Click();
+            var tableRegistration = Driver.GetPage<MainPage>().WindowRegistration;
+            Driver.GetComponent<Input>("Имя", tableRegistration).SendKeys(randomLoginVariable.Value);
+            Driver.GetComponent<Input>("E-Mail", tableRegistration).SendKeys(randomUser.CreateRandomEmail());
+            Driver.GetComponent<Input>("Пароль", tableRegistration).SendKeys(randomUser.CreateRandomPassword());
+            Driver.GetComponent<ButtonWithText>("ЗАРЕГИСТРИРОВАТЬСЯ", tableRegistration).Click();
+            var acceptButton = Driver.GetComponent<ButtonWithText>("Подтвердить");
+            WaitUtils.WaitForElementToBeClickable(Driver, acceptButton);
+            acceptButton.Click();
         }
 
         public void ThenVerifyAccountLoginEqualExpected()
@@ -85,11 +87,11 @@ namespace HomeWork.Selenium_WD.Steps
         {
             var userPage = Driver.GetPage<UserPage>();
             userPage.ActualNameUser.Click();
-            userPage.EditProfileButton.Click();
-            userPage.UserDeleteAccountButton.Click();
-            WaitUtils.WaitForElementToBeClickable(Driver, userPage.SubmitDeleteUserAccountButton);
-            userPage.SubmitDeleteUserAccountButton.Click();
+            Driver.GetComponent<ButtonIcon>("Редактировать").Click();
+            Driver.GetComponent<ElementWithText>("УДАЛИТЬ АККАУНТ").Click();
+            
             Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            Driver.GetComponent<LinkedText>("УДАЛИТЬ").Click();
             Driver.SwitchTo().Alert().Accept();
             Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
         }

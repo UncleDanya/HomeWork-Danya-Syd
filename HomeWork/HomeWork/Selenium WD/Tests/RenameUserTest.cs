@@ -17,12 +17,12 @@ namespace HomeWork
             login.Value = randomUser.CreateRandomLogin();
             var user = driver.GetPage<UserSteps>();
             
-            user.WhenUserCreateNewUserAccount();
+            user.GivenUserCreateNewUserAccount();
             user.WhenUserClickActualLogin();
-            user.WhenUserClickEditProfileButton();
-            user.WhenUserClearFieldNickInputButton();
-            user.WhenUserSetTextToUserNameField(login.Value);
-            user.WhenUserClickOnSaveChangeUserFieldButton();
+            user.WhenUserClickButtonIcon("Редактировать");
+            user.WhenUserClearInputWithHeader("Ваш ник");
+            user.WhenUserSetTextInputWithHeader("Ваш ник" , login.Value);
+            user.WhenUserClickOnButtonWithText("СОХРАНИТЬ");
             user.ThenVerifyActualLoginAfterRename(login.Value);
         }
 

@@ -12,15 +12,14 @@ namespace HomeWork
         public void TestBookmarks()
         {
             var product = driver.GetPage<ProductSteps>();
-            
             product.WhenUserEntryIntoCategoryByName("Гаджеты", "Мобильные");
             product.WhenUserSelectBrandByFilter("Apple");
-            product.ThenVerifyCheckboxIsSelected("Apple");
-            product.WhenUserClickOnShowFilterButton();
+            product.ThenVerifyFilterCheckboxIsSelected("Apple");
+            product.WhenUserClickOnLinkedText("Показать");
             product.WhenUserRememberNameProduct("Apple iPhone 13");
-            product.WhenUserSelectNeededProductOnPage("Apple iPhone 13");
+            product.WhenUserClickOnLinkedText("Apple iPhone 13");
             product.WhenUserAddedProductInList();
-            product.WhenUserOpenBookmarksMenu();
+            product.WhenUserSwitchToBottomBarMenuPage("Закладки");
             product.ThenVerifyThatProductNameInBookmarksMenuEqualsToActualProductNameForMobileDevices();
         }
     }

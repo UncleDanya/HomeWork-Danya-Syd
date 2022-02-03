@@ -15,11 +15,11 @@ namespace HomeWork
 
             product.WhenUserEntryIntoCategoryByName("Гаджеты", "Мобильные");
             product.WhenUserSelectBrandByFilter("Apple");
-            product.ThenVerifyCheckboxIsSelected("Apple");
-            product.WhenUserClickOnShowFilterButton();
+            product.ThenVerifyFilterCheckboxIsSelected("Apple");
+            product.WhenUserClickOnLinkedText("Показать");
             product.WhenUserRememberNameProduct("Apple iPhone 13");
-            product.WhenUserSelectNeededProductOnPage("Apple iPhone 13");
-            product.WhenUserClickOnNameShop("Avic.ua");
+            product.WhenUserClickOnLinkedText("Apple iPhone 13");
+            product.WhenUserClickOnLinkedText("Avic.ua");
             product.WhenUserSwitchToSecondPage();
             product.ThenVerifyThatProductNameInOtherShopEqualsToActualProductNameForMobileDevices();
         }

@@ -17,7 +17,7 @@ namespace HomeWork.Selenium_WD.Functional
             
             sortDescendingPriceButton.Click();
             
-            WaitUtils.WaitForAllElementsInListIsVisible(Driver, By.XPath("//b[text()]//parent::a"));
+            // WaitUtils.WaitForAllElementsInListIsVisible(Driver, By.XPath("//b[text()]//parent::a"));
 
             var lastPage = Driver.FindElements(By.XPath(".//div[@class='ib page-num']//a")).Last();
             var neededElementText = Int32.Parse(lastPage.Text);

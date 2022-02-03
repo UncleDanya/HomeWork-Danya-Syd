@@ -15,10 +15,11 @@ namespace HomeWork
 
             product.WhenUserEntryIntoCategoryByName("Гаджеты", "Мобильные");
             product.WhenUserSelectBrandByFilter("Apple");
-            product.ThenVerifyCheckboxIsSelected("Apple");
-            product.WhenUserClickOnShowFilterButton();
-            product.WhenUserSelectNeededProductOnPage("Apple iPhone 13 Pro");
-            product.WhenUserShowAllPriceOnProductButton();
+            product.ThenVerifyFilterCheckboxIsSelected("Apple");
+            product.WhenUserClickOnLinkedText("Показать");
+            product.WhenUserClickOnLinkedText("Apple iPhone 13 Pro");
+            product.WhenUserClickOnLinkedText("Cравнить цены");
+            product.WhenUserClickOnLinkedText("по цене");
             product.ThenVerifyDescendingPriceSorting();
         }
     }

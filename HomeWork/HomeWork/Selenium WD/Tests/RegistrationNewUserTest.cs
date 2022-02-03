@@ -13,7 +13,7 @@ namespace HomeWork
         {
             var user = driver.GetPage<UserSteps>();
 
-            user.WhenUserCreateNewUserAccount();
+            user.GivenUserCreateNewUserAccount();
             user.ThenVerifyAccountLoginEqualExpected();
         }
 

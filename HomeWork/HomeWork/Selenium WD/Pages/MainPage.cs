@@ -45,6 +45,9 @@ namespace HomeWork.Selenium_WD.Pages
         [FindsBy(How = How.ClassName, Using = "info-nick")]
         public IWebElement ActualLogin { get; set; }
 
+        [FindsBy(How = How.XPath, Using = ".//div[@class='registration']")]
+        public IWebElement WindowRegistration { get; set; }
+
 
         public void CreateNewUserAccount()
         {
