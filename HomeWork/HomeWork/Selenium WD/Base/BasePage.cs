@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Remote;
 using SeleniumExtras.PageObjects;
 
 namespace HomeWork.Selenium_WD.Pages

@@ -1,0 +1,191 @@
+﻿2022-02-04T15:15:24.5948207+02:00;VSTestExecutionThread;Info;SpecFlow+Runner execution started
+2022-02-04T15:15:24.5949868+02:00;VSTestExecutionThread;Info;SpecFlow+Runner 3.9.31 in Framework net50 in x64 mode execution started
+2022-02-04T15:15:24.5949958+02:00;VSTestExecutionThread;Info;TestAdapter Location: C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0\TechTalk.SpecRun.VisualStudio.TestAdapter.dll
+2022-02-04T15:15:24.5973875+02:00;VSTestExecutionThread;Info;Current UserName: 'Danya', MachineName: 'DESKTOP-JSM92F3'
+2022-02-04T15:15:24.6426193+02:00;VSTestExecutionThread;Info;SpecRun: running tests in C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0\HomeWork.dll
+2022-02-04T15:15:24.6428586+02:00;VSTestExecutionThread;Info;Output folder configured to "C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\TestResults" (default)
+2022-02-04T15:15:24.6429506+02:00;VSTestExecutionThread;Info;Profile: 
+2022-02-04T15:15:24.8898041+02:00;VSTestExecutionThread;Info;Log file path: C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\TestResults\Unnamed project__2022-02-04T151524.log
+2022-02-04T15:15:24.9014744+02:00;Thread#15;Info;Checking activation
+2022-02-04T15:15:25.2738354+02:00;Thread#15;Info;Activated.
+2022-02-04T15:15:25.2741575+02:00;Thread#15;Info;Activation check completed
+2022-02-04T15:15:25.2742616+02:00;Thread#15;Info;Starting test run
+2022-02-04T15:15:25.4770356+02:00;Thread#15;Info;Discovering target: Default
+2022-02-04T15:15:25.4772650+02:00;Thread#15;Info;Discovering tests from assembly: C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0\HomeWork.dll
+2022-02-04T15:15:25.9014365+02:00;Thread#15;Info;Discovered tests from assembly: C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0\HomeWork.dll
+2022-02-04T15:15:25.9028387+02:00:Test Suite Dump
+2022-02-04T15:15:25.9047284+02:00:#0: Unnamed project/ - 
+2022-02-04T15:15:25.9047674+02:00:#1: Default - 
+2022-02-04T15:15:25.9047723+02:00:#2: HomeWork - 
+2022-02-04T15:15:25.9047747+02:00:#6: BottomBarOnProductPage - 
+2022-02-04T15:15:25.9064548+02:00:#7: AddedItemToBookmarks - TestAssembly:HomeWork/Feature:BottomBarOnProductPage/Scenario:AddedItemToBookmarks
+2022-02-04T15:15:25.9065249+02:00:#8: AddedTwoItemsToCompare - TestAssembly:HomeWork/Feature:BottomBarOnProductPage/Scenario:AddedTwoItemsToCompare
+2022-02-04T15:15:25.9065893+02:00:End: Test Suite Dump
+2022-02-04T15:15:25.9275775+02:00:Thread#0:Scheduler: get next test for thread 0
+2022-02-04T15:15:25.9290872+02:00:Thread#:Scheduler: testitem #7 from normal test queue 
+2022-02-04T15:15:25.9291792+02:00:Thread#0:Scheduler: considering testitem #7 for thread 0
+2022-02-04T15:15:25.9320992+02:00:Thread#0:TestItem#7:testItemMatchesCurrentTestThread:UnSpecific
+2022-02-04T15:15:25.9321179+02:00:Thread#0:TestItem#7:runsOnOneOtherThreadSpecific:False
+2022-02-04T15:15:25.9321260+02:00:Thread#0:TestItem#7:runsOnOneOtherThreadUnspecific:False
+2022-02-04T15:15:25.9321316+02:00:Thread#0:Scheduler: using testitem #7 for thread 0
+2022-02-04T15:15:25.9327888+02:00:Thread#0:Scheduler: Test #7 is scheduled for thread
+2022-02-04T15:15:25.9338907+02:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2022-02-04T15:15:25.9361377+02:00:Thread #0: creating new test thread executor for HomeWork, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null (target: Default)
+2022-02-04T15:15:25.9385051+02:00:Thread #0: Creating test assembly executor for execution model OutProc
+2022-02-04T15:15:25.9386710+02:00:Thread #0: Creating test assembly executor for execution model OutProc
+2022-02-04T15:15:26.0587204+02:00:Thread #0: using TechTalk.SpecRun.Framework.Execution.OutOfProc.StreamJsonRPC.OutOfProcessTestAssemblyExecutorHost to execute tests
+2022-02-04T15:15:26.0609008+02:00:starting Out Of Process Executor
+2022-02-04T15:15:26.0686258+02:00:Assembly resolving Microsoft.VisualStudio.Validation, Version=15.3.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+2022-02-04T15:15:26.0769739+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' from .deps.json file
+2022-02-04T15:15:26.0770040+02:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Validation' from .deps.json
+2022-02-04T15:15:26.0782955+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' in folder 'C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0'
+2022-02-04T15:15:26.0787329+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0\Microsoft.VisualStudio.Validation.dll'
+2022-02-04T15:15:26.0789044+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0\Microsoft.VisualStudio.Validation.exe'
+2022-02-04T15:15:26.0789806+02:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Validation' in folder 'C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0'
+2022-02-04T15:15:26.0792332+02:00:TargetFramework: .NETCoreApp,Version=v5.0
+2022-02-04T15:15:26.0854659+02:00:Tfm: netcoreapp5.0
+2022-02-04T15:15:26.0854962+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' in folder 'C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0\SpecFlowPlusRunner\netcoreapp5.0'
+2022-02-04T15:15:26.0855009+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0\SpecFlowPlusRunner\netcoreapp5.0\Microsoft.VisualStudio.Validation.dll'
+2022-02-04T15:15:26.0857045+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0\SpecFlowPlusRunner\netcoreapp5.0\Microsoft.VisualStudio.Validation.exe'
+2022-02-04T15:15:26.0857842+02:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Validation' in folder 'C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0\SpecFlowPlusRunner\netcoreapp5.0'
+2022-02-04T15:15:26.0936878+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.13'
+2022-02-04T15:15:26.0937106+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.13\Microsoft.VisualStudio.Validation.dll'
+2022-02-04T15:15:26.0938178+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.13\Microsoft.VisualStudio.Validation.exe'
+2022-02-04T15:15:26.0938709+02:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Validation' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.13'
+2022-02-04T15:15:26.0940960+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.13'
+2022-02-04T15:15:26.0941057+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.13\Microsoft.VisualStudio.Validation.dll'
+2022-02-04T15:15:26.0941690+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.13\Microsoft.VisualStudio.Validation.exe'
+2022-02-04T15:15:26.0942176+02:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Validation' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.13'
+2022-02-04T15:15:26.0943578+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.13'
+2022-02-04T15:15:26.0943681+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.13\Microsoft.VisualStudio.Validation.dll'
+2022-02-04T15:15:26.0944436+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.13\Microsoft.VisualStudio.Validation.exe'
+2022-02-04T15:15:26.0945032+02:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Validation' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.13'
+2022-02-04T15:15:26.1037277+02:00:Starting callback TCP Rpc server
+2022-02-04T15:15:26.1269806+02:00:Asynchronously starting background TCP Rpc Server on port 32768
+2022-02-04T15:15:26.1270791+02:00:Started callback TCP Rpc server on port 32768
+2022-02-04T15:15:26.1270845+02:00:Starting logger TCP Rpc server
+2022-02-04T15:15:26.1289247+02:00:Asynchronously starting background TCP Rpc Server on port 32769
+2022-02-04T15:15:26.1289823+02:00:Started logger TCP Rpc server on port 32769
+2022-02-04T15:15:26.2308455+02:00;Thread#15;Info;Executor full path resolved: C:\Program Files\dotnet\dotnet.exe
+2022-02-04T15:15:26.2356547+02:00;Thread#15;Info;Starting SpecFlow+ Runner executor process with attached debugger...
+2022-02-04T15:15:26.6427118+02:00;Thread#15;Info;Successfully started SpecFlow+ Runner executor process
+2022-02-04T15:15:26.6469216+02:00:Out of Process Executor 13120 started
+2022-02-04T15:15:26.6469373+02:00:Waiting for endpoint
+2022-02-04T15:15:27.4269984+02:00:Assembly resolving Microsoft.VisualStudio.Threading, Version=15.3.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+2022-02-04T15:15:27.4270299+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' from .deps.json file
+2022-02-04T15:15:27.4270424+02:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Threading' from .deps.json
+2022-02-04T15:15:27.4270488+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' in folder 'C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0'
+2022-02-04T15:15:27.4270508+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0\Microsoft.VisualStudio.Threading.dll'
+2022-02-04T15:15:27.4271060+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0\Microsoft.VisualStudio.Threading.exe'
+2022-02-04T15:15:27.4271588+02:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Threading' in folder 'C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0'
+2022-02-04T15:15:27.4271628+02:00:TargetFramework: .NETCoreApp,Version=v5.0
+2022-02-04T15:15:27.4271891+02:00:Tfm: netcoreapp5.0
+2022-02-04T15:15:27.4271954+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' in folder 'C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0\SpecFlowPlusRunner\netcoreapp5.0'
+2022-02-04T15:15:27.4271972+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0\SpecFlowPlusRunner\netcoreapp5.0\Microsoft.VisualStudio.Threading.dll'
+2022-02-04T15:15:27.4272849+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0\SpecFlowPlusRunner\netcoreapp5.0\Microsoft.VisualStudio.Threading.exe'
+2022-02-04T15:15:27.4273381+02:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Threading' in folder 'C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0\SpecFlowPlusRunner\netcoreapp5.0'
+2022-02-04T15:15:27.4279689+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.13'
+2022-02-04T15:15:27.4279853+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.13\Microsoft.VisualStudio.Threading.dll'
+2022-02-04T15:15:27.4280588+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.13\Microsoft.VisualStudio.Threading.exe'
+2022-02-04T15:15:27.4281037+02:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Threading' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.13'
+2022-02-04T15:15:27.4282542+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.13'
+2022-02-04T15:15:27.4282596+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.13\Microsoft.VisualStudio.Threading.dll'
+2022-02-04T15:15:27.4283073+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.13\Microsoft.VisualStudio.Threading.exe'
+2022-02-04T15:15:27.4283473+02:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Threading' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.13'
+2022-02-04T15:15:27.4284892+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.13'
+2022-02-04T15:15:27.4284953+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.13\Microsoft.VisualStudio.Threading.dll'
+2022-02-04T15:15:27.4285477+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.13\Microsoft.VisualStudio.Threading.exe'
+2022-02-04T15:15:27.4285859+02:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Threading' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.13'
+2022-02-04T15:15:27.9892900+02:00:Remote executor port received: 32770
+2022-02-04T15:15:27.9914637+02:00:Creating executor TCP client on port 32770
+2022-02-04T15:15:27.9919385+02:00:Created executor TCP client on port 32770
+2022-02-04T15:15:27.9919457+02:00:Connecting to remote executor TCP server
+2022-02-04T15:15:27.9929917+02:00:Connected remote executor TCP server
+2022-02-04T15:15:27.9933701+02:00:trying to connect to Out of Process Executor the 1 attempt
+2022-02-04T15:15:27.9933806+02:00:Connection to Out of Process Executor established in the 1 attempt
+2022-02-04T15:15:28.1578015+02:00:2022-02-04T15:15:28.1563909+02:00:OutOfProcessTestAssemblyExecutor: initialized for C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0\HomeWork.dll on test thread #0
+2022-02-04T15:15:28.1625021+02:00:Endpoint 13120 started
+2022-02-04T15:15:28.1917024+02:00:2022-02-04T15:15:28.1865434+02:00:OutOfProcessTestAssemblyExecutor: running tests...
+2022-02-04T15:15:28.3022348+02:00:2022-02-04T15:15:28.3000867+02:00:Assembly resolving TechTalk.SpecFlow, Version=3.7.0.0, Culture=neutral, PublicKeyToken=0778194805d6db41
+2022-02-04T15:15:28.3079625+02:00:2022-02-04T15:15:28.3072304+02:00:[AssemblyCache] Trying to resolve 'TechTalk.SpecFlow' from .deps.json file
+2022-02-04T15:15:28.3123496+02:00:2022-02-04T15:15:28.3116045+02:00:[AssemblyCache] Resolved 'TechTalk.SpecFlow' to 'C:\Users\Danya\.nuget\packages\specflow\3.7.13\lib\netstandard2.0\TechTalk.SpecFlow.dll'
+2022-02-04T15:15:28.4410822+02:00:2022-02-04T15:15:28.4403680+02:00:Thread#0:T:-> Loading plugin C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0\HomeWork.dll
+2022-02-04T15:15:28.4427326+02:00:2022-02-04T15:15:28.4423324+02:00:Assembly resolving Microsoft.Extensions.DependencyModel, Version=1.0.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2022-02-04T15:15:28.4439952+02:00:2022-02-04T15:15:28.4436054+02:00:[AssemblyCache] Trying to resolve 'Microsoft.Extensions.DependencyModel' from .deps.json file
+2022-02-04T15:15:28.4453142+02:00:2022-02-04T15:15:28.4447270+02:00:[AssemblyCache] Resolved 'Microsoft.Extensions.DependencyModel' to 'C:\Users\Danya\.nuget\packages\microsoft.extensions.dependencymodel\1.0.3\lib\netstandard1.6\Microsoft.Extensions.DependencyModel.dll'
+2022-02-04T15:15:28.4968898+02:00:2022-02-04T15:15:28.4961707+02:00:Assembly resolving Microsoft.DotNet.PlatformAbstractions, Version=1.0.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2022-02-04T15:15:28.4982256+02:00:2022-02-04T15:15:28.4978103+02:00:[AssemblyCache] Trying to resolve 'Microsoft.DotNet.PlatformAbstractions' from .deps.json file
+2022-02-04T15:15:28.4994612+02:00:2022-02-04T15:15:28.4991144+02:00:[AssemblyCache] Resolved 'Microsoft.DotNet.PlatformAbstractions' to 'C:\Users\Danya\.nuget\packages\microsoft.dotnet.platformabstractions\1.0.3\lib\netstandard1.3\Microsoft.DotNet.PlatformAbstractions.dll'
+2022-02-04T15:15:28.5117340+02:00:2022-02-04T15:15:28.5110072+02:00:Thread#0:T:-> Missing [assembly:RuntimePlugin] attribute in HomeWork, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null. Please check https://go.specflow.org/doc-plugins for details.
+2022-02-04T15:15:28.5131459+02:00:2022-02-04T15:15:28.5126302+02:00:Thread#0:T:-> Loading plugin C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0\SpecRun.Runtime.SpecFlowPlugin.dll
+2022-02-04T15:15:28.5268846+02:00:2022-02-04T15:15:28.5257514+02:00:Thread#0:T:-> Using default config
+2022-02-04T15:15:28.5357438+02:00:2022-02-04T15:15:28.5350642+02:00:Assembly resolving Cucumber.Messages, Version=6.0.1.0, Culture=neutral, PublicKeyToken=b10c5988214f940c
+2022-02-04T15:15:28.5370047+02:00:2022-02-04T15:15:28.5365389+02:00:[AssemblyCache] Trying to resolve 'Cucumber.Messages' from .deps.json file
+2022-02-04T15:15:28.5380463+02:00:2022-02-04T15:15:28.5377231+02:00:[AssemblyCache] Resolved 'Cucumber.Messages' to 'C:\Users\Danya\.nuget\packages\cucumber.messages\6.0.1\lib\netstandard2.0\Cucumber.Messages.dll'
+2022-02-04T15:15:28.5446501+02:00:2022-02-04T15:15:28.5441603+02:00:Assembly resolving Google.Protobuf, Version=3.7.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604
+2022-02-04T15:15:28.5455104+02:00:2022-02-04T15:15:28.5451557+02:00:[AssemblyCache] Trying to resolve 'Google.Protobuf' from .deps.json file
+2022-02-04T15:15:28.5464466+02:00:2022-02-04T15:15:28.5460912+02:00:[AssemblyCache] Resolved 'Google.Protobuf' to 'C:\Users\Danya\.nuget\packages\google.protobuf\3.7.0\lib\netstandard1.0\Google.Protobuf.dll'
+2022-02-04T15:15:28.5817661+02:00:2022-02-04T15:15:28.5811072+02:00:Assembly resolving Microsoft.VisualStudio.TestPlatform.ObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+2022-02-04T15:15:28.5830864+02:00:2022-02-04T15:15:28.5825080+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.TestPlatform.ObjectModel' from .deps.json file
+2022-02-04T15:15:28.5841995+02:00:2022-02-04T15:15:28.5838496+02:00:[AssemblyCache] Resolved 'Microsoft.VisualStudio.TestPlatform.ObjectModel' to 'C:\Users\Danya\.nuget\packages\microsoft.testplatform.objectmodel\17.0.0\lib\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.ObjectModel.dll'
+2022-02-04T15:15:28.6127283+02:00:2022-02-04T15:15:28.6120667+02:00:Assembly resolving nunit.framework, Version=3.13.2.0, Culture=neutral, PublicKeyToken=2638cd05610744eb
+2022-02-04T15:15:28.6140293+02:00:2022-02-04T15:15:28.6134962+02:00:[AssemblyCache] Trying to resolve 'nunit.framework' from .deps.json file
+2022-02-04T15:15:28.6149761+02:00:2022-02-04T15:15:28.6146292+02:00:[AssemblyCache] Resolved 'nunit.framework' to 'C:\Users\Danya\.nuget\packages\nunit\3.13.2\lib\netstandard2.0\nunit.framework.dll'
+2022-02-04T15:15:28.6357255+02:00:2022-02-04T15:15:28.6349792+02:00:Assembly resolving Utf8Json, Version=1.3.7.0, Culture=neutral, PublicKeyToken=8a73d3ba7e392e27
+2022-02-04T15:15:28.6371735+02:00:2022-02-04T15:15:28.6365616+02:00:[AssemblyCache] Trying to resolve 'Utf8Json' from .deps.json file
+2022-02-04T15:15:28.6386737+02:00:2022-02-04T15:15:28.6380524+02:00:[AssemblyCache] Resolved 'Utf8Json' to 'C:\Users\Danya\.nuget\packages\utf8json\1.3.7\lib\netstandard2.0\Utf8Json.dll'
+2022-02-04T15:15:28.8885727+02:00:Thread#0: Test #7/0 is started on thread #0
+2022-02-04T15:15:28.9144176+02:00:2022-02-04T15:15:28.9137278+02:00:Assembly resolving WebDriver, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null
+2022-02-04T15:15:28.9159336+02:00:2022-02-04T15:15:28.9153564+02:00:[AssemblyCache] Trying to resolve 'WebDriver' from .deps.json file
+2022-02-04T15:15:28.9174269+02:00:2022-02-04T15:15:28.9168733+02:00:[AssemblyCache] Resolved 'WebDriver' to 'C:\Users\Danya\.nuget\packages\selenium.webdriver\4.1.0\lib\net5.0\WebDriver.dll'
+2022-02-04T15:15:35.0346599+02:00:2022-02-04T15:15:34.7368908+02:00:Assembly resolving Microsoft.Extensions.Configuration.Abstractions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2022-02-04T15:15:35.0622173+02:00:2022-02-04T15:15:35.0608357+02:00:Assembly resolving Microsoft.Extensions.Configuration.Abstractions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2022-02-04T15:15:35.0674236+02:00:2022-02-04T15:15:35.0642927+02:00:[AssemblyCache] Trying to resolve 'Microsoft.Extensions.Configuration.Abstractions' from .deps.json file
+2022-02-04T15:15:35.0692101+02:00:2022-02-04T15:15:35.0685534+02:00:[AssemblyCache] Resolved 'Microsoft.Extensions.Configuration.Abstractions' to 'C:\Users\Danya\.nuget\packages\microsoft.extensions.configuration.abstractions\6.0.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.dll'
+2022-02-04T15:15:35.0800279+02:00:2022-02-04T15:15:35.0788008+02:00:Assembly resolving Microsoft.Extensions.Configuration, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2022-02-04T15:15:35.0814120+02:00:2022-02-04T15:15:35.0807587+02:00:[AssemblyCache] Trying to resolve 'Microsoft.Extensions.Configuration' from .deps.json file
+2022-02-04T15:15:35.0831661+02:00:2022-02-04T15:15:35.0825840+02:00:[AssemblyCache] Resolved 'Microsoft.Extensions.Configuration' to 'C:\Users\Danya\.nuget\packages\microsoft.extensions.configuration\6.0.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.dll'
+2022-02-04T15:15:35.1034434+02:00:2022-02-04T15:15:35.1027078+02:00:Assembly resolving Microsoft.Extensions.Configuration.FileExtensions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2022-02-04T15:15:35.1047833+02:00:2022-02-04T15:15:35.1041821+02:00:[AssemblyCache] Trying to resolve 'Microsoft.Extensions.Configuration.FileExtensions' from .deps.json file
+2022-02-04T15:15:35.1062685+02:00:2022-02-04T15:15:35.1056356+02:00:[AssemblyCache] Resolved 'Microsoft.Extensions.Configuration.FileExtensions' to 'C:\Users\Danya\.nuget\packages\microsoft.extensions.configuration.fileextensions\6.0.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.FileExtensions.dll'
+2022-02-04T15:15:35.1155277+02:00:2022-02-04T15:15:35.1147445+02:00:Assembly resolving Microsoft.Extensions.Configuration.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2022-02-04T15:15:35.1282415+02:00:2022-02-04T15:15:35.1259961+02:00:[AssemblyCache] Trying to resolve 'Microsoft.Extensions.Configuration.Json' from .deps.json file
+2022-02-04T15:15:35.1371482+02:00:2022-02-04T15:15:35.1364658+02:00:[AssemblyCache] Resolved 'Microsoft.Extensions.Configuration.Json' to 'C:\Users\Danya\.nuget\packages\microsoft.extensions.configuration.json\6.0.0\lib\netstandard2.1\Microsoft.Extensions.Configuration.Json.dll'
+2022-02-04T15:15:35.1464585+02:00:2022-02-04T15:15:35.1456420+02:00:Assembly resolving Microsoft.Extensions.FileProviders.Physical, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2022-02-04T15:15:35.1546833+02:00:2022-02-04T15:15:35.1540487+02:00:[AssemblyCache] Trying to resolve 'Microsoft.Extensions.FileProviders.Physical' from .deps.json file
+2022-02-04T15:15:35.1572125+02:00:2022-02-04T15:15:35.1564356+02:00:[AssemblyCache] Resolved 'Microsoft.Extensions.FileProviders.Physical' to 'C:\Users\Danya\.nuget\packages\microsoft.extensions.fileproviders.physical\6.0.0\lib\netstandard2.0\Microsoft.Extensions.FileProviders.Physical.dll'
+2022-02-04T15:15:35.1655866+02:00:2022-02-04T15:15:35.1649795+02:00:Assembly resolving Microsoft.Extensions.FileProviders.Abstractions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2022-02-04T15:15:35.1667122+02:00:2022-02-04T15:15:35.1663028+02:00:[AssemblyCache] Trying to resolve 'Microsoft.Extensions.FileProviders.Abstractions' from .deps.json file
+2022-02-04T15:15:35.1678631+02:00:2022-02-04T15:15:35.1675107+02:00:[AssemblyCache] Resolved 'Microsoft.Extensions.FileProviders.Abstractions' to 'C:\Users\Danya\.nuget\packages\microsoft.extensions.fileproviders.abstractions\6.0.0\lib\netstandard2.0\Microsoft.Extensions.FileProviders.Abstractions.dll'
+2022-02-04T15:15:35.1766201+02:00:2022-02-04T15:15:35.1759738+02:00:Assembly resolving Microsoft.Extensions.Primitives, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2022-02-04T15:15:35.1779531+02:00:2022-02-04T15:15:35.1773878+02:00:[AssemblyCache] Trying to resolve 'Microsoft.Extensions.Primitives' from .deps.json file
+2022-02-04T15:15:35.1791666+02:00:2022-02-04T15:15:35.1787886+02:00:[AssemblyCache] Resolved 'Microsoft.Extensions.Primitives' to 'C:\Users\Danya\.nuget\packages\microsoft.extensions.primitives\6.0.0\lib\netcoreapp3.1\Microsoft.Extensions.Primitives.dll'
+2022-02-04T15:15:35.1999631+02:00:2022-02-04T15:15:35.1993423+02:00:Assembly resolving System.Text.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51
+2022-02-04T15:15:35.2009004+02:00:2022-02-04T15:15:35.2005601+02:00:[AssemblyCache] Trying to resolve 'System.Text.Json' from .deps.json file
+2022-02-04T15:15:35.2018223+02:00:2022-02-04T15:15:35.2014924+02:00:[AssemblyCache] Resolved 'System.Text.Json' to 'C:\Users\Danya\.nuget\packages\system.text.json\6.0.0\lib\netcoreapp3.1\System.Text.Json.dll'
+2022-02-04T15:15:35.2373077+02:00:2022-02-04T15:15:35.2365519+02:00:Assembly resolving System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+2022-02-04T15:15:35.2387129+02:00:2022-02-04T15:15:35.2381017+02:00:[AssemblyCache] Trying to resolve 'System.Runtime.CompilerServices.Unsafe' from .deps.json file
+2022-02-04T15:15:35.2408841+02:00:2022-02-04T15:15:35.2402542+02:00:[AssemblyCache] Resolved 'System.Runtime.CompilerServices.Unsafe' to 'C:\Users\Danya\.nuget\packages\system.runtime.compilerservices.unsafe\6.0.0\lib\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll'
+2022-02-04T15:15:39.5675235+02:00:2022-02-04T15:15:39.5668405+02:00:Assembly resolving Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed
+2022-02-04T15:15:39.5688845+02:00:2022-02-04T15:15:39.5683878+02:00:[AssemblyCache] Trying to resolve 'Newtonsoft.Json' from .deps.json file
+2022-02-04T15:15:39.5699787+02:00:2022-02-04T15:15:39.5696195+02:00:[AssemblyCache] Resolved 'Newtonsoft.Json' to 'C:\Users\Danya\.nuget\packages\newtonsoft.json\12.0.3\lib\netstandard2.0\Newtonsoft.Json.dll'
+2022-02-04T15:15:53.8906515+02:00:2022-02-04T15:15:53.8893635+02:00:Thread#0:B:Given user open website ek.ua
+2022-02-04T15:15:53.9654039+02:00:2022-02-04T15:15:53.9648072+02:00:Thread#0:T:error: Interface cannot be resolved: OpenQA.Selenium.IWebDriver (resolution path: HomeWork.Selenium_WD.Steps.BaseSteps) (0.1s)
+2022-02-04T15:15:55.2040112+02:00:2022-02-04T15:15:55.2033818+02:00:Thread#0:B:When user choose category 'Гаджеты' and type of product 'Мобильные'
+2022-02-04T15:15:55.2079304+02:00:2022-02-04T15:15:55.2073018+02:00:Thread#0:T:skipped because of previous errors
+2022-02-04T15:15:56.3363230+02:00:2022-02-04T15:15:56.3355673+02:00:Thread#0:B:When user select brand 'Apple' by filter
+2022-02-04T15:15:56.3416822+02:00:2022-02-04T15:15:56.3411636+02:00:Thread#0:T:skipped because of previous errors
+2022-02-04T15:15:56.8025505+02:00:2022-02-04T15:15:56.6244032+02:00:Thread#0:B:Then verify needed checkbox with brand 'Apple' is selected
+2022-02-04T15:15:56.8045131+02:00:2022-02-04T15:15:56.8039017+02:00:Thread#0:T:skipped because of previous errors
+2022-02-04T15:15:57.2635732+02:00:2022-02-04T15:15:56.9201894+02:00:Thread#0:B:When user click on linked text 'Показать'
+2022-02-04T15:15:57.2660699+02:00:2022-02-04T15:15:57.2651929+02:00:Thread#0:T:skipped because of previous errors
+2022-02-04T15:15:57.7256535+02:00:2022-02-04T15:15:57.6289432+02:00:Thread#0:B:When user remember name product 'Apple iPhone 13'
+2022-02-04T15:15:57.7280328+02:00:2022-02-04T15:15:57.7270659+02:00:Thread#0:T:skipped because of previous errors
+2022-02-04T15:15:58.1932895+02:00:2022-02-04T15:15:58.0443577+02:00:Thread#0:B:When user click on linked text 'Apple iPhone 13'
+2022-02-04T15:15:58.1951222+02:00:2022-02-04T15:15:58.1942978+02:00:Thread#0:T:skipped because of previous errors
+2022-02-04T15:15:58.6514349+02:00:2022-02-04T15:15:58.4411632+02:00:Thread#0:B:When user added product in list
+2022-02-04T15:15:58.6528889+02:00:2022-02-04T15:15:58.6523786+02:00:Thread#0:T:skipped because of previous errors
+2022-02-04T15:15:59.1150274+02:00:2022-02-04T15:15:58.8197799+02:00:Thread#0:B:When user switch to bottom bar menu 'Закладки' page
+2022-02-04T15:15:59.1196110+02:00:2022-02-04T15:15:59.1179611+02:00:Thread#0:T:skipped because of previous errors
+2022-02-04T15:15:59.6020965+02:00:2022-02-04T15:15:59.3629148+02:00:Thread#0:B:Then verify that product name in bookmarks menu equals to actual product name for mobile devices
+2022-02-04T15:15:59.6061150+02:00:2022-02-04T15:15:59.6047696+02:00:Thread#0:T:skipped because of previous errors

@@ -12,7 +12,8 @@ namespace HomeWork.Selenium_WD.Functional
             switch (BrowserProvider.Browser)
             {
                 case "chrome":
-                    var chromeDriver = new ChromeDriver();
+                    var chromeDriver = new ChromeDriver("C:\\Users\\Danya\\source\\repos\\HomeWork-Danya-Syd\\HomeWork\\HomeWork\\bin\\Debug\\net5.0");
+                    //chromeDriver.Manage().Window.Maximize();
                     return chromeDriver;
 
                 case "firefox":

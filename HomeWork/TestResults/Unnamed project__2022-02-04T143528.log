@@ -1,0 +1,249 @@
+﻿2022-02-04T14:35:28.6343198+02:00;VSTestExecutionThread;Info;SpecFlow+Runner execution started
+2022-02-04T14:35:28.6344838+02:00;VSTestExecutionThread;Info;SpecFlow+Runner 3.9.31 in Framework net50 in x64 mode execution started
+2022-02-04T14:35:28.6344879+02:00;VSTestExecutionThread;Info;TestAdapter Location: C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0\TechTalk.SpecRun.VisualStudio.TestAdapter.dll
+2022-02-04T14:35:28.6360280+02:00;VSTestExecutionThread;Info;Current UserName: 'Danya', MachineName: 'DESKTOP-JSM92F3'
+2022-02-04T14:35:28.6570944+02:00;VSTestExecutionThread;Info;SpecRun: running tests in C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0\HomeWork.dll
+2022-02-04T14:35:28.6572655+02:00;VSTestExecutionThread;Info;Output folder configured to "C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\TestResults" (default)
+2022-02-04T14:35:28.6573187+02:00;VSTestExecutionThread;Info;Profile: 
+2022-02-04T14:35:28.6928742+02:00;VSTestExecutionThread;Info;Log file path: C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\TestResults\Unnamed project__2022-02-04T143528.log
+2022-02-04T14:35:28.6976055+02:00;Thread#12;Info;Checking activation
+2022-02-04T14:35:28.7789617+02:00;Thread#12;Info;Activated.
+2022-02-04T14:35:28.7791443+02:00;Thread#12;Info;Activation check completed
+2022-02-04T14:35:28.7792022+02:00;Thread#12;Info;Starting test run
+2022-02-04T14:35:28.8446401+02:00;Thread#12;Info;Discovering target: Default
+2022-02-04T14:35:28.8447493+02:00;Thread#12;Info;Discovering tests from assembly: C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0\HomeWork.dll
+2022-02-04T14:35:28.9080171+02:00;Thread#12;Info;Discovered tests from assembly: C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0\HomeWork.dll
+2022-02-04T14:35:28.9089638+02:00:Test Suite Dump
+2022-02-04T14:35:28.9102492+02:00:#0: Unnamed project/ - 
+2022-02-04T14:35:28.9102679+02:00:#1: Default - 
+2022-02-04T14:35:28.9102697+02:00:#2: HomeWork - 
+2022-02-04T14:35:28.9102712+02:00:#6: BottomBarOnProductPage - 
+2022-02-04T14:35:28.9111012+02:00:#7: AddedItemToBookmarks - TestAssembly:HomeWork/Feature:BottomBarOnProductPage/Scenario:AddedItemToBookmarks
+2022-02-04T14:35:28.9111333+02:00:End: Test Suite Dump
+2022-02-04T14:35:28.9239737+02:00:Thread#0:Scheduler: get next test for thread 0
+2022-02-04T14:35:28.9252289+02:00:Thread#:Scheduler: testitem #7 from normal test queue 
+2022-02-04T14:35:28.9252698+02:00:Thread#0:Scheduler: considering testitem #7 for thread 0
+2022-02-04T14:35:28.9275833+02:00:Thread#0:TestItem#7:testItemMatchesCurrentTestThread:UnSpecific
+2022-02-04T14:35:28.9275972+02:00:Thread#0:TestItem#7:runsOnOneOtherThreadSpecific:False
+2022-02-04T14:35:28.9275988+02:00:Thread#0:TestItem#7:runsOnOneOtherThreadUnspecific:False
+2022-02-04T14:35:28.9276011+02:00:Thread#0:Scheduler: using testitem #7 for thread 0
+2022-02-04T14:35:28.9280754+02:00:Thread#0:Scheduler: Test #7 is scheduled for thread
+2022-02-04T14:35:28.9288821+02:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2022-02-04T14:35:28.9304411+02:00:Thread #0: creating new test thread executor for HomeWork, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null (target: Default)
+2022-02-04T14:35:28.9322538+02:00:Thread #0: Creating test assembly executor for execution model OutProc
+2022-02-04T14:35:28.9324603+02:00:Thread #0: Creating test assembly executor for execution model OutProc
+2022-02-04T14:35:28.9341300+02:00:Thread #0: using TechTalk.SpecRun.Framework.Execution.OutOfProc.StreamJsonRPC.OutOfProcessTestAssemblyExecutorHost to execute tests
+2022-02-04T14:35:28.9358410+02:00:starting Out Of Process Executor
+2022-02-04T14:35:28.9374096+02:00:Assembly resolving Microsoft.VisualStudio.Validation, Version=15.3.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+2022-02-04T14:35:28.9396398+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' from .deps.json file
+2022-02-04T14:35:28.9396491+02:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Validation' from .deps.json
+2022-02-04T14:35:28.9405487+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' in folder 'C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0'
+2022-02-04T14:35:28.9408135+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0\Microsoft.VisualStudio.Validation.dll'
+2022-02-04T14:35:28.9409061+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0\Microsoft.VisualStudio.Validation.exe'
+2022-02-04T14:35:28.9409452+02:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Validation' in folder 'C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0'
+2022-02-04T14:35:28.9410979+02:00:TargetFramework: .NETCoreApp,Version=v5.0
+2022-02-04T14:35:28.9415355+02:00:Tfm: netcoreapp5.0
+2022-02-04T14:35:28.9415449+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' in folder 'C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0\SpecFlowPlusRunner\netcoreapp5.0'
+2022-02-04T14:35:28.9415514+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0\SpecFlowPlusRunner\netcoreapp5.0\Microsoft.VisualStudio.Validation.dll'
+2022-02-04T14:35:28.9416291+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0\SpecFlowPlusRunner\netcoreapp5.0\Microsoft.VisualStudio.Validation.exe'
+2022-02-04T14:35:28.9416657+02:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Validation' in folder 'C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0\SpecFlowPlusRunner\netcoreapp5.0'
+2022-02-04T14:35:28.9459893+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.13'
+2022-02-04T14:35:28.9459994+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.13\Microsoft.VisualStudio.Validation.dll'
+2022-02-04T14:35:28.9460573+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.13\Microsoft.VisualStudio.Validation.exe'
+2022-02-04T14:35:28.9460888+02:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Validation' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.13'
+2022-02-04T14:35:28.9462141+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.13'
+2022-02-04T14:35:28.9462199+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.13\Microsoft.VisualStudio.Validation.dll'
+2022-02-04T14:35:28.9462547+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.13\Microsoft.VisualStudio.Validation.exe'
+2022-02-04T14:35:28.9462823+02:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Validation' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.13'
+2022-02-04T14:35:28.9463645+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.13'
+2022-02-04T14:35:28.9463741+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.13\Microsoft.VisualStudio.Validation.dll'
+2022-02-04T14:35:28.9464107+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.13\Microsoft.VisualStudio.Validation.exe'
+2022-02-04T14:35:28.9464379+02:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Validation' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.13'
+2022-02-04T14:35:28.9481897+02:00:Starting callback TCP Rpc server
+2022-02-04T14:35:28.9596917+02:00:Asynchronously starting background TCP Rpc Server on port 32768
+2022-02-04T14:35:28.9597269+02:00:Started callback TCP Rpc server on port 32768
+2022-02-04T14:35:28.9597289+02:00:Starting logger TCP Rpc server
+2022-02-04T14:35:28.9610221+02:00:Asynchronously starting background TCP Rpc Server on port 32769
+2022-02-04T14:35:28.9610385+02:00:Started logger TCP Rpc server on port 32769
+2022-02-04T14:35:29.0186276+02:00:Executing test executor at 'dotnet' 'exec "C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0\SpecFlowPlusRunner\net5.0\TechTalk.SpecRun.Framework.Executor.anycpu.net5_0.dll" --remoteRunnerPid 7324 --uniqueId "2022-02-04T143528" --outputFolder "C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\TestResults" --callbackPort 32768 --loggerPort 32769' in 'C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0'
+2022-02-04T14:35:29.0244224+02:00:Executor with PID 15440 has been started successfully.
+2022-02-04T14:35:29.0273789+02:00:Out of Process Executor 15440 started
+2022-02-04T14:35:29.0273949+02:00:Waiting for endpoint
+2022-02-04T14:35:29.2854035+02:00:Assembly resolving Microsoft.VisualStudio.Threading, Version=15.3.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+2022-02-04T14:35:29.2854299+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' from .deps.json file
+2022-02-04T14:35:29.2854355+02:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Threading' from .deps.json
+2022-02-04T14:35:29.2854582+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' in folder 'C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0'
+2022-02-04T14:35:29.2854802+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0\Microsoft.VisualStudio.Threading.dll'
+2022-02-04T14:35:29.2855330+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0\Microsoft.VisualStudio.Threading.exe'
+2022-02-04T14:35:29.2855840+02:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Threading' in folder 'C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0'
+2022-02-04T14:35:29.2855897+02:00:TargetFramework: .NETCoreApp,Version=v5.0
+2022-02-04T14:35:29.2856263+02:00:Tfm: netcoreapp5.0
+2022-02-04T14:35:29.2856319+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' in folder 'C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0\SpecFlowPlusRunner\netcoreapp5.0'
+2022-02-04T14:35:29.2856355+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0\SpecFlowPlusRunner\netcoreapp5.0\Microsoft.VisualStudio.Threading.dll'
+2022-02-04T14:35:29.2857494+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0\SpecFlowPlusRunner\netcoreapp5.0\Microsoft.VisualStudio.Threading.exe'
+2022-02-04T14:35:29.2858129+02:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Threading' in folder 'C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0\SpecFlowPlusRunner\netcoreapp5.0'
+2022-02-04T14:35:29.2862542+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.13'
+2022-02-04T14:35:29.2862716+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.13\Microsoft.VisualStudio.Threading.dll'
+2022-02-04T14:35:29.2863200+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.13\Microsoft.VisualStudio.Threading.exe'
+2022-02-04T14:35:29.2863500+02:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Threading' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.13'
+2022-02-04T14:35:29.2864363+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.13'
+2022-02-04T14:35:29.2864414+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.13\Microsoft.VisualStudio.Threading.dll'
+2022-02-04T14:35:29.2864792+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.13\Microsoft.VisualStudio.Threading.exe'
+2022-02-04T14:35:29.2865083+02:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Threading' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.13'
+2022-02-04T14:35:29.2866066+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.13'
+2022-02-04T14:35:29.2866115+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.13\Microsoft.VisualStudio.Threading.dll'
+2022-02-04T14:35:29.2866469+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.13\Microsoft.VisualStudio.Threading.exe'
+2022-02-04T14:35:29.2866762+02:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Threading' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.13'
+2022-02-04T14:35:29.4433265+02:00:Remote executor port received: 32770
+2022-02-04T14:35:29.4435770+02:00:Creating executor TCP client on port 32770
+2022-02-04T14:35:29.4438678+02:00:Created executor TCP client on port 32770
+2022-02-04T14:35:29.4438750+02:00:Connecting to remote executor TCP server
+2022-02-04T14:35:29.4445886+02:00:Connected remote executor TCP server
+2022-02-04T14:35:29.4447360+02:00:trying to connect to Out of Process Executor the 1 attempt
+2022-02-04T14:35:29.4447526+02:00:Connection to Out of Process Executor established in the 1 attempt
+2022-02-04T14:35:29.5568993+02:00:2022-02-04T14:35:29.5560152+02:00:OutOfProcessTestAssemblyExecutor: initialized for C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0\HomeWork.dll on test thread #0
+2022-02-04T14:35:29.5606212+02:00:Endpoint 15440 started
+2022-02-04T14:35:29.5750812+02:00:2022-02-04T14:35:29.5746860+02:00:OutOfProcessTestAssemblyExecutor: running tests...
+2022-02-04T14:35:29.6532354+02:00:2022-02-04T14:35:29.6526891+02:00:Assembly resolving TechTalk.SpecFlow, Version=3.9.0.0, Culture=neutral, PublicKeyToken=0778194805d6db41
+2022-02-04T14:35:29.6565455+02:00:2022-02-04T14:35:29.6561139+02:00:[AssemblyCache] Trying to resolve 'TechTalk.SpecFlow' from .deps.json file
+2022-02-04T14:35:29.6587691+02:00:2022-02-04T14:35:29.6584474+02:00:[AssemblyCache] Resolved 'TechTalk.SpecFlow' to 'C:\Users\Danya\.nuget\packages\specflow\3.9.40\lib\netstandard2.0\TechTalk.SpecFlow.dll'
+2022-02-04T14:35:29.7458326+02:00:2022-02-04T14:35:29.7454108+02:00:Thread#0:T:-> Loading plugin C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0\HomeWork.dll
+2022-02-04T14:35:29.7470319+02:00:2022-02-04T14:35:29.7467167+02:00:Assembly resolving Microsoft.Extensions.DependencyModel, Version=1.0.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2022-02-04T14:35:29.7474903+02:00:2022-02-04T14:35:29.7472736+02:00:[AssemblyCache] Trying to resolve 'Microsoft.Extensions.DependencyModel' from .deps.json file
+2022-02-04T14:35:29.7482006+02:00:2022-02-04T14:35:29.7477640+02:00:[AssemblyCache] Resolved 'Microsoft.Extensions.DependencyModel' to 'C:\Users\Danya\.nuget\packages\microsoft.extensions.dependencymodel\1.0.3\lib\netstandard1.6\Microsoft.Extensions.DependencyModel.dll'
+2022-02-04T14:35:29.7831575+02:00:2022-02-04T14:35:29.7827156+02:00:Assembly resolving Microsoft.DotNet.PlatformAbstractions, Version=1.0.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2022-02-04T14:35:29.7837475+02:00:2022-02-04T14:35:29.7834527+02:00:[AssemblyCache] Trying to resolve 'Microsoft.DotNet.PlatformAbstractions' from .deps.json file
+2022-02-04T14:35:29.7844600+02:00:2022-02-04T14:35:29.7841527+02:00:[AssemblyCache] Resolved 'Microsoft.DotNet.PlatformAbstractions' to 'C:\Users\Danya\.nuget\packages\microsoft.dotnet.platformabstractions\1.0.3\lib\netstandard1.3\Microsoft.DotNet.PlatformAbstractions.dll'
+2022-02-04T14:35:29.7914296+02:00:2022-02-04T14:35:29.7909994+02:00:Thread#0:T:-> Loading plugin C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\HomeWork\bin\Debug\net5.0\SpecRun.Runtime.SpecFlowPlugin.dll
+2022-02-04T14:35:29.7991217+02:00:2022-02-04T14:35:29.7986736+02:00:Thread#0:T:-> Using default config
+2022-02-04T14:35:29.8091438+02:00:2022-02-04T14:35:29.8087207+02:00:Assembly resolving Microsoft.VisualStudio.TestPlatform.ObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+2022-02-04T14:35:29.8097054+02:00:2022-02-04T14:35:29.8094226+02:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.TestPlatform.ObjectModel' from .deps.json file
+2022-02-04T14:35:29.8104265+02:00:2022-02-04T14:35:29.8101463+02:00:[AssemblyCache] Resolved 'Microsoft.VisualStudio.TestPlatform.ObjectModel' to 'C:\Users\Danya\.nuget\packages\microsoft.testplatform.objectmodel\17.0.0\lib\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.ObjectModel.dll'
+2022-02-04T14:35:29.8322329+02:00:2022-02-04T14:35:29.8317288+02:00:Assembly resolving SpecFlow.Internal.Json, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0778194805d6db41
+2022-02-04T14:35:29.8327237+02:00:2022-02-04T14:35:29.8324845+02:00:[AssemblyCache] Trying to resolve 'SpecFlow.Internal.Json' from .deps.json file
+2022-02-04T14:35:29.8333903+02:00:2022-02-04T14:35:29.8330999+02:00:[AssemblyCache] Resolved 'SpecFlow.Internal.Json' to 'C:\Users\Danya\.nuget\packages\specflow.internal.json\1.0.8\lib\netstandard2.0\SpecFlow.Internal.Json.dll'
+2022-02-04T14:35:29.8981695+02:00:Thread#0: Test #7/0 is started on thread #0
+2022-02-04T14:35:29.9101830+02:00:2022-02-04T14:35:29.9097864+02:00:Thread#0:B:Given user open website ek.ua
+2022-02-04T14:35:29.9239802+02:00:2022-02-04T14:35:29.9236111+02:00:Assembly resolving WebDriver, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null
+2022-02-04T14:35:29.9244697+02:00:2022-02-04T14:35:29.9241965+02:00:[AssemblyCache] Trying to resolve 'WebDriver' from .deps.json file
+2022-02-04T14:35:29.9250350+02:00:2022-02-04T14:35:29.9247528+02:00:[AssemblyCache] Resolved 'WebDriver' to 'C:\Users\Danya\.nuget\packages\selenium.webdriver\4.1.0\lib\net5.0\WebDriver.dll'
+2022-02-04T14:35:29.9630653+02:00:2022-02-04T14:35:29.9626544+02:00:Thread#0:T:error: Interface cannot be resolved: OpenQA.Selenium.IWebDriver (resolution path: HomeWork.Selenium_WD.Steps.BaseStep) (0.0s)
+2022-02-04T14:35:29.9650589+02:00:2022-02-04T14:35:29.9642761+02:00:Thread#0:B:When user choose category 'Гаджеты' and type of product 'Мобильные'
+2022-02-04T14:35:29.9668187+02:00:2022-02-04T14:35:29.9664786+02:00:Thread#0:T:skipped because of previous errors
+2022-02-04T14:35:29.9690392+02:00:2022-02-04T14:35:29.9686034+02:00:Thread#0:B:When user select brand 'Apple' by filter
+2022-02-04T14:35:29.9696853+02:00:2022-02-04T14:35:29.9693683+02:00:Thread#0:T:skipped because of previous errors
+2022-02-04T14:35:29.9703992+02:00:2022-02-04T14:35:29.9701170+02:00:Thread#0:B:Then verify needed checkbox with brand 'Apple' is selected
+2022-02-04T14:35:29.9709609+02:00:2022-02-04T14:35:29.9707008+02:00:Thread#0:T:skipped because of previous errors
+2022-02-04T14:35:29.9714286+02:00:2022-02-04T14:35:29.9711774+02:00:Thread#0:B:When user click on linked text 'Показать'
+2022-02-04T14:35:29.9719788+02:00:2022-02-04T14:35:29.9716959+02:00:Thread#0:T:skipped because of previous errors
+2022-02-04T14:35:29.9724671+02:00:2022-02-04T14:35:29.9722178+02:00:Thread#0:B:When user remember name product 'Apple iPhone 13'
+2022-02-04T14:35:29.9729688+02:00:2022-02-04T14:35:29.9727721+02:00:Thread#0:T:skipped because of previous errors
+2022-02-04T14:35:29.9732939+02:00:2022-02-04T14:35:29.9731354+02:00:Thread#0:B:When user click on linked text 'Apple iPhone 13'
+2022-02-04T14:35:29.9736674+02:00:2022-02-04T14:35:29.9734723+02:00:Thread#0:T:skipped because of previous errors
+2022-02-04T14:35:29.9740337+02:00:2022-02-04T14:35:29.9738343+02:00:Thread#0:B:When user added product in list
+2022-02-04T14:35:29.9800845+02:00:2022-02-04T14:35:29.9742505+02:00:Thread#0:T:skipped because of previous errors
+2022-02-04T14:35:29.9808030+02:00:2022-02-04T14:35:29.9805054+02:00:Thread#0:B:When user switch to bottom bar menu 'Закладки' page
+2022-02-04T14:35:29.9813459+02:00:2022-02-04T14:35:29.9810563+02:00:Thread#0:T:skipped because of previous errors
+2022-02-04T14:35:29.9818763+02:00:2022-02-04T14:35:29.9816318+02:00:Thread#0:B:Then verify that product name in bookmarks menu equals to actual product name for mobile devices
+2022-02-04T14:35:29.9824582+02:00:2022-02-04T14:35:29.9821943+02:00:Thread#0:T:skipped because of previous errors
+2022-02-04T14:35:29.9933244+02:00:Thread#0:TestItem#7:Scheduler: reschedule tests for testitem #7
+2022-02-04T14:35:29.9949521+02:00:Thread#0:Scheduler: get next test for thread 0
+2022-02-04T14:35:29.9949839+02:00:Thread#:Scheduler: dequeuing a rescheduled testitem: #7
+2022-02-04T14:35:29.9949876+02:00:Thread#0:Scheduler: considering testitem #7 for thread 0
+2022-02-04T14:35:29.9950188+02:00:Thread#0:TestItem#7:testItemMatchesCurrentTestThread:UnSpecific
+2022-02-04T14:35:29.9950216+02:00:Thread#0:TestItem#7:runsOnOneOtherThreadSpecific:False
+2022-02-04T14:35:29.9950228+02:00:Thread#0:TestItem#7:runsOnOneOtherThreadUnspecific:False
+2022-02-04T14:35:29.9950242+02:00:Thread#0:Scheduler: using testitem #7 for thread 0
+2022-02-04T14:35:29.9950321+02:00:Thread#0:Scheduler: Test #7 is scheduled for thread
+2022-02-04T14:35:29.9950379+02:00:Thread#0:Scheduler: with testItemExecutionIndex 1
+2022-02-04T14:35:30.0269999+02:00:Thread#0: Test #7/0 is finished on thread #0 as Failed within 0.1281568 seconds
+2022-02-04T14:35:30.0291081+02:00:Thread#0: Test #7/1 is started on thread #0
+2022-02-04T14:35:30.0297591+02:00:2022-02-04T14:35:30.0294796+02:00:Thread#0:B:Given user open website ek.ua
+2022-02-04T14:35:30.0310143+02:00:2022-02-04T14:35:30.0306849+02:00:Thread#0:T:error: Interface cannot be resolved: OpenQA.Selenium.IWebDriver (resolution path: HomeWork.Selenium_WD.Steps.BaseStep) (0.0s)
+2022-02-04T14:35:30.0314943+02:00:2022-02-04T14:35:30.0312225+02:00:Thread#0:B:When user choose category 'Гаджеты' and type of product 'Мобильные'
+2022-02-04T14:35:30.0320492+02:00:2022-02-04T14:35:30.0317920+02:00:Thread#0:T:skipped because of previous errors
+2022-02-04T14:35:30.0325771+02:00:2022-02-04T14:35:30.0323232+02:00:Thread#0:B:When user select brand 'Apple' by filter
+2022-02-04T14:35:30.0331106+02:00:2022-02-04T14:35:30.0328470+02:00:Thread#0:T:skipped because of previous errors
+2022-02-04T14:35:30.0335886+02:00:2022-02-04T14:35:30.0333489+02:00:Thread#0:B:Then verify needed checkbox with brand 'Apple' is selected
+2022-02-04T14:35:30.0341128+02:00:2022-02-04T14:35:30.0338299+02:00:Thread#0:T:skipped because of previous errors
+2022-02-04T14:35:30.0346457+02:00:2022-02-04T14:35:30.0343840+02:00:Thread#0:B:When user click on linked text 'Показать'
+2022-02-04T14:35:30.0353530+02:00:2022-02-04T14:35:30.0350483+02:00:Thread#0:T:skipped because of previous errors
+2022-02-04T14:35:30.0359513+02:00:2022-02-04T14:35:30.0356658+02:00:Thread#0:B:When user remember name product 'Apple iPhone 13'
+2022-02-04T14:35:30.0365793+02:00:2022-02-04T14:35:30.0363215+02:00:Thread#0:T:skipped because of previous errors
+2022-02-04T14:35:30.0370347+02:00:2022-02-04T14:35:30.0367948+02:00:Thread#0:B:When user click on linked text 'Apple iPhone 13'
+2022-02-04T14:35:30.0375417+02:00:2022-02-04T14:35:30.0373004+02:00:Thread#0:T:skipped because of previous errors
+2022-02-04T14:35:30.0380262+02:00:2022-02-04T14:35:30.0378087+02:00:Thread#0:B:When user added product in list
+2022-02-04T14:35:30.0386482+02:00:2022-02-04T14:35:30.0383744+02:00:Thread#0:T:skipped because of previous errors
+2022-02-04T14:35:30.0391275+02:00:2022-02-04T14:35:30.0389135+02:00:Thread#0:B:When user switch to bottom bar menu 'Закладки' page
+2022-02-04T14:35:30.0396241+02:00:2022-02-04T14:35:30.0393887+02:00:Thread#0:T:skipped because of previous errors
+2022-02-04T14:35:30.0401419+02:00:2022-02-04T14:35:30.0399085+02:00:Thread#0:B:Then verify that product name in bookmarks menu equals to actual product name for mobile devices
+2022-02-04T14:35:30.0406392+02:00:2022-02-04T14:35:30.0404122+02:00:Thread#0:T:skipped because of previous errors
+2022-02-04T14:35:30.0425359+02:00:Thread#0:Scheduler: get next test for thread 0
+2022-02-04T14:35:30.0425549+02:00:Thread#:Scheduler: dequeuing a rescheduled testitem: #7
+2022-02-04T14:35:30.0425570+02:00:Thread#0:Scheduler: considering testitem #7 for thread 0
+2022-02-04T14:35:30.0425739+02:00:Thread#0:TestItem#7:testItemMatchesCurrentTestThread:UnSpecific
+2022-02-04T14:35:30.0425763+02:00:Thread#0:TestItem#7:runsOnOneOtherThreadSpecific:False
+2022-02-04T14:35:30.0425776+02:00:Thread#0:TestItem#7:runsOnOneOtherThreadUnspecific:False
+2022-02-04T14:35:30.0425790+02:00:Thread#0:Scheduler: using testitem #7 for thread 0
+2022-02-04T14:35:30.0425881+02:00:Thread#0:Scheduler: Test #7 is scheduled for thread
+2022-02-04T14:35:30.0425953+02:00:Thread#0:Scheduler: with testItemExecutionIndex 2
+2022-02-04T14:35:30.0447505+02:00:Thread#0: Test #7/1 is finished on thread #0 as Failed within 0.0155865 seconds
+2022-02-04T14:35:30.0456935+02:00:Thread#0: Test #7/2 is started on thread #0
+2022-02-04T14:35:30.0463149+02:00:2022-02-04T14:35:30.0460499+02:00:Thread#0:B:Given user open website ek.ua
+2022-02-04T14:35:30.0477119+02:00:2022-02-04T14:35:30.0473621+02:00:Thread#0:T:error: Interface cannot be resolved: OpenQA.Selenium.IWebDriver (resolution path: HomeWork.Selenium_WD.Steps.BaseStep) (0.0s)
+2022-02-04T14:35:30.0482056+02:00:2022-02-04T14:35:30.0480007+02:00:Thread#0:B:When user choose category 'Гаджеты' and type of product 'Мобильные'
+2022-02-04T14:35:30.0486587+02:00:2022-02-04T14:35:30.0484536+02:00:Thread#0:T:skipped because of previous errors
+2022-02-04T14:35:30.0491237+02:00:2022-02-04T14:35:30.0488910+02:00:Thread#0:B:When user select brand 'Apple' by filter
+2022-02-04T14:35:30.0495442+02:00:2022-02-04T14:35:30.0493679+02:00:Thread#0:T:skipped because of previous errors
+2022-02-04T14:35:30.0500115+02:00:2022-02-04T14:35:30.0497712+02:00:Thread#0:B:Then verify needed checkbox with brand 'Apple' is selected
+2022-02-04T14:35:30.0505942+02:00:2022-02-04T14:35:30.0503069+02:00:Thread#0:T:skipped because of previous errors
+2022-02-04T14:35:30.0511555+02:00:2022-02-04T14:35:30.0508890+02:00:Thread#0:B:When user click on linked text 'Показать'
+2022-02-04T14:35:30.0517412+02:00:2022-02-04T14:35:30.0514645+02:00:Thread#0:T:skipped because of previous errors
+2022-02-04T14:35:30.0523300+02:00:2022-02-04T14:35:30.0519867+02:00:Thread#0:B:When user remember name product 'Apple iPhone 13'
+2022-02-04T14:35:30.0529231+02:00:2022-02-04T14:35:30.0526295+02:00:Thread#0:T:skipped because of previous errors
+2022-02-04T14:35:30.0534444+02:00:2022-02-04T14:35:30.0531737+02:00:Thread#0:B:When user click on linked text 'Apple iPhone 13'
+2022-02-04T14:35:30.0540038+02:00:2022-02-04T14:35:30.0537127+02:00:Thread#0:T:skipped because of previous errors
+2022-02-04T14:35:30.0545076+02:00:2022-02-04T14:35:30.0542536+02:00:Thread#0:B:When user added product in list
+2022-02-04T14:35:30.0551907+02:00:2022-02-04T14:35:30.0549412+02:00:Thread#0:T:skipped because of previous errors
+2022-02-04T14:35:30.0556904+02:00:2022-02-04T14:35:30.0554191+02:00:Thread#0:B:When user switch to bottom bar menu 'Закладки' page
+2022-02-04T14:35:30.0562638+02:00:2022-02-04T14:35:30.0559856+02:00:Thread#0:T:skipped because of previous errors
+2022-02-04T14:35:30.0567487+02:00:2022-02-04T14:35:30.0565205+02:00:Thread#0:B:Then verify that product name in bookmarks menu equals to actual product name for mobile devices
+2022-02-04T14:35:30.0573133+02:00:2022-02-04T14:35:30.0570420+02:00:Thread#0:T:skipped because of previous errors
+2022-02-04T14:35:30.0586050+02:00:Thread#0:Scheduler: get next test for thread 0
+2022-02-04T14:35:30.0586296+02:00:Thread#:Scheduler: at the end of normal test queue
+2022-02-04T14:35:30.0586335+02:00:Thread#0:Scheduler: enumerator for thread is at end
+2022-02-04T14:35:30.0586354+02:00:Thread#0:Scheduler: No more tests for thread
+2022-02-04T14:35:30.0616510+02:00:Thread#0: Test #7/2 is finished on thread #0 as Failed within 0.0159081 seconds
+2022-02-04T14:35:30.0677007+02:00:2022-02-04T14:35:30.0673582+02:00:Got Deinitialize Signal
+2022-02-04T14:35:30.0703523+02:00:RPC Client disconnected, because 'Disposed'. 
+LastMessage: 
+Description:Stream has been disposed
+Exception:<none>
+2022-02-04T14:35:30.0714119+02:00:RPC Server disconnected, because 'Disposed'. 
+LastMessage: 
+Description:Reached end of stream.
+Exception:<none>
+2022-02-04T14:35:30.0722746+02:00:RPC Server disconnected, because 'Disposed'. 
+LastMessage: 
+Description:Stream has been disposed
+Exception:<none>
+2022-02-04T14:35:30.0793586+02:00:Thread#-1:Scheduler: get next test for thread -1
+2022-02-04T14:35:30.0793810+02:00:Thread#:Scheduler: at the end of normal test queue
+2022-02-04T14:35:30.0793846+02:00:Thread#-1:Scheduler: enumerator for thread is at end
+2022-02-04T14:35:30.0839193+02:00;Thread#12;Info;test run finished
+2022-02-04T14:35:30.0840930+02:00;Thread#12;Info;publishing test results
+2022-02-04T14:35:30.0842182+02:00;Thread#12;Info;Not publishing results.
+2022-02-04T14:35:30.0842734+02:00;Thread#12;Info;test results published
+2022-02-04T14:35:30.0843109+02:00;Thread#12;Info;generating reports
+2022-02-04T14:35:30.1582996+02:00;Thread#12;Info;Starting external report generation process
+2022-02-04T14:35:32.3956425+02:00;Thread#12;Info;Successfully generated reports.
+2022-02-04T14:35:32.3981588+02:00;Thread#12;Info;Successfully generated reports
+2022-02-04T14:35:32.4055413+02:00:Total: 1 (test executions: 3)
+2022-02-04T14:35:32.4067960+02:00:Succeeded: 0
+2022-02-04T14:35:32.4070574+02:00:Ignored: 0
+2022-02-04T14:35:32.4072173+02:00:Pending: 0
+2022-02-04T14:35:32.4072224+02:00:Skipped: 0
+2022-02-04T14:35:32.4073614+02:00:Failed: 1
+2022-02-04T14:35:32.4124140+02:00;VSTestExecutionThread;Info;Adding attachments to VSTest
+2022-02-04T14:35:32.4124981+02:00;VSTestExecutionThread;Info;adding Test Execution Report 'C:\Users\Danya\source\repos\HomeWork-Danya-Syd\HomeWork\TestResults\Unnamed project__2022-02-04T143528.html'
+========== End of log file ==========

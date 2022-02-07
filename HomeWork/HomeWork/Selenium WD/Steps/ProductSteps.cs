@@ -19,7 +19,7 @@ namespace HomeWork.Selenium_WD.Steps
     class ProductSteps : BasePage
     {
         private NameProductVariable name = new NameProductVariable();
-
+        
         public void WhenUserRememberNameProduct(string nameProduct)
         {
             var product = Driver.GetComponent<ProductsNameLink>(nameProduct);
