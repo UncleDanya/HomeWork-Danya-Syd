@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using HomeWork.Selenium_WD.Components;
@@ -21,27 +20,12 @@ namespace HomeWork.Selenium_WD.Steps
     [Binding]
     class ProductsSteps : SpecFlowContext
     {
-        // private readonly WebDriverVariables driver;
-
-        /*public ProductsSteps(IWebDriver driver) : base(driver)
-        {
-        }*/
-
         private readonly IWebDriver driver;
 
         public ProductsSteps(IWebDriver driver)
         {
             this.driver = driver;
         }
-
-        //[Given(@"User go to '(.*)'")]
-        //public void GivenUserGoTo(string uri)
-        //{
-        //    //IWebDriver _driver;
-        //    //_driver = BrowserFactory.CreateDriver();
-        //    Driver.Navigate().GoToUrl(uri);
-        //    Driver.Manage().Window.Maximize();
-        //}
 
         private NameProductVariable name = new NameProductVariable();
 

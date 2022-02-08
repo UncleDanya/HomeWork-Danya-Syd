@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using HomeWork.Selenium_WD.Components;
+﻿using HomeWork.Selenium_WD.Components;
 using HomeWork.Selenium_WD.Components.Button;
 using HomeWork.Selenium_WD.Components.TabsInUser;
 using HomeWork.Selenium_WD.Extensions;
@@ -16,10 +14,6 @@ namespace HomeWork.Selenium_WD.Steps
     [Binding]
     class UserAccountSteps : SpecFlowContext
     {
-        //public UserAccountSteps(IWebDriver driver) : base(driver)
-        //{
-        //}
-
         private readonly IWebDriver driver;
 
         public UserAccountSteps(IWebDriver driver)
@@ -28,7 +22,6 @@ namespace HomeWork.Selenium_WD.Steps
         }
 
         private RandomLoginVariable randomLoginVariable = new RandomLoginVariable();
-        private NameProductVariable name = new NameProductVariable();
 
         [Given(@"User create new user account")]
         public void GivenUserCreateNewUserAccount()
@@ -88,16 +81,6 @@ namespace HomeWork.Selenium_WD.Steps
         {
             driver.GetComponent<UserProfileTabs>(nameTabs).Click();
         }
-
-        //[Then(@"Verify saved list product for list product in user page")]
-        //public void ThenVerifySavedListProductForListProductInUserPage()
-        //{
-        //    var user = driver.GetPage<UserPage>();
-        //    var listProducts = user.NameViewedProduct.Select(element => element.Text).ToList();
-        //    listProducts.Sort();
-        //    name.Value.Sort();
-        //    Assert.AreEqual(name.Value, listProducts);
-        //}
 
         [Then(@"Verify account login equal expected")]
         public void ThenVerifyAccountLoginEqualExpected()
