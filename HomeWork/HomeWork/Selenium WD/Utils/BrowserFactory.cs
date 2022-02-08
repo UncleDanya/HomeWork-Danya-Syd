@@ -13,7 +13,7 @@ namespace HomeWork.Selenium_WD.Functional
             {
                 case "chrome":
                     var chromeDriver = new ChromeDriver("C:\\Users\\Danya\\source\\repos\\HomeWork-Danya-Syd\\HomeWork\\HomeWork\\bin\\Debug\\net5.0");
-                    //chromeDriver.Manage().Window.Maximize();
+                    chromeDriver.Manage().Window.Maximize();
                     return chromeDriver;
 
                 case "firefox":

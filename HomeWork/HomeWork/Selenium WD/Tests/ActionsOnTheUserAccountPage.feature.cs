@@ -122,7 +122,7 @@ this.FeatureBackground();
  testRunner.When("User select brand \'Logitech\' by filter", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 11
- testRunner.Then("Verify needed checkbox with brand \'Logitech\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("Verify checkbox with brand \'Logitech\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 12
  testRunner.When("User click on linked text \'Показать\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -131,19 +131,20 @@ this.FeatureBackground();
     testRunner.When("User save all product on page in list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 14
- testRunner.When("User added product in list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("User add product in list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 15
-    testRunner.When("User click on type button \'submit\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When("User click on button with type \'submit\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 16
-    testRunner.When("User switch to next page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When("User go to profile", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 17
     testRunner.When("User click on tabs in user page \'Наушники Logitech\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 18
-    testRunner.Then("Verify list save in product page for list in user page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.Then("Verify list of product names matches the list of product names in bookmarks in pr" +
+                        "ofile", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -190,7 +191,7 @@ this.FeatureBackground();
  testRunner.When("User select brand \'Apple\' by filter", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 25
- testRunner.Then("Verify needed checkbox with brand \'Apple\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("Verify checkbox with brand \'Apple\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 26
  testRunner.When("User click on linked text \'Показать\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -208,7 +209,7 @@ this.FeatureBackground();
  testRunner.When("User select brand \'Sony\' by filter", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 31
- testRunner.Then("Verify needed checkbox with brand \'Sony\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("Verify checkbox with brand \'Sony\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 32
  testRunner.When("User click on linked text \'Показать\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -226,7 +227,7 @@ this.FeatureBackground();
  testRunner.When("User select brand \'Logitech\' by filter", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 37
- testRunner.Then("Verify needed checkbox with brand \'Logitech\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("Verify checkbox with brand \'Logitech\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 38
  testRunner.When("User click on linked text \'Показать\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -238,10 +239,10 @@ this.FeatureBackground();
  testRunner.When("User click on linked text \'Logitech G Pro X\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 41
-    testRunner.When("User switch to next page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When("User go to profile", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 42
-    testRunner.Then("Verify saved list product for list product in user page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.Then("Verify names viewed products matches the names in the viewed products in profile", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

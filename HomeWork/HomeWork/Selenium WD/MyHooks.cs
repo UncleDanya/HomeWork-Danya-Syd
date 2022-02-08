@@ -22,7 +22,6 @@ namespace HomeWork.Selenium_WD
         }
         
         [BeforeScenario]
-        
         public void BeforeScenario()
         {
             IWebDriver driver = BrowserFactory.CreateDriver();
@@ -30,7 +29,6 @@ namespace HomeWork.Selenium_WD
         }
 
         [AfterScenario(Order = 1)]
-        
         public void AfterScenario()
         {
             IWebDriver driver = container.Resolve<IWebDriver>();
@@ -39,7 +37,6 @@ namespace HomeWork.Selenium_WD
         }
 
         [AfterScenario("deleteUser", Order = 0)]
-        
         public void DeleteUser()
         {
             IWebDriver driver = container.Resolve<IWebDriver>();

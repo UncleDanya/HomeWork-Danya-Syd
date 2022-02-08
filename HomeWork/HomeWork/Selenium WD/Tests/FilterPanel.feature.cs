@@ -117,7 +117,7 @@ this.FeatureBackground();
     testRunner.When("User select brand \'Acer\' by filter", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 10
-    testRunner.Then("Verify needed checkbox with brand \'Acer\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.Then("Verify checkbox with brand \'Acer\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 11
     testRunner.When("User click on linked text \'Показать\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");

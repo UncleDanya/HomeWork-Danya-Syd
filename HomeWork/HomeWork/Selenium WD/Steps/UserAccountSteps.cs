@@ -15,13 +15,13 @@ namespace HomeWork.Selenium_WD.Steps
     class UserAccountSteps : SpecFlowContext
     {
         private readonly IWebDriver driver;
+        private RandomLoginVariable randomLoginVariable = new RandomLoginVariable();
 
         public UserAccountSteps(IWebDriver driver)
         {
             this.driver = driver;
         }
 
-        private RandomLoginVariable randomLoginVariable = new RandomLoginVariable();
 
         [Given(@"User create new user account")]
         public void GivenUserCreateNewUserAccount()
@@ -45,35 +45,12 @@ namespace HomeWork.Selenium_WD.Steps
             acceptButton.Click();
         }
 
-        [When(@"User click actual login")]
-        public void WhenUserClickActualLogin()
+        [When(@"User go to profile")]
+        public void WhenUserGoToProfile()
         {
             var mainPage = driver.GetPage<MainPage>();
+            WaitUtils.WaitForElementToBeClickable(driver, mainPage.ActualLogin);
             mainPage.ActualLogin.Click();
-        }
-
-        [When(@"User click button icon '(.*)'")]
-        public void WhenUserClickButtonIcon(string buttonName)
-        {
-            driver.GetComponent<ButtonIcon>(buttonName).Click();
-        }
-
-        [When(@"User clear input with header '(.*)'")]
-        public void WhenUserClearInputWithHeader(string inputName)
-        {
-            driver.GetComponent<InputInWithHeader>(inputName).Clear();
-        }
-
-        [When(@"User set text input with header '(.*)' , '(.*)'")]
-        public void WhenUserSetTextInputWithHeader(string inputName, string nameUser)
-        {
-            driver.GetComponent<InputInWithHeader>(inputName).SendKeys(nameUser);
-        }
-
-        [When(@"User click on button with text '(.*)'")]
-        public void WhenUserClickOnButtonWithText(string buttonName)
-        {
-            driver.GetComponent<ButtonWithText>(buttonName).Click();
         }
 
         [When(@"User click on tabs in user page '(.*)'")]
@@ -82,8 +59,8 @@ namespace HomeWork.Selenium_WD.Steps
             driver.GetComponent<UserProfileTabs>(nameTabs).Click();
         }
 
-        [Then(@"Verify account login equal expected")]
-        public void ThenVerifyAccountLoginEqualExpected()
+        [Then(@"Verify actual login equal random login entered")]
+        public void ThenVerifyActualLoginEqualRandomLoginEntered()
         {
             var mainPage = driver.GetPage<MainPage>();
             var userNameElement = WaitUtils.WaitForElementToBeDisplayed(driver, mainPage.ActualLogin);
@@ -91,8 +68,8 @@ namespace HomeWork.Selenium_WD.Steps
             Assert.AreEqual(actualLoginForCompare, randomLoginVariable.Value, "The actual login does not match the expected");
         }
 
-        [Then(@"Verify actual login after rename '(.*)'")]
-        public void ThenVerifyActualLoginAfterRename(string nameUser)
+        [Then(@"Verify actual login equal the changed random login '(.*)'")]
+        public void ThenVerifyActualLoginEqualTheChangedRandomLogin(string nameUser)
         {
             var userPage = driver.GetPage<UserPage>();
             driver.Navigate().Refresh();

@@ -115,7 +115,7 @@ this.FeatureBackground();
  testRunner.When("User select brand \'Apple\' by filter", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 9
- testRunner.Then("Verify needed checkbox with brand \'Apple\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("Verify checkbox with brand \'Apple\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 10
  testRunner.When("User click on linked text \'Показать\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -127,10 +127,10 @@ this.FeatureBackground();
  testRunner.When("User click on linked text \'Apple iPhone 13\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 13
- testRunner.When("User added product in list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("User add product in list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 14
- testRunner.When("User switch to bottom bar menu \'Закладки\' page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("User navigate to \'Закладки\' folder on bottom bar", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 15
  testRunner.Then("Verify that product name in bookmarks menu equals to actual product name for mobi" +
@@ -176,7 +176,7 @@ this.FeatureBackground();
     testRunner.When("User select brand \'Apple\' by filter", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 20
-    testRunner.Then("Verify needed checkbox with brand \'Apple\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.Then("Verify checkbox with brand \'Apple\' is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 21
     testRunner.When("User click on linked text \'Показать\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -203,14 +203,14 @@ this.FeatureBackground();
     testRunner.When("User click on checkbox \'добавить в сравнение\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 29
-    testRunner.When("User switch to bottom bar menu \'Сравнить\' page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When("User navigate to \'Сравнить\' folder on bottom bar", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 30
     testRunner.When("User switch to second page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 31
-    testRunner.Then("Verify name first product \'Apple iPad 2021\' matches second name product \'Apple iP" +
-                        "ad Air 2020\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.Then("Verify product name \'Apple iPad 2021\' equal the product name in comparison \'Apple" +
+                        " iPad Air 2020\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

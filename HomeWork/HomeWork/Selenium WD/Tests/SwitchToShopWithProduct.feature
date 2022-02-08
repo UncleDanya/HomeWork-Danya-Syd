@@ -7,7 +7,7 @@ Background: Pre-condition
 Scenario: ThroughTheProductSwitchToShop
 	When User choose category 'Гаджеты' and type of product 'Мобильные'
     When User select brand 'Apple' by filter
-    Then Verify needed checkbox with brand 'Apple' is selected
+    Then Verify checkbox with brand 'Apple' is selected
     When User click on linked text 'Показать'
     When User remember name product 'Apple iPhone 13'
     When User click on linked text 'Apple iPhone 13'

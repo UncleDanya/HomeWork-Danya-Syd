@@ -116,7 +116,7 @@ this.FeatureBackground();
     testRunner.Given("User create new user account", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 9
-    testRunner.Then("Verify account login equal expected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.Then("Verify actual login equal random login entered", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -157,7 +157,7 @@ this.FeatureBackground();
     testRunner.Given("User create new user account", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 14
-    testRunner.When("User click actual login", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When("User go to profile", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 15
     testRunner.When("User click button icon \'Редактировать\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -172,7 +172,7 @@ this.FeatureBackground();
     testRunner.When("User click on button with text \'СОХРАНИТЬ\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 19
-    testRunner.Then("Verify actual login after rename \'User123\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.Then("Verify actual login equal the changed random login \'User123\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

@@ -6,7 +6,6 @@ using HomeWork.Selenium_WD.Components.Button;
 using HomeWork.Selenium_WD.Components.CheckboxComponents;
 using HomeWork.Selenium_WD.Components.FolderIcon;
 using HomeWork.Selenium_WD.Components.Grid;
-using HomeWork.Selenium_WD.Components.Links;
 using HomeWork.Selenium_WD.Extensions;
 using HomeWork.Selenium_WD.Pages;
 using HomeWork.Selenium_WD.RuntimeVariables;
@@ -21,13 +20,13 @@ namespace HomeWork.Selenium_WD.Steps
     class ProductsSteps : SpecFlowContext
     {
         private readonly IWebDriver driver;
+        private NameProductVariable name = new NameProductVariable();
 
         public ProductsSteps(IWebDriver driver)
         {
             this.driver = driver;
         }
 
-        private NameProductVariable name = new NameProductVariable();
 
         [When(@"User choose category '(.*)' and type of product '(.*)'")]
         public void WhenUserChooseCategoryAndOfProduct(string folderName, string pixelFolderName)
@@ -49,13 +48,6 @@ namespace HomeWork.Selenium_WD.Steps
             categoryPage.ClickCheckboxByBrand(brandToLook);
         }
 
-        [When(@"User click on linked text '(.*)'")]
-        public void WhenUserClickOnLinkedText(string linkedText)
-        {
-            WaitUtils.WaitForElementToBeDisplayed(driver, driver.GetComponent<LinkedText>(linkedText));
-            driver.GetComponent<LinkedText>(linkedText).Click();
-        }
-
         [When(@"User remember name product '(.*)'")]
         public void WhenUserRememberNameProduct(string nameProduct)
         {
@@ -65,6 +57,7 @@ namespace HomeWork.Selenium_WD.Steps
             name.Value.Add(productName);
         }
 
+        // The method is only used to remember a few products
         [When(@"User save all product on page in list")]
         public void WhenUserSaveAllProductOnPageInList()
         {
@@ -74,33 +67,18 @@ namespace HomeWork.Selenium_WD.Steps
             name.Value = listWithNameProductOnPage;
         }
 
-        [When(@"User click on type button '(.*)'")]
-        public void WhenUserClickOnTypeButton(string typeButton)
-        {
-            var productPages = driver.GetComponent<ButtonType>(typeButton);
-            WaitUtils.WaitForElementToBeClickable(driver, productPages);
-            productPages.Click();
-        }
-
-        [When(@"User added product in list")]
-        public void WhenUserAddedProductInList()
+        [When(@"User add product in list")]
+        public void WhenUserAddProductInList()
         {
             var productPage = driver.GetPage<ProductPages>();
             WaitUtils.WaitForElementToBeClickable(driver, productPage.HeartShapedIcon);
             productPage.HeartShapedIcon.Click();
         }
 
-        [When(@"User switch to bottom bar menu '(.*)' page")]
-        public void WhenUserSwitchToBottomBarMenuPage(string barName)
+        [When(@"User navigate to '(.*)' folder on bottom bar")]
+        public void WhenUserNavigateToFolderOnBottomBar(string barName)
         {
             driver.GetComponent<BottomBar>(barName).Click();
-        }
-
-        [When(@"User switch to second page")]
-        public void WhenUserSwitchToSecondPage()
-        {
-            var connectWindowHandles = driver.WindowHandles;
-            driver.SwitchTo().Window(connectWindowHandles[1]);
         }
 
         [When(@"User click on checkbox '(.*)'")]
@@ -108,17 +86,9 @@ namespace HomeWork.Selenium_WD.Steps
         {
             driver.GetComponent<Checkbox>(checkboxName).Click();
         }
-
-        [When(@"User switch to next page")]
-        public void WhenUserSwitchToNextPage()
-        {
-            var mainPage = driver.GetPage<MainPage>();
-            WaitUtils.WaitForElementToBeClickable(driver, mainPage.ActualLogin);
-            mainPage.ActualLogin.Click();
-        }
-
-        [Then(@"Verify name first product '(.*)' matches second name product '(.*)'")]
-        public void ThenVerifynameFirstProductMatchesSecondNameProduct(string nameFirstProduct, string nameSecondProduct)
+        
+        [Then(@"Verify product name '(.*)' equal the product name in comparison '(.*)'")]
+        public void ThenVerifyProductNameEqualTheProductNameInComprasion(string nameFirstProduct, string nameSecondProduct)
         {
             var compareProduct = driver.GetPage<CompareProductPage>();
             var nameFirstTabletInComparePage = compareProduct.NameProductForCompare(nameFirstProduct).Text;
@@ -187,16 +157,17 @@ namespace HomeWork.Selenium_WD.Steps
                 }
             }
         }
-
-        [Then(@"Verify list save in product page for list in user page")]
-        public void ThenVerifyListSaveInProductPageForListInUserPage()
+        
+        [Then(@"Verify list of product names matches the list of product names in bookmarks in profile")]
+        public void ThenVerifyListOfProductNamesMatchesTheListOfProductNamesInBookmarksInProfile()
         {
             var productPages = driver.GetPage<ProductPages>();
             var listWithSaveProductInUserPage = productPages.NamesOfAllProductsOnPage.Select(element => element.Text).ToList();
             listWithSaveProductInUserPage.Sort();
-            Assert.AreEqual(name.Value, listWithSaveProductInUserPage, "The saved item list does not match the sheet in the profile");
+            Assert.AreEqual(name.Value, listWithSaveProductInUserPage, "The saved item list does not match the list in the profile");
         }
 
+        // This method is using only for the item's that has memory value in nameShop text
         [Then(@"Verify that product name in bookmarks menu equals to actual product name for mobile devices")]
         public void ThenVerifyThatProductNameInBookmarksMenuEqualsToActualProductNameForMobileDevices()
         {
@@ -221,7 +192,7 @@ namespace HomeWork.Selenium_WD.Steps
             }
         }
 
-        [Then(@"Verify needed checkbox with brand '(.*)' is selected")]
+        [Then(@"Verify checkbox with brand '(.*)' is selected")]
         public void ThenVerifyNeededCheckboxWithBrandIsSelected(string brandToLook)
         {
             var categoryPage = driver.GetPage<CategoryPage>();
@@ -235,9 +206,9 @@ namespace HomeWork.Selenium_WD.Steps
             var pageShopWithItemText = product.PageShopWithItemText.Text;
             Assert.IsTrue(pageShopWithItemText.Contains(name.Value.First()));
         }
-
-        [Then(@"Verify saved list product for list product in user page")]
-        public void ThenVerifySavedListProductForListProductInUserPage()
+        
+        [Then(@"Verify names viewed products matches the names in the viewed products in profile")]
+        public void ThenVerifyNamesViewedProductsMatchesTheNamesInTheViewedProductsInProfile()
         {
             var user = driver.GetPage<UserPage>();
             var listProducts = user.NameViewedProduct.Select(element => element.Text).ToList();
