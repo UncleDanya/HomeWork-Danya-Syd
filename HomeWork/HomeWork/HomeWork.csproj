@@ -20,7 +20,7 @@
     <PackageReference Include="NPOI" Version="2.5.5" />
     <PackageReference Include="NUnit" Version="3.13.2" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.2.1" />
-    <PackageReference Include="coverlet.collector" Version="3.1.1">
+    <PackageReference Include="coverlet.collector" Version="3.1.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -30,9 +30,9 @@
     <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="98.0.4758.8000" />
     <PackageReference Include="Selenium.WebDriver.GeckoDriver" Version="0.30.0.1" />
     <PackageReference Include="Selenium.WebDriverBackedSelenium" Version="4.1.0" />
-    <PackageReference Include="SpecFlow" Version="3.7.13" />
-    <PackageReference Include="SpecFlow.Tools.MsBuild.Generation" Version="3.7.13" />
-    <PackageReference Include="SpecRun.SpecFlow" Version="3.7.3" />
+    <PackageReference Include="SpecFlow" Version="3.9.50" />
+    <PackageReference Include="SpecFlow.Tools.MsBuild.Generation" Version="3.9.50" />
+    <PackageReference Include="SpecRun.SpecFlow" Version="3.9.31" />
   </ItemGroup>
 
   <ItemGroup>

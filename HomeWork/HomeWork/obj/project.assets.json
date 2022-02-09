@@ -30,22 +30,10 @@
           "build/_._": {}
         }
       },
-      "coverlet.collector/3.1.1": {
+      "coverlet.collector/3.1.2": {
         "type": "package",
         "build": {
           "build/netstandard1.0/coverlet.collector.targets": {}
-        }
-      },
-      "Cucumber.Messages/6.0.1": {
-        "type": "package",
-        "dependencies": {
-          "Google.Protobuf": "3.7.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/Cucumber.Messages.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Cucumber.Messages.dll": {}
         }
       },
       "DotNetSeleniumExtras.PageObjects/3.11.0": {
@@ -84,28 +72,13 @@
           "lib/netstandard2.0/SeleniumExtras.WaitHelpers.dll": {}
         }
       },
-      "Gherkin/6.0.0": {
+      "Gherkin/19.0.3": {
         "type": "package",
-        "dependencies": {
-          "Utf8Json": "1.3.7"
-        },
         "compile": {
           "lib/netstandard2.0/Gherkin.dll": {}
         },
         "runtime": {
           "lib/netstandard2.0/Gherkin.dll": {}
-        }
-      },
-      "Google.Protobuf/3.7.0": {
-        "type": "package",
-        "dependencies": {
-          "NETStandard.Library": "1.6.1"
-        },
-        "compile": {
-          "lib/netstandard1.0/Google.Protobuf.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.0/Google.Protobuf.dll": {}
         }
       },
       "HtmlAgilityPack/1.11.22": {
@@ -918,18 +891,16 @@
           "lib/netstandard2.1/ICSharpCode.SharpZipLib.dll": {}
         }
       },
-      "SpecFlow/3.7.13": {
+      "SpecFlow/3.9.50": {
         "type": "package",
         "dependencies": {
           "BoDi": "1.5.0",
-          "Cucumber.Messages": "[6.0.1, 7.0.0)",
-          "Gherkin": "6.0.0",
+          "Gherkin": "19.0.3",
           "Microsoft.Extensions.DependencyModel": "1.0.3",
+          "SpecFlow.Internal.Json": "1.0.8",
           "System.Configuration.ConfigurationManager": "4.5.0",
           "System.Net.Http": "4.3.4",
-          "System.Runtime.Loader": "4.3.0",
-          "System.ValueTuple": "4.4.0",
-          "Utf8Json": "1.3.7"
+          "System.Runtime.Loader": "4.3.0"
         },
         "compile": {
           "lib/netstandard2.0/TechTalk.SpecFlow.dll": {}
@@ -941,10 +912,19 @@
           "build/SpecFlow.targets": {}
         }
       },
-      "SpecFlow.Tools.MsBuild.Generation/3.7.13": {
+      "SpecFlow.Internal.Json/1.0.8": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/SpecFlow.Internal.Json.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SpecFlow.Internal.Json.dll": {}
+        }
+      },
+      "SpecFlow.Tools.MsBuild.Generation/3.9.50": {
         "type": "package",
         "dependencies": {
-          "SpecFlow": "[3.7.13]"
+          "SpecFlow": "[3.9.50]"
         },
         "build": {
           "build/SpecFlow.Tools.MsBuild.Generation.props": {},
@@ -954,7 +934,7 @@
           "buildMultiTargeting/SpecFlow.Tools.MsBuild.Generation.props": {}
         }
       },
-      "SpecRun.Runner/3.7.3": {
+      "SpecRun.Runner/3.9.31": {
         "type": "package",
         "dependencies": {
           "Microsoft.NET.Test.Sdk": "15.0.0"
@@ -964,18 +944,18 @@
           "build/SpecRun.Runner.targets": {}
         }
       },
-      "SpecRun.SpecFlow/3.7.3": {
+      "SpecRun.SpecFlow/3.9.31": {
         "type": "package",
         "dependencies": {
-          "SpecRun.SpecFlow.3-7-0": "[3.7.3]"
+          "SpecRun.SpecFlow.3-9-0": "[3.9.31]"
         }
       },
-      "SpecRun.SpecFlow.3-7-0/3.7.3": {
+      "SpecRun.SpecFlow.3-9-0/3.9.31": {
         "type": "package",
         "dependencies": {
-          "SpecFlow": "[3.7.13, 3.8.0)",
-          "SpecFlow.Tools.MsBuild.Generation": "[3.7.13, 3.8.0)",
-          "SpecRun.Runner": "3.7.3"
+          "SpecFlow": "[3.9.40, 3.10.0)",
+          "SpecFlow.Tools.MsBuild.Generation": "[3.9.40, 3.10.0)",
+          "SpecRun.Runner": "3.9.31"
         },
         "compile": {
           "lib/netstandard2.0/SpecRun.Runtime.SpecFlowPlugin.dll": {},
@@ -995,8 +975,8 @@
           }
         },
         "build": {
-          "build/SpecRun.SpecFlow.3-7-0.props": {},
-          "build/SpecRun.SpecFlow.3-7-0.targets": {}
+          "build/SpecRun.SpecFlow.3-9-0.props": {},
+          "build/SpecRun.SpecFlow.3-9-0.targets": {}
         }
       },
       "System.AppContext/4.1.0": {
@@ -1404,46 +1384,46 @@
           "ref/netstandard1.5/System.Reflection.dll": {}
         }
       },
-      "System.Reflection.Emit/4.3.0": {
+      "System.Reflection.Emit/4.0.1": {
         "type": "package",
         "dependencies": {
-          "System.IO": "4.3.0",
-          "System.Reflection": "4.3.0",
-          "System.Reflection.Emit.ILGeneration": "4.3.0",
-          "System.Reflection.Primitives": "4.3.0",
-          "System.Runtime": "4.3.0"
+          "System.IO": "4.1.0",
+          "System.Reflection": "4.1.0",
+          "System.Reflection.Emit.ILGeneration": "4.0.1",
+          "System.Reflection.Primitives": "4.0.1",
+          "System.Runtime": "4.1.0"
         },
         "compile": {
-          "ref/netstandard1.1/System.Reflection.Emit.dll": {}
+          "ref/netstandard1.1/_._": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Reflection.Emit.dll": {}
         }
       },
-      "System.Reflection.Emit.ILGeneration/4.3.0": {
+      "System.Reflection.Emit.ILGeneration/4.0.1": {
         "type": "package",
         "dependencies": {
-          "System.Reflection": "4.3.0",
-          "System.Reflection.Primitives": "4.3.0",
-          "System.Runtime": "4.3.0"
+          "System.Reflection": "4.1.0",
+          "System.Reflection.Primitives": "4.0.1",
+          "System.Runtime": "4.1.0"
         },
         "compile": {
-          "ref/netstandard1.0/System.Reflection.Emit.ILGeneration.dll": {}
+          "ref/netstandard1.0/_._": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Reflection.Emit.ILGeneration.dll": {}
         }
       },
-      "System.Reflection.Emit.Lightweight/4.3.0": {
+      "System.Reflection.Emit.Lightweight/4.0.1": {
         "type": "package",
         "dependencies": {
-          "System.Reflection": "4.3.0",
-          "System.Reflection.Emit.ILGeneration": "4.3.0",
-          "System.Reflection.Primitives": "4.3.0",
-          "System.Runtime": "4.3.0"
+          "System.Reflection": "4.1.0",
+          "System.Reflection.Emit.ILGeneration": "4.0.1",
+          "System.Reflection.Primitives": "4.0.1",
+          "System.Runtime": "4.1.0"
         },
         "compile": {
-          "ref/netstandard1.0/System.Reflection.Emit.Lightweight.dll": {}
+          "ref/netstandard1.0/_._": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Reflection.Emit.Lightweight.dll": {}
@@ -1994,22 +1974,18 @@
           "ref/netstandard1.3/System.Threading.Tasks.dll": {}
         }
       },
-      "System.Threading.Tasks.Extensions/4.4.0": {
+      "System.Threading.Tasks.Extensions/4.3.0": {
         "type": "package",
+        "dependencies": {
+          "System.Collections": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Threading.Tasks": "4.3.0"
+        },
         "compile": {
-          "ref/netcoreapp2.0/_._": {}
+          "lib/netstandard1.0/_._": {}
         },
         "runtime": {
-          "lib/netcoreapp2.0/_._": {}
-        }
-      },
-      "System.ValueTuple/4.4.0": {
-        "type": "package",
-        "compile": {
-          "ref/netcoreapp2.0/_._": {}
-        },
-        "runtime": {
-          "lib/netcoreapp2.0/_._": {}
+          "lib/netstandard1.0/System.Threading.Tasks.Extensions.dll": {}
         }
       },
       "System.Xml.ReaderWriter/4.3.0": {
@@ -2099,21 +2075,6 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
         }
-      },
-      "Utf8Json/1.3.7": {
-        "type": "package",
-        "dependencies": {
-          "System.Reflection.Emit": "4.3.0",
-          "System.Reflection.Emit.Lightweight": "4.3.0",
-          "System.Threading.Tasks.Extensions": "4.4.0",
-          "System.ValueTuple": "4.4.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/Utf8Json.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Utf8Json.dll": {}
-        }
       }
     }
   },
@@ -2149,10 +2110,10 @@
         "tools/_._"
       ]
     },
-    "coverlet.collector/3.1.1": {
-      "sha512": "5x+/JfOC7+I+IJMWZ9yEbLxZJepGwdrqMJ1zuA1J2uAZ5tV3w4j2T+rbgkNQ1eH7aKdD0ifJIUtuOF+odzItHQ==",
+    "coverlet.collector/3.1.2": {
+      "sha512": "wuLDIDKD5XMt0A7lE31JPenT7QQwZPFkP5rRpdJeblyXZ9MGLI8rYjvm5fvAKln+2/X+4IxxQDxBtwdrqKNLZw==",
       "type": "package",
-      "path": "coverlet.collector/3.1.1",
+      "path": "coverlet.collector/3.1.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2196,21 +2157,8 @@
         "build/netstandard1.0/coverlet.core.dll",
         "build/netstandard1.0/coverlet.core.pdb",
         "coverlet-icon.png",
-        "coverlet.collector.3.1.1.nupkg.sha512",
+        "coverlet.collector.3.1.2.nupkg.sha512",
         "coverlet.collector.nuspec"
-      ]
-    },
-    "Cucumber.Messages/6.0.1": {
-      "sha512": "R/2XAU6Zwdnlgga/YLYxwbKf4ai0JYyeX25l85t0nNgagR2aP8hnqrLtJjgswuXVa2WlQdjXUfJqUX8YTjzlXw==",
-      "type": "package",
-      "path": "cucumber.messages/6.0.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "cucumber.messages.6.0.1.nupkg.sha512",
-        "cucumber.messages.nuspec",
-        "lib/net45/Cucumber.Messages.dll",
-        "lib/netstandard2.0/Cucumber.Messages.dll"
       ]
     },
     "DotNetSeleniumExtras.PageObjects/3.11.0": {
@@ -2258,34 +2206,20 @@
         "lib/netstandard2.0/SeleniumExtras.WaitHelpers.dll"
       ]
     },
-    "Gherkin/6.0.0": {
-      "sha512": "7QYZLuX3/unF+onuTVOry6hksN1UEx8niuh7XqZmqKK/ZSihl5yv1YBEHFQ78CMJjeEYB0FLomNds70wWsn+rw==",
+    "Gherkin/19.0.3": {
+      "sha512": "kq9feqMojMj9aABrHb/ABEPaH2Y4dSclseSahAru6qxCeqVQNLLTgw/6vZMauzI1yBUL2fz03ub5yEd5btLfvg==",
       "type": "package",
-      "path": "gherkin/6.0.0",
+      "path": "gherkin/19.0.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "gherkin.6.0.0.nupkg.sha512",
+        "cucumber-mark-green-128.png",
+        "gherkin.19.0.3.nupkg.sha512",
         "gherkin.nuspec",
         "lib/net45/Gherkin.dll",
-        "lib/netstandard2.0/Gherkin.dll"
-      ]
-    },
-    "Google.Protobuf/3.7.0": {
-      "sha512": "OvssyqQTrpJgdH4fjztsCV9AhUo9jgGpDbZ5XAAqC+X6MIUsifHk8Woeom1HXlHdqo/XebiEMpYySE9AxybJ9g==",
-      "type": "package",
-      "path": "google.protobuf/3.7.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "google.protobuf.3.7.0.nupkg.sha512",
-        "google.protobuf.nuspec",
-        "lib/net45/Google.Protobuf.dll",
-        "lib/net45/Google.Protobuf.pdb",
-        "lib/net45/Google.Protobuf.xml",
-        "lib/netstandard1.0/Google.Protobuf.dll",
-        "lib/netstandard1.0/Google.Protobuf.pdb",
-        "lib/netstandard1.0/Google.Protobuf.xml"
+        "lib/net45/Gherkin.xml",
+        "lib/netstandard2.0/Gherkin.dll",
+        "lib/netstandard2.0/Gherkin.xml"
       ]
     },
     "HtmlAgilityPack/1.11.22": {
@@ -3916,10 +3850,10 @@
         "sharpziplib.nuspec"
       ]
     },
-    "SpecFlow/3.7.13": {
-      "sha512": "X/uO+xTwC8mXWpLcuviKl/WVMa7TRE/THE7hS5CoKVJQ7SvJMSs3TBU01Jm6DQZfey2Ra6f7bcs6o7xBmtBiCw==",
+    "SpecFlow/3.9.50": {
+      "sha512": "8iBOWWyLj5R0tEhbBLeg1VTCtuDrfvkqYBYn6RRsL+D0FGdtXvyimeW2IHZunKrCiCdPF1f31ZFRwsMoHSFt2Q==",
       "type": "package",
-      "path": "specflow/3.7.13",
+      "path": "specflow/3.9.50",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3938,14 +3872,28 @@
         "lib/netstandard2.0/TechTalk.SpecFlow.dll",
         "lib/netstandard2.0/TechTalk.SpecFlow.pdb",
         "lib/netstandard2.0/TechTalk.SpecFlow.xml",
-        "specflow.3.7.13.nupkg.sha512",
+        "specflow.3.9.50.nupkg.sha512",
         "specflow.nuspec"
       ]
     },
-    "SpecFlow.Tools.MsBuild.Generation/3.7.13": {
-      "sha512": "zGaji+OTkQODfVSIyP7dnyXXfXfUJuLz0sCmQ2b342YgNsFoYgc8BwxV8+Wwo1aq8PGcg+nf3Y53eVhOELoU8g==",
+    "SpecFlow.Internal.Json/1.0.8": {
+      "sha512": "lVCC/Rie7N5rFoc7YxPS0nneLfsWSTIMMlkndwxhaD8MxBp3Bsv1HeiVjVwXCjWaQeoqZcvIy52fF5Xit00ZLw==",
       "type": "package",
-      "path": "specflow.tools.msbuild.generation/3.7.13",
+      "path": "specflow.internal.json/1.0.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "lib/net45/SpecFlow.Internal.Json.dll",
+        "lib/netstandard2.0/SpecFlow.Internal.Json.dll",
+        "specflow.internal.json.1.0.8.nupkg.sha512",
+        "specflow.internal.json.nuspec"
+      ]
+    },
+    "SpecFlow.Tools.MsBuild.Generation/3.9.50": {
+      "sha512": "oJ5LXdKBnx2faO3I3hNVt+Pyeb6pE9mYxPFCvNXydQ2je3C1O8rDznK9Cxh3Tn8ixpx4LWCYuch9VSL9jZjfXQ==",
+      "type": "package",
+      "path": "specflow.tools.msbuild.generation/3.9.50",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3962,12 +3910,10 @@
         "licenses/Gherkin-LICENSE-MIT.txt",
         "licenses/Newtonsoft.Json-LICENSE-MIT.md",
         "licenses/System.ValueTuple-LICENSE-MIT.txt",
-        "specflow.tools.msbuild.generation.3.7.13.nupkg.sha512",
+        "specflow.tools.msbuild.generation.3.9.50.nupkg.sha512",
         "specflow.tools.msbuild.generation.nuspec",
         "tasks/net461/BoDi.dll",
-        "tasks/net461/Cucumber.Messages.dll",
         "tasks/net461/Gherkin.dll",
-        "tasks/net461/Google.Protobuf.dll",
         "tasks/net461/Microsoft.Build.Framework.dll",
         "tasks/net461/Microsoft.Build.Tasks.Core.dll",
         "tasks/net461/Microsoft.Build.Utilities.Core.dll",
@@ -3981,6 +3927,7 @@
         "tasks/net461/Microsoft.VisualStudio.Threading.dll",
         "tasks/net461/Microsoft.VisualStudio.Validation.dll",
         "tasks/net461/Microsoft.Win32.Primitives.dll",
+        "tasks/net461/SpecFlow.Internal.Json.dll",
         "tasks/net461/SpecFlow.Tools.MsBuild.Generation.dll",
         "tasks/net461/System.AppContext.dll",
         "tasks/net461/System.CodeDom.dll",
@@ -4072,7 +4019,6 @@
         "tasks/net461/System.Text.RegularExpressions.dll",
         "tasks/net461/System.Threading.Overlapped.dll",
         "tasks/net461/System.Threading.Tasks.Dataflow.dll",
-        "tasks/net461/System.Threading.Tasks.Extensions.dll",
         "tasks/net461/System.Threading.Tasks.Parallel.dll",
         "tasks/net461/System.Threading.Tasks.dll",
         "tasks/net461/System.Threading.Thread.dll",
@@ -4090,12 +4036,9 @@
         "tasks/net461/TechTalk.SpecFlow.Parser.dll",
         "tasks/net461/TechTalk.SpecFlow.Utils.dll",
         "tasks/net461/TechTalk.SpecFlow.dll",
-        "tasks/net461/Utf8Json.dll",
         "tasks/net461/netstandard.dll",
         "tasks/net5.0/BoDi.dll",
-        "tasks/net5.0/Cucumber.Messages.dll",
         "tasks/net5.0/Gherkin.dll",
-        "tasks/net5.0/Google.Protobuf.dll",
         "tasks/net5.0/Microsoft.Build.Framework.dll",
         "tasks/net5.0/Microsoft.Build.Tasks.Core.dll",
         "tasks/net5.0/Microsoft.Build.Utilities.Core.dll",
@@ -4107,6 +4050,7 @@
         "tasks/net5.0/Microsoft.VisualStudio.Threading.dll",
         "tasks/net5.0/Microsoft.VisualStudio.Validation.dll",
         "tasks/net5.0/Newtonsoft.Json.dll",
+        "tasks/net5.0/SpecFlow.Internal.Json.dll",
         "tasks/net5.0/SpecFlow.Tools.MsBuild.Generation.deps.json",
         "tasks/net5.0/SpecFlow.Tools.MsBuild.Generation.dll",
         "tasks/net5.0/System.CodeDom.dll",
@@ -4123,11 +4067,38 @@
         "tasks/net5.0/TechTalk.SpecFlow.Parser.dll",
         "tasks/net5.0/TechTalk.SpecFlow.Utils.dll",
         "tasks/net5.0/TechTalk.SpecFlow.dll",
-        "tasks/net5.0/Utf8Json.dll",
+        "tasks/net6.0/BoDi.dll",
+        "tasks/net6.0/Gherkin.dll",
+        "tasks/net6.0/Microsoft.Build.Framework.dll",
+        "tasks/net6.0/Microsoft.Build.Tasks.Core.dll",
+        "tasks/net6.0/Microsoft.Build.Utilities.Core.dll",
+        "tasks/net6.0/Microsoft.Build.dll",
+        "tasks/net6.0/Microsoft.DotNet.PlatformAbstractions.dll",
+        "tasks/net6.0/Microsoft.Extensions.DependencyModel.dll",
+        "tasks/net6.0/Microsoft.VisualStudio.Composition.NetFxAttributes.dll",
+        "tasks/net6.0/Microsoft.VisualStudio.Composition.dll",
+        "tasks/net6.0/Microsoft.VisualStudio.Threading.dll",
+        "tasks/net6.0/Microsoft.VisualStudio.Validation.dll",
+        "tasks/net6.0/Newtonsoft.Json.dll",
+        "tasks/net6.0/SpecFlow.Internal.Json.dll",
+        "tasks/net6.0/SpecFlow.Tools.MsBuild.Generation.deps.json",
+        "tasks/net6.0/SpecFlow.Tools.MsBuild.Generation.dll",
+        "tasks/net6.0/System.CodeDom.dll",
+        "tasks/net6.0/System.ComponentModel.Composition.dll",
+        "tasks/net6.0/System.Composition.AttributedModel.dll",
+        "tasks/net6.0/System.Composition.Convention.dll",
+        "tasks/net6.0/System.Composition.Hosting.dll",
+        "tasks/net6.0/System.Composition.Runtime.dll",
+        "tasks/net6.0/System.Composition.TypedParts.dll",
+        "tasks/net6.0/System.Configuration.ConfigurationManager.dll",
+        "tasks/net6.0/System.Security.Cryptography.ProtectedData.dll",
+        "tasks/net6.0/System.Security.Permissions.dll",
+        "tasks/net6.0/TechTalk.SpecFlow.Generator.dll",
+        "tasks/net6.0/TechTalk.SpecFlow.Parser.dll",
+        "tasks/net6.0/TechTalk.SpecFlow.Utils.dll",
+        "tasks/net6.0/TechTalk.SpecFlow.dll",
         "tasks/netcoreapp2.1/BoDi.dll",
-        "tasks/netcoreapp2.1/Cucumber.Messages.dll",
         "tasks/netcoreapp2.1/Gherkin.dll",
-        "tasks/netcoreapp2.1/Google.Protobuf.dll",
         "tasks/netcoreapp2.1/Microsoft.Build.Framework.dll",
         "tasks/netcoreapp2.1/Microsoft.Build.Tasks.Core.dll",
         "tasks/netcoreapp2.1/Microsoft.Build.Utilities.Core.dll",
@@ -4139,6 +4110,7 @@
         "tasks/netcoreapp2.1/Microsoft.VisualStudio.Threading.dll",
         "tasks/netcoreapp2.1/Microsoft.VisualStudio.Validation.dll",
         "tasks/netcoreapp2.1/Newtonsoft.Json.dll",
+        "tasks/netcoreapp2.1/SpecFlow.Internal.Json.dll",
         "tasks/netcoreapp2.1/SpecFlow.Tools.MsBuild.Generation.deps.json",
         "tasks/netcoreapp2.1/SpecFlow.Tools.MsBuild.Generation.dll",
         "tasks/netcoreapp2.1/System.CodeDom.dll",
@@ -4155,14 +4127,13 @@
         "tasks/netcoreapp2.1/TechTalk.SpecFlow.Generator.dll",
         "tasks/netcoreapp2.1/TechTalk.SpecFlow.Parser.dll",
         "tasks/netcoreapp2.1/TechTalk.SpecFlow.Utils.dll",
-        "tasks/netcoreapp2.1/TechTalk.SpecFlow.dll",
-        "tasks/netcoreapp2.1/Utf8Json.dll"
+        "tasks/netcoreapp2.1/TechTalk.SpecFlow.dll"
       ]
     },
-    "SpecRun.Runner/3.7.3": {
-      "sha512": "p4MJ0cGGUjaLfrv4bES8u2PJX14zvr32gtd27OnrB+Uax3ES0arMS+Wv/dOlpqSg/HNvN1OAwoTV5A7JHMt6NQ==",
+    "SpecRun.Runner/3.9.31": {
+      "sha512": "IV78WLBaiF/t3S8WlcG7y5WdNlOQIZ5V56Oqp/A6YGj20wrQ4oKolp+ZlWRljQXtWpmrlD/MGCiIIGcvo77hFg==",
       "type": "package",
-      "path": "specrun.runner/3.7.3",
+      "path": "specrun.runner/3.9.31",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -4178,8 +4149,9 @@
         "docs/RestSharp-LICENSE-Apache2.txt",
         "docs/Sample.runsettings",
         "docs/readme.txt",
+        "images/specflow-icon.png",
         "readme.txt",
-        "specrun.runner.3.7.3.nupkg.sha512",
+        "specrun.runner.3.9.31.nupkg.sha512",
         "specrun.runner.nuspec",
         "templates/CucumberJson.cshtml",
         "templates/ReportTemplate.cshtml",
@@ -4331,40 +4303,40 @@
         "tools/netcoreapp3.1/TechTalk.SpecRun.dll"
       ]
     },
-    "SpecRun.SpecFlow/3.7.3": {
-      "sha512": "KV7bi8TZoPXuz2CIr6JO1SIKjBbiaM7DJvOJewuQI9wI4y2x/+tFVXZKq0qzIzxUNL/cdhmibNoactm+iYSYcw==",
+    "SpecRun.SpecFlow/3.9.31": {
+      "sha512": "/OOEPfaXOcIo2Iqu6DsFx1tWWAP3P4T5AiA9bmZHsQZvdVAwWMyAmT+13s8+jGU9NmiabH5ENxJgjU9JA8/vJw==",
       "type": "package",
-      "path": "specrun.specflow/3.7.3",
+      "path": "specrun.specflow/3.9.31",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE",
-        "specrun.specflow.3.7.3.nupkg.sha512",
+        "images/specflow-icon.png",
+        "specrun.specflow.3.9.31.nupkg.sha512",
         "specrun.specflow.nuspec"
       ]
     },
-    "SpecRun.SpecFlow.3-7-0/3.7.3": {
-      "sha512": "c0P1WPQjkBP+fUQ2WAH4kO1bRyZ1jQaLScJjVWHeYV1b5v2Q+kkGDVvWwDGTrKbKcXQx1T7gFg7vReTAcRXrnQ==",
+    "SpecRun.SpecFlow.3-9-0/3.9.31": {
+      "sha512": "TvK3eKHJ3oXVOd5Kr+iQMzvwqUkMaIxdltp623z7GkmTUt6zS/wdPAuP1akjUxQPUIKc3JnhJ9bSUM7fBN7YVQ==",
       "type": "package",
-      "path": "specrun.specflow.3-7-0/3.7.3",
+      "path": "specrun.specflow.3-9-0/3.9.31",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE",
         "build/SpecFlow.Plus.Runner.AssemblyHooks.cs",
         "build/SpecFlow.Plus.Runner.AssemblyHooks.vb",
-        "build/SpecRun.SpecFlow.3-7-0.props",
-        "build/SpecRun.SpecFlow.3-7-0.targets",
+        "build/SpecRun.SpecFlow.3-9-0.props",
+        "build/SpecRun.SpecFlow.3-9-0.targets",
         "build/net471/SpecRun.Generator.SpecFlowPlugin.dll",
         "build/net471/SpecRun.Generator.SpecFlowPlugin.pdb",
         "build/net471/TechTalk.SpecRun.Common.dll",
         "build/netstandard2.0/BoDi.dll",
-        "build/netstandard2.0/Cucumber.Messages.dll",
         "build/netstandard2.0/Gherkin.dll",
-        "build/netstandard2.0/Google.Protobuf.dll",
         "build/netstandard2.0/Microsoft.DotNet.PlatformAbstractions.dll",
         "build/netstandard2.0/Microsoft.Extensions.DependencyModel.dll",
         "build/netstandard2.0/Newtonsoft.Json.dll",
+        "build/netstandard2.0/SpecFlow.Internal.Json.dll",
         "build/netstandard2.0/SpecRun.Generator.SpecFlowPlugin.deps.json",
         "build/netstandard2.0/SpecRun.Generator.SpecFlowPlugin.dll",
         "build/netstandard2.0/SpecRun.Generator.SpecFlowPlugin.pdb",
@@ -4397,7 +4369,6 @@
         "build/netstandard2.0/System.Security.Principal.Windows.dll",
         "build/netstandard2.0/System.Security.Principal.dll",
         "build/netstandard2.0/System.Threading.Tasks.Dataflow.dll",
-        "build/netstandard2.0/System.Threading.Tasks.Extensions.dll",
         "build/netstandard2.0/System.Threading.dll",
         "build/netstandard2.0/TechTalk.SpecFlow.Generator.dll",
         "build/netstandard2.0/TechTalk.SpecFlow.Parser.dll",
@@ -4405,13 +4376,13 @@
         "build/netstandard2.0/TechTalk.SpecFlow.dll",
         "build/netstandard2.0/TechTalk.SpecRun.Common.dll",
         "build/netstandard2.0/TechTalk.SpecRun.dll",
-        "build/netstandard2.0/Utf8Json.dll",
         "content/SpecRunTestProfile.xsd",
         "content/SpecRunTestProfile_2011_09.xsd",
         "content/runtests.cmd.pp",
         "contentFiles/any/any/SpecRunTestProfile.xsd",
         "contentFiles/any/any/SpecRunTestProfile_2011_09.xsd",
         "contentFiles/any/any/runtests.cmd.pp",
+        "images/specflow-icon.png",
         "lib/net461/SpecRun.Runtime.SpecFlowPlugin.dll",
         "lib/net461/TechTalk.SpecRun.Common.dll",
         "lib/net461/TechTalk.SpecRun.dll",
@@ -4419,8 +4390,8 @@
         "lib/netstandard2.0/TechTalk.SpecRun.Common.dll",
         "lib/netstandard2.0/TechTalk.SpecRun.dll",
         "readme.txt",
-        "specrun.specflow.3-7-0.3.7.3.nupkg.sha512",
-        "specrun.specflow.3-7-0.nuspec"
+        "specrun.specflow.3-9-0.3.9.31.nupkg.sha512",
+        "specrun.specflow.3-9-0.nuspec"
       ]
     },
     "System.AppContext/4.1.0": {
@@ -5731,24 +5702,20 @@
         "system.reflection.nuspec"
       ]
     },
-    "System.Reflection.Emit/4.3.0": {
-      "sha512": "228FG0jLcIwTVJyz8CLFKueVqQK36ANazUManGaJHkO0icjiIypKW7YLWLIWahyIkdh5M7mV2dJepllLyA1SKg==",
+    "System.Reflection.Emit/4.0.1": {
+      "sha512": "P2wqAj72fFjpP6wb9nSfDqNBMab+2ovzSDzUZK7MVIm54tBJEPr9jWfSjjoTpPwj1LeKcmX3vr0ttyjSSFM47g==",
       "type": "package",
-      "path": "system.reflection.emit/4.3.0",
+      "path": "system.reflection.emit/4.0.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
-        "lib/monotouch10/_._",
         "lib/net45/_._",
         "lib/netcore50/System.Reflection.Emit.dll",
         "lib/netstandard1.3/System.Reflection.Emit.dll",
-        "lib/xamarinios10/_._",
         "lib/xamarinmac20/_._",
-        "lib/xamarintvos10/_._",
-        "lib/xamarinwatchos10/_._",
         "ref/MonoAndroid10/_._",
         "ref/net45/_._",
         "ref/netstandard1.1/System.Reflection.Emit.dll",
@@ -5763,32 +5730,24 @@
         "ref/netstandard1.1/zh-hans/System.Reflection.Emit.xml",
         "ref/netstandard1.1/zh-hant/System.Reflection.Emit.xml",
         "ref/xamarinmac20/_._",
-        "system.reflection.emit.4.3.0.nupkg.sha512",
+        "system.reflection.emit.4.0.1.nupkg.sha512",
         "system.reflection.emit.nuspec"
       ]
     },
-    "System.Reflection.Emit.ILGeneration/4.3.0": {
-      "sha512": "59tBslAk9733NXLrUJrwNZEzbMAcu8k344OYo+wfSVygcgZ9lgBdGIzH/nrg3LYhXceynyvTc8t5/GD4Ri0/ng==",
+    "System.Reflection.Emit.ILGeneration/4.0.1": {
+      "sha512": "Ov6dU8Bu15Bc7zuqttgHF12J5lwSWyTf1S+FJouUXVMSqImLZzYaQ+vRr1rQ0OZ0HqsrwWl4dsKHELckQkVpgA==",
       "type": "package",
-      "path": "system.reflection.emit.ilgeneration/4.3.0",
+      "path": "system.reflection.emit.ilgeneration/4.0.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
         "lib/net45/_._",
         "lib/netcore50/System.Reflection.Emit.ILGeneration.dll",
         "lib/netstandard1.3/System.Reflection.Emit.ILGeneration.dll",
         "lib/portable-net45+wp8/_._",
         "lib/wp80/_._",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "lib/xamarintvos10/_._",
-        "lib/xamarinwatchos10/_._",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
         "ref/net45/_._",
         "ref/netstandard1.0/System.Reflection.Emit.ILGeneration.dll",
         "ref/netstandard1.0/System.Reflection.Emit.ILGeneration.xml",
@@ -5803,37 +5762,25 @@
         "ref/netstandard1.0/zh-hant/System.Reflection.Emit.ILGeneration.xml",
         "ref/portable-net45+wp8/_._",
         "ref/wp80/_._",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._",
         "runtimes/aot/lib/netcore50/_._",
-        "system.reflection.emit.ilgeneration.4.3.0.nupkg.sha512",
+        "system.reflection.emit.ilgeneration.4.0.1.nupkg.sha512",
         "system.reflection.emit.ilgeneration.nuspec"
       ]
     },
-    "System.Reflection.Emit.Lightweight/4.3.0": {
-      "sha512": "oadVHGSMsTmZsAF864QYN1t1QzZjIcuKU3l2S9cZOwDdDueNTrqq1yRj7koFfIGEnKpt6NjpL3rOzRhs4ryOgA==",
+    "System.Reflection.Emit.Lightweight/4.0.1": {
+      "sha512": "sSzHHXueZ5Uh0OLpUQprhr+ZYJrLPA2Cmr4gn0wj9+FftNKXx8RIMKvO9qnjk2ebPYUjZ+F2ulGdPOsvj+MEjA==",
       "type": "package",
-      "path": "system.reflection.emit.lightweight/4.3.0",
+      "path": "system.reflection.emit.lightweight/4.0.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
         "lib/net45/_._",
         "lib/netcore50/System.Reflection.Emit.Lightweight.dll",
         "lib/netstandard1.3/System.Reflection.Emit.Lightweight.dll",
         "lib/portable-net45+wp8/_._",
         "lib/wp80/_._",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "lib/xamarintvos10/_._",
-        "lib/xamarinwatchos10/_._",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
         "ref/net45/_._",
         "ref/netstandard1.0/System.Reflection.Emit.Lightweight.dll",
         "ref/netstandard1.0/System.Reflection.Emit.Lightweight.xml",
@@ -5848,12 +5795,8 @@
         "ref/netstandard1.0/zh-hant/System.Reflection.Emit.Lightweight.xml",
         "ref/portable-net45+wp8/_._",
         "ref/wp80/_._",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._",
         "runtimes/aot/lib/netcore50/_._",
-        "system.reflection.emit.lightweight.4.3.0.nupkg.sha512",
+        "system.reflection.emit.lightweight.4.0.1.nupkg.sha512",
         "system.reflection.emit.lightweight.nuspec"
       ]
     },
@@ -7384,72 +7327,21 @@
         "system.threading.tasks.nuspec"
       ]
     },
-    "System.Threading.Tasks.Extensions/4.4.0": {
-      "sha512": "SPKfFGbpQsK5Srz2Kq3URgvC90yoOyBE8H1quDA2+MAJ2HAzFmV3biOgPv2Ck3mPAvdKngo3QHi2BNwUQDRVvA==",
+    "System.Threading.Tasks.Extensions/4.3.0": {
+      "sha512": "npvJkVKl5rKXrtl1Kkm6OhOUaYGEiF9wFbppFRWSMoApKzt2PiPHT2Bb8a5sAWxprvdOAtvaARS9QYMznEUtug==",
       "type": "package",
-      "path": "system.threading.tasks.extensions/4.4.0",
+      "path": "system.threading.tasks.extensions/4.3.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/netcoreapp2.0/_._",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
         "lib/netstandard1.0/System.Threading.Tasks.Extensions.dll",
         "lib/netstandard1.0/System.Threading.Tasks.Extensions.xml",
-        "lib/netstandard2.0/System.Threading.Tasks.Extensions.dll",
-        "lib/netstandard2.0/System.Threading.Tasks.Extensions.xml",
         "lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.dll",
         "lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.xml",
-        "ref/netcoreapp2.0/_._",
-        "system.threading.tasks.extensions.4.4.0.nupkg.sha512",
-        "system.threading.tasks.extensions.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
-      ]
-    },
-    "System.ValueTuple/4.4.0": {
-      "sha512": "BahUww/+mdP4ARCAh2RQhQTg13wYLVrBb9SYVgW8ZlrwjraGCXHGjo0oIiUfZ34LUZkMMR+RAzR7dEY4S1HeQQ==",
-      "type": "package",
-      "path": "system.valuetuple/4.4.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
-        "lib/net461/System.ValueTuple.dll",
-        "lib/net461/System.ValueTuple.xml",
-        "lib/net47/System.ValueTuple.dll",
-        "lib/net47/System.ValueTuple.xml",
-        "lib/netcoreapp2.0/_._",
-        "lib/netstandard1.0/System.ValueTuple.dll",
-        "lib/netstandard1.0/System.ValueTuple.xml",
-        "lib/netstandard2.0/_._",
-        "lib/portable-net40+sl4+win8+wp8/System.ValueTuple.dll",
-        "lib/portable-net40+sl4+win8+wp8/System.ValueTuple.xml",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "lib/xamarintvos10/_._",
-        "lib/xamarinwatchos10/_._",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
-        "ref/net461/System.ValueTuple.dll",
-        "ref/net461/System.ValueTuple.xml",
-        "ref/net47/System.ValueTuple.dll",
-        "ref/net47/System.ValueTuple.xml",
-        "ref/netcoreapp2.0/_._",
-        "ref/netstandard2.0/_._",
-        "ref/portable-net40+sl4+win8+wp8/System.ValueTuple.dll",
-        "ref/portable-net40+sl4+win8+wp8/System.ValueTuple.xml",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._",
-        "system.valuetuple.4.4.0.nupkg.sha512",
-        "system.valuetuple.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
+        "system.threading.tasks.extensions.4.3.0.nupkg.sha512",
+        "system.threading.tasks.extensions.nuspec"
       ]
     },
     "System.Xml.ReaderWriter/4.3.0": {
@@ -7639,23 +7531,6 @@
         "system.xml.xpath.xmldocument.4.3.0.nupkg.sha512",
         "system.xml.xpath.xmldocument.nuspec"
       ]
-    },
-    "Utf8Json/1.3.7": {
-      "sha512": "lMTNZWp6a6KGkgMc3rW41D3b0REb03fQycfb/2bNBpiUtsbGYYI/LrAhnX52vrHRe4ze7JxbtpWF1Y5ohdpipQ==",
-      "type": "package",
-      "path": "utf8json/1.3.7",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net45/Utf8Json.dll",
-        "lib/net45/Utf8Json.xml",
-        "lib/net47/Utf8Json.dll",
-        "lib/net47/Utf8Json.xml",
-        "lib/netstandard2.0/Utf8Json.dll",
-        "lib/netstandard2.0/Utf8Json.xml",
-        "utf8json.1.3.7.nupkg.sha512",
-        "utf8json.nuspec"
-      ]
     }
   },
   "projectFileDependencyGroups": {
@@ -7678,10 +7553,10 @@
       "Selenium.WebDriver.ChromeDriver >= 98.0.4758.8000",
       "Selenium.WebDriver.GeckoDriver >= 0.30.0.1",
       "Selenium.WebDriverBackedSelenium >= 4.1.0",
-      "SpecFlow >= 3.7.13",
-      "SpecFlow.Tools.MsBuild.Generation >= 3.7.13",
-      "SpecRun.SpecFlow >= 3.7.3",
-      "coverlet.collector >= 3.1.1"
+      "SpecFlow >= 3.9.50",
+      "SpecFlow.Tools.MsBuild.Generation >= 3.9.50",
+      "SpecRun.SpecFlow >= 3.9.31",
+      "coverlet.collector >= 3.1.2"
     ]
   },
   "packageFolders": {
@@ -7802,21 +7677,21 @@
           },
           "SpecFlow": {
             "target": "Package",
-            "version": "[3.7.13, )"
+            "version": "[3.9.50, )"
           },
           "SpecFlow.Tools.MsBuild.Generation": {
             "target": "Package",
-            "version": "[3.7.13, )"
+            "version": "[3.9.50, )"
           },
           "SpecRun.SpecFlow": {
             "target": "Package",
-            "version": "[3.7.3, )"
+            "version": "[3.9.31, )"
           },
           "coverlet.collector": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
             "target": "Package",
-            "version": "[3.1.1, )"
+            "version": "[3.1.2, )"
           }
         },
         "imports": [
