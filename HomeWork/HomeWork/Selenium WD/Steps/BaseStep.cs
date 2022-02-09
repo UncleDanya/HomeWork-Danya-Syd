@@ -18,7 +18,6 @@ namespace HomeWork.Selenium_WD.Steps
             this.driver = driver;
         }
 
-
         [Given(@"User go to '(.*)'")]
         public void GivenUserGoTo(string uri)
         {
