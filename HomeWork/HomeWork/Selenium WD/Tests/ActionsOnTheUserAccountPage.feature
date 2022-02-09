@@ -3,7 +3,7 @@
 Background: Pre-condition
 	Given User go to 'https://ek.ua/'
 
-@mytag @deleteUser
+@deleteUser
 Scenario: SaveListProductsInBookmarks
     Given User create new user account
 	When User choose category 'Аудио' and type of product 'Наушники'
@@ -24,19 +24,19 @@ Scenario: SavingTheViewedProduct
 	When User select brand 'Apple' by filter
 	Then Verify checkbox with brand 'Apple' is selected
 	When User click on linked text 'Показать'
-	When User remember name product 'Apple AirPods Pro'
+	When User remember product name 'Apple AirPods Pro'
 	When User click on linked text 'Apple AirPods Pro'
 	When User choose category 'Компьютеры' and type of product 'Приставки'
 	When User select brand 'Sony' by filter
 	Then Verify checkbox with brand 'Sony' is selected
 	When User click on linked text 'Показать'
-	When User remember name product 'Sony PlayStation 5'
+	When User remember product name 'Sony PlayStation 5'
 	When User click on linked text 'Sony PlayStation 5'
 	When User choose category 'Аудио' and type of product 'Наушники'
 	When User select brand 'Logitech' by filter
 	Then Verify checkbox with brand 'Logitech' is selected
 	When User click on linked text 'Показать'
-	When User remember name product 'Logitech G Pro X'
+	When User remember product name 'Logitech G Pro X'
 	When User click on linked text 'Logitech G Pro X'
     When User go to profile
-    Then Verify names viewed products matches the names in the viewed products in profile
+    Then Verify that names of the viewed products matches to the names in the viewed products in profile

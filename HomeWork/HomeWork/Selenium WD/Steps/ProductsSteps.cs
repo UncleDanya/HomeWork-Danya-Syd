@@ -48,7 +48,7 @@ namespace HomeWork.Selenium_WD.Steps
             categoryPage.ClickCheckboxByBrand(brandToLook);
         }
 
-        [When(@"User remember name product '(.*)'")]
+        [When(@"User remember product name '(.*)'")]
         public void WhenUserRememberNameProduct(string nameProduct)
         {
             var product = driver.GetComponent<ProductsNameLink>(nameProduct);
@@ -207,7 +207,7 @@ namespace HomeWork.Selenium_WD.Steps
             Assert.IsTrue(pageShopWithItemText.Contains(name.Value.First()));
         }
         
-        [Then(@"Verify names viewed products matches the names in the viewed products in profile")]
+        [Then(@"Verify that names of the viewed products matches to the names in the viewed products in profile")]
         public void ThenVerifyNamesViewedProductsMatchesTheNamesInTheViewedProductsInProfile()
         {
             var user = driver.GetPage<UserPage>();

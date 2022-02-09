@@ -8,7 +8,7 @@ Scenario: AddedItemToBookmarks
 	When User select brand 'Apple' by filter
 	Then Verify checkbox with brand 'Apple' is selected
 	When User click on linked text 'Показать'
-	When User remember name product 'Apple iPhone 13'
+	When User remember product name 'Apple iPhone 13'
 	When User click on linked text 'Apple iPhone 13'
 	When User add product in list
 	When User navigate to 'Закладки' folder on bottom bar
@@ -19,11 +19,11 @@ Scenario: AddedTwoItemsToCompare
     When User select brand 'Apple' by filter
     Then Verify checkbox with brand 'Apple' is selected
     When User click on linked text 'Показать'
-    When User remember name product 'Apple iPad'
+    When User remember product name 'Apple iPad'
     When User click on linked text 'Apple iPad'
     When User click on checkbox 'добавить в сравнение'
     When User click on linked text 'Apple'
-    When User remember name product 'Apple iPad Air'
+    When User remember product name 'Apple iPad Air'
     When User click on linked text 'Apple iPad Air'
     When User click on checkbox 'добавить в сравнение'
     When User navigate to 'Сравнить' folder on bottom bar

@@ -3,7 +3,6 @@
 Background: Pre-condition
 	Given User go to 'https://ek.ua/'
 
-@mytag
 Scenario: PriceSortingInAscending
     When User choose category 'Гаджеты' and type of product 'Мобильные'
 	When User select brand 'Apple' by filter
